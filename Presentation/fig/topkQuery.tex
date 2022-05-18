@@ -1,0 +1,70 @@
+% -*- mode: latex; mode: flyspell; ispell-local-dictionary: "en_US"; coding: utf-8; fill-column: 80 -*-
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\input{kitColors.tex}
+\usetikzlibrary{plotmarks}
+
+\pgfplotscreateplotcyclelist{kitcolors}{
+    KITgreen,every mark/.append style={fill=KITgreen!80!black},mark=*\\
+    KITblue,every mark/.append style={fill=KITblue!80!black},mark=square*\\
+    KITlilac,every mark/.append style={fill=KITlilac!80!black},mark=pentagon*\\
+    KITorange,every mark/.append style={fill=KITorange!80!black},mark=diamond*\\
+    KITbrown,every mark/.append style={fill=KITbrown!80!black},mark=triangle*\\
+}
+
+\pgfplotsset{
+  width=150mm,height=100mm,
+  major grid style={thin,dotted,color=black!50},
+  minor grid style={thin,dotted,color=black!50},
+  every axis/.append style={
+    line width=0.5pt,
+    tick style={
+      line cap=round,
+      thin,
+      major tick length=4pt,
+      minor tick length=2pt,
+    },
+  },
+  legend cell align=left,
+  legend pos=north west,
+  grid=major,
+  cycle list name=kitcolors,
+  ymin=0,ymax=25000,
+  xmin=0,xmax=10000000,
+  %log ticks with fixed point,
+  xtick={1000, 1000000, 2500000, 5000000, 7500000, 10000000},
+  every axis plot/.append style={ultra thick}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% IMPORT-DATA query ../../EvaluationResults/query/topk/all.txt
+
+\begin{tikzpicture}
+  \begin{axis}[
+      width=150mm,height=100mm,
+    xlabel={Input length (\#char)},
+    ylabel={Query time ($\ell = 10$, ms)},
+    ymin=0,ymax=25000,
+    xmin=0,xmax=10000000,
+    %log ticks with fixed point,
+    xtick={1000, 1000000, 2500000, 5000000, 7500000, 10000000},
+    ]
+
+    %% MULTIPLOT(inputType) SELECT inputLength AS x, queryTime AS y, MULTIPLOT
+    %% FROM query GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+    \addplot coordinates { (1000,3) (1000000,1970) (2500000,3179) (5000000,4518) (7500000,5894) (10000000,5111) };
+    \addlegendentry{pcDNA};
+    \addplot coordinates { (1000,2) (1000000,2702) (2500000,8911) (5000000,12992) (7500000,18235) (10000000,24295) };
+    \addlegendentry{pcEnglish};
+    \addplot coordinates { (1000,2) (1000000,1617) (2500000,4529) (5000000,9106) (7500000,13868) (10000000,17064) };
+    \addlegendentry{pcSources};
+    
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

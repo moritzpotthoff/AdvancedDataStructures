@@ -1,0 +1,66 @@
+% -*- mode: latex; mode: flyspell; ispell-local-dictionary: "en_US"; coding: utf-8; fill-column: 80 -*-
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\input{kitColors.tex}
+\usetikzlibrary{plotmarks}
+
+\pgfplotscreateplotcyclelist{kitcolors}{
+    KITgreen,every mark/.append style={fill=KITgreen!80!black},mark=*\\
+    KITblue,every mark/.append style={fill=KITblue!80!black},mark=square*\\
+    KITlilac,every mark/.append style={fill=KITlilac!80!black},mark=pentagon*\\
+    KITorange,every mark/.append style={fill=KITorange!80!black},mark=diamond*\\
+    KITbrown,every mark/.append style={fill=KITbrown!80!black},mark=triangle*\\
+}
+
+\pgfplotsset{
+  width=150mm,height=100mm,
+  major grid style={thin,dotted,color=black!50},
+  minor grid style={thin,dotted,color=black!50},
+  every axis/.append style={
+    line width=0.5pt,
+    tick style={
+      line cap=round,
+      thin,
+      major tick length=4pt,
+      minor tick length=2pt,
+    },
+  },
+  legend cell align=left,
+  legend pos=north west,
+  grid=major,
+  cycle list name=kitcolors,
+  every axis plot/.append style={ultra thick}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% IMPORT-DATA query ../../EvaluationResults/query/topk/byQueryLength.txt
+
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={Query length $\log_{10}(\ell)$},
+    ylabel={Query time ($n = 10^7$, ms)},
+    ymin=0,ymax=55000,
+    xmin=0,xmax=6,
+    legend pos=south east,
+    %log ticks with fixed point,
+    xtick={1, 2, 3, 4, 5, 6},
+    ]
+
+    %% MULTIPLOT(inputType) SELECT LOG(10, queryLength) AS x, queryTime AS y, MULTIPLOT
+    %% FROM query GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+    \addplot coordinates { (0.0,0) (0.69897,4) (1.0,6208) (1.69897,48508) (2.0,46656) (2.69897,47946) (3.0,46809) (3.69897,45551) (4.0,45744) (4.69897,46194) (5.0,51550) (5.69897,44314) (6.0,43034) };
+    \addlegendentry{inputType=pcDNA};
+    \addplot coordinates { (0.0,0) (0.69897,3101) (1.0,24020) (1.69897,41781) (2.0,46714) (2.69897,46367) (3.0,44872) (3.69897,47612) (4.0,50126) (4.69897,49942) (5.0,49861) (5.69897,51444) (6.0,44409) };
+    \addlegendentry{inputType=pcEnglish};
+    \addplot coordinates { (0.0,0) (0.69897,4572) (1.0,17184) (1.69897,45010) (2.0,46513) (2.69897,47844) (3.0,47524) (3.69897,52276) (4.0,46844) (4.69897,47443) (5.0,44175) (5.69897,43352) (6.0,40963) };
+    \addlegendentry{inputType=pcSources};
+    
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

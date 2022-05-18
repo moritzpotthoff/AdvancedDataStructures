@@ -1,0 +1,62 @@
+% -*- mode: latex; mode: flyspell; ispell-local-dictionary: "en_US"; coding: utf-8; fill-column: 80 -*-
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\input{kitColors.tex}
+\usetikzlibrary{plotmarks}
+
+\pgfplotscreateplotcyclelist{kitcolors}{
+    KITgreen,every mark/.append style={fill=KITgreen!80!black},mark=*\\
+    KITblue,every mark/.append style={fill=KITblue!80!black},mark=square*\\
+    KITlilac,every mark/.append style={fill=KITlilac!80!black},mark=pentagon*\\
+    KITorange,every mark/.append style={fill=KITorange!80!black},mark=diamond*\\
+    KITbrown,every mark/.append style={fill=KITbrown!80!black},mark=triangle*\\
+}
+
+\pgfplotsset{
+  width=150mm,height=100mm,
+  major grid style={thin,dotted,color=black!50},
+  minor grid style={thin,dotted,color=black!50},
+  every axis/.append style={
+    line width=0.5pt,
+    tick style={
+      line cap=round,
+      thin,
+      major tick length=4pt,
+      minor tick length=2pt,
+    },
+  },
+  legend cell align=left,
+  legend pos=north west,
+  grid=major,
+  cycle list name=kitcolors,
+  every axis plot/.append style={ultra thick}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% IMPORT-DATA query ../../EvaluationResults/query/topk/byQueryLengthSmall.txt
+
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={Query length $\ell$},
+    ylabel={Query time ($n = 10^7$, ms)},
+    ymin=0,ymax=40000,
+    xmin=1,xmax=20,
+    legend pos=south east,
+    %log ticks with fixed point,
+    xtick={1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20},
+    ]
+
+    %% MULTIPLOT(inputType) SELECT queryLength AS x, queryTime AS y, MULTIPLOT
+    %% FROM query GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+    \addplot coordinates { (1,0) (2,31) (3,437) (4,1769) (5,3715) (6,6520) (7,10270) (8,12506) (9,14813) (10,19321) (11,23081) (12,23405) (13,25390) (14,25822) (15,27265) (16,28502) (17,29503) (18,31373) (19,32023) (20,33060) };
+    \addlegendentry{inputType=pcSources};
+    
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,67 @@
+% -*- mode: latex; mode: flyspell; ispell-local-dictionary: "en_US"; coding: utf-8; fill-column: 80 -*-
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{helvet}
+\pgfplotsset{compat=1.17}
+\renewcommand{\familydefault}{\sfdefault}
+\input{kitColors.tex}
+\usetikzlibrary{plotmarks}
+
+\pgfplotscreateplotcyclelist{kitcolors}{
+    KITgreen,every mark/.append style={fill=KITgreen!80!black},mark=*\\
+    KITblue,every mark/.append style={fill=KITblue!80!black},mark=square*\\
+    KITlilac,every mark/.append style={fill=KITlilac!80!black},mark=pentagon*\\
+    KITorange,every mark/.append style={fill=KITorange!80!black},mark=diamond*\\
+    KITbrown,every mark/.append style={fill=KITbrown!80!black},mark=triangle*\\
+}
+
+\pgfplotsset{
+  width=150mm,height=100mm,
+  major grid style={thin,dotted,color=black!50},
+  minor grid style={thin,dotted,color=black!50},
+  every axis/.append style={
+    line width=0.5pt,
+    tick style={
+      line cap=round,
+      thin,
+      major tick length=4pt,
+      minor tick length=2pt,
+    },
+  },
+  legend cell align=left,
+  legend pos=north west,
+  grid=major,
+  cycle list name=kitcolors,
+  every axis plot/.append style={ultra thick}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% IMPORT-DATA preprocessing ../../EvaluationResults/preprocessing/all.txt
+
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={Input length (\#char)},
+    ylabel={Preprocessing time (ms)},
+    ymin=0,ymax=60000,
+    xmin=0,xmax=20000000,
+    %log ticks with fixed point,
+    xtick={100000, 5000000, 10000000, 15000000, 20000000},
+    %ylabel shift=-3cm
+    ]
+
+    %% MULTIPLOT(inputType) SELECT inputLength AS x, (constructionTime) AS y, MULTIPLOT
+    %% FROM preprocessing WHERE inputLength > 1000 GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+    \addplot coordinates { (100000,192) (500000,1089) (1000000,2203) (5000000,12346) (10000000,26110) (15000000,42842) (20000000,57422) };
+    \addlegendentry{pcDNA};
+    \addplot coordinates { (100000,204) (500000,1048) (1000000,2171) (5000000,10996) (10000000,24160) (15000000,41994) (20000000,52530) };
+    \addlegendentry{pcEnglish};
+    \addplot coordinates { (100000,174) (500000,876) (1000000,1856) (5000000,10033) (10000000,23181) (15000000,35551) (20000000,46269) };
+    \addlegendentry{pcSources};
+    
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
