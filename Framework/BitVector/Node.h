@@ -101,29 +101,61 @@ namespace BitVector {
                     //TODO assert that the size of the left child is w * w.
                 }
             }
-            //TODO perform potentially necessary rotations
-            rebalance();
+            //TODO perform potentially necessary rotations, update v
+            this = rebalance();
         }
 
         inline void balanceFactor() {
             return height(leftChild) - height(rightChild);
         }
 
-        inline void rebalance() noexcept {
+        /**
+         * Rebalances the tree rooted at this, if necessary.
+         *
+         * @return The new root node, or this if nothing was rotated.
+         */
+        inline Node* rebalance() noexcept {
             const int balanceFactor = balanceFactor();
             if (balanceFactor > 1) {
-                rotateRight();
+                return rotateRight();
             } else if (balanceFactor < -1) {
-                rotateLeft();
+                return rotateLeft();
             }
+            return this;
         }
 
-        inline void rotateLeft() noexcept {
+        inline Node* rotateLeft() noexcept {
+            Node* previousLeftChild = rightChild->leftChild;
+            Node* newRoot = rightChild;
+            newRoot->leftChild = this;
+            this-> rightChild = previousLeftChild;
 
+            //adjust heights
+            this->height = std::max(height(this->leftChild), height(this->rightChild)) + 1;
+            newRoot->height = std::max(height(newRoot->leftChild), height(newRoot->rightChild)) + 1;
+
+            //update num and ones values
+            newRoot->num += this->num;
+            newRoot->ones += this->ones;
+
+            return newRoot;
         }
 
-        inline void rotateRight() noexcept {
+        inline Node* rotateRight() noexcept {
+            Node* previousRightChild = leftChild->rightChild;
+            Node* newRoot = leftChild;
+            newRoot->rightChild = this;
+            this->leftChild = previousRightChild;
 
+            //adjust heights
+            this->height = std::max(height(this->leftChild), height(this->rightChild)) + 1;
+            newRoot->height = std::max(height(newRoot->leftChild), height(newRoot->rightChild)) + 1;
+
+            //update num and ones values
+            this->num -= newRoot->num;
+            this->ones -= newRoot->ones;
+
+            return newRoot;
         }
 
         static int height(Node* node) {
