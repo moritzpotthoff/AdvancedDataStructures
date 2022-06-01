@@ -3,7 +3,6 @@
 
 #include "Helpers/Timer.h"
 
-
 //Interactive flag. If true, generates a little more output than just the result line.
 static const bool Interactive = false;
 //Debug flag. Generates extensive debug info.
