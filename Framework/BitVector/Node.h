@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <bit>
+#include <tuple>
 
 #include "Definitions.h"
 #include "InnerBitVector.h"
@@ -145,6 +146,13 @@ namespace BitVector {
             return rebalance();
         }
 
+        inline Node* deleteBit(int index, int length, int ones) noexcept {
+            Node* newRoot;
+            std::tie(newRoot, std::ignore, std::ignore) = deleteRecursive(index, length, ones, true);
+            return newRoot;
+        }
+
+    private:
         inline int balanceFactor() const noexcept {
             return height(leftChild) - height(rightChild);
         }
@@ -198,6 +206,94 @@ namespace BitVector {
             return newRoot;
         }
 
+        /**
+         *
+         * @param index
+         * @param length
+         * @param bvOnes
+         * @param underflow
+         * @return three-tuple (v, hasDeleted, deletedBit)
+         */
+        inline std::tuple<Node*, bool, bool> deleteRecursive(int index, int length, int bvOnes, bool underflow) noexcept {
+            bool hasDeleted, deletedBit, hasStolen, stolenBit;
+            if (isLeaf()) {
+                std::tie(hasDeleted, deletedBit) = deleteLeaf(index, length, underflow);
+                return std::make_tuple(this, hasDeleted, deletedBit);
+            }
+            if (index < num) {
+                std::tie(leftChild, hasDeleted, deletedBit) = leftChild->deleteRecursive(index, num, ones, underflow);
+                if (!hasDeleted) return std::make_tuple(this, false, false);
+                if (deletedBit) ones--;
+                if (num == w * w / 2) {
+                    //underflow, lefChild must be a leaf
+                    std::tie(rightChild, hasStolen, stolenBit) = rightChild->deleteRecursive(1, length - w * w / 2, 0, false);
+                    if (!hasStolen) {
+                        //merge the leaves
+                        Node* newLeaf = rightChild->insertBitVector(1, length - w * w / 2, leftChild->bitVector, w * w / 2 - 1, ones);
+                        //TODO free this, leftChild and rightChild
+                        return std::make_tuple(newLeaf, true, deletedBit);
+                    }
+                    leftChild->insertBit(w * w / 2, stolenBit, w * w / 2 - 1);
+                    if (stolenBit) ones--;
+                } else {
+                    num--;
+                }
+            } else {
+                std::tie(rightChild, hasDeleted, deletedBit) = rightChild->deleteRecursive(index - num, length - num, bvOnes - ones, underflow);
+                if (!hasDeleted) return std::make_tuple(this, false, false);
+                if (deletedBit) bvOnes--;
+                if (length - num == w * w / 2) {
+                    //underflow, rightChild must be a leaf
+                    std::tie(leftChild, hasStolen, stolenBit) = leftChild->deleteRecursive(num, num, 0, false);
+                    if (!hasStolen) {
+                        //merge the leaves
+                        Node* newLeaf = leftChild->insertBitVector(num + 1, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
+                        //TODO free this, leftChild and rightChild
+                        return std::make_tuple(newLeaf, true, deletedBit);
+                    }
+                    rightChild->insertBit(1, stolenBit, w * w / 2 - 1);
+                    num--;
+                    if (stolenBit) ones--;
+                }
+            }
+
+            Node* newRoot = rebalance();
+            return std::make_tuple(newRoot, true, deletedBit);
+        }
+
+        /**
+         *
+         * @param index
+         * @param length
+         * @param underflow
+         * @return tuple (hasDeleted, deletedBit)
+         */
+        inline std::pair<bool, bool> deleteLeaf(int index, int length, bool underflow) noexcept {
+            if (length == w * w / 2 && !underflow) return std::make_pair(false, false);//forbidden underflow would occur, do not carry out deletion
+
+            return std::make_pair(true, bitVector->deleteIndex(index));
+        }
+
+        inline Node* insertBitVector(int index, int length, InnerBitVector* bv, int bvSize, int bvOnes) noexcept {
+            Node* current = this;
+            while (!current->isLeaf()) {
+                if (index < current->num) {
+                    current->num += bvSize;
+                    current->ones += bvOnes;
+                    length = current->num;
+                    current = current->leftChild;
+                } else {
+                    length -= current->num;
+                    current = current->rightChild;
+                }
+            }
+            //actually insert the bits
+            //TODO make this nicer
+            current->bitVector->insertBitVector(index, bv, bvSize);
+            return current;
+        }
+
+    public:
         inline void printBitString() const noexcept {
             if (isLeaf()) {
                 bitVector->printBitString();

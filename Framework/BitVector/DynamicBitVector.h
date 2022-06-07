@@ -43,6 +43,12 @@ namespace BitVector {
             length++;
         }
 
+        inline void deleteBit(int index) noexcept {
+            std::cout << "Deleting bit at index " << index << std::endl;
+            const int ones = rankOne(length);
+            root = root->deleteBit(index, length, ones);
+        }
+
         inline void flipBit(int index) noexcept {
             std::cout << "Flipping bit at index " << index << std::endl;
             root->flipBit(index);

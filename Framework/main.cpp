@@ -74,29 +74,38 @@ int main(int argc, char *argv[]) {
         //std::cout << std::endl << std::endl;
     }
 
-    bv.insertBit(60, true);
-    bv.insertBit(90, true);
-
     bv.flipBit(10);
     bv.flipBit(20);
+    bv.flipBit(30);
+    bv.flipBit(40);
     bv.flipBit(120);
     bv.flipBit(130);
 
     bv.printBitString();
     bv.printTree();
 
-    /*std::cout << "TEST RANK QUERIES" << std::endl;
-    for (int i = 0; i < 202; i++) {
+    bv.deleteBit(10);
+    bv.deleteBit(50 - 1);
+    bv.deleteBit(80 - 2);
+    bv.deleteBit(90 - 3);
+    bv.deleteBit(100 - 4);
+    bv.deleteBit(120 - 5);
+
+    bv.printBitString();
+    bv.printTree();
+
+    std::cout << "TEST RANK QUERIES" << std::endl;
+    for (int i = 0; i < 200; i++) {
         std::cout << "  Index " << i << " has rankOne of " << bv.rankOne(i) << std::endl;
     }
-
+    /*
     std::cout << "TEST ACCESS QUERIES" << std::endl;
     for (int i = 0; i < 202; i++) {
         std::cout << "  Index " << i << " has value of " << bv.access(i) << std::endl;
     }*/
 
     std::cout << "TEST SELECT_1 QUERIES" << std::endl;
-    for (int i = 1; i <= 6; i++) {
+    for (int i = 1; i <= 4; i++) {
         std::cout << "  SELECT_1 " << i << " has value of " << bv.selectOne(i) << std::endl;
     }
 

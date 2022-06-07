@@ -35,13 +35,21 @@ namespace BitVector {
             length++;
         }
 
-        inline void deleteIndex(const size_t index) noexcept {
-            if (index > length) return;
-            if (length == 0) return;
+        inline void insertBitVector(const int index, InnerBitVector* other, int otherSize) noexcept {
+            bits.insert(bits.begin() + index, other->bits.begin(), other->bits.end());
+            length += otherSize;
+            //TODO check if this needs index - 1.
+        }
+
+        inline bool deleteIndex(const size_t index) noexcept {
+            if (index > length) return false;
+            if (length == 0) return false;
+            const bool bit = bits[index];
             bits.erase(bits.begin() + index);
             if (length + 2 * w < bits.capacity()) //more than two words are unused
                 shrink();
             length--;
+            return bit;
         }
 
         inline void enlarge() noexcept {
