@@ -21,32 +21,18 @@ namespace BitVector {
         InnerBitVector(InnerBitVector* old) :
                 bits(0),
                 length(0) {
-            //std::cout << "Called split constructor with old bit string" << std::endl;
-            //old->printBitString();
             const size_t startIndex = old->length / 2;
-            //std::cout << "Copying from begin to index " << startIndex << std::endl;
             this->bits.assign(old->bits.begin() + startIndex, old->bits.end());
-            //std::cout << "Old: " << old->length << ", start Index is " << startIndex << std::endl;
             length = old->length - startIndex;
             old->bits.erase(old->bits.begin() + startIndex, old->bits.end());
             old->length = std::min(old->length, startIndex);
             old->bits.shrink_to_fit();
-            //std::cout << "New bv length is " << length << ", new old length is " << old->length << std::endl;
-            //std::cout << "New old bit string is" << std::endl;
-            //old->printBitString();
-            //std::cout << "Newly created bit string is" << std::endl;
-            //printBitString();
         }
 
         inline void insert(const int index, const bool bit) noexcept {
-            //std::cout << "Insert before:" << std::endl;
-            //printBitString();
             if (length + 1 >= bits.capacity()) enlarge();
             bits.insert(bits.begin() + index, bit);
             length++;
-            //std::cout << "Insert after:" << std::endl;
-            //printBitString();
-            //std::cout << std::endl;
         }
 
         inline void deleteIndex(const size_t index) noexcept {
@@ -56,9 +42,6 @@ namespace BitVector {
             if (length + 2 * w < bits.capacity()) //more than two words are unused
                 shrink();
             length--;
-            //std::cout << "Delete after:" << std::endl;
-            //printBitString();
-            //std::cout << std::endl;
         }
 
         inline void enlarge() noexcept {
@@ -67,6 +50,11 @@ namespace BitVector {
 
         inline void shrink() noexcept {
             bits.reserve(bits.capacity() - w);
+        }
+
+        inline bool flipBit(const int index) noexcept {
+            bits[index] = !bits[index];
+            return !bits[index];
         }
 
         inline bool readBit(const int index) const noexcept {
@@ -79,18 +67,13 @@ namespace BitVector {
          * @return the index of the j-th one in the bit vector
          */
         inline int selectOne(const int j) const noexcept {
-            std::cout << "  In inner bit vector, selectOne " << j << std::endl;
-            printBitString();
             //TODO actually use popcount
             if (j == 0) return 0;
             int p = 0;
             int count = 0;
             while (true) {
                 if (bits[p]) count++;
-                if (count == j) {
-                    std::cout << "  Bit vector selectOne result is " << p << std::endl;
-                    return p;
-                }
+                if (count == j) return p;
                 p++;
             }
         }

@@ -43,6 +43,11 @@ namespace BitVector {
             length++;
         }
 
+        inline void flipBit(int index) noexcept {
+            std::cout << "Flipping bit at index " << index << std::endl;
+            root->flipBit(index);
+        }
+
         inline void printBitString() const noexcept {
             root->printBitString();
             std::cout << std::endl;

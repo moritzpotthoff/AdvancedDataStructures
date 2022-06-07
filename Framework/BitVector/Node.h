@@ -97,6 +97,18 @@ namespace BitVector {
             return leftChild == NULL && rightChild == NULL;
         }
 
+        inline bool flipBit(int index) noexcept {
+            if (isLeaf()) return bitVector->flipBit(index);
+
+            if (index < num) {
+                const bool originalBit = leftChild->flipBit(index);
+                originalBit ? ones-- : ones++;//a bit in the left subtree has flipped, adjust ones accordingly
+                return originalBit;
+            } else {
+                return rightChild->flipBit(index - num);
+            }
+        }
+
         /**
          * Inserts bit bit at index index
          * @param index
@@ -107,25 +119,20 @@ namespace BitVector {
         inline Node* insertBit(int index, bool bit, int length) noexcept {
             if (!isLeaf()) {
                 if (index < num) {// < instead of <= in Navarro's book because we are 0-indexed
-                    std::cout << "  Inserting into left leaf" << std::endl;
                     leftChild = leftChild->insertBit(index, bit, num);
                     num++;
                     if (bit) ones++;
                 } else {
-                    std::cout << "  Inserting into right leaf" << std::endl;
                     rightChild = rightChild->insertBit(index - num, bit, length - num);
                 }
             } else {
                 bitVector->insert(index, bit);
                 if (length + 1 == 2 * w * w) {
-                    std::cout << "Split!" << std::endl;
                     //leaf overflow
                     //split bits into two halves,
                     InnerBitVector* rightHalf = new InnerBitVector(bitVector);
                     leftChild = new Node(this->bitVector);
                     rightChild = new Node(rightHalf);
-                    //std::cout << "Right child has bits" << std::endl;
-                    //rightChild->printBitString();
                     this->bitVector = NULL;
                     num = w * w;
                     ones = leftChild->bitVector->popcount();
@@ -150,13 +157,10 @@ namespace BitVector {
         inline Node* rebalance() noexcept {
             const int bf = balanceFactor();
             if (bf > 1) {
-                std::cout << "  Rotating right on node " << this << std::endl;
                 return rotateRight();
             } else if (bf < -1) {
-                std::cout << "  Rotating left on node " << this << std::endl;
                 return rotateLeft();
             }
-            std::cout << "  Not rotating on node " << this << std::endl;
             return this;
         }
 

@@ -77,6 +77,11 @@ int main(int argc, char *argv[]) {
     bv.insertBit(60, true);
     bv.insertBit(90, true);
 
+    bv.flipBit(10);
+    bv.flipBit(20);
+    bv.flipBit(120);
+    bv.flipBit(130);
+
     bv.printBitString();
     bv.printTree();
 
@@ -91,12 +96,12 @@ int main(int argc, char *argv[]) {
     }*/
 
     std::cout << "TEST SELECT_1 QUERIES" << std::endl;
-    for (int i = 1; i < 3; i++) {
+    for (int i = 1; i <= 6; i++) {
         std::cout << "  SELECT_1 " << i << " has value of " << bv.selectOne(i) << std::endl;
     }
 
     std::cout << "TEST SELECT_0 QUERIES" << std::endl;
-    for (int i = 1; i < 201; i++) {
+    for (int i = 1; i < 190; i++) {
         std::cout << "  SELECT_0 " << i << " has value of " << bv.selectZero(i) << std::endl;
     }
 
