@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include "Helpers/Timer.h"
+#include "Helpers/BitVectorProfiler.h"
 #include "BitVector/DynamicBitVector.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
@@ -23,7 +24,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
     std::string outputFileName(argv[3]);
     std::ofstream outputFile(outputFileName);
 
-    BitVector::DynamicBitVector bv = BitVector::DynamicBitVector();
+    BitVector::DynamicBitVector bv = BitVector::DynamicBitVector<BitVector::BasicProfiler>();
 
     //Read the bit vector from the file.
     size_t initialLength;
@@ -95,6 +96,8 @@ inline static void handleBitVectorQuery(char *argv[]) {
                 << " selectTime=" << selectTime
                 << " space=" << "0"//TODO
                 << std::endl;
+
+    bv.profiler.print();
 }
 
 inline static void handleBPQuery(char *argv[]) {

@@ -5,6 +5,7 @@
 #include "Node.h"
 
 namespace BitVector {
+    template<typename PROFILER>
     class DynamicBitVector {
     public:
         DynamicBitVector() :
@@ -14,39 +15,53 @@ namespace BitVector {
         }
         //TODO constructor with existing bit vector
 
-        inline bool access(const int index) const noexcept {
-            return root->access(index);
+        inline bool access(const int index) noexcept {
+            profiler.startAccess();
+            const bool result = root->access(index);
+            profiler.endAccess();
+            return result;
         }
 
         /**
          * Inserts bit bit at index index.
          */
         inline void insertBit(int index, const bool bit) noexcept {
-            //std::cout << "Inserting bit " << bit << " at index " << index << std::endl;
+            profiler.startInsert();
             root = root->insertBit(index, bit, length);
             length++;
+            profiler.endInsert();
         }
 
         inline void deleteBit(int index) noexcept {
-            //std::cout << "Deleting bit at index " << index << std::endl;
+            profiler.startDelete();
             const int ones = rankOne(length);
             root = root->deleteBit(index, length, ones);
             length--;
+            profiler.endDelete();
         }
 
         inline void flipBit(int index) noexcept {
-            //std::cout << "Flipping bit at index " << index << std::endl;
+            profiler.startFlip();
             root->flipBit(index);
+            profiler.endFlip();
         }
 
-        inline int rank(const bool bit, const int index) const noexcept {
-            if (bit) return rankOne(index);
-            return rankZero(index);
+        inline int rank(const bool bit, const int index) noexcept {
+            int result;
+            profiler.startRank();
+            if (bit) result = rankOne(index);
+            result = rankZero(index);
+            profiler.endRank();
+            return result;
         }
 
-        inline int select(const bool bit, const int j) const noexcept {
-            if (bit) return selectOne(j);
-            return selectZero(j);
+        inline int select(const bool bit, const int j) noexcept {
+            int result;
+            profiler.startSelect();
+            if (bit) result = selectOne(j);
+            result = selectZero(j);
+            profiler.endSelect();
+            return result;
         }
 
     private:
@@ -80,5 +95,7 @@ namespace BitVector {
         //the binary search tree
         Node* root;
         int length; //n
+
+        PROFILER profiler;
     };
 }
