@@ -1,3 +1,0 @@
-/mnt/c/Users/Moritz/Documents/Studium/Textindexierung/TextIndexing/Framework/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Moritz/Documents/Studium/Textindexierung/TextIndexing/Framework/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Moritz/Documents/Studium/Textindexierung/TextIndexing/Framework/build/CMakeFiles/Framework.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -pipe -D_GLIBCXX_DEBUG -g -O0  -rdynamic CMakeFiles/Framework.dir/main.cpp.o  -o Framework 
