@@ -168,8 +168,7 @@ namespace BitVector {
                     leftChild = new Node(this->bitVector);
                     //right half of the bits. this node becomes the new inner node.
                     rightChild = new Node(rightHalf);
-                    delete this->bitVector;
-                    this->bitVector = NULL;
+                    this->bitVector = NULL;//do not delete! is still used in leftChild
                     //adjust parameters
                     num = w * w;
                     ones = leftChild->bitVector->popcount();
@@ -310,7 +309,7 @@ namespace BitVector {
                         //TODO check the following
                         delete leftChild;
                         delete rightChild;
-                        //delete this;
+                        delete this;//TODO check!
                         return std::make_tuple(newLeaf, true, deletedBit);
                     }
                     //insert the stolen bit at the correct index in the left child
@@ -334,7 +333,7 @@ namespace BitVector {
                         //TODO check the following
                         delete leftChild;
                         delete rightChild;
-                        //delete this;
+                        delete this;//TODO check!
                         return std::make_tuple(newLeaf, true, deletedBit);
                     }
                     //re-insert the stolen bit at the right position

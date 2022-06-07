@@ -62,7 +62,7 @@ namespace BitVector {
 
         inline bool flipBit(const int index) noexcept {
             bits[index] = !bits[index];
-            return !bits[index];
+            return !bits[index];//TODO use flip()
         }
 
         inline bool readBit(const int index) const noexcept {
