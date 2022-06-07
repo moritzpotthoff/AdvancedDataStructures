@@ -22,20 +22,20 @@ namespace BitVector {
          * Inserts bit bit at index index.
          */
         inline void insertBit(int index, const bool bit) noexcept {
-            std::cout << "Inserting bit " << bit << " at index " << index << std::endl;
+            //std::cout << "Inserting bit " << bit << " at index " << index << std::endl;
             root = root->insertBit(index, bit, length);
             length++;
         }
 
         inline void deleteBit(int index) noexcept {
-            std::cout << "Deleting bit at index " << index << std::endl;
+            //std::cout << "Deleting bit at index " << index << std::endl;
             const int ones = rankOne(length);
             root = root->deleteBit(index, length, ones);
             length--;
         }
 
         inline void flipBit(int index) noexcept {
-            std::cout << "Flipping bit at index " << index << std::endl;
+            //std::cout << "Flipping bit at index " << index << std::endl;
             root->flipBit(index);
         }
 

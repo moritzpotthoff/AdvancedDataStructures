@@ -13,9 +13,13 @@ static const bool WriteToFile = false;
 inline static void handleBitVectorQuery(char *argv[]) {
     if constexpr (Interactive) std::cout << "Requested bit vector query." << std::endl;
 
+    //For the evaluation
+    Helpers::Timer timer;
+    size_t constructionTime = 0, insertTime = 0, deleteTime = 0, flipTime = 0, rankTime = 0, selectTime = 0;
+    //Input
     std::string inputFileName(argv[2]);
     std::ifstream inputFile(inputFileName);
-
+    //Output
     std::string outputFileName(argv[3]);
     std::ofstream outputFile(outputFileName);
 
@@ -27,11 +31,13 @@ inline static void handleBitVectorQuery(char *argv[]) {
     for (size_t i = 0; i < initialLength; i++) {
         bool bit;
         inputFile >> bit;
+        timer.restart();
         bv.insertBit(i, bit);//TODO use only one operation to insert all initial bits
+        constructionTime += timer.getMicroseconds();
     }
     if constexpr (Interactive) std::cout << "Found bit vector of length " << initialLength << "." << std::endl;
 
-    //Todo read and execute all the queries
+    //Read and execute all the queries.
     std::string queryType;
     int index;
     bool bit;
@@ -39,42 +45,56 @@ inline static void handleBitVectorQuery(char *argv[]) {
         if (queryType.compare("insert") == 0) {
             inputFile >> index;
             inputFile >> bit;
+            timer.restart();
             bv.insertBit(index, bit);
+            insertTime += timer.getMicroseconds();
         } else if (queryType.compare("delete") == 0) {
             inputFile >> index;
+            timer.restart();
             bv.deleteBit(index);
+            deleteTime += timer.getMicroseconds();
         } else if (queryType.compare("flip") == 0) {
             inputFile >> index;
+            timer.restart();
             bv.flipBit(index);
+            flipTime += timer.getMicroseconds();
         } else if (queryType.compare("rank") == 0) {
             inputFile >> bit;
             inputFile >> index;
+            timer.restart();
             const int result = bv.rank(bit, index);
+            rankTime += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
-            std::cout << "Rank_" << bit << "[" << index << "]=" << result << std::endl;
+            if constexpr (Interactive) std::cout << "Rank_" << bit << "[" << index << "]=" << result << std::endl;
         } else if (queryType.compare("select") == 0) {
             inputFile >> bit;
             inputFile >> index;
+            timer.restart();
             const int result = bv.select(bit, index);
+            selectTime += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
-            std::cout << "Select_" << bit << "[" << index << "]=" << result << std::endl;
+            if constexpr (Interactive) std::cout << "Select_" << bit << "[" << index << "]=" << result << std::endl;
         }
     }
 
-    //Todo print the bit vector to the output file
+    //Print the bit vector to the output file
     std::cout << "BV result:" << std::endl;
     for (int i = 0; i < bv.length; i++) {
         const int result = bv.access(i);
         if constexpr (WriteToFile) outputFile << result << "\n";
-        std::cout << " BV[" << i << "] = " << result << std::endl;
+        if constexpr (Interactive) std::cout << " BV[" << i << "] = " << result << std::endl;
     }
-
-    /*
+    std::cout << std::endl << std::endl << std::endl;
     std::cout   << "RESULT algo=bv name=moritz_potthoff"
-                << " time=" << "0"
-                << " space=" << "0"
+                << " time=" << (constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime)
+                << " constructionTime=" << constructionTime
+                << " insertTime=" << insertTime
+                << " deleteTime=" << deleteTime
+                << " flipTime=" << flipTime
+                << " rankTime=" << rankTime
+                << " selectTime=" << selectTime
+                << " space=" << "0"//TODO
                 << std::endl;
-    */
 }
 
 inline static void handleBPQuery(char *argv[]) {
@@ -93,7 +113,7 @@ inline static void handleBPQuery(char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
+    if (argc != 4) {
         std::cout << "Wrong number of arguments, expecting 3 arguments." << std::endl;
         return 1;
     }
@@ -107,57 +127,6 @@ int main(int argc, char *argv[]) {
         std::cout << "Unknown query choice." << std::endl;
         return 1;
     }
-
-     /*
-
-    BitVector::DynamicBitVector bv;
-    for (int i = 0; i < 200; i++) {
-        bv.insertBit(i, false);
-        //std::cout << std::endl << std::endl << "After insert " << i << " the tree is:" << std::endl;
-        //bv.printTree();
-        //std::cout << std::endl << std::endl;
-    }
-
-    bv.flipBit(10);
-    bv.flipBit(20);
-    bv.flipBit(30);
-    bv.flipBit(40);
-    bv.flipBit(120);
-    bv.flipBit(130);
-
-    bv.printBitString();
-    bv.printTree();
-
-    bv.deleteBit(10);
-    bv.deleteBit(50 - 1);
-    bv.deleteBit(80 - 2);
-    bv.deleteBit(90 - 3);
-    bv.deleteBit(100 - 4);
-    bv.deleteBit(120 - 5);
-
-    bv.printBitString();
-    bv.printTree();
-
-    std::cout << "TEST RANK QUERIES" << std::endl;
-    for (int i = 0; i < 200; i++) {
-        std::cout << "  Index " << i << " has rankOne of " << bv.rankOne(i) << std::endl;
-    }
-
-    std::cout << "TEST ACCESS QUERIES" << std::endl;
-    for (int i = 0; i < 202; i++) {
-        std::cout << "  Index " << i << " has value of " << bv.access(i) << std::endl;
-    }
-
-    std::cout << "TEST SELECT_1 QUERIES" << std::endl;
-    for (int i = 1; i <= 4; i++) {
-        std::cout << "  SELECT_1 " << i << " has value of " << bv.selectOne(i) << std::endl;
-    }
-
-    std::cout << "TEST SELECT_0 QUERIES" << std::endl;
-    for (int i = 1; i < 190; i++) {
-        std::cout << "  SELECT_0 " << i << " has value of " << bv.selectZero(i) << std::endl;
-    }
-    */
 
     return 0;
 }
