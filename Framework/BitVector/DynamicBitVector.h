@@ -18,6 +18,38 @@ namespace BitVector {
             return root->access(index);
         }
 
+        /**
+         * Inserts bit bit at index index.
+         */
+        inline void insertBit(int index, const bool bit) noexcept {
+            std::cout << "Inserting bit " << bit << " at index " << index << std::endl;
+            root = root->insertBit(index, bit, length);
+            length++;
+        }
+
+        inline void deleteBit(int index) noexcept {
+            std::cout << "Deleting bit at index " << index << std::endl;
+            const int ones = rankOne(length);
+            root = root->deleteBit(index, length, ones);
+            length--;
+        }
+
+        inline void flipBit(int index) noexcept {
+            std::cout << "Flipping bit at index " << index << std::endl;
+            root->flipBit(index);
+        }
+
+        inline int rank(const bool bit, const int index) const noexcept {
+            if (bit) return rankOne(index);
+            return rankZero(index);
+        }
+
+        inline int select(const bool bit, const int j) const noexcept {
+            if (bit) return selectOne(j);
+            return selectZero(j);
+        }
+
+    private:
         inline int rankOne(const int index) const noexcept {
             return root->rankOne(index);
         }
@@ -34,26 +66,7 @@ namespace BitVector {
             return root->selectZero(index);
         }
 
-        /**
-         * Inserts bit bit at index index.
-         */
-        inline void insertBit(int index, const bool bit) noexcept {
-            std::cout << "Inserting bit " << bit << " at index " << index << std::endl;
-            root = root->insertBit(index, bit, length);
-            length++;
-        }
-
-        inline void deleteBit(int index) noexcept {
-            std::cout << "Deleting bit at index " << index << std::endl;
-            const int ones = rankOne(length);
-            root = root->deleteBit(index, length, ones);
-        }
-
-        inline void flipBit(int index) noexcept {
-            std::cout << "Flipping bit at index " << index << std::endl;
-            root->flipBit(index);
-        }
-
+    public:
         inline void printBitString() const noexcept {
             root->printBitString();
             std::cout << std::endl;
