@@ -1,29 +1,42 @@
 #pragma once
 
+#include<vector>
+
 #include "Node.h"
 
 namespace BitVector {
     class DynamicBitVector {
     public:
-        /**
-         * Creates empty dynamic bit vector
-         */
-        DynamicBitVector() {
-
+        DynamicBitVector() :
+            root(NULL),
+            length(0) {
+            root = new Node();
         }
+        //TODO constructor with existing bit vector
 
         /**
          * Inserts bit bit at index index.
          */
-        public void insertBit(int index, bool bit) {
-            root.insertBit(index, bit, length);
+        inline void insertBit(int index, bool bit) {
+            std::cout << "Inserting bit " << bit << " at index " << index << std::endl;
+            root = root->insertBit(index, bit, length);
+            length++;
         }
 
-        //TODO constructor with existing bit vector
+        inline void printBitString() const noexcept {
+            root->printBitString();
+            std::cout << std::endl;
+        }
+
+        inline void printTree() const noexcept {
+            root->printTree();
+            std::cout << std::endl;
+        }
+
 
 
         //the binary search tree
-        Node root;
+        Node* root;
         int length; //n
     };
 }

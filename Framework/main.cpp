@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include "Helpers/Timer.h"
+#include "BitVector/DynamicBitVector.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
 static const bool Interactive = false;
@@ -44,15 +45,13 @@ inline static void handleBPQuery(char *argv[]) {
 
     //TODO print the degrees of nodes from the resulting tree in preorder dfs order to the output file
 
-    std::cout << "RESULT algo=repeat name=moritz-potthoff"
-              << " construction time=" << (preprocessingTime + queryInitTime)//count query initialization as preprocessing: It could be done during the suffix tree generation, if that was only used for repeat queries.
-              << " query time=" << queryTime
-              << " solution=" << stree.substring(startPosition, length)
-              << " file=" << inputFileName << std::endl;
+    std::cout << "RESULT algo= name=moritz-potthoff"
+              //<< " construction time=" << (preprocessingTime + queryInitTime)//count query initialization as preprocessing: It could be done during the suffix tree generation, if that was only used for repeat queries.
+              << std::endl;
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
+    /*if (argc < 4) {
         std::cout << "Wrong number of arguments, expecting 3 arguments." << std::endl;
         return 1;
     }
@@ -65,7 +64,19 @@ int main(int argc, char *argv[]) {
     } else {
         std::cout << "Unknown query choice." << std::endl;
         return 1;
+    }*/
+
+    BitVector::DynamicBitVector bv;
+    for (int i = 0; i < 234; i++) {
+        bv.insertBit(i, (i % 2 == 0));
+        std::cout << std::endl << std::endl << "After insert " << i << " the tree is:" << std::endl;
+        bv.printTree();
+        std::cout << std::endl << std::endl;
     }
+
+    bv.printBitString();
+
+    bv.printTree();
 
     return 0;
 }
