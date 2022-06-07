@@ -85,5 +85,10 @@ int main(int argc, char *argv[]) {
         std::cout << "  Index " << i << " has rankOne of " << bv.rankOne(i) << std::endl;
     }
 
+    std::cout << "TEST ACCESS QUERIES" << std::endl;
+    for (int i = 0; i < 202; i++) {
+        std::cout << "  Index " << i << " has value of " << bv.access(i) << std::endl;
+    }
+
     return 0;
 }

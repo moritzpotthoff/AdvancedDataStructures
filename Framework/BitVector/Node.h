@@ -69,6 +69,10 @@ namespace BitVector {
             bits.reserve(bits.capacity() - w);
         }
 
+        inline bool readBit(const int index) const noexcept {
+            return bits[index];
+        }
+
         inline int popcount() const noexcept {
             //TODO switch to uint64_t-based approach for this?
             int count = 0;
@@ -121,6 +125,19 @@ namespace BitVector {
             ones(0),
             num(0) {
             bitVector = new InnerBitVector();
+        }
+
+        inline int access(int index) const noexcept {
+            Node const* current = this;
+            while (!current->isLeaf()) {
+                if (index < current->num) {// < instead of <= in Navarro's book because we are 0-indexed
+                    current = current->leftChild;
+                } else {
+                    index -= current->num;
+                    current = current->rightChild;
+                }
+            }
+            return current->bitVector->readBit(index);
         }
 
         inline int rankOne(int index) const noexcept {

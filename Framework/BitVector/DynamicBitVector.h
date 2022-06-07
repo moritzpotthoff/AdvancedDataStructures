@@ -22,6 +22,10 @@ namespace BitVector {
             return index - root->rankOne(index);
         }
 
+        inline bool access(int index) const noexcept {
+            return root->access(index);
+        }
+
 
         /**
          * Inserts bit bit at index index.
