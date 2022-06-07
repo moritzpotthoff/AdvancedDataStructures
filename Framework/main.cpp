@@ -67,16 +67,23 @@ int main(int argc, char *argv[]) {
     }*/
 
     BitVector::DynamicBitVector bv;
-    for (int i = 0; i < 234; i++) {
-        bv.insertBit(i, (i % 2 == 0));
-        std::cout << std::endl << std::endl << "After insert " << i << " the tree is:" << std::endl;
-        bv.printTree();
-        std::cout << std::endl << std::endl;
+    for (int i = 0; i < 200; i++) {
+        bv.insertBit(i, false);
+        //std::cout << std::endl << std::endl << "After insert " << i << " the tree is:" << std::endl;
+        //bv.printTree();
+        //std::cout << std::endl << std::endl;
     }
 
-    bv.printBitString();
+    bv.insertBit(60, true);
+    bv.insertBit(90, true);
 
+    bv.printBitString();
     bv.printTree();
+
+    std::cout << "TEST RANK QUERIES" << std::endl;
+    for (int i = 0; i < 202; i++) {
+        std::cout << "  Index " << i << " has rankOne of " << bv.rankOne(i) << std::endl;
+    }
 
     return 0;
 }

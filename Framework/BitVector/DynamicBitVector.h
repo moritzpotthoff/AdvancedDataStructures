@@ -14,6 +14,15 @@ namespace BitVector {
         }
         //TODO constructor with existing bit vector
 
+        inline int rankOne(int index) const noexcept {
+            return root->rankOne(index);
+        }
+
+        inline int rankZero(int index) const noexcept {
+            return index - root->rankOne(index);
+        }
+
+
         /**
          * Inserts bit bit at index index.
          */
@@ -32,8 +41,6 @@ namespace BitVector {
             root->printTree();
             std::cout << std::endl;
         }
-
-
 
         //the binary search tree
         Node* root;

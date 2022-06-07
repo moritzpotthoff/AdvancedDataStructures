@@ -78,6 +78,20 @@ namespace BitVector {
             return count;
         }
 
+        /**
+         * Returns the number of 1s in the bit vector up to the exclusive upper limit
+         * @param upperLimit (exclusive!)
+         * @return
+         */
+        inline int popcount(int upperLimit) const noexcept {
+            //TODO switch to uint64_t-based approach for this?
+            int count = 0;
+            for (size_t i = 0; i < upperLimit; i++) {
+                if (bits[i]) count++;
+            }
+            return count;
+        }
+
         inline void printBitString(int offset = 0) const noexcept {
             std::cout << std::string(offset, ' ');
             for (size_t i = 0; i < bits.size(); i++) {
@@ -109,6 +123,26 @@ namespace BitVector {
             bitVector = new InnerBitVector();
         }
 
+        inline int rankOne(int index) const noexcept {
+            Node const* current = this;
+            int currentOnes = 0;
+            while (!current->isLeaf()) {
+                if (index < current->num) {// < instead of <= in Navarro's book because we are 0-indexed
+                    current = current->leftChild;
+                } else {
+                    index -= current->num;
+                    currentOnes += current->ones;
+                    current = current->rightChild;
+                }
+            }
+            return currentOnes + current->popcount(index);
+        }
+
+        inline int popcount(int upperLimit) const noexcept {
+            if (!isLeaf()) return -1; //error
+            return bitVector->popcount(upperLimit);
+        }
+
         inline bool isLeaf() const noexcept{
             return leftChild == NULL && rightChild == NULL;
         }
@@ -122,7 +156,7 @@ namespace BitVector {
          */
         inline Node* insertBit(int index, bool bit, int length) noexcept {
             if (!isLeaf()) {
-                if (index <= num) {
+                if (index < num) {// < instead of <= in Navarro's book because we are 0-indexed
                     std::cout << "  Inserting into left leaf" << std::endl;
                     leftChild = leftChild->insertBit(index, bit, num);
                     num++;
@@ -141,7 +175,7 @@ namespace BitVector {
                     leftChild = new Node(this->bitVector);
                     rightChild = new Node(rightHalf);
                     //std::cout << "Right child has bits" << std::endl;
-                    rightChild->printBitString();
+                    //rightChild->printBitString();
                     this->bitVector = NULL;
                     num = w * w;
                     ones = leftChild->bitVector->popcount();
@@ -225,18 +259,18 @@ namespace BitVector {
         }
 
         inline void printTree(int offset = 0) const noexcept {
-            std::cout << std::string(offset, ' ') << "Inner node with height " << nodeHeight << ", address " << this << std::endl;
+            std::cout << std::string(offset, ' ') << "Inner node with height " << nodeHeight << ", ones" << ones << ", num " << num << ", address " << this << std::endl;
             if (leftChild != NULL) {
                 std::cout << std::string(offset, ' ') << "--left child" << std::endl;
-                leftChild->printTree(offset + 1);
+                leftChild->printTree(offset + 4);
             }
             if (rightChild != NULL) {
                 std::cout << std::string(offset, ' ') << "--right child" << std::endl;
-                rightChild->printTree(offset + 1);
+                rightChild->printTree(offset + 4);
             }
             if (isLeaf()) {
                 //std::cout << std::string(offset, ' ') << "-- BIT VECTOR" << std::endl;
-                bitVector->printBitString(offset + 1);
+                bitVector->printBitString(offset + 4);
             }
         }
 
