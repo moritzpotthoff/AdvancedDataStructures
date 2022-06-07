@@ -5,16 +5,37 @@
 #include "Node.h"
 
 namespace BitVector {
+    /**
+     * A dynamic bit vector that supports insert-, delete-, flip-, access-, rank- and select-queries.
+     *
+     * Implemented based on the description in
+     *      Gonzalo Navarro. Compact Data Structures -- A Pracitcal Approach.
+     *      Cambridge University Press, 2016.
+     *
+     * Opposed to the source, we use 0-based indices B[0..length - 1] and
+     * our rank queries use exclusive upper limits.
+     *
+     * @tparam PROFILER type of profiler that can be used for tuning.
+     *          NoProfiler can be used to avoid overheads,
+     *          BasicProfiler for basic profiling.
+     */
     template<typename PROFILER>
     class DynamicBitVector {
     public:
+        /**
+         * Creates an empty bit vector.
+         */
         DynamicBitVector() :
-            root(NULL),
             length(0) {
             root = new Node();
         }
         //TODO constructor with existing bit vector
 
+        /**
+         * An access query.
+         * @param index the index that should be accessed
+         * @return the bit at the given index
+         */
         inline bool access(const int index) noexcept {
             profiler.startAccess();
             const bool result = root->access(index);
@@ -24,6 +45,8 @@ namespace BitVector {
 
         /**
          * Inserts bit bit at index index.
+         * @param index the target index
+         * @param bit the new bit
          */
         inline void insertBit(int index, const bool bit) noexcept {
             profiler.startInsert();
@@ -32,6 +55,10 @@ namespace BitVector {
             profiler.endInsert();
         }
 
+        /**
+         * Deletes the bit at the given index
+         * @param index the index
+         */
         inline void deleteBit(int index) noexcept {
             profiler.startDelete();
             const int ones = rankOne(length);
@@ -40,12 +67,23 @@ namespace BitVector {
             profiler.endDelete();
         }
 
+        /**
+         * Flips the bit at the given index
+         * @param index the index
+         */
         inline void flipBit(int index) noexcept {
             profiler.startFlip();
             root->flipBit(index);
             profiler.endFlip();
         }
 
+        /**
+         * Computes rank-queries, i.e., the number of occurences of bit
+         * in B[0, index - 1]
+         * @param bit the bit that is searched, for rank_0 or rank_1 queries
+         * @param index the (exclusive) upper limit
+         * @return rank_bit(0..index - 1)
+         */
         inline int rank(const bool bit, const int index) noexcept {
             int result;
             profiler.startRank();
@@ -55,6 +93,13 @@ namespace BitVector {
             return result;
         }
 
+        /**
+         * Computes select queries, i.e., the position of the j-th
+         * occurence of bit in the bit vector.
+         * @param bit the bit that is searched, for select_0 or select_1 queries
+         * @param j the number of the occurrence that is searched for
+         * @return select_bit(j)
+         */
         inline int select(const bool bit, const int j) noexcept {
             int result;
             profiler.startSelect();
@@ -65,6 +110,7 @@ namespace BitVector {
         }
 
     private:
+        //some helper functions
         inline int rankOne(const int index) const noexcept {
             return root->rankOne(index);
         }
@@ -82,6 +128,7 @@ namespace BitVector {
         }
 
     public:
+        //some helper functions
         inline void printBitString() const noexcept {
             root->printBitString();
             std::cout << std::endl;
@@ -92,10 +139,11 @@ namespace BitVector {
             std::cout << std::endl;
         }
 
-        //the binary search tree
+        //the root of the binary search tree for the bit vector
         Node* root;
-        int length; //n
+        int length;
 
+        //profiler, used only for tuning
         PROFILER profiler;
     };
 }
