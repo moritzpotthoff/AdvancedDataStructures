@@ -31,10 +31,6 @@
 *.out
 *.app
 
-\.idea\*
-.idea\*
-
-\Framework\build\*
-Framework\build\*
-\Framework\TestOutputs\*
-Framework\TestOutputs\*
+.idea/
+Framework/build/
+Framework/TestOutputs/
