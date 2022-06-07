@@ -73,6 +73,45 @@ namespace BitVector {
             return bits[index];
         }
 
+        /**
+         * Executes select queries on bit vectors using popcount
+         * @param j
+         * @return the index of the j-th one in the bit vector
+         */
+        inline int selectOne(const int j) const noexcept {
+            std::cout << "  In inner bit vector, selectOne " << j << std::endl;
+            printBitString();
+            //TODO actually use popcount
+            if (j == 0) return 0;
+            int p = 0;
+            int count = 0;
+            while (true) {
+                if (bits[p]) count++;
+                if (count == j) {
+                    std::cout << "  Bit vector selectOne result is " << p << std::endl;
+                    return p;
+                }
+                p++;
+            }
+        }
+
+        /**
+         * Executes select queries on bit vectors using popcount
+         * @param j
+         * @return the index of the j-th zero in the bit vector
+         */
+        inline int selectZero(const int j) const noexcept {
+            //TODO actually use popcount
+            if (j == 0) return 0;
+            int p = 0;
+            int count = 0;
+            while (true) {
+                if (!bits[p]) count++;
+                if (count == j) return p;
+                p++;
+            }
+        }
+
         inline int popcount() const noexcept {
             //TODO switch to uint64_t-based approach for this?
             int count = 0;
@@ -153,6 +192,40 @@ namespace BitVector {
                 }
             }
             return currentOnes + current->popcount(index);
+        }
+
+        inline int selectOne(int j) const noexcept {
+            if (j == 0) return 0;
+            Node const* current = this;
+            int pos = 0;
+            while (!current->isLeaf()) {
+                if (j <= current->ones) {
+                    current = current->leftChild;
+                } else {
+                    j -= current->ones;
+                    pos += current->num;
+                    current = current->rightChild;
+                }
+            }
+            const int p = current->bitVector->selectOne(j);
+            return pos + p;
+        }
+
+        inline int selectZero(int j) const noexcept {
+            if (j == 0) return 0;
+            Node const* current = this;
+            int pos = 0;
+            while (!current->isLeaf()) {
+                if (j <= current->num - current->ones) {
+                    current = current->leftChild;
+                } else {
+                    j -= current->num - current->ones;
+                    pos += current->num;
+                    current = current->rightChild;
+                }
+            }
+            const int p = current->bitVector->selectZero(j);
+            return pos + p;
         }
 
         inline int popcount(int upperLimit) const noexcept {

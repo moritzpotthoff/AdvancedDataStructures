@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
     bv.printBitString();
     bv.printTree();
 
-    std::cout << "TEST RANK QUERIES" << std::endl;
+    /*std::cout << "TEST RANK QUERIES" << std::endl;
     for (int i = 0; i < 202; i++) {
         std::cout << "  Index " << i << " has rankOne of " << bv.rankOne(i) << std::endl;
     }
@@ -88,6 +88,16 @@ int main(int argc, char *argv[]) {
     std::cout << "TEST ACCESS QUERIES" << std::endl;
     for (int i = 0; i < 202; i++) {
         std::cout << "  Index " << i << " has value of " << bv.access(i) << std::endl;
+    }*/
+
+    std::cout << "TEST SELECT_1 QUERIES" << std::endl;
+    for (int i = 1; i < 3; i++) {
+        std::cout << "  SELECT_1 " << i << " has value of " << bv.selectOne(i) << std::endl;
+    }
+
+    std::cout << "TEST SELECT_0 QUERIES" << std::endl;
+    for (int i = 1; i < 201; i++) {
+        std::cout << "  SELECT_0 " << i << " has value of " << bv.selectZero(i) << std::endl;
     }
 
     return 0;

@@ -14,23 +14,30 @@ namespace BitVector {
         }
         //TODO constructor with existing bit vector
 
-        inline int rankOne(int index) const noexcept {
-            return root->rankOne(index);
-        }
-
-        inline int rankZero(int index) const noexcept {
-            return index - root->rankOne(index);
-        }
-
-        inline bool access(int index) const noexcept {
+        inline bool access(const int index) const noexcept {
             return root->access(index);
         }
 
+        inline int rankOne(const int index) const noexcept {
+            return root->rankOne(index);
+        }
+
+        inline int rankZero(const int index) const noexcept {
+            return index - root->rankOne(index);
+        }
+
+        inline int selectOne(const int index) const noexcept {
+            return root->selectOne(index);
+        }
+
+        inline int selectZero(const int index) const noexcept {
+            return root->selectZero(index);
+        }
 
         /**
          * Inserts bit bit at index index.
          */
-        inline void insertBit(int index, bool bit) {
+        inline void insertBit(int index, const bool bit) noexcept {
             std::cout << "Inserting bit " << bit << " at index " << index << std::endl;
             root = root->insertBit(index, bit, length);
             length++;
