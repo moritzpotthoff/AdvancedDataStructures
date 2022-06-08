@@ -4,6 +4,7 @@
 #include "Helpers/Timer.h"
 #include "Helpers/BitVectorProfiler.h"
 #include "BitVector/DynamicBitVector.h"
+#include "BalancedParantheses/DynamicBP.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
 static const bool Interactive = true;
@@ -116,6 +117,7 @@ inline static void handleBPQuery(char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
+    /*
     if (argc != 4) {
         std::cout << "Wrong number of arguments, expecting 3 arguments." << std::endl;
         return 1;
@@ -130,6 +132,10 @@ int main(int argc, char *argv[]) {
         std::cout << "Unknown query choice." << std::endl;
         return 1;
     }
+     */
 
+    BalancedParantheses::DynamicBP<BalancedParantheses::NoProfiler> tree;
+    tree.insertChild(0, 0, 0);
+    tree.printTree();
     return 0;
 }
