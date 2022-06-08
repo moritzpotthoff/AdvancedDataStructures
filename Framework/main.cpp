@@ -108,17 +108,33 @@ inline static void handleBPQuery(char *argv[]) {
     std::string inputFileName(argv[2]);
     std::ifstream inputFile(inputFileName);
 
-    //TODO read and execute all the queries
+    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+
+    //Read and execute all the queries.
+    std::string queryType;
+    int v, i, k;
+    while (inputFile >> queryType) {
+        if (queryType.compare("insertchild") == 0) {
+            inputFile >> v >> i >> k;
+            tree.insertChild(v, i, k);
+        } else if (queryType.compare("deletenode") == 0) {
+            inputFile >> v;
+            tree.deleteNode(v);
+        }
+    }
+
+    std::cout << "Resulting tree:" << std::endl;
+    tree.printTree();
+    tree.printBitString();
 
     //TODO print the degrees of nodes from the resulting tree in preorder dfs order to the output file
 
-    std::cout << "RESULT algo= name=moritz-potthoff"
+    //std::cout << "RESULT algo= name=moritz-potthoff"
               //<< " construction time=" << (preprocessingTime + queryInitTime)//count query initialization as preprocessing: It could be done during the suffix tree generation, if that was only used for repeat queries.
-              << std::endl;
+              //<< std::endl;
 }
 
 int main(int argc, char *argv[]) {
-    /*
     if (argc != 4) {
         std::cout << "Wrong number of arguments, expecting 3 arguments." << std::endl;
         return 1;
@@ -133,13 +149,6 @@ int main(int argc, char *argv[]) {
         std::cout << "Unknown query choice." << std::endl;
         return 1;
     }
-     */
 
-    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
-    tree.insertChild(0, 1, 0);
-    tree.insertChild(0, 2, 0);
-    tree.insertChild(0, 3, 0);
-    tree.insertChild(0, 2, 1);
-    tree.printTree();
     return 0;
 }
