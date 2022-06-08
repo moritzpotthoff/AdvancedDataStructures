@@ -4,8 +4,9 @@
 #include <bit>
 
 #include "Definitions.h"
+#include "../Helpers/Asserts.h"
 
-namespace BalancedParantheses {
+namespace BalancedParentheses {
     class InnerBitVector {
     public:
         InnerBitVector() :
@@ -101,6 +102,7 @@ namespace BalancedParantheses {
 
         /**
          * Returns the number of 1s in the bit vector up to the exclusive upper limit
+         *
          * @param upperLimit (exclusive!)
          * @return
          */
@@ -114,8 +116,9 @@ namespace BalancedParantheses {
         }
 
         /**
+         * Recomputes the excess information for this block.
          *
-         * @return (totalExcess, minExcess)
+         * @return tuple (totalExcess, minExcess, minTimes)
          */
         inline std::tuple<int, int, int> recomputeExcesses() const noexcept {
             int excess = 0;
@@ -134,33 +137,48 @@ namespace BalancedParantheses {
         }
 
         /**
+         * Performs a forward search within this block.
          *
          * @param i the start index within this bit vector
-         * @param d
-         * @return
+         * @param d the desired local excess
+         * @return pair (achievedExcess, index)
          */
         inline std::pair<int, int> fwdBlock(int i, int d) const noexcept {
             //TODO use actual block variant
             int currentExcess = 0;
-            size_t j = i;
+            size_t j = i + 1;
             for (; j < bits.size(); j++) {
                 bits[j] ? currentExcess++ : currentExcess--;
                 if (currentExcess == d) return std::make_pair(d, j);
             }
+            AssertMsg(false, "Excess was not found in fwdSearch!");
             return std::make_pair(currentExcess, j);
         }
 
+        /**
+         * Performs a backward search in the bit vector
+         *
+         * @param i the start index (searching to the left)
+         * @param d the desired local excess
+         * @return tuple (achievedExcess, index)
+         */
         inline std::tuple<int, int> bwdBlock(int i, int d) const noexcept {
             //TODO use actual block variant
-            //TODO do we calculate the excess backwards?
             int currentExcess = 0;
             for (int j = i; j >= 0; j--) {
                 (!bits[j]) ? currentExcess++ : currentExcess--;//negated expression!
-                if (currentExcess == d) return std::make_pair(d, j - 1);
+                if (currentExcess == d) return std::make_pair(d, j);
             }
             return std::make_pair(currentExcess, -1);
         }
 
+        /**
+         * Computes the minimum local excess(i, k) in [i,j], i.e., k <= j.
+         *
+         * @param i the start index
+         * @param j the end index (inclusive)
+         * @return the minimum local excess.
+         */
         inline int minBlock(int i, int j) const noexcept {
             int excess = 0;
             int minExcess = inf;
@@ -171,14 +189,15 @@ namespace BalancedParantheses {
             return minExcess;
         }
 
-        inline int minCount(int i, int j, int minimum) const noexcept {
-            int count = 0;
-            for (int k = i; k <= j; k++) {
-                if (bits[k] == minimum) count++;
-            }
-            return count;
-        }
-
+        /**
+         * Selects the t-th occurrence of the local excess theMinExcess within the bit vector.
+         *
+         * @param i the start index
+         * @param j the end index (inclusive)
+         * @param t the index of the occurrence
+         * @param theMinExcess the desired excess
+         * @return the position of the desired occurrence
+         */
         inline int minSelectBlock(const int i, const int j, int t, const int theMinExcess) const noexcept {
             int excess = 0;
             for (int k = i; k <= j; k++) {
@@ -186,7 +205,26 @@ namespace BalancedParantheses {
                 if (excess == theMinExcess) t--;
                 if (t == 0) return k;
             }
+            AssertMsg(false, "Did not find minimum excess in block");
             return 0;
+        }
+
+        /**
+         * Computes the number of occurrences of minimum as local excess in [i,j]
+         *
+         * @param i start index
+         * @param j end index (inclusive)
+         * @param minimum the desired minimum
+         * @return the number of occurrences
+         */
+        inline int minCount(int i, int j, int minimum) const noexcept {
+            int excess = 0;
+            int count = 0;
+            for (int k = i; k <= j; k++) {
+                bits[k] ? excess++ : excess--;
+                if (excess == minimum) count++;
+            }
+            return count;
         }
 
     private:

@@ -6,10 +6,11 @@
 
 #include "Definitions.h"
 #include "InnerBitVector.h"
+#include "../Helpers/Asserts.h"
 
-namespace BalancedParantheses {
+namespace BalancedParentheses {
     /**
-     * Node of the AVL-Tree that is used to represent the balanced parantheses tree.
+     * Node of the AVL-Tree that is used to represent the balanced parentheses tree.
      */
     class Node {
     public:
@@ -45,6 +46,7 @@ namespace BalancedParantheses {
 
         /**
          * Inserts bit bit at index index
+         *
          * @param index
          * @param bit
          * @param length -- see navarro book
@@ -80,7 +82,7 @@ namespace BalancedParantheses {
                     num = w * w;
                     ones = (w * w + leftChild->totalExcess) / 2;
                     nodeHeight++;
-                    //TODO assert that the size of the left child is w * w.
+                    AssertMsg(leftChild->bitVector->bits.size() == w * w, "Left child has wrong size after split.");
                 }
             }
             //while backtracking the path upwards, adjust the heights of all nodes as well
@@ -91,6 +93,7 @@ namespace BalancedParantheses {
 
         /**
          * Delete the bit at the given index from the bit vector
+         *
          * @param index
          * @param length the overall length of the subtree rooted at this node
          * @param ones the number of ones in the subtree rooted at this node
@@ -104,6 +107,7 @@ namespace BalancedParantheses {
 
         /**
          * Performs a rank_1 query.
+         *
          * @param index the index for which the rank is requested
          * @return the rank
          */
@@ -124,47 +128,89 @@ namespace BalancedParantheses {
             return currentOnes + current->popcount(index);
         }
 
+        /**
+         * Performs a forward search for the given parameters.
+         */
         inline int fwdSearch(int i, int d, int length) const noexcept {
             int result;
             std::tie(std::ignore, result) = fwdSearchRecursive(i, d, length);
             return result;
         }
 
+        /**
+         * Performs a backward search for the given parameters.
+         */
         inline int bwdSearch(int i, int d, int length) const noexcept {
             int result;
             std::tie(std::ignore, result) = bwdSearchRecursive(i, d, length);
             return result;
         }
 
+        /**
+         * Finds the minimum local excess (starting with index i) in the interval [i,j].
+         *
+         * @param i start index (inclusive)
+         * @param j end index (inclusive)
+         * @param length length of the subtree
+         * @return the minimum excess
+         */
         inline int getMinExcess(const int i, const int j, const int length) const noexcept {
-            if (i == 0 && j == length - 1) return minExcess;
+            if (i == 0 && j == length - 1) {
+                //the interval is exactly the node interval, the minExcess is also the local minimum excess.
+                return minExcess;
+            }
             if (isLeaf()) {
                 return bitVector->minBlock(i, j);
             }
             if (j < num) {
+                //interval is entirely in the left child
                 return leftChild->getMinExcess(i, j, num);
             }
             if (i >= num) {
+                //interval is entirely in the right child, add excess from the left.
                 return leftChild->totalExcess + rightChild->getMinExcess(i - num, j - num, length - num);
             }
-            const int minLeft = leftChild->getMinExcess(i, num, num);
-            const int minRight = leftChild->totalExcess + rightChild->getMinExcess(0, j - num, length    - num);
+            //interval spans over both children, find the minimum from either sides.
+            const int minLeft = leftChild->getMinExcess(i, num - 1, num);
+            const int minRight = leftChild->totalExcess + rightChild->getMinExcess(0, j - num, length - num);
             return std::min(minLeft, minRight);
         }
 
+        /**
+         * Finds the t-th occurrences of the minimum excess in the interval [i,j]
+         *
+         * @param i the start index
+         * @param j the end index (inclusive)
+         * @param t the index of the desired occurrence
+         * @param length the length of the subtree
+         * @param theMinExcess the desired excess
+         * @return the index.
+         */
         inline int minSelect(const int i, const int j, const int t, const int length, const int theMinExcess) const noexcept {
             if (isLeaf()) {
                 return bitVector->minSelectBlock(i, j, t, theMinExcess);
             }
-            if (leftChild->minCount(i, j, length, theMinExcess) <= t) {
+            const int leftUpperLimit = std::min(j, num - 1);
+            const int leftLength = j < num ? length : num;
+            const int numberOfLeftOccurrences = leftChild->minCount(i, leftUpperLimit, leftLength, theMinExcess);
+            if (numberOfLeftOccurrences <= t) {
                 //the t-th occurrence of the minimum is in the left child
-                return leftChild->minSelect(i, j, t, length, theMinExcess);
+                return leftChild->minSelect(i, leftUpperLimit, t, leftLength, theMinExcess);
             } else {
                 //the t-th occurrence of the minimum is in the right child
-                return rightChild->minSelect(i - num, j - num, t - leftChild->minTimes, length, theMinExcess);
+                return rightChild->minSelect(i - num, j - num, t - numberOfLeftOccurrences, length - num, theMinExcess);
             }
         }
 
+        /**
+         * Counts the number of occurrences of theMinimum as local excess in the range [i,j]
+         *
+         * @param i start index
+         * @param j end index (inclusive)
+         * @param length subtree length
+         * @param theMinimum desired minimum excess
+         * @return number of occurrences
+         */
         inline int minCount(const int i, const int j, const int length, const int theMinimum) const noexcept {
             if (isLeaf()) {
                 return bitVector->minCount(i, j, theMinimum);
@@ -178,20 +224,19 @@ namespace BalancedParantheses {
                 return leftChild->minCount(i, j, num, theMinimum);
             }
             if (i >= num) {
-                //[i,j] is only in the right child, search there
-                //TODO does theMinimum need to be adjusted?
+                //[i,j] is only in the right child, search there. the minimum has to be adjusted
                 return rightChild->minCount(i - num, j - num, length - num, theMinimum - leftChild->totalExcess);
             }
             //[i,j] spans over some part of the left child and some part of the right child
-            const int leftCount = leftChild->minCount(i, num, num, theMinimum);
-            //TODO (how) does theMinimum need to be adjusted?
+            const int leftCount = leftChild->minCount(i, num - 1, num, theMinimum);
+            //for the right child, the minimum has to be adjusted to be a valid local excess
             const int rightCount = rightChild->minCount(0, j - num, length - num, theMinimum - leftChild->totalExcess);
             return leftCount + rightCount;
         }
 
     private:
         /**
-         * Recomputes totalExcess and minExcess.
+         * Recomputes totalExcess, minExcess and minTimes for a node.
          */
         inline void recomputeExcesses() noexcept {
             if (isLeaf()) {
@@ -202,7 +247,7 @@ namespace BalancedParantheses {
         }
 
         /**
-         * Recomputes totalExcess and minExcess.
+         * Recomputes totalExcess, minExcess and minTimes for an inner node.
          */
         inline void recomputeExcessesInner() noexcept {
             totalExcess = leftChild->totalExcess + rightChild->totalExcess;
@@ -218,18 +263,20 @@ namespace BalancedParantheses {
                 minTimes = leftChild->minTimes + rightChild->minTimes;
             }
         }
+
         /**
-         * Recomputes totalExcess and minExcess.
+         * Recomputes totalExcess, minExcess and minTimes for a leaf.
          */
         inline void recomputeExcessesLeaf() noexcept {
             std::tie(totalExcess, minExcess, minTimes) = bitVector->recomputeExcesses();
         }
 
         inline std::pair<int, int> fwdSearchRecursive(int i, int d, int length) const noexcept {
-            if (i == 0 && minExcess > d) {
+            /*if (i == 0 && minExcess > d) {
                 //excess d does not exist
                 return std::make_pair(totalExcess, length + 1);
             }
+             */
             if (isLeaf()) {
                 //scan the bit vector of the leaf
                 return bitVector->fwdBlock(i, d);//TODO ensure that i does not need to be changed to be a local index for bitVector
@@ -510,6 +557,26 @@ namespace BalancedParantheses {
         }
 
         /**
+         * Performs an access query on the subtree rooted at this node.
+         * @param index the index that shall be accessed
+         * @return the bit B[index]
+         */
+        inline int access(int index) const noexcept {
+            //traverse the tree until the relevant leaf is reached
+            Node const* current = this;
+            while (!current->isLeaf()) {
+                if (index < current->num) {// < instead of <= in Navarro's book because we are 0-indexed
+                    current = current->leftChild;
+                } else {
+                    index -= current->num;//num bits were skipped to the left
+                    current = current->rightChild;
+                }
+            }
+            //read the bit in the leaf
+            return current->bitVector->readBit(index);
+        }
+
+        /**
          * Helper to safely compute the height of a potentially non-existent node.
          * @param node the node
          * @return the height of the node, or 0 if node == NULL
@@ -530,8 +597,8 @@ namespace BalancedParantheses {
         int num;
 
         //bp data
-        int totalExcess;//e in book
-        int minExcess;//m in book
-        int minTimes;//n in book
+        int totalExcess;//e in book, total excess(i,j) if [i,j] is the interval covered by the subtree rooted at this node
+        int minExcess;//m in book, minimum local excess(i,k) for k <= j as above
+        int minTimes;//n in book, number of times the minExcess occurs in [i,j] as above.
     };
 }

@@ -1,0 +1,1 @@
+#define AssertMsg(expr, msg) assert(((void)(msg),(expr)))

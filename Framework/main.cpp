@@ -1,10 +1,11 @@
 #include <iostream>
 #include <fstream>
+#include <cassert>
 
 #include "Helpers/Timer.h"
 #include "Helpers/BitVectorProfiler.h"
 #include "BitVector/DynamicBitVector.h"
-#include "BalancedParantheses/DynamicBP.h"
+#include "BalancedParentheses/DynamicBP.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
 static const bool Interactive = true;
@@ -134,8 +135,11 @@ int main(int argc, char *argv[]) {
     }
      */
 
-    BalancedParantheses::DynamicBP<BalancedParantheses::NoProfiler> tree;
-    tree.insertChild(0, 0, 0);
+    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+    tree.insertChild(0, 1, 0);
+    tree.insertChild(0, 2, 0);
+    tree.insertChild(0, 3, 0);
+    tree.insertChild(0, 2, 1);
     tree.printTree();
     return 0;
 }
