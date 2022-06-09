@@ -1,8 +1,10 @@
 #include "catch.hpp"
 
+#include <math.h>
+
 #include "../BalancedParentheses/DynamicBP.h"
 
-TEST_CASE("Small BP Test Instance", "[bp]") {
+TEST_CASE("Small BP Test Instance", "[bp][small]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
     SECTION("Initially empty tree") {
@@ -29,6 +31,41 @@ TEST_CASE("Small BP Test Instance", "[bp]") {
 
         std::vector<bool> expected = {1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0};
         REQUIRE(tree.getBitString() == expected);
+
+        SECTION("Degree queries are correct after deletions") {
+            REQUIRE(tree.degree(0) == 2);
+            REQUIRE(tree.degree(1) == 1);
+            REQUIRE(tree.degree(2) == 1);
+            REQUIRE(tree.degree(3) == 0);
+            REQUIRE(tree.degree(7) == 1);
+            REQUIRE(tree.degree(8) == 0);
+        }
+
+        SECTION("Child queries are correct after deletions") {
+            REQUIRE(tree.child(0, 1) == 1);
+            REQUIRE(tree.child(0, 2) == 7);
+            REQUIRE(tree.child(1, 1) == 2);
+            REQUIRE(tree.child(2, 1) == 3);
+            REQUIRE(tree.child(7, 1) == 8);
+        }
+
+        SECTION("Parent queries are correct after deletion") {
+            REQUIRE(tree.parent(1) == 0);
+            REQUIRE(tree.parent(2) == 1);
+            REQUIRE(tree.parent(3) == 2);
+            REQUIRE(tree.parent(7) == 0);
+            REQUIRE(tree.parent(8) == 7);
+        }
+
+        SECTION("Subtree size queries are correct after deletion") {
+            REQUIRE(tree.subtreeSize(0) == 6);
+            REQUIRE(tree.subtreeSize(1) == 3);
+            REQUIRE(tree.subtreeSize(2) == 2);
+            REQUIRE(tree.subtreeSize(3) == 1);
+            REQUIRE(tree.subtreeSize(7) == 2);
+            REQUIRE(tree.subtreeSize(8) == 1);
+
+        }
     }
 
     SECTION("Degree queries are correct") {
@@ -72,4 +109,93 @@ TEST_CASE("Small BP Test Instance", "[bp]") {
         REQUIRE(tree.subtreeSize(10) == 1);
         REQUIRE(tree.subtreeSize(13) == 1);
     }
+}
+
+TEST_CASE("Large BP Test Instance", "[bp][large]") {
+    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+
+    SECTION("Initially empty tree") {
+        std::vector<bool> expected = {1, 0};
+        REQUIRE(tree.getBitString() == expected);
+    }
+
+    const int numberOfChildren = 100;
+    //insert correct number of nodes for this level, getting the correct number of children themselves
+    for (int node = 1; node <= numberOfChildren; node++) {
+        tree.insertChild(0, node, 0);
+    }
+
+
+    SECTION("Large tree has the correct sizes") {
+        REQUIRE(tree.subtreeSize(0) == 101);
+        REQUIRE(tree.degree(0) == 100);
+        REQUIRE(tree.subtreeSize(1) == 1);
+        REQUIRE(tree.subtreeSize(3) == 1);
+        REQUIRE(tree.subtreeSize(5) == 1);
+        REQUIRE(tree.subtreeSize(7) == 1);
+        REQUIRE(tree.subtreeSize(9) == 1);
+    }
+
+    SECTION("Inserting children in the middle works") {
+        REQUIRE(tree.subtreeSize(0) == 101);
+        REQUIRE(tree.degree(0) == 100);
+        REQUIRE(tree.subtreeSize(1) == 1);
+        REQUIRE(tree.subtreeSize(3) == 1);
+        REQUIRE(tree.subtreeSize(5) == 1);
+        REQUIRE(tree.subtreeSize(7) == 1);
+        REQUIRE(tree.subtreeSize(9) == 1);
+
+        std::cout << "INSERTING BIG CHILD 1" << std::endl;
+        tree.insertChild(0, 1, 25);
+        std::cout << "After inserting child, tree is " << std::endl;
+        tree.printTree();
+        std::cout << std::endl << std::endl << std::endl;
+        std::cout << "INSERTING BIG CHILD 2" << std::endl;
+        tree.insertChild(0, 2, 25);
+        std::cout << "After inserting child, tree is " << std::endl;
+        tree.printTree();
+        std::cout << std::endl << std::endl << std::endl;
+        std::cout << "INSERTING BIG CHILD 3" << std::endl;
+        tree.insertChild(0, 3, 25);
+        std::cout << "After inserting child, tree is " << std::endl;
+        tree.printTree();
+        std::cout << std::endl << std::endl << std::endl;
+        std::cout << "INSERTING BIG CHILD 4" << std::endl;
+        tree.insertChild(0, 4, 25);
+        std::cout << "After inserting child, tree is " << std::endl;
+        tree.printTree();
+        std::cout << std::endl << std::endl << std::endl;
+        REQUIRE(tree.subtreeSize(0) == 105);
+        REQUIRE(tree.degree(0) == 4);
+        REQUIRE(tree.degree(1) == 25);
+        REQUIRE(tree.subtreeSize(1) == 26);
+    }
+}
+
+TEST_CASE("Binary Tree Test", "[bp][large]") {
+    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+
+    SECTION("Initially empty tree") {
+        std::vector<bool> expected = {1, 0};
+        REQUIRE(tree.getBitString() == expected);
+    }
+
+    //create complete binary tree
+    const int numberOfLevels = 5;
+    const int numberOfNodes = pow(2, numberOfLevels + 1) - 1;
+    for (int level = numberOfLevels; level > 0; level--) {
+        //no children for leaves
+        const int numberOfChildren = (level == numberOfLevels) ? 0 : 2;
+        //insert correct number of nodes for this level, getting the correct number of children themselves
+        for (int node = 1; node <= pow(2, level); node++) {
+            std::cout << "For level " << level << " adding child " << node << std::endl;
+            tree.insertChild(0, node, numberOfChildren);
+            std::cout << "After inserting child, tree is " << std::endl;
+            tree.printTree();
+        }
+    }
+
+    REQUIRE(tree.subtreeSize(0) == 63);
+    REQUIRE(tree.degree(0) == 1);
+    REQUIRE(tree.subtreeSize(1) == 31);
 }

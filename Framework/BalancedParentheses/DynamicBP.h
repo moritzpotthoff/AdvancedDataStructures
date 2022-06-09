@@ -50,13 +50,13 @@ namespace BalancedParentheses {
             //std::cout << "Previously, tree is: " << std::endl;
             //printBitString();
             const int nChildren = children(v);
-            //std::cout << "Inserting a child at node " << v << " with index " << i << ", getting " << k << " own children" << std::endl;
-            //std::cout << "Number of children is " << nChildren << std::endl;
-            //-1 to get 0-based indices
+            AssertMsg(i <= nChildren + 1, "Invalid child index");
+            std::cout << "Inserting a child at node " << v << " with index " << i << ", getting " << k << " own children" << std::endl;
+            std::cout << "Number of children is " << nChildren << std::endl;
             const int openingPosition = ((i <= nChildren) ? child(v, i) : close(v));
             const int closingPosition = ((i + k <= nChildren) ? child(v, i + k) : close(v));
-            //std::cout << "  Opening position is " << openingPosition << std::endl;
-            //std::cout << "  Closing position is " << closingPosition << std::endl;
+            std::cout << "  Opening position is " << openingPosition << std::endl;
+            std::cout << "  Closing position is " << closingPosition << std::endl;
             insertBit(closingPosition, false);
             insertBit(openingPosition, true);
             //std::cout << "After insert, tree is: " << std::endl;
@@ -82,6 +82,7 @@ namespace BalancedParentheses {
          * @return the degree.
          */
         inline int degree(const int v) const noexcept {
+            AssertMsg(isOpening(v), "Get degree of closing parenthesis");
             //close(v) - 2 is the start index of the last child of v; each minimum excess in the range from after v until there corresponds to one child.
             const int closePos = close(v);
             //std::cout << "   Get children for " << v << " with closing index " << closePos << std::endl;
@@ -106,7 +107,8 @@ namespace BalancedParentheses {
          * @return the starting position of the t-th child of v.
          */
         inline int child(int v, int t) const noexcept {
-            //the t-th child starts at the t-th occurrence of the minimum excess in subtree of v.
+            AssertMsg(t <= children(v), "Try to get child that does not exist");
+            //the t-th child is preceded by the t-th occurrence of the minimum excess in subtree of v.
             return minSelect(v, close(v) - 2, t) + 1;
         }
 
@@ -188,7 +190,9 @@ namespace BalancedParentheses {
          * @return the minimum excess
          */
         inline int minExcess(int i, int j) const noexcept {
-            return root->getMinExcess(i, j, length);
+            int min;
+            std::tie(min, std::ignore) = root->getMinExcess(i, j, length);
+            return min;
         }
 
         /**
@@ -201,7 +205,10 @@ namespace BalancedParentheses {
          */
         inline int minSelect(const int i, const int j, const int t) const noexcept {
             const int m = minExcess(i, j);
-            return root->minSelect(i, j, t, length, m);
+            std::cout << "RUNNING minSelect, i = " << i << ", j = " << j << ", t = " << t << " and minimum = " << m << std::endl;
+            int result = root->minSelect(i, j, t, length, m);
+            std::cout << "FOUND result = " << result;
+            return result;
         }
 
         /**
@@ -227,6 +234,8 @@ namespace BalancedParentheses {
          */
         inline void insertBit(int index, const bool bit) noexcept {
             profiler.startInsert();
+            //std::cout << "Inserting bit " << bit << " at index " << index << " into tree " << std::endl;
+            //printTree();
             root = root->insertBit(index, bit, length);
             length++;
             profiler.endInsert();

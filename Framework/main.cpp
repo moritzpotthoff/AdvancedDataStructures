@@ -11,6 +11,9 @@
 #include "Helpers/BitVectorProfiler.h"
 #include "BitVector/DynamicBitVector.h"
 #include "BalancedParentheses/DynamicBP.h"
+#include "BalancedParentheses/Node.h"
+#include "BalancedParentheses/InnerBitVector.h"
+#include "BalancedParentheses/Definitions.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
 static const bool Interactive = true;

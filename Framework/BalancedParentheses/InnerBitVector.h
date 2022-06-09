@@ -151,7 +151,6 @@ namespace BalancedParentheses {
                 bits[j] ? currentExcess++ : currentExcess--;
                 if (currentExcess == d) return std::make_pair(d, j);
             }
-            AssertMsg(false, "Excess was not found in fwdSearch!");
             return std::make_pair(currentExcess, j);
         }
 
@@ -169,6 +168,7 @@ namespace BalancedParentheses {
                 (!bits[j]) ? currentExcess++ : currentExcess--;//negated expression!
                 if (currentExcess == d) return std::make_pair(d, j);
             }
+
             return std::make_pair(currentExcess, -1);
         }
 
@@ -177,16 +177,16 @@ namespace BalancedParentheses {
          *
          * @param i the start index
          * @param j the end index (inclusive)
-         * @return the minimum local excess.
+         * @return (the minimum local excess, the total local excess up to j)
          */
-        inline int minBlock(int i, int j) const noexcept {
+        inline std::pair<int, int> minBlock(int i, int j) const noexcept {
             int excess = 0;
             int minExcess = inf;
             for (int k = i; k <= j; k++) {
                 bits[k] ? excess++ : excess--;
                 if (excess < minExcess) minExcess = excess;
             }
-            return minExcess;
+            return std::make_pair(minExcess, excess);
         }
 
         /**
@@ -199,13 +199,20 @@ namespace BalancedParentheses {
          * @return the position of the desired occurrence
          */
         inline int minSelectBlock(const int i, const int j, int t, const int theMinExcess) const noexcept {
+            std::cout << "MinSelect in Block, i = " << i << ", j = " << j << ", t = " << t << ", excess = " << theMinExcess << std::endl;
+            printBitString();
             int excess = 0;
             for (int k = i; k <= j; k++) {
                 bits[k] ? excess++ : excess--;
-                if (excess == theMinExcess) t--;
-                if (t == 0) return k;
+                if (excess == theMinExcess) {
+                    t--;
+                    if (t == 0) {
+                        std::cout << "Found at index " << k << std::endl;
+                        return k;
+                    }
+                }
             }
-            AssertMsg(false, "Did not find minimum excess in block");
+            AssertMsg(false, "Occurrence of minExcess not found in block minSelect");
             return 0;
         }
 
@@ -215,16 +222,16 @@ namespace BalancedParentheses {
          * @param i start index
          * @param j end index (inclusive)
          * @param minimum the desired minimum
-         * @return the number of occurrences
+         * @return (total excess, the number of occurrences)
          */
-        inline int minCount(int i, int j, int minimum) const noexcept {
+        inline std::pair<int, int> minCount(int i, int j, int minimum) const noexcept {
             int excess = 0;
             int count = 0;
             for (int k = i; k <= j; k++) {
                 bits[k] ? excess++ : excess--;
                 if (excess == minimum) count++;
             }
-            return count;
+            return std::make_pair(excess, count);
         }
 
     private:
