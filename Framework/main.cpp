@@ -2,6 +2,11 @@
 #include <fstream>
 #include <cassert>
 
+//for testing
+#define CATCH_CONFIG_RUNNER
+#include "Tests/catch.hpp"
+#include "Tests/TestBP.h"
+
 #include "Helpers/Timer.h"
 #include "Helpers/BitVectorProfiler.h"
 #include "BitVector/DynamicBitVector.h"
@@ -109,6 +114,8 @@ inline static void handleBPQuery(char *argv[]) {
     std::ifstream inputFile(inputFileName);
 
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+    Helpers::Timer timer;
+    size_t time = 0;
 
     //Read and execute all the queries.
     std::string queryType;
@@ -116,10 +123,14 @@ inline static void handleBPQuery(char *argv[]) {
     while (inputFile >> queryType) {
         if (queryType.compare("insertchild") == 0) {
             inputFile >> v >> i >> k;
+            timer.restart();
             tree.insertChild(v, i, k);
+            time += timer.getMicroseconds();
         } else if (queryType.compare("deletenode") == 0) {
             inputFile >> v;
+            timer.restart();
             tree.deleteNode(v);
+            time += timer.getMicroseconds();
         }
     }
 
@@ -129,18 +140,19 @@ inline static void handleBPQuery(char *argv[]) {
 
     //TODO print the degrees of nodes from the resulting tree in preorder dfs order to the output file
 
-    //std::cout << "RESULT algo= name=moritz-potthoff"
-              //<< " construction time=" << (preprocessingTime + queryInitTime)//count query initialization as preprocessing: It could be done during the suffix tree generation, if that was only used for repeat queries.
-              //<< std::endl;
+    std::cout << "RESULT algo= name=moritz-potthoff"
+              << " time=" << time << " microseconds"
+              << std::endl;//TODO space consumption
 }
 
 int main(int argc, char *argv[]) {
     if (argc != 4) {
-        std::cout << "Wrong number of arguments, expecting 3 arguments." << std::endl;
-        return 1;
+        //testing
+        int result = Catch::Session().run(argc, argv);
+        return result;
     }
-
     std::string queryChoice(argv[1]);
+
     if (queryChoice.compare("bv") == 0) {
         handleBitVectorQuery(argv);
     } else if (queryChoice.compare("bp") == 0) {

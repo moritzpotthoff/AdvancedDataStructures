@@ -47,20 +47,20 @@ namespace BalancedParentheses {
          * @param k the number of previous children of v starting from the previous i-th child that will become children of the new node.
          */
         inline void insertChild(const int v, const int i, const int k) noexcept {
-            std::cout << "Previously, tree is: " << std::endl;
-            printBitString();
+            //std::cout << "Previously, tree is: " << std::endl;
+            //printBitString();
             const int nChildren = children(v);
-            std::cout << "Inserting a child at node " << v << " with index " << i << ", getting " << k << " own children" << std::endl;
-            std::cout << "Number of children is " << nChildren << std::endl;
+            //std::cout << "Inserting a child at node " << v << " with index " << i << ", getting " << k << " own children" << std::endl;
+            //std::cout << "Number of children is " << nChildren << std::endl;
             //-1 to get 0-based indices
             const int openingPosition = ((i <= nChildren) ? child(v, i) : close(v));
             const int closingPosition = ((i + k <= nChildren) ? child(v, i + k) : close(v));
-            std::cout << "  Opening position is " << openingPosition << std::endl;
-            std::cout << "  Closing position is " << closingPosition << std::endl;
+            //std::cout << "  Opening position is " << openingPosition << std::endl;
+            //std::cout << "  Closing position is " << closingPosition << std::endl;
             insertBit(closingPosition, false);
             insertBit(openingPosition, true);
-            std::cout << "After insert, tree is: " << std::endl;
-            printBitString();
+            //std::cout << "After insert, tree is: " << std::endl;
+            //printBitString();
         }
 
         /**
@@ -84,7 +84,7 @@ namespace BalancedParentheses {
         inline int degree(const int v) const noexcept {
             //close(v) - 2 is the start index of the last child of v; each minimum excess in the range from after v until there corresponds to one child.
             const int closePos = close(v);
-            std::cout << "   Get children for " << v << " with closing index " << closePos << std::endl;
+            //std::cout << "   Get children for " << v << " with closing index " << closePos << std::endl;
             return minCount(v, closePos - 2);
         }
 
@@ -141,7 +141,7 @@ namespace BalancedParentheses {
             AssertMsg(isOpening(i), "Searching for a closing bracket of a closing bracket.");
             //the closing bracket is at the first position where the total excess is one less than at i, as the opening bracket at i was closed.
             const int result = fwdSearch(i, -1);
-            std::cout << "Closing bracket for " << i << " is " << result  << std::endl;
+            //std::cout << "Closing bracket for " << i << " is " << result  << std::endl;
             return result;
         }
 
@@ -300,6 +300,13 @@ namespace BalancedParentheses {
         inline void printTree() const noexcept {
             root->printTree();
             std::cout << std::endl;
+        }
+
+        //for testing
+        inline std::vector<bool> getBitString() const noexcept {
+            std::vector<bool> result(0);
+            root->getBitString(&result);
+            return result;
         }
 
         //the root of the binary search tree for the bit vector

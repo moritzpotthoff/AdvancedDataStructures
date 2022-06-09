@@ -586,6 +586,20 @@ namespace BalancedParentheses {
             return node->nodeHeight;
         }
 
+        //for testing
+        inline void getBitString(std::vector<bool>* result) const noexcept {
+            if (isLeaf()) {
+                std::copy(bitVector->bits.begin(), bitVector->bits.end(), std::back_inserter(*result));
+            } else {
+                if (leftChild != NULL) {
+                    leftChild->getBitString(result);
+                }
+                if (rightChild != NULL) {
+                    rightChild->getBitString(result);
+                }
+            }
+        }
+
         //TODO use union/variant
         Node* leftChild;
         Node* rightChild;
