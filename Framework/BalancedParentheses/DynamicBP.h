@@ -51,12 +51,12 @@ namespace BalancedParentheses {
             //printBitString();
             const int nChildren = children(v);
             AssertMsg(i <= nChildren + 1, "Invalid child index");
-            std::cout << "Inserting a child at node " << v << " with index " << i << ", getting " << k << " own children" << std::endl;
-            std::cout << "Number of children is " << nChildren << std::endl;
+            //std::cout << "Inserting a child at node " << v << " with index " << i << ", getting " << k << " own children" << std::endl;
+            //std::cout << "Number of children is " << nChildren << std::endl;
             const int openingPosition = ((i <= nChildren) ? child(v, i) : close(v));
             const int closingPosition = ((i + k <= nChildren) ? child(v, i + k) : close(v));
-            std::cout << "  Opening position is " << openingPosition << std::endl;
-            std::cout << "  Closing position is " << closingPosition << std::endl;
+            //std::cout << "  Opening position is " << openingPosition << std::endl;
+            //std::cout << "  Closing position is " << closingPosition << std::endl;
             insertBit(closingPosition, false);
             insertBit(openingPosition, true);
             //std::cout << "After insert, tree is: " << std::endl;
@@ -85,8 +85,10 @@ namespace BalancedParentheses {
             AssertMsg(isOpening(v), "Get degree of closing parenthesis");
             //close(v) - 2 is the start index of the last child of v; each minimum excess in the range from after v until there corresponds to one child.
             const int closePos = close(v);
-            //std::cout << "   Get children for " << v << " with closing index " << closePos << std::endl;
-            return minCount(v, closePos - 2);
+            std::cout << "Get children for " << v << " with closing index " << closePos << std::endl;
+            int result = minCount(v, closePos - 2);
+            std::cout << "   result = " << result << std::endl;
+            return result;
         }
 
         /**
@@ -205,9 +207,9 @@ namespace BalancedParentheses {
          */
         inline int minSelect(const int i, const int j, const int t) const noexcept {
             const int m = minExcess(i, j);
-            std::cout << "RUNNING minSelect, i = " << i << ", j = " << j << ", t = " << t << " and minimum = " << m << std::endl;
+            //std::cout << "RUNNING minSelect, i = " << i << ", j = " << j << ", t = " << t << " and minimum = " << m << std::endl;
             int result = root->minSelect(i, j, t, length, m);
-            std::cout << "FOUND result = " << result;
+            //std::cout << "FOUND result = " << result;
             return result;
         }
 
@@ -221,6 +223,7 @@ namespace BalancedParentheses {
         inline int minCount(const int i, const int j) const noexcept {
             if (j <= i) return 0;
             const int m = minExcess(i, j);
+            std::cout << "In minCount, looking for " << m << " in interval " << i << ".." << j << std::endl;
             return root->minCount(i, j, length, m);
         }
 

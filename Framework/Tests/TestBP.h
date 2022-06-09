@@ -111,7 +111,7 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
     }
 }
 
-TEST_CASE("Large BP Test Instance", "[bp][large]") {
+TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
     SECTION("Initially empty tree") {
@@ -172,30 +172,54 @@ TEST_CASE("Large BP Test Instance", "[bp][large]") {
     }
 }
 
-TEST_CASE("Binary Tree Test", "[bp][large]") {
+TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
-    SECTION("Initially empty tree") {
-        std::vector<bool> expected = {1, 0};
-        REQUIRE(tree.getBitString() == expected);
-    }
-
     //create complete binary tree
-    const int numberOfLevels = 5;
+    const int numberOfLevels = 10;
     const int numberOfNodes = pow(2, numberOfLevels + 1) - 1;
+    std::cout << "Creating full binary tree with " << numberOfNodes << " nodes." << std::endl;
     for (int level = numberOfLevels; level > 0; level--) {
         //no children for leaves
         const int numberOfChildren = (level == numberOfLevels) ? 0 : 2;
         //insert correct number of nodes for this level, getting the correct number of children themselves
         for (int node = 1; node <= pow(2, level); node++) {
-            std::cout << "For level " << level << " adding child " << node << std::endl;
             tree.insertChild(0, node, numberOfChildren);
-            std::cout << "After inserting child, tree is " << std::endl;
-            tree.printTree();
         }
     }
 
-    REQUIRE(tree.subtreeSize(0) == 63);
-    REQUIRE(tree.degree(0) == 1);
-    REQUIRE(tree.subtreeSize(1) == 31);
+    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+    tree.printBitString();
+    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+
+    for (int i = 0; i < numberOfLevels; i++) {
+        REQUIRE(tree.degree(i) == 2);
+        REQUIRE(tree.subtreeSize(i) == pow(2, numberOfLevels + 1 - i) - 1);
+    }
+    REQUIRE(tree.degree(numberOfLevels) == 0);
+}
+
+TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
+    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+
+    //create complete binary tree
+    const int numberOfLevels = 1000;
+    std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;
+    for (int level = 0; level < numberOfLevels; level++) {
+        tree.insertChild(level, 1, 0);
+    }
+
+    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+    tree.printBitString();
+
+    tree.printTree();
+    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+
+    for (int i = 0; i < numberOfLevels; i++) {
+        std::cout << "TESTING FOR LEVEL " << i << std::endl;
+        REQUIRE(tree.degree(i) == 1);
+        REQUIRE(tree.subtreeSize(i) == numberOfLevels + 1 - i);
+        std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+    }
+    REQUIRE(tree.degree(numberOfLevels) == 0);
 }
