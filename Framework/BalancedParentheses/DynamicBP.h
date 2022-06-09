@@ -154,8 +154,8 @@ namespace BalancedParentheses {
          */
         inline int enclose(const int v) const noexcept {
             AssertMsg(isOpening(v), "Searching for an enclosing bracket of a closing bracket.");
-            //the relevant opening bracket is the first bracket to the left that has a difference in excess of -1
-            return bwdSearch(v, -2) + 1;
+            //the relevant opening bracket is the first bracket to the left that has a difference in excess of -2 (the opening bracket at v, plus one more)
+            return bwdSearch(v, -2);//no +1 (as in book) because of 0-indices
         }
 
         /**
