@@ -12,6 +12,8 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
         REQUIRE(tree.getBitString() == expected);
     }
 
+    std::cout << "Creating miniature test tree." << std::endl;
+
     tree.insertChild(0, 1, 0);
     tree.insertChild(0, 2, 0);
     tree.insertChild(0, 3, 0);
@@ -20,10 +22,8 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
     tree.insertChild(0, 1, 2);
     tree.insertChild(1, 2, 1);
 
-    SECTION("Basic inserts work") {
-        std::vector<bool> expected = {1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0};
-        REQUIRE(tree.getBitString() == expected);
-    }
+    std::vector<bool> expected = {1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0};
+    REQUIRE(tree.getBitString() == expected);
 
     SECTION("Deleting nodes works") {
         tree.deleteNode(13);
@@ -32,83 +32,66 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
         std::vector<bool> expected = {1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0};
         REQUIRE(tree.getBitString() == expected);
 
-        SECTION("Degree queries are correct after deletions") {
-            REQUIRE(tree.degree(0) == 2);
-            REQUIRE(tree.degree(1) == 1);
-            REQUIRE(tree.degree(2) == 1);
-            REQUIRE(tree.degree(3) == 0);
-            REQUIRE(tree.degree(7) == 1);
-            REQUIRE(tree.degree(8) == 0);
-        }
+        REQUIRE(tree.degree(0) == 2);
+        REQUIRE(tree.degree(1) == 1);
+        REQUIRE(tree.degree(2) == 1);
+        REQUIRE(tree.degree(3) == 0);
+        REQUIRE(tree.degree(7) == 1);
+        REQUIRE(tree.degree(8) == 0);
 
-        SECTION("Child queries are correct after deletions") {
-            REQUIRE(tree.child(0, 1) == 1);
-            REQUIRE(tree.child(0, 2) == 7);
-            REQUIRE(tree.child(1, 1) == 2);
-            REQUIRE(tree.child(2, 1) == 3);
-            REQUIRE(tree.child(7, 1) == 8);
-        }
-
-        SECTION("Parent queries are correct after deletion") {
-            REQUIRE(tree.parent(1) == 0);
-            REQUIRE(tree.parent(2) == 1);
-            REQUIRE(tree.parent(3) == 2);
-            REQUIRE(tree.parent(7) == 0);
-            REQUIRE(tree.parent(8) == 7);
-        }
-
-        SECTION("Subtree size queries are correct after deletion") {
-            REQUIRE(tree.subtreeSize(0) == 6);
-            REQUIRE(tree.subtreeSize(1) == 3);
-            REQUIRE(tree.subtreeSize(2) == 2);
-            REQUIRE(tree.subtreeSize(3) == 1);
-            REQUIRE(tree.subtreeSize(7) == 2);
-            REQUIRE(tree.subtreeSize(8) == 1);
-
-        }
-    }
-
-    SECTION("Degree queries are correct") {
-        REQUIRE(tree.degree(0) == 3);
-        REQUIRE(tree.degree(1) == 2);
-        REQUIRE(tree.degree(2) == 0);
-        REQUIRE(tree.degree(4) == 1);
-        REQUIRE(tree.degree(5) == 0);
-        REQUIRE(tree.degree(9) == 1);
-        REQUIRE(tree.degree(10) == 0);
-        REQUIRE(tree.degree(13) == 0);
-    }
-
-    SECTION("Child queries are correct") {
         REQUIRE(tree.child(0, 1) == 1);
-        REQUIRE(tree.child(0, 2) == 9);
-        REQUIRE(tree.child(0, 3) == 13);
+        REQUIRE(tree.child(0, 2) == 7);
         REQUIRE(tree.child(1, 1) == 2);
-        REQUIRE(tree.child(1, 2) == 4);
-        REQUIRE(tree.child(4, 1) == 5);
-        REQUIRE(tree.child(9, 1) == 10);
-    }
+        REQUIRE(tree.child(2, 1) == 3);
+        REQUIRE(tree.child(7, 1) == 8);
 
-    SECTION("Parent queries are correct") {
         REQUIRE(tree.parent(1) == 0);
         REQUIRE(tree.parent(2) == 1);
-        REQUIRE(tree.parent(4) == 1);
-        REQUIRE(tree.parent(5) == 4);
-        REQUIRE(tree.parent(10) == 9);
-        REQUIRE(tree.parent(9) == 0);
-        REQUIRE(tree.parent(13) == 0);
+        REQUIRE(tree.parent(3) == 2);
+        REQUIRE(tree.parent(7) == 0);
+        REQUIRE(tree.parent(8) == 7);
+
+        REQUIRE(tree.subtreeSize(0) == 6);
+        REQUIRE(tree.subtreeSize(1) == 3);
+        REQUIRE(tree.subtreeSize(2) == 2);
+        REQUIRE(tree.subtreeSize(3) == 1);
+        REQUIRE(tree.subtreeSize(7) == 2);
+        REQUIRE(tree.subtreeSize(8) == 1);
     }
 
-    SECTION("Subtree size queries are correct") {
-        REQUIRE(tree.subtreeSize(0) == 8);
-        REQUIRE(tree.subtreeSize(1) == 4);
-        REQUIRE(tree.subtreeSize(2) == 1);
-        REQUIRE(tree.subtreeSize(4) == 2);
-        REQUIRE(tree.subtreeSize(5) == 1);
-        REQUIRE(tree.subtreeSize(9) == 2);
-        REQUIRE(tree.subtreeSize(10) == 1);
-        REQUIRE(tree.subtreeSize(13) == 1);
-    }
+    REQUIRE(tree.degree(0) == 3);
+    REQUIRE(tree.degree(1) == 2);
+    REQUIRE(tree.degree(2) == 0);
+    REQUIRE(tree.degree(4) == 1);
+    REQUIRE(tree.degree(5) == 0);
+    REQUIRE(tree.degree(9) == 1);
+    REQUIRE(tree.degree(10) == 0);
+    REQUIRE(tree.degree(13) == 0);
+
+    REQUIRE(tree.child(0, 1) == 1);
+    REQUIRE(tree.child(0, 2) == 9);
+    REQUIRE(tree.child(0, 3) == 13);
+    REQUIRE(tree.child(1, 1) == 2);
+    REQUIRE(tree.child(1, 2) == 4);
+    REQUIRE(tree.child(4, 1) == 5);
+    REQUIRE(tree.child(9, 1) == 10);
+
+    REQUIRE(tree.parent(1) == 0);
+    REQUIRE(tree.parent(2) == 1);
+    REQUIRE(tree.parent(4) == 1);
+    REQUIRE(tree.parent(5) == 4);
+    REQUIRE(tree.parent(10) == 9);
+    REQUIRE(tree.parent(9) == 0);
+    REQUIRE(tree.parent(13) == 0);
+
+    REQUIRE(tree.subtreeSize(0) == 8);
+    REQUIRE(tree.subtreeSize(1) == 4);
+    REQUIRE(tree.subtreeSize(2) == 1);
+    REQUIRE(tree.subtreeSize(4) == 2);
+    REQUIRE(tree.subtreeSize(5) == 1);
+    REQUIRE(tree.subtreeSize(9) == 2);
+    REQUIRE(tree.subtreeSize(10) == 1);
+    REQUIRE(tree.subtreeSize(13) == 1);
 }
 
 TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
@@ -120,6 +103,7 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
     }
 
     const int numberOfChildren = 100000;
+    std::cout << "Creating flat tree with " << numberOfChildren << " nodes in the first level." << std::endl;
     //insert correct number of nodes for this level, getting the correct number of children themselves
     for (int node = 1; node <= numberOfChildren; node++) {
         tree.insertChild(0, node, 0);
@@ -136,33 +120,32 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
         REQUIRE(tree.parent(childStartIndex) == 0);
     }
 
-    SECTION("Inserting children in the middle works") {
-        const int innerNodeDegree = 200;
-        for (int i = 0; i < numberOfChildren / innerNodeDegree; i++) {
-            tree.insertChild(0, i + 1, innerNodeDegree);
-        }
+    const int innerNodeDegree = 200;
+    std::cout << "Inserting " << numberOfChildren / innerNodeDegree << " children in the middle." << std::endl;
+    for (int i = 0; i < numberOfChildren / innerNodeDegree; i++) {
+        tree.insertChild(0, i + 1, innerNodeDegree);
+    }
 
-        REQUIRE(tree.subtreeSize(0) == numberOfChildren + numberOfChildren / innerNodeDegree + 1);
-        REQUIRE(tree.degree(0) == numberOfChildren / innerNodeDegree);
-        for (int innerNode = 0; innerNode < numberOfChildren / innerNodeDegree; innerNode++) {
-            const int innerNodeStartPos = (innerNodeDegree * 2 + 2) * innerNode + 1;
-            //tree.printBitString();
-            REQUIRE(tree.child(0, innerNode + 1) == innerNodeStartPos);
-            const int degree = tree.degree(innerNodeStartPos);
-            if (degree != innerNodeDegree) {
-                tree.printBitString();
-                std::cout << std::endl<< std::endl<< std::endl<< std::endl << "Wrong degree " << degree << " for inner node " << innerNode <<
-                " with starting position " << innerNodeStartPos << std::endl;
-                tree.degree(innerNodeStartPos, true);
-            }
-            REQUIRE(degree == innerNodeDegree);
-            REQUIRE(tree.subtreeSize(innerNodeStartPos) == innerNodeDegree + 1);
-            for (int child = 0; child < innerNodeDegree; child++) {
-                const int childStartPos = tree.child(innerNodeStartPos, child + 1);
-                REQUIRE(tree.degree(childStartPos) == 0);
-                REQUIRE(tree.parent(childStartPos) == innerNodeStartPos);
-                REQUIRE(tree.subtreeSize(childStartPos) == 1);
-            }
+    REQUIRE(tree.subtreeSize(0) == numberOfChildren + numberOfChildren / innerNodeDegree + 1);
+    REQUIRE(tree.degree(0) == numberOfChildren / innerNodeDegree);
+    for (int innerNode = 0; innerNode < numberOfChildren / innerNodeDegree; innerNode++) {
+        const int innerNodeStartPos = (innerNodeDegree * 2 + 2) * innerNode + 1;
+        //tree.printBitString();
+        REQUIRE(tree.child(0, innerNode + 1) == innerNodeStartPos);
+        const int degree = tree.degree(innerNodeStartPos);
+        if (degree != innerNodeDegree) {
+            tree.printBitString();
+            std::cout << std::endl<< std::endl<< std::endl<< std::endl << "Wrong degree " << degree << " for inner node " << innerNode <<
+            " with starting position " << innerNodeStartPos << std::endl;
+            tree.degree(innerNodeStartPos, true);
+        }
+        REQUIRE(degree == innerNodeDegree);
+        REQUIRE(tree.subtreeSize(innerNodeStartPos) == innerNodeDegree + 1);
+        for (int child = 0; child < innerNodeDegree; child++) {
+            const int childStartPos = tree.child(innerNodeStartPos, child + 1);
+            REQUIRE(tree.degree(childStartPos) == 0);
+            REQUIRE(tree.parent(childStartPos) == innerNodeStartPos);
+            REQUIRE(tree.subtreeSize(childStartPos) == 1);
         }
     }
 }
