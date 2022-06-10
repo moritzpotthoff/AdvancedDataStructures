@@ -77,13 +77,11 @@ namespace BalancedParentheses {
          * @param v the starting position of the node.
          * @return the degree.
          */
-        inline int degree(const int v, bool verbose = false) const noexcept {
+        inline int degree(const int v) const noexcept {
             AssertMsg(isOpening(v), "Get degree of closing parenthesis");
             //close(v) - 2 is the start index of the last child of v; each minimum excess in the range from after v until there corresponds to one child.
             const int closePos = close(v);
-            if (verbose) std::cout << "Degree query for index " << v << " with closing position " << closePos << std::endl;
-            int result = minCount(v, closePos - 2, verbose);
-            if (verbose) std::cout << "Yields result " << result << std::endl << std::endl;
+            int result = minCount(v, closePos - 2);
             //printBitString();
             return result;
         }
@@ -177,10 +175,7 @@ namespace BalancedParentheses {
          * @return the position j
          */
         inline int bwdSearch(int i, int d) const noexcept {
-            //std::cout << "BwdSearch from i = " << i << " for excess " << d << std::endl;
-            //printBitString();
             const int result = root->bwdSearch(i, d, length);
-            //std::cout << "Returns result " << result << std::endl << std::endl;
             return result;
         }
 
@@ -218,11 +213,10 @@ namespace BalancedParentheses {
          * @param j the end position of the range (inclusive)
          * @return the number of occurrences of the minimum excess
          */
-        inline int minCount(const int i, const int j, bool verbose = false) const noexcept {
+        inline int minCount(const int i, const int j) const noexcept {
             if (j < i) return 0;
             if (j == i) return 1;
             const int m = minExcess(i, j);
-            if (verbose) std::cout << "  minCount " << i << "..." << j << " looking for excess " << m << std::endl;
             return root->minCount(i, j, length, m);
         }
 

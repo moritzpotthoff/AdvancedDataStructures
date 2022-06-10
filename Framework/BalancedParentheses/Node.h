@@ -190,32 +190,25 @@ namespace BalancedParentheses {
          * @return the index.
          */
         inline int minSelect(const int i, const int j, const int t, const int length, const int theMinExcess) const noexcept {
-            //std::cout << "Called minSelect for i = " << i << " j = " << j << " t = " << t << " excess = " << theMinExcess << std::endl;
             AssertMsg(minCount(i, j, length, theMinExcess) >= t, "Trying to minSelect an occurrence that does not exist.");
             if (isLeaf()) {
-                //std::cout << "   minSelect in leaf" << std::endl;
                 return bitVector->minSelectBlock(i, j, t, theMinExcess);
             }
             if (j < num) {
-                //std::cout << "   minSelect in left child" << std::endl;
                 //interval is only in left child, only search there
                 return leftChild->minSelect(i, j, t, num, theMinExcess);
             }
             if (i >= num) {
-                //std::cout << "   minSelect in right child, add num=" << num << std::endl;
                 //interval is only in the right child, only search there
                 return num + rightChild->minSelect(i - num, j - num, t, length - num, theMinExcess);
             }
             //interval spans over both left and right child. find out where the t-th occurrence is.
             int numberOfLeftOccurrences, leftSideExcess;
             std::tie(leftSideExcess, numberOfLeftOccurrences) = leftChild->minCountRec(i, num - 1, num, theMinExcess);
-            //std::cout << "   minSelect in both children, t = " << t << " left has " << numberOfLeftOccurrences << " occurrences" << std::endl;
             if (t <= numberOfLeftOccurrences) {
-                //std::cout << "      go left" << std::endl;
                 //the t-th occurrence of the minimum is in the left child
                 return leftChild->minSelect(i, num - 1, t, num, theMinExcess);
             } else {
-                //std::cout << "      go right, add num=" << num << ", subtract left excess = " << leftSideExcess << std::endl;
                 //the t-th occurrence of the minimum is in the right child
                 return num + rightChild->minSelect(0, j - num, t - numberOfLeftOccurrences, length - num, theMinExcess - leftSideExcess);
             }
@@ -334,35 +327,28 @@ namespace BalancedParentheses {
          * @return (foundExcess, number of occurrences)
          */
         inline std::pair<int, int> minCountRec(const int i, const int j, const int length, const int theMinimum) const noexcept {
-            //std::cout << "Called minCount for i = " << i << " j = " << j << " length = " << length << " excess = " << theMinimum << std::endl;
             if (isLeaf()) {
-                //std::cout << "   MinCount into leaf" << std::endl;
                 return bitVector->minCount(i, j, theMinimum);
             }
             if (i == 0 && j == length - 1 && minExcess == theMinimum) {
-                //std::cout << "   minCount over full leaf with minExcess, appears " << minTimes << " times" << std::endl;
                 //[i,j] is exactly the range covered by this node
                 return std::make_pair(totalExcess, minTimes);
             }
             if (j < num) {
-                //std::cout << "   minCount only in left child" << std::endl;
                 //[i,j] is only in left child, search there
                 return leftChild->minCountRec(i, j, num, theMinimum);
             }
             if (i >= num) {
-                //std::cout << "   MinCount only in right child" << std::endl;
                 //[i,j] is only in the right child, search there
                 //TODO add leftChild->totalExcess to the first pair argument?
                 return rightChild->minCountRec(i - num, j - num, length - num, theMinimum);
             }
-            //std::cout << "   MinCount spanning over both children" << std::endl;
             //[i,j] spans over some part of the left child and some part of the right child
             int leftCount, leftExcess;//leftExcess will be total excess from i to left end
             std::tie(leftExcess, leftCount) = leftChild->minCountRec(i, num - 1, num, theMinimum);
             //for the right child, the minimum has to be adjusted to be a valid local excess
             int rightCount, rightExcess;
             std::tie(rightExcess, rightCount) = rightChild->minCountRec(0, j - num, length - num, theMinimum - leftExcess);
-            //std::cout << "     left: " << leftCount << ", right: " << rightCount << std::endl;
             return std::make_pair(leftExcess + rightExcess, leftCount + rightCount);
         }
 

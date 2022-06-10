@@ -25,40 +25,6 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
     std::vector<bool> expected = {1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0};
     REQUIRE(tree.getBitString() == expected);
 
-    SECTION("Deleting nodes works") {
-        tree.deleteNode(13);
-        tree.deleteNode(2);
-
-        std::vector<bool> expected = {1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0};
-        REQUIRE(tree.getBitString() == expected);
-
-        REQUIRE(tree.degree(0) == 2);
-        REQUIRE(tree.degree(1) == 1);
-        REQUIRE(tree.degree(2) == 1);
-        REQUIRE(tree.degree(3) == 0);
-        REQUIRE(tree.degree(7) == 1);
-        REQUIRE(tree.degree(8) == 0);
-
-        REQUIRE(tree.child(0, 1) == 1);
-        REQUIRE(tree.child(0, 2) == 7);
-        REQUIRE(tree.child(1, 1) == 2);
-        REQUIRE(tree.child(2, 1) == 3);
-        REQUIRE(tree.child(7, 1) == 8);
-
-        REQUIRE(tree.parent(1) == 0);
-        REQUIRE(tree.parent(2) == 1);
-        REQUIRE(tree.parent(3) == 2);
-        REQUIRE(tree.parent(7) == 0);
-        REQUIRE(tree.parent(8) == 7);
-
-        REQUIRE(tree.subtreeSize(0) == 6);
-        REQUIRE(tree.subtreeSize(1) == 3);
-        REQUIRE(tree.subtreeSize(2) == 2);
-        REQUIRE(tree.subtreeSize(3) == 1);
-        REQUIRE(tree.subtreeSize(7) == 2);
-        REQUIRE(tree.subtreeSize(8) == 1);
-    }
-
     REQUIRE(tree.degree(0) == 3);
     REQUIRE(tree.degree(1) == 2);
     REQUIRE(tree.degree(2) == 0);
@@ -92,6 +58,40 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
     REQUIRE(tree.subtreeSize(9) == 2);
     REQUIRE(tree.subtreeSize(10) == 1);
     REQUIRE(tree.subtreeSize(13) == 1);
+
+    SECTION("Deleting nodes works") {
+        tree.deleteNode(13);
+        tree.deleteNode(2);
+
+        std::vector<bool> expected = {1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0};
+        REQUIRE(tree.getBitString() == expected);
+
+        REQUIRE(tree.degree(0) == 2);
+        REQUIRE(tree.degree(1) == 1);
+        REQUIRE(tree.degree(2) == 1);
+        REQUIRE(tree.degree(3) == 0);
+        REQUIRE(tree.degree(7) == 1);
+        REQUIRE(tree.degree(8) == 0);
+
+        REQUIRE(tree.child(0, 1) == 1);
+        REQUIRE(tree.child(0, 2) == 7);
+        REQUIRE(tree.child(1, 1) == 2);
+        REQUIRE(tree.child(2, 1) == 3);
+        REQUIRE(tree.child(7, 1) == 8);
+
+        REQUIRE(tree.parent(1) == 0);
+        REQUIRE(tree.parent(2) == 1);
+        REQUIRE(tree.parent(3) == 2);
+        REQUIRE(tree.parent(7) == 0);
+        REQUIRE(tree.parent(8) == 7);
+
+        REQUIRE(tree.subtreeSize(0) == 6);
+        REQUIRE(tree.subtreeSize(1) == 3);
+        REQUIRE(tree.subtreeSize(2) == 2);
+        REQUIRE(tree.subtreeSize(3) == 1);
+        REQUIRE(tree.subtreeSize(7) == 2);
+        REQUIRE(tree.subtreeSize(8) == 1);
+    }
 }
 
 TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {

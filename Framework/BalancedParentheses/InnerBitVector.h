@@ -199,15 +199,12 @@ namespace BalancedParentheses {
          * @return the position of the desired occurrence
          */
         inline int minSelectBlock(const int i, const int j, int t, const int theMinExcess) const noexcept {
-            //std::cout << "MinSelect in Block, i = " << i << ", j = " << j << ", t = " << t << ", excess = " << theMinExcess << std::endl;
-            //printBitString();
             int excess = 0;
             for (int k = i; k <= j; k++) {
                 bits[k] ? excess++ : excess--;
                 if (excess == theMinExcess) {
                     t--;
                     if (t == 0) {
-                        //std::cout << "Found at index " << k << std::endl;
                         return k;
                     }
                 }
