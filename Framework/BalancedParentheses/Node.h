@@ -176,7 +176,7 @@ namespace BalancedParentheses {
             int minLeft, totalLeft, minRight, totalRight;
             std::tie(minLeft, totalLeft) = leftChild->getMinExcess(i, num - 1, num);
             std::tie(minRight, totalRight) = rightChild->getMinExcess(0, j - num, length - num);
-            return std::make_pair(std::min(minLeft, minRight + leftChild->totalExcess), totalLeft + totalRight);
+            return std::make_pair(std::min(minLeft, minRight + totalLeft), totalLeft + totalRight);
         }
 
         /**
@@ -299,12 +299,14 @@ namespace BalancedParentheses {
          * @param i
          * @param d
          * @param length
-         * @return (foundExcess, position)
+         * @return (foundExcess, position) -- if foundExcess == d, then position is the index
+         *                                  otherwise, foundExcess is the total excess from i to the left and position is -1
          */
         inline std::tuple<int, int> bwdSearchRecursive(const int i, int d, const int length) const noexcept {
             if (isLeaf()) {
                 return bitVector->bwdBlock(i, d);
             }
+            //TODO prune if i == length - 1 and d < minExcess?? maybe negative. See book.
             if (i < num) {
                 //search interval is only in left child, search only here
                 return leftChild->bwdSearchRecursive(i, d, num);
@@ -314,11 +316,11 @@ namespace BalancedParentheses {
             std::tie(excessFromRightChild, rightPosition) = rightChild->bwdSearchRecursive(i - num, d, length - num);
             if (excessFromRightChild == d) {
                 //result already found in right child
-                return std::make_pair(d, rightPosition);
+                return std::make_pair(d, num + rightPosition);
             }
             //result not found in right child, need to also search in left child
             int excessFromLeftChild, leftPosition;
-            std::tie(excessFromLeftChild, leftPosition) = leftChild->bwdSearchRecursive(i, d, num);
+            std::tie(excessFromLeftChild, leftPosition) = leftChild->bwdSearchRecursive(num - 1, d - excessFromRightChild, num);
             return std::make_pair(excessFromRightChild + excessFromLeftChild, leftPosition);
         }
 

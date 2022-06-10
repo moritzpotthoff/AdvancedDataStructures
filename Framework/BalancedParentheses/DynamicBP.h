@@ -47,20 +47,14 @@ namespace BalancedParentheses {
          * @param k the number of previous children of v starting from the previous i-th child that will become children of the new node.
          */
         inline void insertChild(const int v, const int i, const int k) noexcept {
-            //std::cout << "Previously, tree is: " << std::endl;
-            //printBitString();
+            profiler.startInsert();
             const int nChildren = children(v);
             AssertMsg(i <= nChildren + 1, "Invalid child index");
-            //std::cout << "Inserting a child at node " << v << " with index " << i << ", getting " << k << " own children" << std::endl;
-            //std::cout << "Number of children is " << nChildren << std::endl;
             const int openingPosition = ((i <= nChildren) ? child(v, i) : close(v));
             const int closingPosition = ((i + k <= nChildren) ? child(v, i + k) : close(v));
-            //std::cout << "  Opening position is " << openingPosition << std::endl;
-            //std::cout << "  Closing position is " << closingPosition << std::endl;
             insertBit(closingPosition, false);
             insertBit(openingPosition, true);
-            //std::cout << "After insert, tree is: " << std::endl;
-            //printBitString();
+            profiler.endInsert();
         }
 
         /**
@@ -70,9 +64,11 @@ namespace BalancedParentheses {
          * @param v the index of the node that shall be deleted
          */
         inline void deleteNode(const int v) noexcept {
+            profiler.startDelete();
             AssertMsg(v > 0, "Cannot delete root node!");
             deleteBit(close(v));
             deleteBit(v);
+            profiler.endDelete();
         }
 
         /**
@@ -81,13 +77,14 @@ namespace BalancedParentheses {
          * @param v the starting position of the node.
          * @return the degree.
          */
-        inline int degree(const int v) const noexcept {
+        inline int degree(const int v, bool verbose = false) const noexcept {
             AssertMsg(isOpening(v), "Get degree of closing parenthesis");
             //close(v) - 2 is the start index of the last child of v; each minimum excess in the range from after v until there corresponds to one child.
             const int closePos = close(v);
-            std::cout << "Get children for " << v << " with closing index " << closePos << std::endl;
-            int result = minCount(v, closePos - 2);
-            std::cout << "   result = " << result << std::endl;
+            if (verbose) std::cout << "Degree query for index " << v << " with closing position " << closePos << std::endl;
+            int result = minCount(v, closePos - 2, verbose);
+            if (verbose) std::cout << "Yields result " << result << std::endl << std::endl;
+            //printBitString();
             return result;
         }
 
@@ -145,7 +142,6 @@ namespace BalancedParentheses {
             AssertMsg(isOpening(i), "Searching for a closing bracket of a closing bracket.");
             //the closing bracket is at the first position where the total excess is one less than at i, as the opening bracket at i was closed.
             const int result = fwdSearch(i, -1);
-            //std::cout << "Closing bracket for " << i << " is " << result  << std::endl;
             return result;
         }
 
@@ -181,7 +177,11 @@ namespace BalancedParentheses {
          * @return the position j
          */
         inline int bwdSearch(int i, int d) const noexcept {
-            return root->bwdSearch(i, d, length);
+            //std::cout << "BwdSearch from i = " << i << " for excess " << d << std::endl;
+            //printBitString();
+            const int result = root->bwdSearch(i, d, length);
+            //std::cout << "Returns result " << result << std::endl << std::endl;
+            return result;
         }
 
         /**
@@ -207,9 +207,7 @@ namespace BalancedParentheses {
          */
         inline int minSelect(const int i, const int j, const int t) const noexcept {
             const int m = minExcess(i, j);
-            //std::cout << "RUNNING minSelect, i = " << i << ", j = " << j << ", t = " << t << " and minimum = " << m << std::endl;
             int result = root->minSelect(i, j, t, length, m);
-            //std::cout << "FOUND result = " << result;
             return result;
         }
 
@@ -220,10 +218,11 @@ namespace BalancedParentheses {
          * @param j the end position of the range (inclusive)
          * @return the number of occurrences of the minimum excess
          */
-        inline int minCount(const int i, const int j) const noexcept {
-            if (j <= i) return 0;
+        inline int minCount(const int i, const int j, bool verbose = false) const noexcept {
+            if (j < i) return 0;
+            if (j == i) return 1;
             const int m = minExcess(i, j);
-            std::cout << "In minCount, looking for " << m << " in interval " << i << ".." << j << std::endl;
+            if (verbose) std::cout << "  minCount " << i << "..." << j << " looking for excess " << m << std::endl;
             return root->minCount(i, j, length, m);
         }
 
@@ -237,8 +236,6 @@ namespace BalancedParentheses {
          */
         inline void insertBit(int index, const bool bit) noexcept {
             profiler.startInsert();
-            //std::cout << "Inserting bit " << bit << " at index " << index << " into tree " << std::endl;
-            //printTree();
             root = root->insertBit(index, bit, length);
             length++;
             profiler.endInsert();

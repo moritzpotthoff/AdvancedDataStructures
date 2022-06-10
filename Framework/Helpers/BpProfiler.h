@@ -53,7 +53,7 @@ namespace BalancedParentheses {
         }
 
         inline void print() const noexcept {
-            std::cout << "Dynamic Bit Vector evaluation run. Average times per query:" << std::endl;
+            std::cout << "Dynamic BP-Tree evaluation run. Average times per query:" << std::endl;
             std::cout << "    Insert: " << insertTime / insertQueries << " microseconds" << std::endl;
             std::cout << "    Delete: " << deleteTime / deleteQueries << " microseconds" << std::endl;
             std::cout << "    Rank:   " << rankTime / rankQueries << " microseconds" << std::endl;

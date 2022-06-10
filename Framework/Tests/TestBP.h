@@ -119,56 +119,51 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
         REQUIRE(tree.getBitString() == expected);
     }
 
-    const int numberOfChildren = 100;
+    const int numberOfChildren = 100000;
     //insert correct number of nodes for this level, getting the correct number of children themselves
     for (int node = 1; node <= numberOfChildren; node++) {
         tree.insertChild(0, node, 0);
     }
 
 
-    SECTION("Large tree has the correct sizes") {
-        REQUIRE(tree.subtreeSize(0) == 101);
-        REQUIRE(tree.degree(0) == 100);
-        REQUIRE(tree.subtreeSize(1) == 1);
-        REQUIRE(tree.subtreeSize(3) == 1);
-        REQUIRE(tree.subtreeSize(5) == 1);
-        REQUIRE(tree.subtreeSize(7) == 1);
-        REQUIRE(tree.subtreeSize(9) == 1);
+    REQUIRE(tree.subtreeSize(0) == numberOfChildren + 1);
+    REQUIRE(tree.degree(0) == numberOfChildren);
+    for (int i = 0; i < numberOfChildren; i++) {
+        const int childStartIndex = 2 * i + 1;
+        REQUIRE(tree.child(0, i + 1) == childStartIndex);
+        REQUIRE(tree.subtreeSize(childStartIndex) == 1);
+        REQUIRE(tree.degree(childStartIndex) == 0);
+        REQUIRE(tree.parent(childStartIndex) == 0);
     }
 
     SECTION("Inserting children in the middle works") {
-        REQUIRE(tree.subtreeSize(0) == 101);
-        REQUIRE(tree.degree(0) == 100);
-        REQUIRE(tree.subtreeSize(1) == 1);
-        REQUIRE(tree.subtreeSize(3) == 1);
-        REQUIRE(tree.subtreeSize(5) == 1);
-        REQUIRE(tree.subtreeSize(7) == 1);
-        REQUIRE(tree.subtreeSize(9) == 1);
+        const int innerNodeDegree = 200;
+        for (int i = 0; i < numberOfChildren / innerNodeDegree; i++) {
+            tree.insertChild(0, i + 1, innerNodeDegree);
+        }
 
-        std::cout << "INSERTING BIG CHILD 1" << std::endl;
-        tree.insertChild(0, 1, 25);
-        std::cout << "After inserting child, tree is " << std::endl;
-        tree.printTree();
-        std::cout << std::endl << std::endl << std::endl;
-        std::cout << "INSERTING BIG CHILD 2" << std::endl;
-        tree.insertChild(0, 2, 25);
-        std::cout << "After inserting child, tree is " << std::endl;
-        tree.printTree();
-        std::cout << std::endl << std::endl << std::endl;
-        std::cout << "INSERTING BIG CHILD 3" << std::endl;
-        tree.insertChild(0, 3, 25);
-        std::cout << "After inserting child, tree is " << std::endl;
-        tree.printTree();
-        std::cout << std::endl << std::endl << std::endl;
-        std::cout << "INSERTING BIG CHILD 4" << std::endl;
-        tree.insertChild(0, 4, 25);
-        std::cout << "After inserting child, tree is " << std::endl;
-        tree.printTree();
-        std::cout << std::endl << std::endl << std::endl;
-        REQUIRE(tree.subtreeSize(0) == 105);
-        REQUIRE(tree.degree(0) == 4);
-        REQUIRE(tree.degree(1) == 25);
-        REQUIRE(tree.subtreeSize(1) == 26);
+        REQUIRE(tree.subtreeSize(0) == numberOfChildren + numberOfChildren / innerNodeDegree + 1);
+        REQUIRE(tree.degree(0) == numberOfChildren / innerNodeDegree);
+        for (int innerNode = 0; innerNode < numberOfChildren / innerNodeDegree; innerNode++) {
+            const int innerNodeStartPos = (innerNodeDegree * 2 + 2) * innerNode + 1;
+            //tree.printBitString();
+            REQUIRE(tree.child(0, innerNode + 1) == innerNodeStartPos);
+            const int degree = tree.degree(innerNodeStartPos);
+            if (degree != innerNodeDegree) {
+                tree.printBitString();
+                std::cout << std::endl<< std::endl<< std::endl<< std::endl << "Wrong degree " << degree << " for inner node " << innerNode <<
+                " with starting position " << innerNodeStartPos << std::endl;
+                tree.degree(innerNodeStartPos, true);
+            }
+            REQUIRE(degree == innerNodeDegree);
+            REQUIRE(tree.subtreeSize(innerNodeStartPos) == innerNodeDegree + 1);
+            for (int child = 0; child < innerNodeDegree; child++) {
+                const int childStartPos = tree.child(innerNodeStartPos, child + 1);
+                REQUIRE(tree.degree(childStartPos) == 0);
+                REQUIRE(tree.parent(childStartPos) == innerNodeStartPos);
+                REQUIRE(tree.subtreeSize(childStartPos) == 1);
+            }
+        }
     }
 }
 
@@ -176,7 +171,7 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
     //create complete binary tree
-    const int numberOfLevels = 10;
+    const int numberOfLevels = 16;
     const int numberOfNodes = pow(2, numberOfLevels + 1) - 1;
     std::cout << "Creating full binary tree with " << numberOfNodes << " nodes." << std::endl;
     for (int level = numberOfLevels; level > 0; level--) {
@@ -187,10 +182,6 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
             tree.insertChild(0, node, numberOfChildren);
         }
     }
-
-    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
-    tree.printBitString();
-    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
 
     for (int i = 0; i < numberOfLevels; i++) {
         REQUIRE(tree.degree(i) == 2);
@@ -203,23 +194,15 @@ TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
     //create complete binary tree
-    const int numberOfLevels = 1000;
+    const int numberOfLevels = 100000;
     std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;
     for (int level = 0; level < numberOfLevels; level++) {
         tree.insertChild(level, 1, 0);
     }
 
-    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
-    tree.printBitString();
-
-    tree.printTree();
-    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
-
     for (int i = 0; i < numberOfLevels; i++) {
-        std::cout << "TESTING FOR LEVEL " << i << std::endl;
         REQUIRE(tree.degree(i) == 1);
         REQUIRE(tree.subtreeSize(i) == numberOfLevels + 1 - i);
-        std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
     }
     REQUIRE(tree.degree(numberOfLevels) == 0);
 }
