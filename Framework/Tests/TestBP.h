@@ -104,7 +104,7 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
         REQUIRE(tree.getBitString() == expected);
     }
 
-    const int numberOfChildren = 100000;
+    const int numberOfChildren = 10000;
     std::cout << "Creating flat tree with " << numberOfChildren << " nodes in the first level." << std::endl;
     //insert correct number of nodes for this level, getting the correct number of children themselves
     for (int node = 1; node <= numberOfChildren; node++) {
@@ -149,7 +149,7 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
     //create complete binary tree
-    const int numberOfLevels = 16;
+    const int numberOfLevels = 14;
     const int numberOfNodes = pow(2, numberOfLevels + 1) - 1;
     std::cout << "Creating full binary tree with " << numberOfNodes << " nodes." << std::endl;
     for (int level = numberOfLevels; level > 0; level--) {

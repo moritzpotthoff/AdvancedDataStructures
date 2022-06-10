@@ -466,19 +466,19 @@ namespace BalancedParentheses {
                 if (num == w * w / 2) {
                     //underflow, lefChild must be a leaf.
                     //try to steal a bit from the other child to avoid merging
-                    std::tie(rightChild, hasStolen, stolenBit) = rightChild->deleteRecursive(1, length - w * w / 2, 0, false);
+                    std::tie(rightChild, hasStolen, stolenBit) = rightChild->deleteRecursive(0, length - num, 0/*bvOnes - ones - (deletedBit ? 1 : 0)*/, false);
                     if (!hasStolen) {
                         //merge the leaves
-                        Node* newLeaf = rightChild->insertBitVector(1, length - w * w / 2, leftChild->bitVector, w * w / 2 - 1, ones);
+                        rightChild->insertBitVector(0, length - num, leftChild->bitVector, num - 1, ones);
                         //TODO check the following
-                        delete leftChild;
-                        delete rightChild;
-                        delete this;//TODO check!
-                        return std::make_tuple(newLeaf, true, deletedBit);
+                        //delete leftChild;
+                        //delete rightChild;//should be illegal
+                        //delete this;//TODO check!
+                        return std::make_tuple(rightChild, true, deletedBit);
                     }
                     //insert the stolen bit at the correct index in the left child
-                    leftChild->insertBit(w * w / 2, stolenBit, w * w / 2 - 1);
-                    if (stolenBit) ones--;
+                    leftChild->insertBit(num - 1, stolenBit, num - 1);
+                    if (stolenBit) ones++;
                 } else {
                     num--;
                 }
@@ -490,18 +490,18 @@ namespace BalancedParentheses {
                 if (length - num == w * w / 2) {
                     //underflow, rightChild must be a leaf
                     //try to steal bit from the other child
-                    std::tie(leftChild, hasStolen, stolenBit) = leftChild->deleteRecursive(num, num, 0, false);
+                    std::tie(leftChild, hasStolen, stolenBit) = leftChild->deleteRecursive(num - 1, num, ones, false);
                     if (!hasStolen) {
                         //merge the leaves
-                        Node* newLeaf = leftChild->insertBitVector(num + 1, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
+                        leftChild->insertBitVector(num, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
                         //TODO check the following
-                        delete leftChild;
-                        delete rightChild;
-                        delete this;//TODO check!
-                        return std::make_tuple(newLeaf, true, deletedBit);
+                        //delete leftChild;
+                        //delete rightChild;
+                        //delete this;//TODO check!
+                        return std::make_tuple(leftChild, true, deletedBit);
                     }
                     //re-insert the stolen bit at the right position
-                    rightChild->insertBit(1, stolenBit, w * w / 2 - 1);
+                    rightChild->insertBit(0, stolenBit, w * w / 2 - 1);
                     //a bit was moved from left to right, adjust num and ones accordingly
                     num--;
                     if (stolenBit) ones--;
@@ -534,24 +534,24 @@ namespace BalancedParentheses {
          * @param bvOnes number of 1 bits in the new bits
          * @return the new root for the subtree
          */
-        inline Node* insertBitVector(int index, int length, InnerBitVector* bv, int bvSize, int bvOnes) noexcept {
+        inline void insertBitVector(int index, int length, InnerBitVector* bv, int bvSize, int bvOnes) noexcept {
             Node* current = this;
             while (!current->isLeaf()) {
                 if (index < current->num) {
+                    //go left to insert
                     current->num += bvSize;
                     current->ones += bvOnes;
                     length = current->num;
                     current = current->leftChild;
                 } else {
+                    //go right
+                    index -= num;
                     length -= current->num;
                     current = current->rightChild;
                 }
             }
             //actually insert the bits
-            //TODO make this nicer
-            //TODO why is this still small enough?
             current->bitVector->insertBitVector(index, bv, bvSize);
-            return current;
         }
 
     public:

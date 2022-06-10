@@ -43,7 +43,7 @@ namespace BalancedParentheses {
         }
 
         inline bool deleteIndex(const size_t index) noexcept {
-            if (index > length) return false;
+            if (index >= length) return false;
             if (length == 0) return false;
             const bool bit = bits[index];
             bits.erase(bits.begin() + index);
