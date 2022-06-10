@@ -87,8 +87,11 @@ namespace BitVector {
         inline int rank(const bool bit, const int index) noexcept {
             int result;
             profiler.startRank();
-            if (bit) result = rankOne(index);
-            result = rankZero(index);
+            if (bit) {
+                result = rankOne(index);
+            } else {
+                result = rankZero(index);
+            }
             profiler.endRank();
             return result;
         }
@@ -103,8 +106,11 @@ namespace BitVector {
         inline int select(const bool bit, const int j) noexcept {
             int result;
             profiler.startSelect();
-            if (bit) result = selectOne(j);
-            result = selectZero(j);
+            if (bit) {
+                result = selectOne(j);
+            } else {
+                result = selectZero(j);
+            }
             profiler.endSelect();
             return result;
         }
@@ -137,6 +143,13 @@ namespace BitVector {
         inline void printTree() const noexcept {
             root->printTree();
             std::cout << std::endl;
+        }
+
+        //for testing
+        inline std::vector<bool> getBitString() const noexcept {
+            std::vector<bool> result(0);
+            root->getBitString(&result);
+            return result;
         }
 
         //the root of the binary search tree for the bit vector

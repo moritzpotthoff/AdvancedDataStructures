@@ -256,14 +256,18 @@ namespace BalancedParentheses {
          * @param index the (exclusive) upper limit
          * @return rank_bit(0..index - 1)
          */
+         /* not needed here
         inline int rank(const bool bit, const int index) noexcept {
             int result;
             profiler.startRank();
-            if (bit) result = rankOne(index);
-            result = rankZero(index);
+            if (bit) {
+                result = rankOne(index);
+            } else {
+                result = rankZero(index);
+            }
             profiler.endRank();
             return result;
-        }
+        }*/
 
         /**
          * An access query, only used for Asserts.
@@ -289,9 +293,10 @@ namespace BalancedParentheses {
             return root->rankOne(index);
         }
 
-        inline int rankZero(const int index) const noexcept {
+        //not needed here
+        /*inline int rankZero(const int index) const noexcept {
             return index - root->rankOne(index);
-        }
+        }*/
 
     public:
         //some helper functions

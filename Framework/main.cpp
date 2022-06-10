@@ -6,10 +6,14 @@
 #define CATCH_CONFIG_RUNNER
 #include "Tests/catch.hpp"
 #include "Tests/TestBP.h"
+#include "Tests/TestBV.h"
 
 #include "Helpers/Timer.h"
 #include "Helpers/BitVectorProfiler.h"
 #include "BitVector/DynamicBitVector.h"
+#include "BitVector/InnerBitVector.h"
+#include "BitVector/Definitions.h"
+#include "BitVector/Node.h"
 #include "BalancedParentheses/DynamicBP.h"
 #include "BalancedParentheses/Node.h"
 #include "BalancedParentheses/InnerBitVector.h"

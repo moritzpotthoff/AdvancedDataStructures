@@ -1,3 +1,5 @@
+#pragma once
+
 #include "catch.hpp"
 
 #include <math.h>
@@ -132,14 +134,7 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
         const int innerNodeStartPos = (innerNodeDegree * 2 + 2) * innerNode + 1;
         //tree.printBitString();
         REQUIRE(tree.child(0, innerNode + 1) == innerNodeStartPos);
-        const int degree = tree.degree(innerNodeStartPos);
-        if (degree != innerNodeDegree) {
-            tree.printBitString();
-            std::cout << std::endl<< std::endl<< std::endl<< std::endl << "Wrong degree " << degree << " for inner node " << innerNode <<
-            " with starting position " << innerNodeStartPos << std::endl;
-            tree.degree(innerNodeStartPos, true);
-        }
-        REQUIRE(degree == innerNodeDegree);
+        REQUIRE(tree.degree(innerNodeStartPos) == innerNodeDegree);
         REQUIRE(tree.subtreeSize(innerNodeStartPos) == innerNodeDegree + 1);
         for (int child = 0; child < innerNodeDegree; child++) {
             const int childStartPos = tree.child(innerNodeStartPos, child + 1);
