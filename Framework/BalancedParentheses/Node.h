@@ -456,6 +456,7 @@ namespace BalancedParentheses {
             bool hasDeleted, deletedBit, hasStolen, stolenBit;
             if (isLeaf()) {
                 std::tie(hasDeleted, deletedBit) = deleteLeaf(index, length, underflow);
+                recomputeExcessesLeaf();
                 return std::make_tuple(this, hasDeleted, deletedBit);
             }
             if (index < num) {
@@ -508,6 +509,7 @@ namespace BalancedParentheses {
                 }
             }
             //rebalance, if necessary.
+            recomputeExcessesInner();
             Node* newRoot = rebalance();
             return std::make_tuple(newRoot, true, deletedBit);
         }
@@ -535,23 +537,23 @@ namespace BalancedParentheses {
          * @return the new root for the subtree
          */
         inline void insertBitVector(int index, int length, InnerBitVector* bv, int bvSize, int bvOnes) noexcept {
-            Node* current = this;
-            while (!current->isLeaf()) {
-                if (index < current->num) {
+            if (!isLeaf()) {
+                if (index < num) {
                     //go left to insert
-                    current->num += bvSize;
-                    current->ones += bvOnes;
-                    length = current->num;
-                    current = current->leftChild;
+                    leftChild->insertBitVector(index, num, bv, bvSize, bvOnes);
+                    num += bvSize;
+                    ones += bvOnes;
+                    recomputeExcessesInner();
                 } else {
                     //go right
-                    index -= num;
-                    length -= current->num;
-                    current = current->rightChild;
+                    rightChild->insertBitVector(index - num, length - num, bv, bvSize, bvOnes);
+                    recomputeExcessesInner();
                 }
+            } else {
+                //actually insert the bits
+                bitVector->insertBitVector(index, bv, bvSize);
+                recomputeExcessesLeaf();
             }
-            //actually insert the bits
-            current->bitVector->insertBitVector(index, bv, bvSize);
         }
 
     public:

@@ -149,7 +149,7 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
     //create complete binary tree
-    const int numberOfLevels = 14;
+    const int numberOfLevels = 10;
     const int numberOfNodes = pow(2, numberOfLevels + 1) - 1;
     std::cout << "Creating full binary tree with " << numberOfNodes << " nodes." << std::endl;
     for (int level = numberOfLevels; level > 0; level--) {
@@ -166,13 +166,27 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
         REQUIRE(tree.subtreeSize(i) == pow(2, numberOfLevels + 1 - i) - 1);
     }
     REQUIRE(tree.degree(numberOfLevels) == 0);
+
+    //delete layer 1 (below root)
+    tree.deleteNode(tree.child(0, 2));
+    tree.deleteNode(tree.child(0, 1));
+    REQUIRE(tree.degree(0) == 4);//now has all nodes from next level
+    REQUIRE(tree.subtreeSize(0) == pow(2, numberOfLevels + 1) - 3);//two nodes missing
+    REQUIRE(tree.subtreeSize(1) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+    REQUIRE(tree.subtreeSize(tree.child(0, 2)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+    REQUIRE(tree.subtreeSize(tree.child(0, 3)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+    REQUIRE(tree.subtreeSize(tree.child(0, 4)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+    REQUIRE(tree.parent(1) == 0);
+    REQUIRE(tree.parent(tree.child(0, 2)) == 0);
+    REQUIRE(tree.parent(tree.child(0, 3)) == 0);
+    REQUIRE(tree.parent(tree.child(0, 4)) == 0);
 }
 
 TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
 
     //create complete binary tree
-    const int numberOfLevels = 100000;
+    const int numberOfLevels = 10000;
     std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;
     for (int level = 0; level < numberOfLevels; level++) {
         tree.insertChild(level, 1, 0);
