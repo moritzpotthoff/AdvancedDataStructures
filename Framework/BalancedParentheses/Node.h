@@ -258,14 +258,13 @@ namespace BalancedParentheses {
         }
 
         inline std::pair<int, int> fwdSearchRecursive(int i, int d, int length) const noexcept {
-            /*if (i == 0 && minExcess > d) {
+            if (i == -1 && minExcess > d) {
                 //excess d does not exist
-                return std::make_pair(totalExcess, length + 1);
+                return std::make_pair(totalExcess, length);
             }
-             */
             if (isLeaf()) {
                 //scan the bit vector of the leaf
-                return bitVector->fwdBlock(i, d);//TODO ensure that i does not need to be changed to be a local index for bitVector
+                return bitVector->fwdBlock(i, d);
             }
             if (i >= num) {
                 //we start in the right child, consider only the right child
@@ -296,10 +295,18 @@ namespace BalancedParentheses {
          *                                  otherwise, foundExcess is the total excess from i to the left and position is -1
          */
         inline std::tuple<int, int> bwdSearchRecursive(const int i, int d, const int length) const noexcept {
+            //TODO does this help?
+            if (d == 0 && bitVector->bits[i] == false) {
+                return std::make_pair(d, i);
+            }
+            if (i == length - 1 && d < -totalExcess + minExcess) {
+                if (d == -totalExcess) return std::make_pair(d, 0);//just so met the desired excess at 0
+                //we search through the entire block, and the desired excess can not exist (see book)
+                return std::make_pair(-totalExcess, -1);
+            }
             if (isLeaf()) {
                 return bitVector->bwdBlock(i, d);
             }
-            //TODO prune if i == length - 1 and d < minExcess?? maybe negative. See book.
             if (i < num) {
                 //search interval is only in left child, search only here
                 return leftChild->bwdSearchRecursive(i, d, num);
