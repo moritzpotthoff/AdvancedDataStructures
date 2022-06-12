@@ -7,7 +7,7 @@
 #include "../BalancedParentheses/DynamicBP.h"
 
 TEST_CASE("Small BP Test Instance", "[bp][small]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
 
     SECTION("Initially empty tree") {
         std::vector<bool> expected = {1, 0};
@@ -94,17 +94,19 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
         REQUIRE(tree.subtreeSize(7) == 2);
         REQUIRE(tree.subtreeSize(8) == 1);
     }
+
+    tree.profiler.print();
 }
 
 TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
 
     SECTION("Initially empty tree") {
         std::vector<bool> expected = {1, 0};
         REQUIRE(tree.getBitString() == expected);
     }
 
-    const int numberOfChildren = 10000;
+    const int numberOfChildren = 100000;
     std::cout << "Creating flat tree with " << numberOfChildren << " nodes in the first level." << std::endl;
     //insert correct number of nodes for this level, getting the correct number of children themselves
     for (int node = 1; node <= numberOfChildren; node++) {
@@ -143,13 +145,15 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
             REQUIRE(tree.subtreeSize(childStartPos) == 1);
         }
     }
+
+    tree.profiler.print();
 }
 
 TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
 
     //create complete binary tree
-    const int numberOfLevels = 10;
+    const int numberOfLevels = 15;
     const int numberOfNodes = pow(2, numberOfLevels + 1) - 1;
     std::cout << "Creating full binary tree with " << numberOfNodes << " nodes." << std::endl;
     for (int level = numberOfLevels; level > 0; level--) {
@@ -180,13 +184,15 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
     REQUIRE(tree.parent(tree.child(0, 2)) == 0);
     REQUIRE(tree.parent(tree.child(0, 3)) == 0);
     REQUIRE(tree.parent(tree.child(0, 4)) == 0);
+
+    tree.profiler.print();
 }
 
 TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
 
     //create complete binary tree
-    const int numberOfLevels = 10000;
+    const int numberOfLevels = 100000;
     std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;
     for (int level = 0; level < numberOfLevels; level++) {
         tree.insertChild(level, 1, 0);
@@ -197,4 +203,5 @@ TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
         REQUIRE(tree.subtreeSize(i) == numberOfLevels + 1 - i);
     }
     REQUIRE(tree.degree(numberOfLevels) == 0);
+    tree.profiler.print();
 }

@@ -47,14 +47,12 @@ namespace BalancedParentheses {
          * @param k the number of previous children of v starting from the previous i-th child that will become children of the new node.
          */
         inline void insertChild(const int v, const int i, const int k) noexcept {
-            profiler.startInsert();
             const int nChildren = children(v);
             AssertMsg(i <= nChildren + 1, "Invalid child index");
             const int openingPosition = ((i <= nChildren) ? child(v, i) : close(v));
             const int closingPosition = ((i + k <= nChildren) ? child(v, i + k) : close(v));
             insertBit(closingPosition, false);
             insertBit(openingPosition, true);
-            profiler.endInsert();
         }
 
         /**
@@ -64,11 +62,9 @@ namespace BalancedParentheses {
          * @param v the index of the node that shall be deleted
          */
         inline void deleteNode(const int v) noexcept {
-            profiler.startDelete();
             AssertMsg(v > 0, "Cannot delete root node!");
             deleteBit(close(v));
             deleteBit(v);
-            profiler.endDelete();
         }
 
         /**
@@ -77,7 +73,7 @@ namespace BalancedParentheses {
          * @param v the starting position of the node.
          * @return the degree.
          */
-        inline int degree(const int v) const noexcept {
+        inline int degree(const int v) noexcept {
             AssertMsg(isOpening(v), "Get degree of closing parenthesis");
             //close(v) - 2 is the start index of the last child of v; each minimum excess in the range from after v until there corresponds to one child.
             const int closePos = close(v);
@@ -92,7 +88,7 @@ namespace BalancedParentheses {
          * @param v the starting position of the node.
          * @return the degree.
          */
-        inline int children(const int v) const noexcept {
+        inline int children(const int v) noexcept {
             return degree(v);
         }
 
@@ -103,7 +99,7 @@ namespace BalancedParentheses {
          * @param t the index of the desired child in the sequence of all children of v, 1-indexed.
          * @return the starting position of the t-th child of v.
          */
-        inline int child(int v, int t) const noexcept {
+        inline int child(int v, int t) noexcept {
             AssertMsg(t <= children(v), "Try to get child that does not exist");
             //the t-th child is preceded by the t-th occurrence of the minimum excess in subtree of v.
             return minSelect(v, close(v) - 2, t) + 1;
@@ -114,7 +110,7 @@ namespace BalancedParentheses {
          * @param v the node
          * @return the index of v's parent
          */
-        inline int parent(int v) const noexcept {
+        inline int parent(int v) noexcept {
             return enclose(v);
         }
 
@@ -124,7 +120,7 @@ namespace BalancedParentheses {
          * @param v the starting position of the subtree root
          * @return the size of the subtree, including v itself.
          */
-        inline int subtreeSize(int v) const noexcept {
+        inline int subtreeSize(int v) noexcept {
             //the subtree spans from v to close(v), i.e., there are close(v) - v + 1 parentheses, every two parentheses in there are one node
             return (close(v) - v + 1) / 2;
         }
@@ -136,7 +132,7 @@ namespace BalancedParentheses {
          * @param i the index of the opening parenthesis
          * @return the closing index
          */
-        inline int close(int i) const noexcept {
+        inline int close(int i) noexcept {
             AssertMsg(isOpening(i), "Searching for a closing bracket of a closing bracket.");
             //the closing bracket is at the first position where the total excess is one less than at i, as the opening bracket at i was closed.
             const int result = fwdSearch(i, -1);
@@ -150,7 +146,7 @@ namespace BalancedParentheses {
          * @param v the left parenthesis position that shall be enclosed
          * @return the left parenthesis position of the next enclosing pair
          */
-        inline int enclose(const int v) const noexcept {
+        inline int enclose(const int v) noexcept {
             AssertMsg(isOpening(v), "Searching for an enclosing bracket of a closing bracket.");
             //the relevant opening bracket is the first bracket to the left that has a difference in excess of -2 (the opening bracket at v, plus one more)
             return bwdSearch(v, -2);//no +1 (as in book) because of 0-indices
@@ -163,8 +159,11 @@ namespace BalancedParentheses {
          * @param d the desired excess starting from i
          * @return the position j.
          */
-        inline int fwdSearch(int i, int d) const noexcept {
-            return root->fwdSearch(i, d, length);
+        inline int fwdSearch(int i, int d) noexcept {
+            profiler.startFwd();
+            const int result = root->fwdSearch(i, d, length);
+            profiler.endFwd();
+            return result;
         }
 
         /**
@@ -174,8 +173,10 @@ namespace BalancedParentheses {
          * @param d the desired excess starting from i
          * @return the position j
          */
-        inline int bwdSearch(int i, int d) const noexcept {
+        inline int bwdSearch(int i, int d) noexcept {
+            profiler.startBwd();
             const int result = root->bwdSearch(i, d, length);
+            profiler.endBwd();
             return result;
         }
 
@@ -186,9 +187,11 @@ namespace BalancedParentheses {
          * @param j the end index
          * @return the minimum excess
          */
-        inline int minExcess(int i, int j) const noexcept {
+        inline int minExcess(int i, int j) noexcept {
             int min;
+            profiler.startMinExcess();
             std::tie(min, std::ignore) = root->getMinExcess(i, j, length);
+            profiler.endMinExcess();
             return min;
         }
 
@@ -200,9 +203,11 @@ namespace BalancedParentheses {
          * @param t the index of the occurrence that shall be found
          * @return the position of the t-th occurrence of the minimum in the sequence of the excesses up to i, i+1, ..., j.
          */
-        inline int minSelect(const int i, const int j, const int t) const noexcept {
+        inline int minSelect(const int i, const int j, const int t) noexcept {
             const int m = minExcess(i, j);
+            profiler.startMinSelect();
             int result = root->minSelect(i, j, t, length, m);
+            profiler.endMinSelect();
             return result;
         }
 
@@ -213,11 +218,14 @@ namespace BalancedParentheses {
          * @param j the end position of the range (inclusive)
          * @return the number of occurrences of the minimum excess
          */
-        inline int minCount(const int i, const int j) const noexcept {
+        inline int minCount(const int i, const int j) noexcept {
             if (j < i) return 0;
             if (j == i) return 1;
             const int m = minExcess(i, j);
-            return root->minCount(i, j, length, m);
+            profiler.startMinCount();
+            const int result = root->minCount(i, j, length, m);
+            profiler.endMinCount();
+            return result;
         }
 
 
@@ -249,27 +257,6 @@ namespace BalancedParentheses {
         }
 
         /**
-         * Computes rank-queries, i.e., the number of occurences of bit
-         * in B[0, index - 1]
-         *
-         * @param bit the bit that is searched, for rank_0 or rank_1 queries
-         * @param index the (exclusive) upper limit
-         * @return rank_bit(0..index - 1)
-         */
-         /* not needed here
-        inline int rank(const bool bit, const int index) noexcept {
-            int result;
-            profiler.startRank();
-            if (bit) {
-                result = rankOne(index);
-            } else {
-                result = rankZero(index);
-            }
-            profiler.endRank();
-            return result;
-        }*/
-
-        /**
          * An access query, only used for Asserts.
          * @param index the index that should be accessed
          * @return the bit at the given index
@@ -292,11 +279,6 @@ namespace BalancedParentheses {
         inline int rankOne(const int index) const noexcept {
             return root->rankOne(index);
         }
-
-        //not needed here
-        /*inline int rankZero(const int index) const noexcept {
-            return index - root->rankOne(index);
-        }*/
 
     public:
         //some helper functions

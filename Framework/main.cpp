@@ -120,7 +120,7 @@ inline static void handleBPQuery(char *argv[]) {
     std::string inputFileName(argv[2]);
     std::ifstream inputFile(inputFileName);
 
-    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
     Helpers::Timer timer;
     size_t time = 0;
 
@@ -150,6 +150,8 @@ inline static void handleBPQuery(char *argv[]) {
     std::cout << "RESULT algo= name=moritz-potthoff"
               << " time=" << time << " microseconds"
               << std::endl;//TODO space consumption
+
+    tree.profiler.print();
 }
 
 int main(int argc, char *argv[]) {
