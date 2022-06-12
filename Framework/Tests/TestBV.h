@@ -93,7 +93,7 @@ TEST_CASE("Large simple BV Test Instance", "[bv][large]") {
 
     std::vector<bool> expected = {};
     REQUIRE(bv.getBitString() == expected);
-    const int numberOfBits = 1000;
+    const int numberOfBits = 1000000;
     const int deleteBits = numberOfBits / 10;
     const int numberOfOnes = numberOfBits / 2;
 

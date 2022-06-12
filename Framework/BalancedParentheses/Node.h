@@ -478,10 +478,8 @@ namespace BalancedParentheses {
                     if (!hasStolen) {
                         //merge the leaves
                         rightChild->insertBitVector(0, length - num, leftChild->bitVector, num - 1, ones);
-                        //TODO check the following
-                        //delete leftChild;
-                        //delete rightChild;//should be illegal
-                        //delete this;//TODO check!
+                        delete leftChild;
+                        //delete rightChild;//TODO merge into this instead of child and also delete the child
                         return std::make_tuple(rightChild, true, deletedBit);
                     }
                     //insert the stolen bit at the correct index in the left child
@@ -502,10 +500,8 @@ namespace BalancedParentheses {
                     if (!hasStolen) {
                         //merge the leaves
                         leftChild->insertBitVector(num, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
-                        //TODO check the following
-                        //delete leftChild;
-                        //delete rightChild;
-                        //delete this;//TODO check!
+                        //delete leftChild;//TODO merge into this instead of child and also delete the child
+                        delete rightChild;
                         return std::make_tuple(leftChild, true, deletedBit);
                     }
                     //re-insert the stolen bit at the right position
