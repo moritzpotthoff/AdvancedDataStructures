@@ -334,12 +334,13 @@ namespace BalancedParentheses {
          * @return (foundExcess, number of occurrences)
          */
         inline std::pair<int, int> minCountRec(const int i, const int j, const int length, const int theMinimum) const noexcept {
+            if (i == 0 && j == length - 1) {
+                //[i,j] is exactly the range covered by this node
+                if (minExcess == theMinimum) return std::make_pair(totalExcess, minTimes);//minimum exists here
+                if (minExcess > theMinimum) return std::make_pair(totalExcess, 0);//minimum does not exist here
+            }
             if (isLeaf()) {
                 return bitVector->minCount(i, j, theMinimum);
-            }
-            if (i == 0 && j == length - 1 && minExcess == theMinimum) {
-                //[i,j] is exactly the range covered by this node
-                return std::make_pair(totalExcess, minTimes);
             }
             if (j < num) {
                 //[i,j] is only in left child, search there
@@ -347,7 +348,6 @@ namespace BalancedParentheses {
             }
             if (i >= num) {
                 //[i,j] is only in the right child, search there
-                //TODO add leftChild->totalExcess to the first pair argument?
                 return rightChild->minCountRec(i - num, j - num, length - num, theMinimum);
             }
             //[i,j] spans over some part of the left child and some part of the right child
