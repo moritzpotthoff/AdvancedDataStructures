@@ -1,6 +1,7 @@
 #pragma once
 
 #include<vector>
+#include <math.h>
 
 #include "Node.h"
 
@@ -29,7 +30,22 @@ namespace BitVector {
             length(0) {
             root = new Node();
         }
-        //TODO constructor with existing bit vector
+
+        /*
+        DynamicBitVector(std::vector<bits> bits) :
+            length(bits.size()) {
+            //TODO constructor with existing bit vector
+            const int blockLength = w;
+            const int numberOfBlocks = length / blockLength + 1;
+            //partition the bits into blocks, build full binary tree for all blocks,
+            root = new Node();
+            int remainingLength = length;
+            const int treeHeight = ceil(log2(numberOfBlocks);
+            for (int level = 1; level <= treeHeight; level++) {
+
+            }
+        }
+        */
 
         /**
          * An access query.

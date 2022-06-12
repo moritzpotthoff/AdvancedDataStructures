@@ -99,6 +99,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
         if constexpr (WriteToFile) outputFile << result << "\n";
         if constexpr (Interactive) std::cout << " BV[" << i << "] = " << result << std::endl;
     }
+
     std::cout << std::endl << std::endl << std::endl;
     std::cout   << "RESULT algo=bv name=moritz_potthoff"
                 << " time=" << (constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime)
