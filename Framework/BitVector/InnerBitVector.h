@@ -47,9 +47,9 @@ namespace BitVector {
          * @param newBits
          * @return number of ones in assigned bits
          */
-        inline int insertBits(int blockIndex, int blockSize, std::vector<bool>& newBits) noexcept {
+        inline int insertBits(int blockIndex, size_t blockSize, std::vector<bool>& newBits) noexcept {
             AssertMsg(bits.size() == 0, "Tried to initialize-insert bits into non-empty leaf.");
-            const int bitStart = blockIndex * blockSize;
+            const size_t bitStart = blockIndex * blockSize;
             size_t blockLength = blockSize;
             if (newBits.size() - (bitStart + blockLength) < blockSize) {
                 //this is the last block, give it all the bits.

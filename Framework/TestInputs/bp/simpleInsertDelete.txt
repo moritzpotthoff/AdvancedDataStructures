@@ -4,6 +4,6 @@ insertchild 0 3 0
 insertchild 0 2 1
 insertchild 0 1 0
 insertchild 0 1 2 
-insertchild 1 2 1 
+insertchild 1 2 1   
 deletenode 13
 deletenode 2
