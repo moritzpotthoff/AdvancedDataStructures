@@ -40,8 +40,6 @@ namespace BitVector {
             root = new Node();
             root->buildBinaryTree(0, numberOfBlocks, blockLength, bits);
             length = bits.size();
-            std::cout << "VALIDATING CREATED BV:" << std::endl;
-            validate();
         }
 
         /**

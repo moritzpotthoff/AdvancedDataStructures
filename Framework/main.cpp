@@ -20,10 +20,10 @@
 #include "BalancedParentheses/Definitions.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
-static const bool Interactive = true;
+static const bool Interactive = false;
 //Debug flag. Generates extensive debug info.
 static const bool Debug = Interactive && false;
-static const bool WriteToFile = true;
+static const bool WriteToFile = false;
 
 inline static void handleBitVectorQuery(char *argv[]) {
     if constexpr (Interactive) std::cout << "Requested bit vector query." << std::endl;
@@ -38,18 +38,20 @@ inline static void handleBitVectorQuery(char *argv[]) {
     std::string outputFileName(argv[3]);
     std::ofstream outputFile(outputFileName);
 
-    BitVector::DynamicBitVector bv = BitVector::DynamicBitVector<BitVector::BasicProfiler>();
 
     //Read the bit vector from the file.
     size_t initialLength;
     inputFile >> initialLength;
+    std::vector<bool> bits;
+    bits.reserve(initialLength);
     for (size_t i = 0; i < initialLength; i++) {
         bool bit;
         inputFile >> bit;
-        timer.restart();
-        bv.insertBit(i, bit);//TODO use only one operation to insert all initial bits
-        constructionTime += timer.getMicroseconds();
+        bits.emplace_back(bit);
     }
+    timer.restart();
+    BitVector::DynamicBitVector<BitVector::BasicProfiler> bv(bits);
+    constructionTime += timer.getMicroseconds();
     if constexpr (Interactive) std::cout << "Found bit vector of length " << initialLength << "." << std::endl;
 
     //Read and execute all the queries.

@@ -314,6 +314,7 @@ namespace BalancedParentheses {
                 out << degree(current) << "\n";
                 //push the children to the stack, in reverse order to explore children from left to right
                 for (int i = children(current); i >= 1; i--) {
+                    //TODO can we save some function calls here?
                     stack.emplace(child(current, i));
                 }
             }
