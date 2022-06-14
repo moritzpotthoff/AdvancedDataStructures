@@ -188,3 +188,137 @@ TEST_CASE("Large simple BV Test Instance", "[bv][large]") {
         }
     }
 }
+
+TEST_CASE("BV initialized creation test", "[bv][create][simple]") {
+    BitVector::DynamicBitVector<BitVector::NoProfiler> bvNormal;
+
+    const int numberOfBits = 123;
+    std::vector<bool> expected = {};
+    for (int i = 0; i < numberOfBits; i++) {
+        const bool bit = (i % 7 == 0);
+        bvNormal.insertBit(i, bit);
+        expected.push_back(bit);
+    }
+    BitVector::DynamicBitVector<BitVector::NoProfiler> bvCreate(expected);
+    REQUIRE(bvNormal.getBitString() == expected);
+    REQUIRE(bvCreate.getBitString() == expected);
+    std::cout << "Created Tree:" << std::endl;
+    bvCreate.printTree();
+    std::cout << std::endl << std::endl << "Normal Tree:" << std::endl;
+    bvNormal.printTree();
+}
+
+TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][create]") {
+
+    std::vector<bool> expected = {};
+    const int numberOfBits = 100000;
+    const int deleteBits = numberOfBits / 10;
+    const int numberOfOnes = numberOfBits / 2;
+
+    SECTION("Works with only 0") {
+        for (int i = 0; i < deleteBits; i++) {
+            expected.push_back(i % 7 == 3);
+        }
+        for (int i = 0; i < numberOfBits; i++) {
+            expected.push_back(false);
+        }
+        BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+
+        for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
+            bv.flipBit(i);
+            bv.validate();
+        }
+        for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
+            bv.flipBit(i);
+            bv.validate();
+        }
+
+        for (int i = deleteBits - 1; i >= 0; i--) {
+            bv.deleteBit(i);
+            expected.erase(expected.begin() + i);
+            bv.validate();
+        }
+
+        REQUIRE(bv.getBitString() == expected);
+
+        for (int i = 0; i < numberOfBits; i++) {
+            REQUIRE(bv.access(i) == false);
+            REQUIRE(bv.rank(true, i) == 0);
+            REQUIRE(bv.rank(false, i) == i);
+            REQUIRE(bv.select(false, i + 1) == i);
+        }
+    }
+
+    SECTION("Works with only 1") {
+        for (int i = 0; i < deleteBits; i++) {
+            expected.push_back(i % 7 == 3);
+        }
+        for (int i = 0; i < numberOfBits; i++) {
+            expected.push_back(true);
+        }
+        BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+
+
+        for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
+            bv.flipBit(i);
+            bv.validate();
+        }
+        for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
+            bv.flipBit(i);
+            bv.validate();
+        }
+
+        for (int i = deleteBits - 1; i >= 0; i--) {
+            bv.deleteBit(i);
+            expected.erase(expected.begin() + i);
+            bv.validate();
+        }
+
+        REQUIRE(bv.getBitString() == expected);
+
+        for (int i = 0; i < numberOfBits; i++) {
+            REQUIRE(bv.access(i) == true);
+            REQUIRE(bv.rank(true, i) == i);
+            REQUIRE(bv.rank(false, i) == 0);
+            REQUIRE(bv.select(true, i + 1) == i);
+        }
+    }
+
+    SECTION("Works with 01") {
+        for (int i = 0; i < deleteBits; i++) {
+            expected.push_back(i % 7 == 3);
+        }
+        for (int i = 0; i < numberOfBits; i++) {
+            expected.push_back(i % 2 == 0);
+        }
+        BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+
+        for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
+            bv.flipBit(i);
+            bv.validate();
+        }
+        for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
+            bv.flipBit(i);
+            bv.validate();
+        }
+
+        for (int i = deleteBits - 1; i >= 0; i--) {
+            bv.deleteBit(i);
+            expected.erase(expected.begin() + i);
+            bv.validate();
+        }
+
+        REQUIRE(bv.getBitString() == expected);
+
+        for (int i = 0; i < numberOfBits; i++) {
+            bool bit = i % 2 == 0;
+            REQUIRE(bv.access(i) == bit);
+            REQUIRE(bv.rank(true, i) == (i + 1) / 2);
+            REQUIRE(bv.rank(false, i) == i / 2);
+        }
+        for (int i = 1; i <= numberOfOnes; i++) {
+            REQUIRE(bv.select(true, i) == 2 * (i - 1));
+            REQUIRE(bv.select(false, i) == 2 * (i - 1) + 1);
+        }
+    }
+}

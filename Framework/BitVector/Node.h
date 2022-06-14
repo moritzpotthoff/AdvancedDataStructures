@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <bit>
 #include <tuple>
+#include <math.h>
 
 #include "Definitions.h"
 #include "InnerBitVector.h"
@@ -35,6 +36,46 @@ namespace BitVector {
             ones(0),
             num(0) {
             bitVector = new InnerBitVector();//TODO avoid this
+        }
+
+        /**
+         * Creates a balanced binary tree with the blocks in [blockStart, blockEnd) as leaves and
+         * assigns each block the relevant portion of size blockSize of bits from bits.
+         *
+         * @param blockStart
+         * @param blockEnd
+         * @param blockSize
+         * @param bits
+         * @return ones the number of ones in this block
+         */
+        inline int buildBinaryTree(int blockStart, int blockEnd, int blockSize, std::vector<bool>& bits) noexcept {
+            if (blockEnd - blockStart == 1) {
+                //this is a leaf.
+                return bitVector->insertBits(blockStart, blockSize, bits);
+            }
+            const int numberOfLeaves = blockEnd - blockStart;
+            const int subtreeHeight = ceil(log2(numberOfLeaves));
+            const int fullBinaryLeaves = pow(2, subtreeHeight);
+            int split;
+            if (numberOfLeaves == fullBinaryLeaves) {
+                //full binary tree
+                split = ceil((double)blockStart + (double)numberOfLeaves / 2.0);
+            } else if (ceil(log2(numberOfLeaves - fullBinaryLeaves / 2)) >= subtreeHeight - 2) {
+                //if the left tree is a full binary tree, there are enough leaves left so that the right tree is balanced
+                split = blockStart + pow(2, subtreeHeight - 1);
+            } else {
+                //there are not enough leaves left to have a full left tree. Give the right tree as much as is needed for balance and keep the rest left.
+                const int leavesRight = fullBinaryLeaves / 2 / 2;
+                const int leavesLeft = numberOfLeaves - leavesRight;
+                split = blockStart + leavesLeft;
+            }
+            leftChild = new Node();
+            rightChild = new Node();
+            ones = leftChild->buildBinaryTree(blockStart, split, blockSize, bits);
+            const int onesRight = rightChild->buildBinaryTree(split, blockEnd, blockSize, bits);
+            num = std::min((split - blockStart) * blockSize, (int)bits.size());
+            nodeHeight = subtreeHeight;
+            return ones + onesRight;
         }
 
         /**
@@ -306,7 +347,10 @@ namespace BitVector {
                     if (!hasStolen) {
                         //merge the leaves
                         rightChild->insertBitVector(0, length - num, leftChild->bitVector, num - 1, ones);
+                        delete leftChild->bitVector;
+                        leftChild->bitVector = NULL;
                         delete leftChild;
+                        leftChild = NULL;
                         //delete rightChild;//TODO merge into this instead of child and also delete the child
                         return std::make_tuple(rightChild, true, deletedBit);
                     }
@@ -324,12 +368,15 @@ namespace BitVector {
                 if (length - num == w * w / 2) {
                     //underflow, rightChild must be a leaf
                     //try to steal bit from the other child
-                    std::tie(leftChild, hasStolen, stolenBit) = leftChild->deleteRecursive(num - 1, num, ones, false);
+                    std::tie(leftChild, hasStolen, stolenBit) = leftChild->deleteRecursive(num - 1, num, 0 /*ones*/, false);
                     if (!hasStolen) {
                         //merge the leaves
                         leftChild->insertBitVector(num, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
                         //delete leftChild;//TODO merge into this instead of child and also delete the child
+                        delete rightChild->bitVector;
+                        rightChild->bitVector = NULL;
                         delete rightChild;
+                        rightChild = NULL;
                         return std::make_tuple(leftChild, true, deletedBit);
                     }
                     //re-insert the stolen bit at the right position
@@ -366,6 +413,7 @@ namespace BitVector {
          * @param bvOnes number of 1 bits in the new bits
          */
         inline void insertBitVector(int index, int length, InnerBitVector* bv, int bvSize, int bvOnes) noexcept {
+            AssertMsg(bvSize == (int)bv->bits.size(), "Wrong size in insert bit vector.");
             Node* current = this;
             while (!current->isLeaf()) {
                 if (index < current->num) {
@@ -434,6 +482,26 @@ namespace BitVector {
                     rightChild->getBitString(result);
                 }
             }
+        }
+
+        /**
+         *
+         * @return (total num in subtree, total ones in subtree, height)
+         */
+        inline std::tuple<int, int, int> validate() {
+            if (isLeaf()) {
+                AssertMsg(bitVector->length == bitVector->bits.size(), "BitVector length is false");
+                AssertMsg(bitVector->length >= w * w / 2, "Bit Vector underflow");
+                AssertMsg(bitVector->length <= 2 * w * w, "Bit Vector overflow");
+                return std::make_tuple(bitVector->bits.size(), bitVector->popcount(), 0);
+            }
+            int leftNum, leftOnes, leftHeight;
+            std::tie(leftNum, leftOnes, leftHeight) = leftChild->validate();
+            AssertMsg(num == leftNum, "num is false");
+            AssertMsg(ones == leftOnes, "ones is false");
+            int rightNum, rightOnes, rightHeight;
+            std::tie(rightNum, rightOnes, rightHeight) = rightChild->validate();
+            return std::make_tuple(leftNum + rightNum, leftOnes + rightOnes, std::max(leftHeight, rightHeight) + 1);
         }
 
         //TODO use union/variant

@@ -38,7 +38,23 @@ namespace BitVector {
         inline void insertBitVector(const int index, InnerBitVector* other, int otherSize) noexcept {
             bits.insert(bits.begin() + index, other->bits.begin(), other->bits.end());
             length += otherSize;
-            //TODO check if this needs index - 1.
+        }
+
+        /**
+         *
+         * @param blockIndex
+         * @param blockSize
+         * @param newBits
+         * @return number of ones in assigned bits
+         */
+        inline int insertBits(int blockIndex, int blockSize, std::vector<bool>& newBits) noexcept {
+            AssertMsg(bits.size() == 0, "Tried to initialize-insert bits into non-empty leaf.");
+            //std::cout << "Inserting block " << blockIndex << std::endl;
+            const int bitStart = blockIndex * blockSize;
+            const int blockLength = std::min(blockSize, (int)(newBits.size() - bitStart));
+            this->bits.assign(newBits.begin() + bitStart, newBits.begin() + bitStart + blockLength);
+            length = bits.size();
+            return popcount();
         }
 
         inline bool deleteIndex(const size_t index) noexcept {

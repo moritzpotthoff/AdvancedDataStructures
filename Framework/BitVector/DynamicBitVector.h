@@ -31,21 +31,18 @@ namespace BitVector {
             root = new Node();
         }
 
-        /*
-        DynamicBitVector(std::vector<bits> bits) :
+        DynamicBitVector(std::vector<bool>& bits) :
             length(bits.size()) {
             //TODO constructor with existing bit vector
-            const int blockLength = w;
-            const int numberOfBlocks = length / blockLength + 1;
+            const int blockLength = w * w;
+            const int numberOfBlocks = ceil(length / (double)blockLength);
             //partition the bits into blocks, build full binary tree for all blocks,
             root = new Node();
-            int remainingLength = length;
-            const int treeHeight = ceil(log2(numberOfBlocks);
-            for (int level = 1; level <= treeHeight; level++) {
-
-            }
+            root->buildBinaryTree(0, numberOfBlocks, blockLength, bits);
+            length = bits.size();
+            std::cout << "VALIDATING CREATED BV:" << std::endl;
+            validate();
         }
-        */
 
         /**
          * An access query.
@@ -166,6 +163,12 @@ namespace BitVector {
             std::vector<bool> result(0);
             root->getBitString(&result);
             return result;
+        }
+
+        inline void validate() {
+            int num, ones, height;
+            std::tie(num, ones, height) = root->validate();
+            AssertMsg(num == length, "Total tree has wrong length");
         }
 
         //the root of the binary search tree for the bit vector
