@@ -150,6 +150,11 @@ namespace BitVector {
             std::cout << "; length = " << length << std::endl;
         }
 
+        inline void free() noexcept {
+            std::vector<bool>().swap(bits);
+            delete this;
+        }
+
         std::vector<bool> bits;
         size_t length;
     };

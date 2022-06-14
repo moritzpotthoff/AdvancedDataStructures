@@ -226,17 +226,17 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
-            bv.validate();
+            //bv.validate();
         }
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
-            bv.validate();
+            //bv.validate();
         }
 
         for (int i = deleteBits - 1; i >= 0; i--) {
             bv.deleteBit(i);
             expected.erase(expected.begin() + i);
-            bv.validate();
+            //bv.validate();
         }
 
         REQUIRE(bv.getBitString() == expected);
@@ -261,17 +261,17 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
-            bv.validate();
+            //bv.validate();
         }
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
-            bv.validate();
+            //bv.validate();
         }
 
         for (int i = deleteBits - 1; i >= 0; i--) {
             bv.deleteBit(i);
             expected.erase(expected.begin() + i);
-            bv.validate();
+            //bv.validate();
         }
 
         REQUIRE(bv.getBitString() == expected);
@@ -295,17 +295,17 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
-            bv.validate();
+            //bv.validate();
         }
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
-            bv.validate();
+            //bv.validate();
         }
 
         for (int i = deleteBits - 1; i >= 0; i--) {
             bv.deleteBit(i);
             expected.erase(expected.begin() + i);
-            bv.validate();
+            //bv.validate();
         }
 
         REQUIRE(bv.getBitString() == expected);

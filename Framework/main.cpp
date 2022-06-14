@@ -120,6 +120,9 @@ inline static void handleBPQuery(char *argv[]) {
 
     std::string inputFileName(argv[2]);
     std::ifstream inputFile(inputFileName);
+    //Output
+    std::string outputFileName(argv[3]);
+    std::ofstream outputFile(outputFileName);
 
     BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
     Helpers::Timer timer;
@@ -139,6 +142,27 @@ inline static void handleBPQuery(char *argv[]) {
             timer.restart();
             tree.deleteNode(v);
             time += timer.getMicroseconds();
+        } else if (queryType.compare("child") == 0) {
+            inputFile >> v >> i;
+            timer.restart();
+            const int result = tree.child(v, i);
+            time += timer.getMicroseconds();
+            if constexpr (WriteToFile) outputFile << result << "\n";
+            if constexpr (Interactive) std::cout << "child(" << v << ", " << i << ") = " << result << std::endl;
+        } else if (queryType.compare("subtree_size") == 0) {
+            inputFile >> v;
+            timer.restart();
+            const int result = tree.subtreeSize(v);
+            time += timer.getMicroseconds();
+            if constexpr (WriteToFile) outputFile << result << "\n";
+            if constexpr (Interactive) std::cout << "subtreeSize(" << v << ") = " << result << std::endl;
+        } else if (queryType.compare("parent") == 0) {
+            inputFile >> v;
+            timer.restart();
+            const int result = tree.parent(v);
+            time += timer.getMicroseconds();
+            if constexpr (WriteToFile) outputFile << result << "\n";
+            if constexpr (Interactive) std::cout << "parent(" << v << ") = " << result << std::endl;
         }
     }
 
@@ -146,7 +170,7 @@ inline static void handleBPQuery(char *argv[]) {
     tree.printTree();
     tree.printBitString();
 
-    //TODO print the degrees of nodes from the resulting tree in preorder dfs order to the output file
+    if constexpr (WriteToFile) tree.printDegreesToFile(outputFile);
 
     std::cout << "RESULT algo= name=moritz-potthoff"
               << " time=" << time << " microseconds"

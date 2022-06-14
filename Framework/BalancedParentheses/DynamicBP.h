@@ -1,6 +1,7 @@
 #pragma once
 
 #include<vector>
+#include<stack>
 
 #include "Node.h"
 #include "../Helpers/BpProfiler.h"
@@ -297,6 +298,25 @@ namespace BalancedParentheses {
             std::vector<bool> result(0);
             root->getBitString(&result);
             return result;
+        }
+
+        /**
+         * Prints the degree of each node in preorder dfs order to the output file.
+         * @param out
+         */
+        inline void printDegreesToFile(std::ofstream& out) const noexcept {
+            std::stack<int> stack;
+            stack.emplace(0);
+            while (!stack.empty()) {
+                const int current = stack.top();
+                stack.pop();
+                //print the degree
+                out << degree(current) << "\n";
+                //push the children to the stack
+                for (int i = 1; i <= children(current); i++) {
+                    stack.emplace(child(current, i));
+                }
+            }
         }
 
         //the root of the binary search tree for the bit vector

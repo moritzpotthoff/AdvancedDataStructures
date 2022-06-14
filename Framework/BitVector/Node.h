@@ -347,9 +347,7 @@ namespace BitVector {
                     if (!hasStolen) {
                         //merge the leaves
                         rightChild->insertBitVector(0, length - num, leftChild->bitVector, num - 1, ones);
-                        delete leftChild->bitVector;
-                        leftChild->bitVector = NULL;
-                        delete leftChild;
+                        leftChild->free();
                         leftChild = NULL;
                         //delete rightChild;//TODO merge into this instead of child and also delete the child
                         return std::make_tuple(rightChild, true, deletedBit);
@@ -373,9 +371,7 @@ namespace BitVector {
                         //merge the leaves
                         leftChild->insertBitVector(num, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
                         //delete leftChild;//TODO merge into this instead of child and also delete the child
-                        delete rightChild->bitVector;
-                        rightChild->bitVector = NULL;
-                        delete rightChild;
+                        rightChild->free();
                         rightChild = NULL;
                         return std::make_tuple(leftChild, true, deletedBit);
                     }
@@ -433,6 +429,11 @@ namespace BitVector {
             //TODO make this nicer
             //TODO why is this still small enough?
             current->bitVector->insertBitVector(index, bv, bvSize);
+        }
+
+        inline void free() noexcept {
+            bitVector->free();
+            delete this;
         }
 
     public:

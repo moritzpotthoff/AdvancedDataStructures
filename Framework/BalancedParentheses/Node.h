@@ -478,7 +478,7 @@ namespace BalancedParentheses {
                     if (!hasStolen) {
                         //merge the leaves
                         rightChild->insertBitVector(0, length - num, leftChild->bitVector, num - 1, ones);
-                        delete leftChild;
+                        leftChild->free();
                         leftChild = NULL;
                         //delete rightChild;//TODO merge into this instead of child and also delete the child
                         return std::make_tuple(rightChild, true, deletedBit);
@@ -502,7 +502,7 @@ namespace BalancedParentheses {
                         //merge the leaves
                         leftChild->insertBitVector(num, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
                         //delete leftChild;//TODO merge into this instead of child and also delete the child
-                        delete rightChild;
+                        rightChild->free();
                         rightChild = NULL;
                         return std::make_tuple(leftChild, true, deletedBit);
                     }
@@ -559,6 +559,11 @@ namespace BalancedParentheses {
                 bitVector->insertBitVector(index, bv, bvSize);
                 recomputeExcessesLeaf();
             }
+        }
+
+        inline void free() noexcept {
+            bitVector->free();
+            delete this;
         }
 
     public:

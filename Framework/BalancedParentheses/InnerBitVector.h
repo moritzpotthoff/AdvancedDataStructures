@@ -231,6 +231,11 @@ namespace BalancedParentheses {
             return std::make_pair(excess, count);
         }
 
+        inline void free() noexcept {
+            std::vector<bool>().swap(bits);
+            delete this;
+        }
+
     private:
 
         inline void enlarge() noexcept {
