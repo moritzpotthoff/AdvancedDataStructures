@@ -49,9 +49,12 @@ namespace BitVector {
          */
         inline int insertBits(int blockIndex, int blockSize, std::vector<bool>& newBits) noexcept {
             AssertMsg(bits.size() == 0, "Tried to initialize-insert bits into non-empty leaf.");
-            //std::cout << "Inserting block " << blockIndex << std::endl;
             const int bitStart = blockIndex * blockSize;
-            const int blockLength = std::min(blockSize, (int)(newBits.size() - bitStart));
+            size_t blockLength = blockSize;
+            if (newBits.size() - (bitStart + blockLength) < blockSize) {
+                //this is the last block, give it all the bits.
+                blockLength = newBits.size() - bitStart;
+            }
             this->bits.assign(newBits.begin() + bitStart, newBits.begin() + bitStart + blockLength);
             length = bits.size();
             return popcount();

@@ -35,7 +35,7 @@ namespace BitVector {
             length(bits.size()) {
             //TODO constructor with existing bit vector
             const int blockLength = w * w;
-            const int numberOfBlocks = ceil(length / (double)blockLength);
+            const int numberOfBlocks = length / blockLength;//the last block has between w^2 and 2 * w^2 - 1 bits to ensure correct sizes
             //partition the bits into blocks, build full binary tree for all blocks,
             root = new Node();
             root->buildBinaryTree(0, numberOfBlocks, blockLength, bits);

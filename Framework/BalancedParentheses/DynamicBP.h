@@ -304,7 +304,7 @@ namespace BalancedParentheses {
          * Prints the degree of each node in preorder dfs order to the output file.
          * @param out
          */
-        inline void printDegreesToFile(std::ofstream& out) const noexcept {
+        inline void printDegreesToFile(std::ofstream& out) noexcept {
             std::stack<int> stack;
             stack.emplace(0);
             while (!stack.empty()) {

@@ -23,7 +23,7 @@
 static const bool Interactive = true;
 //Debug flag. Generates extensive debug info.
 static const bool Debug = Interactive && false;
-static const bool WriteToFile = false;
+static const bool WriteToFile = true;
 
 inline static void handleBitVectorQuery(char *argv[]) {
     if constexpr (Interactive) std::cout << "Requested bit vector query." << std::endl;
