@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cassert>
+#include <climits>
 
 //for testing
 #define CATCH_CONFIG_RUNNER
@@ -111,8 +112,9 @@ inline static void handleBitVectorQuery(char *argv[]) {
                 << " flipTime=" << flipTime
                 << " rankTime=" << rankTime
                 << " selectTime=" << selectTime
-                << " space=" << "0"//TODO
+                << " space=" << bv.getSize()
                 << std::endl;
+    std::cout << "Length is " << bv.length << std::endl;
 
     bv.profiler.print();
 }
@@ -176,8 +178,10 @@ inline static void handleBPQuery(char *argv[]) {
 
     std::cout << "RESULT algo= name=moritz-potthoff"
               << " time=" << time << " microseconds"
-              << std::endl;//TODO space consumption
+              << " space=" << tree.getSize() << std::endl;
 
+
+    std::cout << "Length is " << tree.length << std::endl;
     tree.profiler.print();
 }
 

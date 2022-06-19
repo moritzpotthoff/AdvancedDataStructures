@@ -169,6 +169,15 @@ namespace BitVector {
             AssertMsg(num == length, "Total tree has wrong length");
         }
 
+        /**
+         * Returns the size in bits
+         * @return
+         */
+        inline size_t getSize() const noexcept {
+            //length + rest
+            return CHAR_BIT * sizeof(length) + root->getSize();
+        }
+
         //the root of the binary search tree for the bit vector
         Node* root;
         int length;

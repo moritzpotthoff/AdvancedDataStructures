@@ -158,6 +158,11 @@ namespace BitVector {
             delete this;
         }
 
+        inline size_t getSize() const noexcept {
+            //TODO length is not actually needed for this implementation. Either get rid of it or change implementation.
+            return CHAR_BIT * (sizeof(length) + sizeof(bits)) + bits.size();
+        }
+
         std::vector<bool> bits;
         size_t length;
     };

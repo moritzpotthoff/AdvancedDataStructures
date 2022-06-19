@@ -505,6 +505,19 @@ namespace BitVector {
             return std::make_tuple(leftNum + rightNum, leftOnes + rightOnes, std::max(leftHeight, rightHeight) + 1);
         }
 
+        inline size_t getSize() const noexcept {
+            const size_t baseSize = CHAR_BIT * (sizeof(leftChild)
+                                                + sizeof(rightChild)
+                                                + sizeof(bitVector)
+                                                + sizeof(nodeHeight)
+                                                + sizeof(ones)
+                                                + sizeof(num));
+            if (isLeaf()) {
+                return baseSize + bitVector->getSize() - CHAR_BIT * (sizeof(leftChild) + sizeof(rightChild));
+            }
+            return baseSize + leftChild->getSize() + rightChild->getSize() - CHAR_BIT * sizeof(bitVector);
+        }
+
         //TODO use union/variant
         Node* leftChild;
         Node* rightChild;

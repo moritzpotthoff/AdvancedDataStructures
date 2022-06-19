@@ -636,6 +636,22 @@ namespace BalancedParentheses {
             }
         }
 
+        inline size_t getSize() const noexcept {
+            const size_t baseSize = CHAR_BIT * (sizeof(leftChild)
+                                    + sizeof(rightChild)
+                                    + sizeof(bitVector)
+                                    + sizeof(nodeHeight)
+                                    + sizeof(ones)
+                                    + sizeof(num)
+                                    + sizeof(totalExcess)
+                                    + sizeof(minExcess)
+                                    + sizeof(minTimes));
+            if (isLeaf()) {
+                return baseSize + bitVector->getSize();
+            }
+            return baseSize + leftChild->getSize() + rightChild->getSize();
+        }
+
         //TODO use union/variant
         Node* leftChild;
         Node* rightChild;

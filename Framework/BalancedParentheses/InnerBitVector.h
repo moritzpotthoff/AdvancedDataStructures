@@ -255,6 +255,10 @@ namespace BalancedParentheses {
             std::cout << "; length = " << length << std::endl;
         }
 
+        inline size_t getSize() const noexcept {
+            return CHAR_BIT * (sizeof(length) + sizeof(bits)) + bits.size();
+        }
+
         std::vector<bool> bits;
         size_t length;
     };
