@@ -17,8 +17,7 @@ namespace BalancedParentheses {
      *      Cambridge University Press, 2016.
      *
      * Opposed to the source, we use 0-based indices B[0..length - 1].
-     * Opposed to the lecture, we use rank queries with inclusive upper limits,
-     * which yield excess queries that consider all entries up to and *including* the upper limit.
+     * Opposed to the lecture, we use excess queries that consider all entries up to and *including* the upper limit.
      *
      * @tparam PROFILER type of profiler that can be used for tuning.
      *          NoProfiler can be used to avoid overheads,
@@ -124,6 +123,15 @@ namespace BalancedParentheses {
         inline int subtreeSize(int v) noexcept {
             //the subtree spans from v to close(v), i.e., there are close(v) - v + 1 parentheses, every two parentheses in there are one node
             return (close(v) - v + 1) / 2;
+        }
+
+        /**
+         * Returns the index of the opening parenthesis for the node with the given number in an in order numbering of all nodes.
+         * @param preorderNumber
+         * @return
+         */
+        inline int getIndex(int preorderNumber) const noexcept {
+            return root->selectOne(preorderNumber);
         }
 
     private:

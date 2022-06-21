@@ -24,7 +24,7 @@
 static const bool Interactive = false;
 //Debug flag. Generates extensive debug info.
 static const bool Debug = Interactive && false;
-static const bool WriteToFile = false;
+static const bool WriteToFile = true;
 
 inline static void handleBitVectorQuery(char *argv[]) {
     if constexpr (Interactive) std::cout << "Requested bit vector query." << std::endl;
@@ -139,40 +139,40 @@ inline static void handleBPQuery(char *argv[]) {
         if (queryType.compare("insertchild") == 0) {
             inputFile >> v >> i >> k;
             timer.restart();
-            tree.insertChild(v, i, k);
+            tree.insertChild(tree.getIndex(v), i, k);
             time += timer.getMicroseconds();
         } else if (queryType.compare("deletenode") == 0) {
             inputFile >> v;
             timer.restart();
-            tree.deleteNode(v);
+            tree.deleteNode(tree.getIndex(v));
             time += timer.getMicroseconds();
         } else if (queryType.compare("child") == 0) {
             inputFile >> v >> i;
             timer.restart();
-            const int result = tree.child(v, i);
+            const int result = tree.child(tree.getIndex(v), i);
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (Interactive) std::cout << "child(" << v << ", " << i << ") = " << result << std::endl;
         } else if (queryType.compare("subtree_size") == 0) {
             inputFile >> v;
             timer.restart();
-            const int result = tree.subtreeSize(v);
+            const int result = tree.subtreeSize(tree.getIndex(v));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (Interactive) std::cout << "subtreeSize(" << v << ") = " << result << std::endl;
         } else if (queryType.compare("parent") == 0) {
             inputFile >> v;
             timer.restart();
-            const int result = tree.parent(v);
+            const int result = tree.parent(tree.getIndex(v));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (Interactive) std::cout << "parent(" << v << ") = " << result << std::endl;
         }
     }
 
-    std::cout << "Resulting tree:" << std::endl;
-    tree.printTree();
-    tree.printBitString();
+    //std::cout << "Resulting tree:" << std::endl;
+    //tree.printTree();
+    //tree.printBitString();
 
     if constexpr (WriteToFile) tree.printDegreesToFile(outputFile);
 

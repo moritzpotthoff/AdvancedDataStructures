@@ -130,6 +130,29 @@ namespace BalancedParentheses {
         }
 
         /**
+         * Select_1 query.
+         * @param j the number of bit 1 that is searched for.
+         * @return the index of the j-th occurence of bit 1.
+         */
+        inline int selectOne(int j) const noexcept {
+            if (j == 0) return 0;//by definition (Navarro)
+            //traverse the tree
+            Node const* current = this;
+            int pos = 0;
+            while (!current->isLeaf()) {
+                if (j <= current->ones) {//here, use <= since we look for the j-th occurence
+                    current = current->leftChild;
+                } else {
+                    j -= current->ones;
+                    pos += current->num;
+                    current = current->rightChild;
+                }
+            }
+            //finish the query in the leaf
+            return pos + current->bitVector->selectOne(j);
+        }
+
+        /**
          * Performs a forward search for the given parameters.
          */
         inline int fwdSearch(int i, int d, int length) const noexcept {
