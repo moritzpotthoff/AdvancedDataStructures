@@ -105,15 +105,15 @@ inline static void handleBitVectorQuery(char *argv[]) {
 
     std::cout << std::endl << std::endl << std::endl;
     std::cout   << "RESULT algo=bv name=moritz_potthoff"
-                << " time=" << (constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime)
-                << " constructionTime=" << constructionTime
-                << " insertTime=" << insertTime
-                << " deleteTime=" << deleteTime
-                << " flipTime=" << flipTime
-                << " rankTime=" << rankTime
-                << " selectTime=" << selectTime
+                << " time=" << (constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime) / 1000
+                << " constructionTime=" << constructionTime / 1000
+                << " insertTime=" << insertTime / 1000
+                << " deleteTime=" << deleteTime / 1000
+                << " flipTime=" << flipTime / 1000
+                << " rankTime=" << rankTime / 1000
+                << " selectTime=" << selectTime / 1000
                 << " space=" << bv.getSize()
-                << std::endl;
+                << " score=" << 0.45 * ((constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime) / 1000) + 0.55 * bv.getSize() << std::endl;
     std::cout << "Length is " << bv.length << std::endl;
 
     bv.profiler.print();
@@ -177,8 +177,9 @@ inline static void handleBPQuery(char *argv[]) {
     if constexpr (WriteToFile) tree.printDegreesToFile(outputFile);
 
     std::cout << "RESULT algo= name=moritz-potthoff"
-              << " time=" << time << " microseconds"
-              << " space=" << tree.getSize() << std::endl;
+              << " time=" << time / 1000
+              << " space=" << tree.getSize()
+              << " score=" << 0.45 * (time / 1000) + 0.55 * tree.getSize() << std::endl;
 
 
     std::cout << "Length is " << tree.length << std::endl;

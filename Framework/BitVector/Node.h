@@ -513,9 +513,9 @@ namespace BitVector {
                                                 + sizeof(ones)
                                                 + sizeof(num));
             if (isLeaf()) {
-                return baseSize + bitVector->getSize() - CHAR_BIT * (sizeof(leftChild) + sizeof(rightChild));
+                return baseSize + bitVector->getSize();
             }
-            return baseSize + leftChild->getSize() + rightChild->getSize() - CHAR_BIT * sizeof(bitVector);
+            return baseSize + leftChild->getSize() + rightChild->getSize();
         }
 
         //TODO use union/variant
