@@ -12,13 +12,15 @@ namespace BitVector {
     /**
      * Node of the AVL-Tree that is used to represent the bit vector.
      */
+    template<typename INNER_BV = InnerBitVector>
     class Node {
+        using InnerBV = INNER_BV;
     public:
         /**
          * Creates a leaf node that contains the given bit vector
          * @param newBitVector the bit vector of the new node
          */
-        Node(InnerBitVector* newBitVector) :
+        Node(InnerBV* newBitVector) :
             leftChild(NULL),
             rightChild(NULL),
             bitVector(newBitVector),
@@ -35,7 +37,7 @@ namespace BitVector {
             nodeHeight(0),
             ones(0),
             num(0) {
-            bitVector = new InnerBitVector();//TODO avoid this
+            bitVector = new InnerBV();//TODO avoid this
         }
 
         /**
@@ -49,7 +51,7 @@ namespace BitVector {
          * @return ones the number of ones in this block
          */
         inline int buildBinaryTree(int blockStart, int blockEnd, int blockSize, std::vector<bool>& bits) noexcept {
-            if (blockEnd - blockStart == 1) {
+            if (blockEnd - blockStart == 1 || blockEnd == 0) {
                 //this is a leaf.
                 return bitVector->insertBits(blockStart, blockSize, bits);
             }
@@ -204,7 +206,7 @@ namespace BitVector {
                 bitVector->insert(index, bit);
                 if (length + 1 == 2 * w * w) {
                     //leaf overflow, split leaf into two halves.
-                    InnerBitVector* rightHalf = new InnerBitVector(bitVector);
+                    InnerBV* rightHalf = new InnerBV(bitVector);
                     //left half of the bits
                     leftChild = new Node(this->bitVector);
                     //right half of the bits. this node becomes the new inner node.
@@ -408,7 +410,7 @@ namespace BitVector {
          * @param bvSize the size of the new bits
          * @param bvOnes number of 1 bits in the new bits
          */
-        inline void insertBitVector(int index, int length, InnerBitVector* bv, int bvSize, int bvOnes) noexcept {
+        inline void insertBitVector(int index, int length, InnerBV* bv, int bvSize, int bvOnes) noexcept {
             AssertMsg(bvSize == (int)bv->bits.size(), "Wrong size in insert bit vector.");
             Node* current = this;
             while (!current->isLeaf()) {
@@ -474,7 +476,7 @@ namespace BitVector {
         //for testing
         inline void getBitString(std::vector<bool>* result) const noexcept {
             if (isLeaf()) {
-                std::copy(bitVector->bits.begin(), bitVector->bits.end(), std::back_inserter(*result));
+                bitVector->writeBitsToVector(result);
             } else {
                 if (leftChild != NULL) {
                     leftChild->getBitString(result);
@@ -494,7 +496,7 @@ namespace BitVector {
                 AssertMsg(bitVector->length == bitVector->bits.size(), "BitVector length is false");
                 AssertMsg(bitVector->length >= w * w / 2, "Bit Vector underflow");
                 AssertMsg(bitVector->length <= 2 * w * w, "Bit Vector overflow");
-                return std::make_tuple(bitVector->bits.size(), bitVector->popcount(), 0);
+                return std::make_tuple(bitVector->length, bitVector->popcount(), 0);
             }
             int leftNum, leftOnes, leftHeight;
             std::tie(leftNum, leftOnes, leftHeight) = leftChild->validate();
@@ -521,7 +523,7 @@ namespace BitVector {
         //TODO use union/variant
         Node* leftChild;
         Node* rightChild;
-        InnerBitVector* bitVector;
+        InnerBV* bitVector;
         size_t nodeHeight;
 
         //internal data

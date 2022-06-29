@@ -153,6 +153,10 @@ namespace BitVector {
             std::cout << "; length = " << length << std::endl;
         }
 
+        inline void writeBitsToVector(std::vector<bool>* out) const noexcept {
+            std::copy(bits.begin(), bits.end(), std::back_inserter(*out));
+        }
+
         inline void free() noexcept {
             std::vector<bool>().swap(bits);
             delete this;
@@ -163,6 +167,7 @@ namespace BitVector {
             return CHAR_BIT * (sizeof(length) + sizeof(bits)) + bits.size();
         }
 
+    public:
         std::vector<bool> bits;
         size_t length;
     };

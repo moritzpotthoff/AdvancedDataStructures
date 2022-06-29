@@ -8,6 +8,7 @@
 #include "Tests/catch.hpp"
 #include "Tests/TestBP.h"
 #include "Tests/TestBV.h"
+#include "Tests/TestIntInner.h"
 
 #include "Helpers/Timer.h"
 #include "Helpers/BitVectorProfiler.h"

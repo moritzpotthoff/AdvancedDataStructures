@@ -20,24 +20,28 @@ namespace BitVector {
      *          NoProfiler can be used to avoid overheads,
      *          BasicProfiler for basic profiling.
      */
-    template<typename PROFILER>
+    template<typename PROFILER, typename INNER_BV = InnerBitVector>
     class DynamicBitVector {
+        using InnerBV = INNER_BV;
     public:
         /**
          * Creates an empty bit vector.
          */
         DynamicBitVector() :
             length(0) {
-            root = new Node();
+            root = new Node<InnerBV>();
         }
 
         DynamicBitVector(std::vector<bool>& bits) :
             length(bits.size()) {
-            //TODO constructor with existing bit vector
-            const int blockLength = w * w;
-            const int numberOfBlocks = length / blockLength;//the last block has between w^2 and 2 * w^2 - 1 bits to ensure correct sizes
+            int blockLength = w * w;
+            int numberOfBlocks = length / blockLength;//the last block has between w^2 and 2 * w^2 - 1 bits to ensure correct sizes
             //partition the bits into blocks, build full binary tree for all blocks,
-            root = new Node();
+            if (numberOfBlocks == 0) {
+                //the only leaf contains all the bits.
+                blockLength = bits.size();
+            }
+            root = new Node<InnerBV>();
             root->buildBinaryTree(0, numberOfBlocks, blockLength, bits);
             length = bits.size();
         }
@@ -179,7 +183,7 @@ namespace BitVector {
         }
 
         //the root of the binary search tree for the bit vector
-        Node* root;
+        Node<InnerBV>* root;
         int length;
 
         //profiler, used only for tuning
