@@ -18,6 +18,8 @@ namespace BalancedParentheses {
      *
      * Opposed to the source, we use 0-based indices B[0..length - 1].
      * Opposed to the lecture, we use excess queries that consider all entries up to and *including* the upper limit.
+     * All queries assume that a parameter v that identifies a node is the *index of the opening parenthesis
+     * corresponding to v*, not the preorder number. If needed, it can be converted using getIndex(preorderNumber).
      *
      * @tparam PROFILER type of profiler that can be used for tuning.
      *          NoProfiler can be used to avoid overheads,

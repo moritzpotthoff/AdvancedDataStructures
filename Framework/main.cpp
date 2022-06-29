@@ -98,9 +98,12 @@ inline static void handleBitVectorQuery(char *argv[]) {
     //Print the bit vector to the output file
     std::cout << "BV result:" << std::endl;
     for (int i = 0; i < bv.length; i++) {
-        const int result = bv.access(i);
-        if constexpr (WriteToFile) outputFile << result << "\n";
-        if constexpr (Interactive) std::cout << " BV[" << i << "] = " << result << std::endl;
+        if constexpr (Interactive) {
+            const int result = bv.access(i);
+            //TODO not necessary.
+            //if constexpr (WriteToFile) outputFile << result << "\n";
+            std::cout << " BV[" << i << "] = " << result << std::endl;
+        }
     }
 
     std::cout << std::endl << std::endl << std::endl;

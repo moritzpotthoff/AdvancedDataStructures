@@ -202,10 +202,6 @@ TEST_CASE("BV initialized creation test", "[bv][create][simple]") {
     BitVector::DynamicBitVector<BitVector::NoProfiler> bvCreate(expected);
     REQUIRE(bvNormal.getBitString() == expected);
     REQUIRE(bvCreate.getBitString() == expected);
-    std::cout << "Created Tree:" << std::endl;
-    bvCreate.printTree();
-    std::cout << std::endl << std::endl << "Normal Tree:" << std::endl;
-    bvNormal.printTree();
 }
 
 TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][create]") {

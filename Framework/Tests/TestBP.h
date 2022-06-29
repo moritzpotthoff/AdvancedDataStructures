@@ -146,6 +146,14 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
         }
     }
 
+    for (int i = 0; i < numberOfChildren + numberOfChildren / innerNodeDegree; i++) {
+        tree.deleteNode(1);
+    }
+    REQUIRE(tree.degree(0) == 0);
+    REQUIRE(tree.subtreeSize(0) == 1);
+    std::vector<bool> expected = {1, 0};
+    REQUIRE(tree.getBitString() == expected);
+
     tree.profiler.print();
 }
 
@@ -171,19 +179,34 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
     }
     REQUIRE(tree.degree(numberOfLevels) == 0);
 
-    //delete layer 1 (below root)
-    tree.deleteNode(tree.child(0, 2));
-    tree.deleteNode(tree.child(0, 1));
-    REQUIRE(tree.degree(0) == 4);//now has all nodes from next level
-    REQUIRE(tree.subtreeSize(0) == pow(2, numberOfLevels + 1) - 3);//two nodes missing
-    REQUIRE(tree.subtreeSize(1) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
-    REQUIRE(tree.subtreeSize(tree.child(0, 2)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
-    REQUIRE(tree.subtreeSize(tree.child(0, 3)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
-    REQUIRE(tree.subtreeSize(tree.child(0, 4)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
-    REQUIRE(tree.parent(1) == 0);
-    REQUIRE(tree.parent(tree.child(0, 2)) == 0);
-    REQUIRE(tree.parent(tree.child(0, 3)) == 0);
-    REQUIRE(tree.parent(tree.child(0, 4)) == 0);
+    SECTION("Delete layer 1 (below root)") {
+        //delete layer 1 (below root)
+        tree.deleteNode(tree.child(0, 2));
+        tree.deleteNode(tree.child(0, 1));
+        REQUIRE(tree.degree(0) == 4);//now has all nodes from next level
+        REQUIRE(tree.subtreeSize(0) == pow(2, numberOfLevels + 1) - 3);//two nodes missing
+        REQUIRE(tree.subtreeSize(1) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+        REQUIRE(tree.subtreeSize(tree.child(0, 2)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+        REQUIRE(tree.subtreeSize(tree.child(0, 3)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+        REQUIRE(tree.subtreeSize(tree.child(0, 4)) == pow(2, numberOfLevels - 1) - 1);//same number of nodes from level 2 onwards
+        REQUIRE(tree.parent(1) == 0);
+        REQUIRE(tree.parent(tree.child(0, 2)) == 0);
+        REQUIRE(tree.parent(tree.child(0, 3)) == 0);
+        REQUIRE(tree.parent(tree.child(0, 4)) == 0);
+    }
+
+    SECTION("Delete all nodes except root") {
+        for (int level = numberOfLevels; level > 0; level--) {
+            for (int node = 1; node <= pow(2, level); node++) {
+                tree.deleteNode(1);//delete the current first child of root.
+            }
+        }
+
+        REQUIRE(tree.degree(0) == 0);
+        REQUIRE(tree.subtreeSize(0) == 1);
+        std::vector<bool> expected = {1, 0};
+        REQUIRE(tree.getBitString() == expected);
+    }
 
     tree.profiler.print();
 }
@@ -191,7 +214,6 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
 TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
 
-    //create complete binary tree
     const int numberOfLevels = 100000;
     std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;
     for (int level = 0; level < numberOfLevels; level++) {
@@ -203,5 +225,15 @@ TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
         REQUIRE(tree.subtreeSize(i) == numberOfLevels + 1 - i);
     }
     REQUIRE(tree.degree(numberOfLevels) == 0);
+
+    for (int level = 0; level < numberOfLevels; level++) {
+        tree.deleteNode(1);//delete the child of root.
+    }
+
+    REQUIRE(tree.degree(0) == 0);
+    REQUIRE(tree.subtreeSize(0) == 1);
+    std::vector<bool> expected = {1, 0};
+    REQUIRE(tree.getBitString() == expected);
+
     tree.profiler.print();
 }
