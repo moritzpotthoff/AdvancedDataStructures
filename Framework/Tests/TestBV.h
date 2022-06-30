@@ -346,7 +346,7 @@ TEST_CASE("Simple inner bv test", "[bv][withInner][simple]") {
     for (int i = 0; i < numberOfBits; i++) {
         const bool bit = (i % 7 == 0);
         bv.insertBit(0, bit);
-        expected.push_back(bit);
+        expected.insert(expected.begin(), bit);
         REQUIRE(bv.getBitString() == expected);
     }
     for (int i = 0; i < numberOfBits; i++) {

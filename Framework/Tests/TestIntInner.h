@@ -31,7 +31,7 @@ TEST_CASE("Simple test for inner bv with int", "[inner][simple]") {
 TEST_CASE("Simple insert for inner bv with int", "[inner][insert]") {
     BitVector::InnerBitVectorByInt bv;
 
-    const int numberOfBits = 10;
+    const int numberOfBits = 100;
     std::vector<bool> expected = {};
     for (int i = 0; i < numberOfBits; i++) {
         const bool bit = (i % 7 == 0);
@@ -86,6 +86,39 @@ TEST_CASE("Tests the internal bitmask functions.", "[inner][bitmask]") {
     REQUIRE(upper63 == 0b1111111111111111111111111111111111111111111111111111111111111110);
     uint64_t upper64 = bv.upperBitmask(64);
     REQUIRE(upper64 == 0b1111111111111111111111111111111111111111111111111111111111111111);
+}
+
+TEST_CASE("Tests the internal shift back function.", "[inner][shiftBack]") {
+    BitVector::InnerBitVectorByInt bv;
+    bv.length = 100;
+    bv.words[0] = bv.lowerBitmask(20);
+    bv.words.emplace_back(bv.lowerBitmask(10));
+
+    SECTION("Test index 0") {
+        bv.shiftBackFromIndex(0);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == bv.lowerBitmask(19));
+    }
+    SECTION("Test index 1") {
+        bv.shiftBackFromIndex(1);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == bv.lowerBitmask(19));
+    }
+    SECTION("Test index 43") {
+        bv.shiftBackFromIndex(43);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == bv.lowerBitmask(19));
+    }
+    SECTION("Test index 44") {
+        bv.shiftBackFromIndex(44);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == bv.lowerBitmask(19));
+    }
+    SECTION("Test index 45") {
+        bv.shiftBackFromIndex(45);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000010111111111111111111);
+    }
 }
 
 TEST_CASE("Tests the internal setBitTo function.", "[inner][setBitTo]") {

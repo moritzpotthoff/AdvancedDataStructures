@@ -37,7 +37,7 @@ namespace BitVector {
 
         inline void insert(const size_t index, const bool bit) noexcept {
             if (index == 0 && length == 0) {
-                words[0] = 1ULL << (wordSize - 1);
+                words[0] = upperBitmask(1);
                 length++;
                 return;
             }
@@ -64,9 +64,11 @@ namespace BitVector {
                 //insert the new bit
                 setBitTo(index, bit);
                 //push carried bit through the remaining bv
-                while (wordIndex < word(length - 1)) {
-                    const bool newCarry = readBit(wordIndex * wordSize + wordSize - 1);
+                wordIndex++;
+                while (wordIndex <= word(length - 1)) {
+                    const bool newCarry = readBit(std::min(length - 1, wordIndex * wordSize + wordSize - 1));
                     //shift everything to the right
+                    shiftBackFromIndex(wordIndex * wordSize);
                     setBitTo(wordIndex * wordSize, carry);//set first bit of the word to carry
                     carry = newCarry;
                     wordIndex++;
@@ -141,19 +143,20 @@ namespace BitVector {
             const bool bit = readBit(index);
             //from the back to the front, move bits forward.
             size_t wordIndex = word(length - 1);
-            bool carry = readBit(std::min(length - 1, wordIndex * wordSize));//keep highest bit of the word
+            //for the last word:
+            bool carry = readBit(std::min(length - 1, wordIndex * wordSize));//keep leftmost bit of the word
+            words[wordIndex] <<= 1;//shift left by one bit
+            wordIndex--;
             while (wordIndex > word(index)) {
+                const bool newCarry = readBit(wordIndex * wordSize);
                 words[wordIndex] <<= 1;//shift left by one bit
+                setBitTo(wordIndex * wordSize + wordSize - 1, carry);
+                carry = newCarry;
                 wordIndex--;
-                carry = readBit(wordIndex * wordSize);
             }
             //inside the relevant word, delete bit and insert carry as rightmost bit.
-            const uint64_t leftBitMask = upperBitmask(bitIndex(index));
-            const uint64_t rightBitMask = lowerBitmask(wordSize - bitIndex(index) - 1);
-            uint64_t leftHalf = words[word(index)] & leftBitMask;//keep everything in front of bitIndex
-            uint64_t rightHalf = words[word(index)] & rightBitMask;//keep everything behind bitIndex
-            words[word(index)] = leftHalf | (rightHalf << 1);//shift right half by one, assemble result
-            setBitTo(std::min(length - 2, word(index) + wordSize - 1), carry);
+            shiftLeftFromIndex(index);
+            setBitTo(std::min(length - 2, word(index) * wordSize + wordSize - 1), carry);
 
             //update capacity
             length--;
@@ -274,12 +277,22 @@ namespace BitVector {
          * @param index
          */
         inline void shiftBackFromIndex(size_t index) noexcept {
-            //TODO check that the bitmask works correctly for bitIndex(index) == 0 and == 63.
-            //Write test for this.
-            const uint64_t bitmask = (1ULL << (wordSize - bitIndex(index))) - 1;//0..01..1 with exactly bitIndex ones at the end.
-            uint64_t leftHalf = words[word(index)] & ~bitmask;//keep everything before bitIndex
+            const uint64_t bitmask = lowerBitmask(wordSize - bitIndex(index));//0..01..1 with exactly bitIndex ones at the end.
+            uint64_t leftHalf = words[word(index)] & ~bitmask;//keep everything in front of bitIndex
             uint64_t rightHalf = words[word(index)] & bitmask;//keep everything starting from bitIndex
             words[word(index)] = leftHalf | (rightHalf >> 1);//shift right half by one, assemble result
+        }
+
+        /**
+         * shifts all bits starting from (and including) index back by 1 step *within the word only*.
+         * @param index
+         */
+        inline void shiftLeftFromIndex(size_t index) noexcept {
+            const uint64_t leftBitMask = upperBitmask(bitIndex(index));
+            const uint64_t rightBitMask = lowerBitmask(wordSize - bitIndex(index) - 1);
+            uint64_t leftHalf = words[word(index)] & leftBitMask;//keep everything in front of bitIndex
+            uint64_t rightHalf = words[word(index)] & rightBitMask;//keep everything behind bitIndex
+            words[word(index)] = leftHalf | (rightHalf << 1);//shift right half by one, assemble result
         }
 
         /**
@@ -290,7 +303,7 @@ namespace BitVector {
          */
         inline void shiftForwardFromIndex(size_t index, size_t delta) noexcept {
             size_t currentWord = words.size() - 1;
-            uint64_t bitmaskUpper = ~(1ULL << (wordSize - delta + 1)) - 1;//delta ones at the start
+            uint64_t bitmaskUpper = upperBitmask(delta);
             uint64_t carry = 0;
             while (currentWord > word(index)) {
                 uint64_t newCarry = words[currentWord] & bitmaskUpper;
