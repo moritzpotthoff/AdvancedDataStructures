@@ -57,3 +57,63 @@ TEST_CASE("Simple insert for inner bv with int", "[inner][insert]") {
         REQUIRE(bv.getBitString() == expected);
     }
 }
+
+TEST_CASE("Tests the internal bitmask functions.", "[inner][bitmask]") {
+    BitVector::InnerBitVectorByInt bv;
+
+    uint64_t lower0 = bv.lowerBitmask(0);
+    REQUIRE(lower0 == 0ULL);
+    uint64_t lower1 = bv.lowerBitmask(1);
+    REQUIRE(lower1 == 0b0000000000000000000000000000000000000000000000000000000000000001);
+    uint64_t lower10 = bv.lowerBitmask(10);
+    REQUIRE(lower10 == 0b0000000000000000000000000000000000000000000000000000001111111111);
+    uint64_t lower20 = bv.lowerBitmask(20);
+    REQUIRE(lower20 == 0b0000000000000000000000000000000000000000000011111111111111111111);
+    uint64_t lower63 = bv.lowerBitmask(63);
+    REQUIRE(lower63 == 0b0111111111111111111111111111111111111111111111111111111111111111);
+    uint64_t lower64 = bv.lowerBitmask(64);
+    REQUIRE(lower64 == 0b1111111111111111111111111111111111111111111111111111111111111111);
+
+    uint64_t upper0 = bv.upperBitmask(0);
+    REQUIRE(upper0 == 0ULL);
+    uint64_t upper1 = bv.upperBitmask(1);
+    REQUIRE(upper1 == 0b1000000000000000000000000000000000000000000000000000000000000000);
+    uint64_t upper10 = bv.upperBitmask(10);
+    REQUIRE(upper10 == 0b1111111111000000000000000000000000000000000000000000000000000000);
+    uint64_t upper20 = bv.upperBitmask(20);
+    REQUIRE(upper20 == 0b1111111111111111111100000000000000000000000000000000000000000000);
+    uint64_t upper63 = bv.upperBitmask(63);
+    REQUIRE(upper63 == 0b1111111111111111111111111111111111111111111111111111111111111110);
+    uint64_t upper64 = bv.upperBitmask(64);
+    REQUIRE(upper64 == 0b1111111111111111111111111111111111111111111111111111111111111111);
+}
+
+TEST_CASE("Tests the internal setBitTo function.", "[inner][setBitTo]") {
+    BitVector::InnerBitVectorByInt bv;
+    const size_t numberOfBits = 1000;
+    bv.length = numberOfBits;
+    for (size_t word = 0; word < numberOfBits / 64; word++) {
+        bv.words.emplace_back(0);
+    }
+
+    std::vector<bool> expected = {};
+    for (size_t i = 0; i < numberOfBits; i++) {
+        expected.push_back(false);
+    }
+    for (size_t i = 0; i < numberOfBits; i++) {
+        const bool bit = (i % 7 == 0);
+        bv.setBitTo(i, bit);
+        expected[i] = bit;
+        REQUIRE(bv.getBitString() == expected);
+    }
+    for (size_t i = 0; i < numberOfBits; i++) {
+        bv.setBitTo(i, false);
+        expected[i] = false;
+        REQUIRE(bv.getBitString() == expected);
+    }
+    for (size_t i = 0; i < numberOfBits; i++) {
+        bv.setBitTo(i, true);
+        expected[i] = true;
+        REQUIRE(bv.getBitString() == expected);
+    }
+}

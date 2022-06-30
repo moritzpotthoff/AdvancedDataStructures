@@ -58,13 +58,13 @@ namespace BitVector {
                 //insert in the middle of the bv, we need to shift the remaining bits.
                 size_t wordIndex = word(index);
                 //remember the last bit of the word (must be carried over to next word)
-                bool carry = readBit(wordIndex * wordSize + wordSize - 1);
+                bool carry = readBit(std::min(length - 1, wordIndex * wordSize + wordSize - 1));
                 //shift all bits after relevant index back by one
                 shiftBackFromIndex(index);
                 //insert the new bit
                 setBitTo(index, bit);
                 //push carried bit through the remaining bv
-                while (wordIndex < word(length)) {
+                while (wordIndex < word(length - 1)) {
                     const bool newCarry = readBit(wordIndex * wordSize + wordSize - 1);
                     //shift everything to the right
                     setBitTo(wordIndex * wordSize, carry);//set first bit of the word to carry
@@ -140,20 +140,20 @@ namespace BitVector {
             if (length == 0) return false;
             const bool bit = readBit(index);
             //from the back to the front, move bits forward.
-            size_t wordIndex = word(length);
-            bool carry = readBit(wordIndex * wordSize);//keep highest bit of the word
+            size_t wordIndex = word(length - 1);
+            bool carry = readBit(std::min(length - 1, wordIndex * wordSize));//keep highest bit of the word
             while (wordIndex > word(index)) {
-                words[wordIndex] = words[wordIndex] << 1;//shift left by one bit
+                words[wordIndex] <<= 1;//shift left by one bit
                 wordIndex--;
                 carry = readBit(wordIndex * wordSize);
             }
             //inside the relevant word, delete bit and insert carry as rightmost bit.
-            const uint64_t leftBitMask = ~((1ULL << (bitIndex(index) + 1)) - 1);//1..10..0 with exactly wordSize - bitIndex ones at the start.
-            const uint64_t rightBitMask = (1ULL << bitIndex(index)) - 1;//0..01..1 with exactly bitIndex - 1 ones at the end.
+            const uint64_t leftBitMask = upperBitmask(bitIndex(index));
+            const uint64_t rightBitMask = lowerBitmask(wordSize - bitIndex(index) - 1);
             uint64_t leftHalf = words[word(index)] & leftBitMask;//keep everything in front of bitIndex
             uint64_t rightHalf = words[word(index)] & rightBitMask;//keep everything behind bitIndex
             words[word(index)] = leftHalf | (rightHalf << 1);//shift right half by one, assemble result
-            setBitTo(word(index) + wordSize - 1, carry);
+            setBitTo(std::min(length - 2, word(index) + wordSize - 1), carry);
 
             //update capacity
             length--;
@@ -256,7 +256,8 @@ namespace BitVector {
             delete this;
         }
 
-    private:
+    //private:
+    public://for testing
         /**
          * Sets the bit at the desired index to bit.
          * @param index
@@ -273,7 +274,9 @@ namespace BitVector {
          * @param index
          */
         inline void shiftBackFromIndex(size_t index) noexcept {
-            const uint64_t bitmask = (1ULL << (bitIndex(index) + 1)) - 1;//0..01..1 with exactly bitIndex ones at the end.
+            //TODO check that the bitmask works correctly for bitIndex(index) == 0 and == 63.
+            //Write test for this.
+            const uint64_t bitmask = (1ULL << (wordSize - bitIndex(index))) - 1;//0..01..1 with exactly bitIndex ones at the end.
             uint64_t leftHalf = words[word(index)] & ~bitmask;//keep everything before bitIndex
             uint64_t rightHalf = words[word(index)] & bitmask;//keep everything starting from bitIndex
             words[word(index)] = leftHalf | (rightHalf >> 1);//shift right half by one, assemble result
@@ -318,6 +321,15 @@ namespace BitVector {
             return index % wordSize;
         }
 
+        inline uint64_t upperBitmask(uint64_t numberOfOnes) const noexcept {
+            return ~(lowerBitmask(wordSize - numberOfOnes));//1..10..0 with exactly numberOfOnes ones at the start.
+
+        }
+
+        inline uint64_t lowerBitmask(uint64_t numberOfOnes) const noexcept {
+            return (1ULL << numberOfOnes) - 1;//0..01..1 with exactly numberOfOnes ones at the end.
+        }
+
     public:
         inline size_t getSize() const noexcept {
             //TODO length is not actually needed for this implementation. Either get rid of it or change implementation.
@@ -344,9 +356,8 @@ namespace BitVector {
             return result;
         }
 
-    private:
-        std::vector<uint64_t> words;//all bits behind the first length bits must be 0! size must be maintained correctly.
     public:
+        std::vector<uint64_t> words;//all bits behind the first length bits must be 0! size must be maintained correctly.
         size_t length;
     };
 }
