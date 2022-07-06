@@ -200,16 +200,18 @@ TEST_CASE("Tests the internal setBitTo function.", "[inner][setBitTo]") {
 TEST_CASE("Simple test for inner bv with int", "[inner][simple]") {
     BitVector::InnerBitVectorByInt bv;
 
-    const int numberOfBits = 1000;
+    const int numberOfBits = 100000;
     std::vector<bool> expected = {};
     for (int i = 0; i < numberOfBits; i++) {
-        const bool bit = (i % 7 == 0);
+        const bool bit = (i % 7 == 0 || i % 3 == 0);
         bv.insert(i, bit);
         expected.insert(expected.begin() + i, bit);
         REQUIRE(bv.getBitString() == expected);
     }
     for (int i = 0; i < numberOfBits; i++) {
         bv.deleteIndex(0);
+        expected.erase(expected.begin());
+        REQUIRE(bv.getBitString() == expected);
     }
 
     std::vector<bool> empty = {};

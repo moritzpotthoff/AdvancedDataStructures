@@ -125,7 +125,7 @@ namespace BitVector {
         inline int popcount() const noexcept {
             //TODO switch to uint64_t-based approach for this?
             int count = 0;
-            for (size_t i = 0; i < bits.size(); i++) {
+            for (size_t i = 0; i < length; i++) {
                 if (bits[i]) count++;
             }
             return count;

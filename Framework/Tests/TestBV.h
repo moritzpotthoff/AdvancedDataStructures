@@ -359,12 +359,14 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
 }
 
 TEST_CASE("Simple inner bv test", "[bv][withInner][simple]") {
+    //BitVector::DynamicBitVector<BitVector::NoProfiler> bv;
     BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv;
 
     const int numberOfBits = 100000;
     std::vector<bool> expected = {};
     for (int i = 0; i < numberOfBits; i++) {
-        const bool bit = (i % 7 == 0 || i % 3 == 0);
+        //const bool bit = (i % 7 == 0 || i % 3 == 0);
+        const bool bit = true;
         bv.insertBit(0, bit);
         expected.insert(expected.begin(), bit);
         REQUIRE(bv.getBitString() == expected);
@@ -372,6 +374,7 @@ TEST_CASE("Simple inner bv test", "[bv][withInner][simple]") {
     for (int i = 0; i < numberOfBits; i++) {
         bv.deleteBit(0);
         expected.erase(expected.begin());
+        REQUIRE(bv.length == (int)expected.size());
         REQUIRE(bv.getBitString() == expected);
     }
 

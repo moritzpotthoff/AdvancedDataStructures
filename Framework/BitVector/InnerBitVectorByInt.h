@@ -23,61 +23,16 @@ namespace BitVector {
          * Copies the blocks from old beginning at the middle to the new InnerBitVector, erases them from old.
          * @param old
          */
-         //TODO test
          InnerBitVectorByInt(InnerBitVectorByInt* old) :
                 words(0),
                 length(0) {
             const int startWord = old->length / wordSize / 2;
             //move the last half of the words to this, erase them from the other bv.
             this->words.assign(old->words.begin() + startWord, old->words.end());
-            length = old->length - startWord * wordSize;
+            length = std::max(0, old->length - startWord * wordSize);
             old->words.erase(old->words.begin() + startWord, old->words.end());
             old->length = std::min(old->length, startWord * wordSize);
             old->words.shrink_to_fit();
-        }
-
-        //tested.
-        inline void insert(const int index, const bool bit) noexcept {
-            if (index == 0 && length == 0) {
-                if (bit) words[0] = upperBitmask(1);
-                length++;
-                return;
-            }
-            if (index == length) {
-                //insert at the end of the bv
-                const int bitPos = bitIndex(index);
-                if (bitPos < wordSize && word(index) < (int)words.size()) {
-                    //there is still space in the last word, just set the bit and adjust length.
-                    length++;
-                    setBitTo(index, bit);
-                } else {
-                    //we need a new word
-                    words.emplace_back(0);
-                    length++;
-                    setBitTo(index, bit);
-                }
-            } else {
-                //insert in the middle of the bv, we need to shift the remaining bits.
-                int wordIndex = word(index);
-                //remember the last bit of the word (must be carried over to next word)
-                bool carry = readBit(std::min(length - 1, wordIndex * wordSize + wordSize - 1));
-                //shift all bits after relevant index back by one
-                shiftBackFromIndex(index);
-                //insert the new bit
-                setBitTo(index, bit);
-                //push carried bit through the remaining bv
-                wordIndex++;
-                while (wordIndex <= word(length - 1)) {
-                    const bool newCarry = readBit(std::min(length - 1, wordIndex * wordSize + wordSize - 1));
-                    //shift everything to the right
-                    shiftBackFromIndex(wordIndex * wordSize);
-                    setBitTo(wordIndex * wordSize, carry);//set first bit of the word to carry
-                    carry = newCarry;
-                    wordIndex++;
-                }
-                //insert last carried bit using the above base case.
-                insert(length, carry);
-            }
         }
 
         /**
@@ -87,8 +42,6 @@ namespace BitVector {
          * @param otherSize
          */
         inline void insertBitVector(const int index, InnerBitVectorByInt* other, int otherSize) noexcept {
-            //TODO get rid of index parameter
-            //TODO test
             AssertMsg(index == 0 || index == length, "Called insertBitVector with index not start or end.");
             if (index == 0) {
                 //insert other at start
@@ -140,14 +93,61 @@ namespace BitVector {
             return popcount();
         }
 
+        inline void insert(const int index, const bool bit) noexcept {
+            if (index == 0 && length == 0) {
+                if (bit) {
+                    words[0] = upperBitmask(1);
+                } else {
+                    words[0] = 0;
+                }
+                length++;
+                return;
+            }
+            if (index == length) {
+                //insert at the end of the bv
+                const int bitPos = bitIndex(index);
+                if (bitPos < wordSize && word(index) < (int)words.size()) {
+                    //there is still space in the last word, just set the bit and adjust length.
+                    length++;
+                    setBitTo(index, bit);
+                } else {
+                    //we need a new word
+                    words.emplace_back(0);
+                    length++;
+                    setBitTo(index, bit);
+                }
+            } else {
+                //insert in the middle of the bv, we need to shift the remaining bits.
+                int wordIndex = word(index);
+                //remember the last bit of the word (must be carried over to next word)
+                bool carry = readBit(std::min(length - 1, wordIndex * wordSize + wordSize - 1));
+                //shift all bits after relevant index back by one
+                shiftBackFromIndex(index);
+                //insert the new bit
+                setBitTo(index, bit);
+                //push carried bit through the remaining bv
+                wordIndex++;
+                while (wordIndex <= word(length - 1)) {
+                    const bool newCarry = readBit(std::min(length - 1, wordIndex * wordSize + wordSize - 1));
+                    //shift everything to the right
+                    shiftBackFromIndex(wordIndex * wordSize);
+                    setBitTo(wordIndex * wordSize, carry);//set first bit of the word to carry
+                    carry = newCarry;
+                    wordIndex++;
+                }
+                //insert last carried bit using the above base case.
+                insert(length, carry);
+            }
+        }
+
         /**
          * Deletes the bit at the given index.
          * @param index
          * @return
          */
         inline bool deleteIndex(const int index) noexcept {
-            AssertMsg(index < length, "Tried to delete invalid index");
-            AssertMsg(length > 0, "Tried to delete from empty bv");
+            if (index >= length) return false;
+            if (length == 0) return false;
             const bool bit = readBit(index);
             if (word(index) == word(length - 1)) {
                 //simply delete from the last word
@@ -242,11 +242,7 @@ namespace BitVector {
         }
 
         inline int popcount() const noexcept {
-            int count = 0;
-            for (int wordIndex = 0; wordIndex < word(length); wordIndex++) {
-                count += std::popcount(words[wordIndex]);
-            }
-            return count;
+            return popcount(length);
         }
 
         /**
