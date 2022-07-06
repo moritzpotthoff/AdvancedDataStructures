@@ -411,7 +411,7 @@ namespace BitVector {
          * @param bvOnes number of 1 bits in the new bits
          */
         inline void insertBitVector(int index, int length, InnerBV* bv, int bvSize, int bvOnes) noexcept {
-            AssertMsg(bvSize == (int)bv->bits.size(), "Wrong size in insert bit vector.");
+            AssertMsg(bvSize == (int)bv->length, "Wrong size in insert bit vector.");
             Node* current = this;
             while (!current->isLeaf()) {
                 if (index < current->num) {

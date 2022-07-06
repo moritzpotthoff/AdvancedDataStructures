@@ -1,1 +1,1 @@
-#define w 16
+#define w 64

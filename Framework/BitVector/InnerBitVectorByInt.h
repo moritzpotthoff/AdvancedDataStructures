@@ -23,10 +23,11 @@ namespace BitVector {
          * Copies the blocks from old beginning at the middle to the new InnerBitVector, erases them from old.
          * @param old
          */
+         //TODO test
          InnerBitVectorByInt(InnerBitVectorByInt* old) :
                 words(0),
                 length(0) {
-            const size_t startWord = old->length / wordSize / 2;
+            const int startWord = old->length / wordSize / 2;
             //move the last half of the words to this, erase them from the other bv.
             this->words.assign(old->words.begin() + startWord, old->words.end());
             length = old->length - startWord * wordSize;
@@ -35,16 +36,17 @@ namespace BitVector {
             old->words.shrink_to_fit();
         }
 
-        inline void insert(const size_t index, const bool bit) noexcept {
+        //tested.
+        inline void insert(const int index, const bool bit) noexcept {
             if (index == 0 && length == 0) {
-                words[0] = upperBitmask(1);
+                if (bit) words[0] = upperBitmask(1);
                 length++;
                 return;
             }
             if (index == length) {
                 //insert at the end of the bv
-                const size_t bitPos = bitIndex(index);
-                if (bitPos < wordSize) {
+                const int bitPos = bitIndex(index);
+                if (bitPos < wordSize && word(index) < (int)words.size()) {
                     //there is still space in the last word, just set the bit and adjust length.
                     length++;
                     setBitTo(index, bit);
@@ -56,7 +58,7 @@ namespace BitVector {
                 }
             } else {
                 //insert in the middle of the bv, we need to shift the remaining bits.
-                size_t wordIndex = word(index);
+                int wordIndex = word(index);
                 //remember the last bit of the word (must be carried over to next word)
                 bool carry = readBit(std::min(length - 1, wordIndex * wordSize + wordSize - 1));
                 //shift all bits after relevant index back by one
@@ -85,10 +87,13 @@ namespace BitVector {
          * @param otherSize
          */
         inline void insertBitVector(const int index, InnerBitVectorByInt* other, int otherSize) noexcept {
+            //TODO get rid of index parameter
+            //TODO test
             AssertMsg(index == 0 || index == length, "Called insertBitVector with index not start or end.");
             if (index == 0) {
                 //insert other at start
-                const size_t otherWords = std::min(other->words.size(), other->length / wordSize + 1);
+                int otherWords = other->length / wordSize;
+                if (other->length % wordSize != 0) otherWords++;
                 words.insert(words.begin(), other->words.begin(), other->words.begin() + otherWords);
                 if (other->length % wordSize != 0) {
                     //remove the gap between the two
@@ -96,8 +101,10 @@ namespace BitVector {
                 }
             } else {
                 //insert other at end
-                const size_t oldNumberOfWords = words.size();
-                const size_t otherWords = std::min(other->words.size(), other->length / wordSize + 1);
+                shrinkToFit();
+                const int oldNumberOfWords = words.size();
+                int otherWords = other->length / wordSize;
+                if (other->length % wordSize != 0) otherWords++;
                 words.insert(words.end(), other->words.begin(), other->words.begin() + otherWords);
                 if (length % wordSize != 0) {
                     //remove the gap between the two
@@ -115,17 +122,18 @@ namespace BitVector {
          * @param newBits the entire set of new bits, some of which shall be inserted here.
          * @return number of ones in assigned bits
          */
-        inline int insertBits(int blockIndex, size_t blockSize, std::vector<bool>& newBits) noexcept {
+        inline int insertBits(int blockIndex, int blockSize, std::vector<bool>& newBits) noexcept {
             AssertMsg(length == 0, "Tried to initialize-insert bits into non-empty leaf.");
-            const size_t bitStart = blockIndex * blockSize;
-            size_t blockLength = blockSize;
-            if (newBits.size() - (bitStart + blockLength) < blockSize) {
+            //TODO test
+            const int bitStart = blockIndex * blockSize;
+            int blockLength = blockSize;
+            if ((int)newBits.size() - (bitStart + blockLength) < blockSize) {
                 //this is the last block, give it all the bits.
                 blockLength = newBits.size() - bitStart;
             }
             //reserve enough size
             words.resize(blockLength / wordSize + 1);
-            for (size_t i = 0; i < blockLength; i++) {
+            for (int i = 0; i < blockLength; i++) {
                 setBitTo(i, newBits[bitStart + i]);
             }
             length = blockLength;
@@ -137,17 +145,23 @@ namespace BitVector {
          * @param index
          * @return
          */
-        inline bool deleteIndex(const size_t index) noexcept {
-            if (index >= length) return false;
-            if (length == 0) return false;
+        inline bool deleteIndex(const int index) noexcept {
+            AssertMsg(index < length, "Tried to delete invalid index");
+            AssertMsg(length > 0, "Tried to delete from empty bv");
             const bool bit = readBit(index);
+            if (word(index) == word(length - 1)) {
+                //simply delete from the last word
+                shiftLeftFromIndex(index);
+                length--;
+                return bit;
+            }
             //from the back to the front, move bits forward.
-            size_t wordIndex = word(length - 1);
+            int wordIndex = word(length - 1);//length > 0 is sure.
             //for the last word:
-            bool carry = readBit(std::min(length - 1, wordIndex * wordSize));//keep leftmost bit of the word
+            bool carry = readBit(wordIndex * wordSize);//keep leftmost bit of the word
             words[wordIndex] <<= 1;//shift left by one bit
             wordIndex--;
-            while (wordIndex > word(index)) {
+            while (wordIndex > (int)word(index)) {
                 const bool newCarry = readBit(wordIndex * wordSize);
                 words[wordIndex] <<= 1;//shift left by one bit
                 setBitTo(wordIndex * wordSize + wordSize - 1, carry);
@@ -160,7 +174,7 @@ namespace BitVector {
 
             //update capacity
             length--;
-            if (length + 2 * wordSize < wordSize * words.capacity()) //more than two words are unused
+            if (length + 2 * wordSize < wordSize * (int)words.capacity()) //more than two words are unused
                 shrink();
             return bit;
         }
@@ -171,7 +185,7 @@ namespace BitVector {
          * @return
          */
         inline bool flipBit(const int index) noexcept {
-            words[word(index)] ^= 1ULL << bitIndex(index);
+            words[word(index)] ^= 1ULL << (wordSize - 1 - bitIndex(index));
             return !readBit(index);
         }
 
@@ -210,13 +224,13 @@ namespace BitVector {
         inline int selectZero(const int j) const noexcept {
             if (j == 0) return 0;
             int index = 0, count = 0;
-            int relevantWordLength = std::min((size_t)wordSize, length);
+            int relevantWordLength = std::min(wordSize, length);
             int nextWordCount = relevantWordLength - std::popcount(words[0]);
             while (count + nextWordCount < j) {
                 //the desired index is not in the next word, we can skip it entirely
                 count += nextWordCount;
                 index += wordSize;
-                relevantWordLength = std::min((size_t)wordSize, length - index);//for the last word, we need to ignore trailing zeros that dont belong to the bv
+                relevantWordLength = std::min(wordSize, length - index);//for the last word, we need to ignore trailing zeros that dont belong to the bv
                 nextWordCount = relevantWordLength - std::popcount(words[word(index)]);
             }
             //remaining select query on the word that contains the desired index.
@@ -229,7 +243,7 @@ namespace BitVector {
 
         inline int popcount() const noexcept {
             int count = 0;
-            for (size_t wordIndex = 0; wordIndex < word(length); wordIndex++) {
+            for (int wordIndex = 0; wordIndex < word(length); wordIndex++) {
                 count += std::popcount(words[wordIndex]);
             }
             return count;
@@ -240,8 +254,8 @@ namespace BitVector {
          * @param upperLimit (exclusive!)
          * @return
          */
-        inline int popcount(size_t upperLimit) const noexcept {
-            size_t count = 0, index = 0;
+        inline int popcount(int upperLimit) const noexcept {
+            int count = 0, index = 0;
             //fully covered words
             while (index + wordSize < upperLimit) {
                 count += std::popcount(words[word(index)]);
@@ -266,9 +280,9 @@ namespace BitVector {
          * @param index
          * @param bit
          */
-        inline void setBitTo(size_t index, bool bit) noexcept {
+        inline void setBitTo(int index, bool bit) noexcept {
             AssertMsg(index < length, "Tried to change bit outside the valid range.");
-            const size_t bitPos = bitIndex(index);
+            const int bitPos = bitIndex(index);
             words[word(index)] = (words[word(index)] & ~(1ULL << (wordSize - 1 - bitPos))) | ((uint64_t)bit << (wordSize - 1 - bitPos));
         }
 
@@ -276,18 +290,18 @@ namespace BitVector {
          * shifts all bits starting from (and including) index back by 1 step *within the word only*.
          * @param index
          */
-        inline void shiftBackFromIndex(size_t index) noexcept {
-            const uint64_t bitmask = lowerBitmask(wordSize - bitIndex(index));//0..01..1 with exactly bitIndex ones at the end.
+        inline void shiftBackFromIndex(int index) noexcept {
+            const uint64_t bitmask = lowerBitmask(wordSize - bitIndex(index));//0..01..1
             uint64_t leftHalf = words[word(index)] & ~bitmask;//keep everything in front of bitIndex
             uint64_t rightHalf = words[word(index)] & bitmask;//keep everything starting from bitIndex
             words[word(index)] = leftHalf | (rightHalf >> 1);//shift right half by one, assemble result
         }
 
         /**
-         * shifts all bits starting from (and including) index back by 1 step *within the word only*.
+         * Shifts all bits behind index left by 1 step, overwriting the bit at index, *within the word only*.
          * @param index
          */
-        inline void shiftLeftFromIndex(size_t index) noexcept {
+        inline void shiftLeftFromIndex(int index) noexcept {
             const uint64_t leftBitMask = upperBitmask(bitIndex(index));
             const uint64_t rightBitMask = lowerBitmask(wordSize - bitIndex(index) - 1);
             uint64_t leftHalf = words[word(index)] & leftBitMask;//keep everything in front of bitIndex
@@ -298,38 +312,55 @@ namespace BitVector {
         /**
          * Shifts the bits starting from index forwards by delta bits, overwriting the delta bits
          * occuring directly in front of index.
-         * @param index
+         *
+         * @param index *always a multiple of wordSize*!!!
          * @param delta
          */
-        inline void shiftForwardFromIndex(size_t index, size_t delta) noexcept {
-            size_t currentWord = words.size() - 1;
+         //tested.
+        inline void shiftForwardFromIndex(int index, int delta) noexcept {
+            int currentWord = word(length - 1);
             uint64_t bitmaskUpper = upperBitmask(delta);
-            uint64_t carry = 0;
-            while (currentWord > word(index)) {
+            //get carry from last word
+            uint64_t carry = words[currentWord] & bitmaskUpper;
+            words[currentWord] <<= delta;
+            currentWord--;
+            while (currentWord >= word(index)) {
+                //in each word, get new carry from the left, shift word left and add the old carry to the right side
                 uint64_t newCarry = words[currentWord] & bitmaskUpper;
                 words[currentWord] <<= delta;
-                words[currentWord] |= carry;
+                words[currentWord] |= (carry >> (wordSize - delta));
                 carry = newCarry;
                 currentWord--;
             }
-            //fill the gap with the last carry
-            words[currentWord] |= carry;
+            //the bitIndex(index) in the target word is always 0 as index is a multiple of wordSize
+            //in words[word(index)], we shift everything left from index 0 inside the word
+            //now, we need to overwrite the rightmost delta bits of words[word(index)] with the remaining carry.
+            AssertMsg(word(index) >= 1, "Invalid left shift");
+            uint64_t leftPart = words[word(index) - 1] & upperBitmask(wordSize - delta);//keep the left part of the word
+            words[word(index) - 1] = leftPart | (carry >> (wordSize - delta));//add the remaining carry at the end
         }
 
         inline void enlarge() noexcept {
-            words.reserve(words.capacity() + wordSize);
+            words.reserve(words.capacity() + 1);
         }
 
         inline void shrink() noexcept {
-            words.reserve(words.capacity() - wordSize);
+            words.reserve(words.capacity() - 1);
         }
 
-        inline size_t word(size_t index) const noexcept {
+        //make sure there are no unused words at the end
+        inline void shrinkToFit() noexcept {
+            int numberOfWords = length / wordSize;
+            if (length % wordSize != 0) numberOfWords++;
+            words.resize(numberOfWords);
+        }
+
+        inline int word(int index) const noexcept {
             AssertMsg(index <= length, "Invalid index for inner bit vector.");
             return index / wordSize;
         }
 
-        inline size_t bitIndex(size_t index) const noexcept {
+        inline int bitIndex(int index) const noexcept {
             AssertMsg(index <= length, "Invalid index for inner bit vector.");
             return index % wordSize;
         }
@@ -340,25 +371,25 @@ namespace BitVector {
         }
 
         inline uint64_t lowerBitmask(uint64_t numberOfOnes) const noexcept {
+            if (numberOfOnes == 64) return (uint64_t)-1;
             return (1ULL << numberOfOnes) - 1;//0..01..1 with exactly numberOfOnes ones at the end.
         }
 
     public:
         inline size_t getSize() const noexcept {
-            //TODO length is not actually needed for this implementation. Either get rid of it or change implementation.
             return CHAR_BIT * (sizeof(length) + sizeof(words)) + words.size() * wordSize;
         }
 
         inline void printBitString(int offset = 0) const noexcept {
             std::cout << std::string(offset, ' ');
-            for (size_t i = 0; i < length; i++) {
+            for (int i = 0; i < length; i++) {
                 std::cout << " " << readBit(i);
             }
             std::cout << "; length = " << length << std::endl;
         }
 
         inline void writeBitsToVector(std::vector<bool>* out) const noexcept {
-            for (size_t i = 0; i < length; i++) {
+            for (int i = 0; i < length; i++) {
                 out->emplace_back(readBit(i));
             }
         }
@@ -371,6 +402,6 @@ namespace BitVector {
 
     public:
         std::vector<uint64_t> words;//all bits behind the first length bits must be 0! size must be maintained correctly.
-        size_t length;
+        int length;
     };
 }

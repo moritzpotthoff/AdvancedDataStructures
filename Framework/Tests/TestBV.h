@@ -10,7 +10,8 @@
 #include "../Helpers/BitVectorProfiler.h"
 
 TEST_CASE("Small simple BV Test Instance", "[bv][small]") {
-    BitVector::DynamicBitVector<BitVector::NoProfiler> bv;
+    //BitVector::DynamicBitVector<BitVector::NoProfiler> bv;
+    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv;
 
     std::vector<bool> expected = {};
     REQUIRE(bv.getBitString() == expected);
@@ -21,8 +22,8 @@ TEST_CASE("Small simple BV Test Instance", "[bv][small]") {
         for (int i = 0; i < numberOfBits; i++) {
             expected.push_back(false);
             bv.insertBit(i, false);
+            REQUIRE(bv.getBitString() == expected);
         }
-        REQUIRE(bv.getBitString() == expected);
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
@@ -90,23 +91,28 @@ TEST_CASE("Small simple BV Test Instance", "[bv][small]") {
     }
 }
 
-TEST_CASE("Large simple BV Test Instance", "[bv][large]") {
-    BitVector::DynamicBitVector<BitVector::NoProfiler> bv;
+TEST_CASE("Large simple BV Test Instance", "[bv][simple][large]") {
+    //BitVector::DynamicBitVector<BitVector::NoProfiler> bv;
+    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv;
 
     std::vector<bool> expected = {};
+    std::vector<bool> expectedWithToDelete = {};
     REQUIRE(bv.getBitString() == expected);
-    const int numberOfBits = 1000000;
+    const int numberOfBits = 100000;
     const int deleteBits = numberOfBits / 10;
     const int numberOfOnes = numberOfBits / 2;
 
     for (int i = 0; i < deleteBits; i++) {
         bv.insertBit(i, i % 7 == 3);
+        expectedWithToDelete.push_back(i % 7 == 3);
     }
 
     SECTION("Works with only 0") {
         for (int i = 0; i < numberOfBits; i++) {
             expected.push_back(false);
+            expectedWithToDelete.push_back(false);
             bv.insertBit(i + deleteBits, false);
+            REQUIRE(bv.getBitString() == expectedWithToDelete);
         }
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
@@ -118,6 +124,8 @@ TEST_CASE("Large simple BV Test Instance", "[bv][large]") {
 
         for (int i = deleteBits - 1; i >= 0; i--) {
             bv.deleteBit(i);
+            expectedWithToDelete.erase(expectedWithToDelete.begin() + i);
+            REQUIRE(bv.getBitString() == expectedWithToDelete);
         }
 
         REQUIRE(bv.getBitString() == expected);
@@ -133,7 +141,9 @@ TEST_CASE("Large simple BV Test Instance", "[bv][large]") {
     SECTION("Works with only 1") {
         for (int i = 0; i < numberOfBits; i++) {
             expected.push_back(true);
+            expectedWithToDelete.push_back(true);
             bv.insertBit(i + deleteBits, true);
+            REQUIRE(bv.getBitString() == expectedWithToDelete);
         }
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
@@ -145,6 +155,8 @@ TEST_CASE("Large simple BV Test Instance", "[bv][large]") {
 
         for (int i = deleteBits - 1; i >= 0; i--) {
             bv.deleteBit(i);
+            expectedWithToDelete.erase(expectedWithToDelete.begin() + i);
+            REQUIRE(bv.getBitString() == expectedWithToDelete);
         }
 
         REQUIRE(bv.getBitString() == expected);
@@ -192,7 +204,8 @@ TEST_CASE("Large simple BV Test Instance", "[bv][large]") {
 }
 
 TEST_CASE("BV initialized creation test", "[bv][create][simple]") {
-    BitVector::DynamicBitVector<BitVector::NoProfiler> bvNormal;
+    //BitVector::DynamicBitVector<BitVector::NoProfiler> bvNormal;
+    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bvNormal;
 
     const int numberOfBits = 123;
     std::vector<bool> expected = {};
@@ -201,15 +214,18 @@ TEST_CASE("BV initialized creation test", "[bv][create][simple]") {
         bvNormal.insertBit(i, bit);
         expected.push_back(bit);
     }
-    BitVector::DynamicBitVector<BitVector::NoProfiler> bvCreate(expected);
+    //BitVector::DynamicBitVector<BitVector::NoProfiler> bvCreate(expected);
+    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bvCreate(expected);
     REQUIRE(bvNormal.getBitString() == expected);
     REQUIRE(bvCreate.getBitString() == expected);
 }
 
+/*
 TEST_CASE("BV runtime test", "[bv][time]") {
-    BitVector::DynamicBitVector<BitVector::NoProfiler> bv;
+    //BitVector::DynamicBitVector<BitVector::NoProfiler> bv;
+    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv;
 
-    const int numberOfBits = 10000000;
+    const int numberOfBits = 1000000;
     for (int i = 0; i < numberOfBits; i++) {
         const bool bit = (i % 7 == 0);
         bv.insertBit(0, bit);
@@ -222,6 +238,7 @@ TEST_CASE("BV runtime test", "[bv][time]") {
     REQUIRE(bv.getBitString() == expected);
     bv.profiler.print();
 }
+ */
 
 TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][create]") {
 
@@ -237,7 +254,8 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
         for (int i = 0; i < numberOfBits; i++) {
             expected.push_back(false);
         }
-        BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+        //BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+        BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv(expected);
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
@@ -271,7 +289,8 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
         for (int i = 0; i < numberOfBits; i++) {
             expected.push_back(true);
         }
-        BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+        //BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+        BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv(expected);
 
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
@@ -306,7 +325,8 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
         for (int i = 0; i < numberOfBits; i++) {
             expected.push_back(i % 2 == 0);
         }
-        BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+        //BitVector::DynamicBitVector<BitVector::NoProfiler> bv(expected);
+        BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv(expected);
 
         for (int i = numberOfBits / 3; i < 2 * numberOfBits / 3; i++) {
             bv.flipBit(i);
@@ -341,16 +361,18 @@ TEST_CASE("Large BV test instance with directly created BV.", "[bv][large][creat
 TEST_CASE("Simple inner bv test", "[bv][withInner][simple]") {
     BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv;
 
-    const int numberOfBits = 10;
+    const int numberOfBits = 100000;
     std::vector<bool> expected = {};
     for (int i = 0; i < numberOfBits; i++) {
-        const bool bit = (i % 7 == 0);
+        const bool bit = (i % 7 == 0 || i % 3 == 0);
         bv.insertBit(0, bit);
         expected.insert(expected.begin(), bit);
         REQUIRE(bv.getBitString() == expected);
     }
     for (int i = 0; i < numberOfBits; i++) {
         bv.deleteBit(0);
+        expected.erase(expected.begin());
+        REQUIRE(bv.getBitString() == expected);
     }
 
     std::vector<bool> empty = {};

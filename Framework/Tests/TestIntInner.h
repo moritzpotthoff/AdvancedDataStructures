@@ -9,25 +9,6 @@
 #include "../BitVector/InnerBitVectorByInt.h"
 #include "../Helpers/BitVectorProfiler.h"
 
-TEST_CASE("Simple test for inner bv with int", "[inner][simple]") {
-    BitVector::InnerBitVectorByInt bv;
-
-    const int numberOfBits = 1000;
-    std::vector<bool> expected = {};
-    for (int i = 0; i < numberOfBits; i++) {
-        const bool bit = (i % 7 == 0);
-        bv.insert(i, bit);
-        expected.insert(expected.begin() + i, bit);
-        REQUIRE(bv.getBitString() == expected);
-    }
-    for (int i = 0; i < numberOfBits; i++) {
-        bv.deleteIndex(0);
-    }
-
-    std::vector<bool> empty = {};
-    REQUIRE(bv.getBitString() == empty);
-}
-
 TEST_CASE("Simple insert for inner bv with int", "[inner][insert]") {
     BitVector::InnerBitVectorByInt bv;
 
@@ -119,6 +100,71 @@ TEST_CASE("Tests the internal shift back function.", "[inner][shiftBack]") {
         REQUIRE(bv.words[1] == bv.lowerBitmask(10));
         REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000010111111111111111111);
     }
+    SECTION("Test index 63") {
+        bv.shiftBackFromIndex(63);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000011111111111111111110);
+    }
+}
+
+TEST_CASE("Tests the internal shift left function.", "[inner][shiftLeft]") {
+    BitVector::InnerBitVectorByInt bv;
+    bv.length = 100;
+    bv.words[0] = bv.lowerBitmask(20);
+    bv.words.emplace_back(bv.lowerBitmask(10));
+
+    SECTION("Test index 0") {
+        bv.shiftLeftFromIndex(0);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000111111111111111111110);
+    }
+    SECTION("Test index 1") {
+        bv.shiftLeftFromIndex(1);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000111111111111111111110);
+    }
+    SECTION("Test index 43 ") {
+        bv.shiftLeftFromIndex(43);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000111111111111111111110);
+    }
+    SECTION("Test index 44") {
+        bv.shiftLeftFromIndex(44);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000011111111111111111110);
+    }
+    SECTION("Test index 45") {
+        bv.shiftLeftFromIndex(45);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000011111111111111111110);
+    }
+    SECTION("Test index 63") {
+        bv.shiftLeftFromIndex(63);
+        REQUIRE(bv.words[1] == bv.lowerBitmask(10));
+        REQUIRE(bv.words[0] == 0b0000000000000000000000000000000000000000000011111111111111111110);
+    }
+}
+
+TEST_CASE("Tests the internal shift forward by delta function.", "[inner][shiftForwardDelta]") {
+    BitVector::InnerBitVectorByInt bv;
+    bv.length = 180;
+    bv.words[0] = 0;
+    bv.words.emplace_back(bv.upperBitmask(20));
+    bv.words.emplace_back(bv.upperBitmask(20));
+
+    SECTION("Test first word") {
+        bv.shiftForwardFromIndex(64, 20);
+        REQUIRE(bv.words[0] == bv.lowerBitmask(20));
+        REQUIRE(bv.words[1] == bv.lowerBitmask(20));
+        REQUIRE(bv.words[2] == 0);
+    }
+
+    SECTION("Test second word") {
+        bv.shiftForwardFromIndex(128, 20);
+        REQUIRE(bv.words[0] == 0);
+        REQUIRE(bv.words[1] == (bv.upperBitmask(20) | bv.lowerBitmask(20)));
+        REQUIRE(bv.words[2] == 0);
+    }
 }
 
 TEST_CASE("Tests the internal setBitTo function.", "[inner][setBitTo]") {
@@ -149,4 +195,23 @@ TEST_CASE("Tests the internal setBitTo function.", "[inner][setBitTo]") {
         expected[i] = true;
         REQUIRE(bv.getBitString() == expected);
     }
+}
+
+TEST_CASE("Simple test for inner bv with int", "[inner][simple]") {
+    BitVector::InnerBitVectorByInt bv;
+
+    const int numberOfBits = 1000;
+    std::vector<bool> expected = {};
+    for (int i = 0; i < numberOfBits; i++) {
+        const bool bit = (i % 7 == 0);
+        bv.insert(i, bit);
+        expected.insert(expected.begin() + i, bit);
+        REQUIRE(bv.getBitString() == expected);
+    }
+    for (int i = 0; i < numberOfBits; i++) {
+        bv.deleteIndex(0);
+    }
+
+    std::vector<bool> empty = {};
+    REQUIRE(bv.getBitString() == empty);
 }
