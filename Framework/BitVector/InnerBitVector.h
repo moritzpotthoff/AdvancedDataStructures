@@ -29,12 +29,6 @@ namespace BitVector {
             old->bits.shrink_to_fit();
         }
 
-        inline void insert(const int index, const bool bit) noexcept {
-            if (length + 1 >= bits.capacity()) enlarge();
-            bits.insert(bits.begin() + index, bit);
-            length++;
-        }
-
         inline void insertBitVector(const int index, InnerBitVector* other, int otherSize) noexcept {
             bits.insert(bits.begin() + index, other->bits.begin(), other->bits.end());
             length += otherSize;
@@ -60,6 +54,12 @@ namespace BitVector {
             return popcount();
         }
 
+        inline void insert(const int index, const bool bit) noexcept {
+            if (length + 1 >= bits.capacity()) enlarge();
+            bits.insert(bits.begin() + index, bit);
+            length++;
+        }
+
         inline bool deleteIndex(const size_t index) noexcept {
             if (index >= length) return false;
             if (length == 0) return false;
@@ -69,14 +69,6 @@ namespace BitVector {
                 shrink();
             length--;
             return bit;
-        }
-
-        inline void enlarge() noexcept {
-            bits.reserve(bits.capacity() + w);
-        }
-
-        inline void shrink() noexcept {
-            bits.reserve(bits.capacity() - w);
         }
 
         inline bool flipBit(const int index) noexcept {
@@ -94,7 +86,6 @@ namespace BitVector {
          * @return the index of the j-th one in the bit vector
          */
         inline int selectOne(const int j) const noexcept {
-            //TODO actually use popcount
             if (j == 0) return 0;
             int p = 0;
             int count = 0;
@@ -111,7 +102,6 @@ namespace BitVector {
          * @return the index of the j-th zero in the bit vector
          */
         inline int selectZero(const int j) const noexcept {
-            //TODO actually use popcount
             if (j == 0) return 0;
             int p = 0;
             int count = 0;
@@ -123,7 +113,6 @@ namespace BitVector {
         }
 
         inline int popcount() const noexcept {
-            //TODO switch to uint64_t-based approach for this?
             int count = 0;
             for (size_t i = 0; i < length; i++) {
                 if (bits[i]) count++;
@@ -137,7 +126,6 @@ namespace BitVector {
          * @return
          */
         inline int popcount(size_t upperLimit) const noexcept {
-            //TODO switch to uint64_t-based approach for this?
             int count = 0;
             for (size_t i = 0; i < upperLimit; i++) {
                 if (bits[i]) count++;
@@ -145,6 +133,16 @@ namespace BitVector {
             return count;
         }
 
+    private:
+        inline void enlarge() noexcept {
+            bits.reserve(bits.capacity() + w);
+        }
+
+        inline void shrink() noexcept {
+            bits.reserve(bits.capacity() - w);
+        }
+
+    public:
         inline void printBitString(int offset = 0) const noexcept {
             std::cout << std::string(offset, ' ');
             for (size_t i = 0; i < bits.size(); i++) {
@@ -155,6 +153,12 @@ namespace BitVector {
 
         inline void writeBitsToVector(std::vector<bool>* out) const noexcept {
             std::copy(bits.begin(), bits.end(), std::back_inserter(*out));
+        }
+
+        inline std::vector<bool> getBitString() const noexcept {
+            std::vector<bool> result;
+            writeBitsToVector(&result);
+            return result;
         }
 
         inline void free() noexcept {

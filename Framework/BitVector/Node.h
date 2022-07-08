@@ -205,18 +205,20 @@ namespace BitVector {
                 //insert the bit into the inner bit vector of the leaf
                 bitVector->insert(index, bit);
                 if (length + 1 == 2 * w * w) {
+                    int oldBits = bitVector->length;
                     //leaf overflow, split leaf into two halves.
                     InnerBV* rightHalf = new InnerBV(bitVector);
                     //left half of the bits
                     leftChild = new Node(this->bitVector);
                     //right half of the bits. this node becomes the new inner node.
                     rightChild = new Node(rightHalf);
+                    AssertMsg(leftChild->bitVector->length + rightChild->bitVector->length == oldBits, "Did not split properly.");
                     this->bitVector = NULL;//do not delete! is still used in leftChild
                     //adjust parameters
-                    num = w * w;
+                    num = leftChild->bitVector->length;
                     ones = leftChild->bitVector->popcount();
                     nodeHeight++;
-                    //TODO assert that the size of the left child is w * w.
+                    //AssertMsg(leftChild->bitVector->length == num, "Wrong length in left child");
                 }
             }
             //while backtracking the path upwards, adjust the heights of all nodes as well
@@ -332,15 +334,29 @@ namespace BitVector {
          * @return three-tuple (newRoot, hasDeleted, deletedBit)
          */
         inline std::tuple<Node*, bool, bool> deleteRecursive(int index, int length, int bvOnes, bool underflow) noexcept {
+            validate();
             bool hasDeleted, deletedBit, hasStolen, stolenBit;
             if (isLeaf()) {
+                validate();
                 std::tie(hasDeleted, deletedBit) = deleteLeaf(index, length, underflow);
+                validate(underflow);
                 return std::make_tuple(this, hasDeleted, deletedBit);
             }
             if (index < num) {
                 //delete in the left subtree
+                validate();
+
+
+
+
+                const int oldLength = getLength();
                 std::tie(leftChild, hasDeleted, deletedBit) = leftChild->deleteRecursive(index, num, ones, underflow);
+                const int newLength = getLength();
                 if (!hasDeleted) return std::make_tuple(this, false, false);//no deletion, no bit can be removed from this tree
+                AssertMsg(newLength == oldLength - 1, "Did not change length.");
+
+
+
                 if (deletedBit) ones--;
                 if (num == w * w / 2) {
                     //underflow, lefChild must be a leaf.
@@ -351,19 +367,32 @@ namespace BitVector {
                         rightChild->insertBitVector(0, length - num, leftChild->bitVector, num - 1, ones);
                         leftChild->free();
                         leftChild = NULL;
+                        Node* newRoot = rightChild;
+                        rightChild = NULL;
                         //delete rightChild;//TODO merge into this instead of child and also delete the child
-                        return std::make_tuple(rightChild, true, deletedBit);
+                        newRoot->validate(underflow);
+                        return std::make_tuple(newRoot, true, deletedBit);
                     }
                     //insert the stolen bit at the correct index in the left child
                     leftChild->insertBit(num - 1, stolenBit, num - 1);
                     if (stolenBit) ones++;
+                    validate();
                 } else {
                     num--;
+                    validate();
                 }
             } else {
                 //delete from the right child
+                validate();
+
+
+                const int oldLength = getLength();
                 std::tie(rightChild, hasDeleted, deletedBit) = rightChild->deleteRecursive(index - num, length - num, bvOnes - ones, underflow);
+                const int newLength = getLength();
                 if (!hasDeleted) return std::make_tuple(this, false, false);
+                AssertMsg(newLength == oldLength - 1, "Did not change length when deleting from right child.");
+
+
                 if (deletedBit) bvOnes--;
                 if (length - num == w * w / 2) {
                     //underflow, rightChild must be a leaf
@@ -375,17 +404,23 @@ namespace BitVector {
                         //delete leftChild;//TODO merge into this instead of child and also delete the child
                         rightChild->free();
                         rightChild = NULL;
-                        return std::make_tuple(leftChild, true, deletedBit);
+                        Node* newRoot = leftChild;
+                        leftChild = NULL;
+                        newRoot->validate(underflow);
+                        return std::make_tuple(newRoot, true, deletedBit);
                     }
                     //re-insert the stolen bit at the right position
                     rightChild->insertBit(0, stolenBit, w * w / 2 - 1);
                     //a bit was moved from left to right, adjust num and ones accordingly
                     num--;
                     if (stolenBit) ones--;
+                    validate();
                 }
             }
+            validate();
             //rebalance, if necessary.
             Node* newRoot = rebalance();
+            validate();
             return std::make_tuple(newRoot, true, deletedBit);
         }
 
@@ -397,9 +432,17 @@ namespace BitVector {
          * @return tuple (hasDeleted, deletedBit)
          */
         inline std::pair<bool, bool> deleteLeaf(int index, int length, bool underflow) noexcept {
+            validate();
             if (length == w * w / 2 && !underflow) return std::make_pair(false, false);//forbidden underflow would occur, do not carry out deletion
 
-            return std::make_pair(true, bitVector->deleteIndex(index));
+            const int oldLength = bitVector->length;
+            std::vector<bool> oldBits = bitVector->getBitString();
+            const bool bit = bitVector->deleteIndex(index);
+            std::vector<bool> newBits = bitVector->getBitString();
+            oldBits.erase(oldBits.begin() + index);
+            AssertMsg(oldBits == newBits, "Did not delete bit.");
+            AssertMsg(bitVector->length == oldLength - 1, "Did not change length");
+            return std::make_pair(true, bit);
         }
 
         /**
@@ -491,10 +534,12 @@ namespace BitVector {
          *
          * @return (total num in subtree, total ones in subtree, height)
          */
-        inline std::tuple<int, int, int> validate() {
+        inline std::tuple<int, int, int> validate(bool allowUnderflows = false) {
             if (isLeaf()) {
-                AssertMsg(bitVector->length == bitVector->bits.size(), "BitVector length is false");
-                AssertMsg(bitVector->length >= w * w / 2, "Bit Vector underflow");
+                //AssertMsg(bitVector->length == bitVector->bits.size(), "BitVector length is false");
+                if (!allowUnderflows) {
+                    AssertMsg(bitVector->length >= w * w / 2, "Bit Vector underflow");
+                }
                 AssertMsg(bitVector->length <= 2 * w * w, "Bit Vector overflow");
                 return std::make_tuple(bitVector->length, bitVector->popcount(), 0);
             }
@@ -518,6 +563,11 @@ namespace BitVector {
                 return baseSize + bitVector->getSize();
             }
             return baseSize + leftChild->getSize() + rightChild->getSize();
+        }
+
+        int getLength() {
+            if (isLeaf()) return bitVector->length;
+            return leftChild->getLength() + rightChild->getLength();
         }
 
         //TODO use union/variant

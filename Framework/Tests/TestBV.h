@@ -15,7 +15,7 @@ TEST_CASE("Small simple BV Test Instance", "[bv][small]") {
 
     std::vector<bool> expected = {};
     REQUIRE(bv.getBitString() == expected);
-    const int numberOfBits = 100;
+    const int numberOfBits = 1000;
     const int numberOfOnes = numberOfBits / 2;
 
     SECTION("Works with only 0") {
@@ -207,7 +207,7 @@ TEST_CASE("BV initialized creation test", "[bv][create][simple]") {
     //BitVector::DynamicBitVector<BitVector::NoProfiler> bvNormal;
     BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bvNormal;
 
-    const int numberOfBits = 123;
+    const int numberOfBits = 1234;
     std::vector<bool> expected = {};
     for (int i = 0; i < numberOfBits; i++) {
         const bool bit = (i % 7 == 0);
@@ -365,20 +365,24 @@ TEST_CASE("Simple inner bv test", "[bv][withInner][simple]") {
     const int numberOfBits = 100000;
     std::vector<bool> expected = {};
     for (int i = 0; i < numberOfBits; i++) {
-        //const bool bit = (i % 7 == 0 || i % 3 == 0);
-        const bool bit = true;
-        bv.insertBit(0, bit);
-        expected.insert(expected.begin(), bit);
+        const bool bit = (i % 7 == 0 || i % 3 == 0 || i % 7 == 4);
+        bv.insertBit(i, bit);
+        //bv.validate();
+        expected.insert(expected.begin() + i, bit);
         REQUIRE(bv.getBitString() == expected);
     }
-    for (int i = 0; i < numberOfBits; i++) {
-        bv.deleteBit(0);
-        expected.erase(expected.begin());
-        REQUIRE(bv.length == (int)expected.size());
+    for (int i = 0; i < 2 * numberOfBits / 7; i++) {
+        const int index = numberOfBits / 9;
+        bv.deleteBit(index);
+        bv.validate();
+        expected.erase(expected.begin() + index);
         REQUIRE(bv.getBitString() == expected);
     }
-
-    std::vector<bool> empty = {};
-    REQUIRE(bv.getBitString() == empty);
-    bv.profiler.print();
+    for (int i = 0; i < 3 * numberOfBits / 7; i++) {
+        const int index = numberOfBits / 9;
+        bv.deleteBit(index);
+        expected.erase(expected.begin() + index);
+        REQUIRE(bv.getBitString() == expected);
+    }
 }
+

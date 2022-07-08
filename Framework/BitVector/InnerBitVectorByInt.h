@@ -43,14 +43,18 @@ namespace BitVector {
          */
         inline void insertBitVector(const int index, InnerBitVectorByInt* other, int otherSize) noexcept {
             AssertMsg(index == 0 || index == length, "Called insertBitVector with index not start or end.");
+            std::vector<bool> expected = getBitString();
+            const int oldLength = length;
             if (index == 0) {
                 //insert other at start
                 int otherWords = other->length / wordSize;
                 if (other->length % wordSize != 0) otherWords++;
                 words.insert(words.begin(), other->words.begin(), other->words.begin() + otherWords);
+                length += otherWords * wordSize;
                 if (other->length % wordSize != 0) {
                     //remove the gap between the two
-                    shiftForwardFromIndex(otherWords * wordSize, wordSize - (other->length % wordSize));
+                    const int delta = wordSize - (other->length % wordSize);
+                    shiftForwardFromIndex(otherWords * wordSize, delta);
                 }
             } else {
                 //insert other at end
@@ -59,12 +63,23 @@ namespace BitVector {
                 int otherWords = other->length / wordSize;
                 if (other->length % wordSize != 0) otherWords++;
                 words.insert(words.end(), other->words.begin(), other->words.begin() + otherWords);
-                if (length % wordSize != 0) {
+                length += otherWords * wordSize;
+                if (oldLength % wordSize != 0) {
                     //remove the gap between the two
-                    shiftForwardFromIndex(oldNumberOfWords * wordSize, wordSize - (length % wordSize));
+                    const int delta = wordSize - (oldLength % wordSize);
+                    shiftForwardFromIndex(oldNumberOfWords * wordSize, delta);
                 }
             }
-            length += otherSize;
+
+            length = oldLength + otherSize;
+            std::vector<bool> otherBits = other->getBitString();
+            expected.insert(expected.begin() + index, otherBits.begin(), otherBits.end());
+            std::vector<bool> actual = getBitString();
+            expected.resize(std::min(expected.size(), actual.size()));
+            actual.resize(std::min(expected.size(), actual.size()));
+            AssertMsg(expected == actual, "Did not insert set of bits properly.");
+
+            //TODO delete other
         }
 
         /**
@@ -86,10 +101,11 @@ namespace BitVector {
             }
             //reserve enough size
             words.resize(blockLength / wordSize + 1);
+            length = blockLength;
             for (int i = 0; i < blockLength; i++) {
+                //TODO make this more efficient?
                 setBitTo(i, newBits[bitStart + i]);
             }
-            length = blockLength;
             return popcount();
         }
 
@@ -146,36 +162,43 @@ namespace BitVector {
          * @return
          */
         inline bool deleteIndex(const int index) noexcept {
-            if (index >= length) return false;
-            if (length == 0) return false;
+            if (index >= length || length == 0) {
+                std::cout << "Delete without deletion" << std::endl;
+                return false;
+            }
+            std::vector<bool> expected = getBitString();//TODO remove
             const bool bit = readBit(index);
             if (word(index) == word(length - 1)) {
                 //simply delete from the last word
                 shiftLeftFromIndex(index);
-                length--;
-                return bit;
-            }
-            //from the back to the front, move bits forward.
-            int wordIndex = word(length - 1);//length > 0 is sure.
-            //for the last word:
-            bool carry = readBit(wordIndex * wordSize);//keep leftmost bit of the word
-            words[wordIndex] <<= 1;//shift left by one bit
-            wordIndex--;
-            while (wordIndex > (int)word(index)) {
-                const bool newCarry = readBit(wordIndex * wordSize);
+            } else {
+                //from the back to the front, move bits forward.
+                int wordIndex = word(length - 1);//length > 0 is sure.
+                //for the last word:
+                bool carry = readBit(wordIndex * wordSize);//keep leftmost bit of the word
                 words[wordIndex] <<= 1;//shift left by one bit
-                setBitTo(wordIndex * wordSize + wordSize - 1, carry);
-                carry = newCarry;
                 wordIndex--;
+                while (wordIndex > (int) word(index)) {
+                    const bool newCarry = readBit(wordIndex * wordSize);
+                    words[wordIndex] <<= 1;//shift left by one bit
+                    setBitTo(wordIndex * wordSize + wordSize - 1, carry);
+                    carry = newCarry;
+                    wordIndex--;
+                }
+                //inside the relevant word, delete bit and insert carry as rightmost bit.
+                shiftLeftFromIndex(index);
+                setBitTo(std::min(length - 2, word(index) * wordSize + wordSize - 1), carry);
             }
-            //inside the relevant word, delete bit and insert carry as rightmost bit.
-            shiftLeftFromIndex(index);
-            setBitTo(std::min(length - 2, word(index) * wordSize + wordSize - 1), carry);
 
-            //update capacity
             length--;
-            if (length + 2 * wordSize < wordSize * (int)words.capacity()) //more than two words are unused
-                shrink();
+            //update capacity
+            //if (length + 2 * w < wordSize * (int)words.capacity()) //more than two words are unused
+            //    shrink();
+
+            expected.erase(expected.begin() + index);
+            std::vector<bool> actual = getBitString();
+            AssertMsg(expected == actual, "Did not delete correctly.");
+
             return bit;
         }
 
@@ -264,11 +287,6 @@ namespace BitVector {
             return count;
         }
 
-        inline void free() noexcept {
-            std::vector<uint64_t>().swap(words);
-            delete this;
-        }
-
     //private:
     public://for testing
         /**
@@ -312,8 +330,12 @@ namespace BitVector {
          * @param index *always a multiple of wordSize*!!!
          * @param delta
          */
-         //tested.
         inline void shiftForwardFromIndex(int index, int delta) noexcept {
+            AssertMsg(index < wordSize * words.size(), "Shifted from invalid index.");
+
+            std::vector<bool> previous = getBitString();
+            std::vector<bool> expected = getBitString();
+
             int currentWord = word(length - 1);
             uint64_t bitmaskUpper = upperBitmask(delta);
             //get carry from last word
@@ -334,6 +356,13 @@ namespace BitVector {
             AssertMsg(word(index) >= 1, "Invalid left shift");
             uint64_t leftPart = words[word(index) - 1] & upperBitmask(wordSize - delta);//keep the left part of the word
             words[word(index) - 1] = leftPart | (carry >> (wordSize - delta));//add the remaining carry at the end
+
+            length -= delta;
+
+            AssertMsg(expected == previous, "this should not happen");
+            expected.erase(expected.begin() + index - delta, expected.begin() + index);
+            std::vector<bool> actual = getBitString();
+            AssertMsg(expected == actual, "Did not shift bits forward properly.");
         }
 
         inline void enlarge() noexcept {
@@ -372,6 +401,11 @@ namespace BitVector {
         }
 
     public:
+        inline void free() noexcept {
+            std::vector<uint64_t>().swap(words);
+            delete this;
+        }
+
         inline size_t getSize() const noexcept {
             return CHAR_BIT * (sizeof(length) + sizeof(words)) + words.size() * wordSize;
         }
