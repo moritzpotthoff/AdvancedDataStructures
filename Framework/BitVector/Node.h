@@ -5,7 +5,7 @@
 #include <tuple>
 #include <math.h>
 
-#include "Definitions.h"
+#include "../Definitions.h"
 #include "InnerBitVector.h"
 
 namespace BitVector {
@@ -434,7 +434,7 @@ namespace BitVector {
             //actually insert the bits
             //TODO make this nicer
             //TODO why is this still small enough?
-            current->bitVector->insertBitVector(index, bv, bvSize);
+            current->bitVector->insertBitVector(index, bv);
         }
 
         inline void free() noexcept {

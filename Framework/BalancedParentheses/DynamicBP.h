@@ -23,7 +23,11 @@ namespace BalancedParentheses {
      *
      * @tparam PROFILER type of profiler that can be used for tuning.
      *          NoProfiler can be used to avoid overheads,
-     *          BasicProfiler for basic profiling.
+     *          BasicProfiler for basic profiling.  *
+     * @tparam INNER_BV the dynamic bit vector used to store the bits within a node.
+     *          Eiher InnerBitVector, which uses a std::vector<bool> or
+     *          InnerBitVectorByInt, which uses a sequence of uint64_t, as described in
+     *          Navarro's book. The latter is faster.
      */
     template<typename PROFILER, typename INNER_BV = InnerBitVector>
     class DynamicBP {

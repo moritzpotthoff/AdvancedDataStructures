@@ -240,6 +240,16 @@ namespace BalancedParentheses {
             }
         }
 
+        /**
+         * Performs a minCount query for the given range [i,j]
+         *
+         * @param i the start index
+         * @param j the end index (inclusive)
+         * @param t the index of the desired occurrence
+         * @param length the length of the subtree
+         * @param theMinimum the desired excess
+         * @return the number of occurrences of the minimum excess
+         */
         inline int minCount(const int i, const int j, const int length, const int theMinimum) const noexcept {
             int count;
             std::tie(std::ignore, count) = minCountRec(i, j, length, theMinimum);
@@ -283,6 +293,14 @@ namespace BalancedParentheses {
             std::tie(totalExcess, minExcess, minTimes) = bitVector->recomputeExcesses();
         }
 
+        /**
+         * Performs a forward search.
+         *
+         * @param i the start index
+         * @param d the desired excess
+         * @param length the length of this subtree
+         * @return (found excess, index)
+         */
         inline std::pair<int, int> fwdSearchRecursive(int i, int d, int length) const noexcept {
             if (i == -1 && minExcess > d) {
                 //excess d does not exist
@@ -313,7 +331,7 @@ namespace BalancedParentheses {
         }
 
         /**
-         *
+         * Performs a recursive backward search.
          * @param i
          * @param d
          * @param length
@@ -582,7 +600,7 @@ namespace BalancedParentheses {
                 }
             } else {
                 //actually insert the bits
-                bitVector->insertBitVector(index, bv, bvSize);
+                bitVector->insertBitVector(index, bv);
                 recomputeExcessesLeaf();
             }
         }

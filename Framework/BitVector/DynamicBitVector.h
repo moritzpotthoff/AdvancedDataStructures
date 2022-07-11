@@ -10,7 +10,7 @@ namespace BitVector {
      * A dynamic bit vector that supports insert-, delete-, flip-, access-, rank- and select-queries.
      *
      * Implemented based on the description in
-     *      Gonzalo Navarro. Compact Data Structures -- A Pracitcal Approach.
+     *      Gonzalo Navarro. Compact Data Structures -- A Practical Approach.
      *      Cambridge University Press, 2016.
      *
      * Opposed to the source, we use 0-based indices B[0..length - 1] and
@@ -19,6 +19,10 @@ namespace BitVector {
      * @tparam PROFILER type of profiler that can be used for tuning.
      *          NoProfiler can be used to avoid overheads,
      *          BasicProfiler for basic profiling.
+     * @tparam INNER_BV the dynamic bit vector used to store the bits within a node.
+     *          Either InnerBitVector, which uses a std::vector<bool> or
+     *          InnerBitVectorByInt, which uses a sequence of uint64_t, as described in
+     *          Navarro's book. The latter is faster.
      */
     template<typename PROFILER, typename INNER_BV = InnerBitVector>
     class DynamicBitVector {
@@ -32,8 +36,17 @@ namespace BitVector {
             root = new Node<InnerBV>();
         }
 
+        /**
+         * Builds a complete binary tree with leaves that contain the given bits.
+         * Where possible, each leaf contains exactly w*w bits.
+         * @param bits the bits that shall be represented by the bv.
+         */
         DynamicBitVector(std::vector<bool>& bits) :
             length(bits.size()) {
+            if (length == 0) {
+                root = new Node<InnerBV>();
+                return;
+            }
             int blockLength = w * w;
             int numberOfBlocks = length / blockLength;//the last block has between w^2 and 2 * w^2 - 1 bits to ensure correct sizes
             //partition the bits into blocks, build full binary tree for all blocks,
@@ -43,7 +56,6 @@ namespace BitVector {
             }
             root = new Node<InnerBV>();
             root->buildBinaryTree(0, numberOfBlocks, blockLength, bits);
-            length = bits.size();
         }
 
         /**
@@ -175,7 +187,7 @@ namespace BitVector {
 
         /**
          * Returns the size in bits
-         * @return
+         * @return the total space consumption of the tree, in bits.
          */
         inline size_t getSize() const noexcept {
             //length + rest

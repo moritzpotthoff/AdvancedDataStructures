@@ -19,11 +19,10 @@ include_directories(Helpers)
 include_directories(Tests)
 
 add_executable(Framework
-        BalancedParentheses/Definitions.h
         BalancedParentheses/DynamicBP.h
         BalancedParentheses/InnerBitVector.h
         BalancedParentheses/Node.h
-        BitVector/Definitions.h
+        Definitions.h
         BitVector/DynamicBitVector.h
         BitVector/InnerBitVector.h
         BitVector/Node.h

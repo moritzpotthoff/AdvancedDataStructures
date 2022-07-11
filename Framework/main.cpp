@@ -10,22 +10,20 @@
 #include "Tests/TestBV.h"
 #include "Tests/TestIntInner.h"
 
+#include "Definitions.h"
 #include "Helpers/Timer.h"
 #include "Helpers/BitVectorProfiler.h"
 #include "BitVector/DynamicBitVector.h"
 #include "BitVector/InnerBitVector.h"
-#include "BitVector/Definitions.h"
 #include "BitVector/Node.h"
 #include "BalancedParentheses/DynamicBP.h"
 #include "BalancedParentheses/Node.h"
 #include "BalancedParentheses/InnerBitVector.h"
 #include "BalancedParentheses/InnerBitVectorByInt.h"
-#include "BalancedParentheses/Definitions.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
-static const bool Interactive = false;
-//Debug flag. Generates extensive debug info.
-static const bool Debug = Interactive && false;
+static const bool Interactive = true;
+static const bool VeryInteractive = false;
 static const bool WriteToFile = true;
 
 inline static void handleBitVectorQuery(char *argv[]) {
@@ -85,7 +83,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
             const int result = bv.rank(bit, index);
             rankTime += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
-            if constexpr (Interactive) std::cout << "Rank_" << bit << "[" << index << "]=" << result << std::endl;
+            if constexpr (VeryInteractive) std::cout << "Rank_" << bit << "[" << index << "]=" << result << std::endl;
         } else if (queryType.compare("select") == 0) {
             inputFile >> bit;
             inputFile >> index;
@@ -93,24 +91,23 @@ inline static void handleBitVectorQuery(char *argv[]) {
             const int result = bv.select(bit, index);
             selectTime += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
-            if constexpr (Interactive) std::cout << "Select_" << bit << "[" << index << "]=" << result << std::endl;
+            if constexpr (VeryInteractive) std::cout << "Select_" << bit << "[" << index << "]=" << result << std::endl;
         }
     }
 
     //Print the bit vector to the output file
-    std::cout << "BV result:" << std::endl;
-    for (int i = 0; i < bv.length; i++) {
-        if constexpr (Interactive) {
+    if constexpr (Interactive) {
+        std::cout << "BV result:" << std::endl;
+        for (int i = 0; i < bv.length; i++) {
             const int result = bv.access(i);
-            //TODO not necessary.
-            //if constexpr (WriteToFile) outputFile << result << "\n";
+            if constexpr (WriteToFile) outputFile << result << "\n";
             std::cout << " BV[" << i << "] = " << result << std::endl;
         }
     }
 
-    std::cout << std::endl << std::endl << std::endl;
+    const int totalTime = constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime;
     std::cout   << "RESULT algo=bv name=moritz_potthoff"
-                << " time=" << (constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime) / 1000
+                << " time=" << totalTime / 1000
                 << " constructionTime=" << constructionTime / 1000
                 << " insertTime=" << insertTime / 1000
                 << " deleteTime=" << deleteTime / 1000
@@ -118,10 +115,9 @@ inline static void handleBitVectorQuery(char *argv[]) {
                 << " rankTime=" << rankTime / 1000
                 << " selectTime=" << selectTime / 1000
                 << " space=" << bv.getSize()
-                << " score=" << 0.45 * ((constructionTime + insertTime + deleteTime + flipTime + rankTime + selectTime) / 1000) + 0.55 * bv.getSize() << std::endl;
-    std::cout << "Length is " << bv.length << std::endl;
+                << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
 
-    bv.profiler.print();
+    if constexpr (Interactive) bv.profiler.print();
 }
 
 inline static void handleBPQuery(char *argv[]) {
@@ -157,27 +153,23 @@ inline static void handleBPQuery(char *argv[]) {
             const int result = tree.child(tree.getIndex(v), i);
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
-            if constexpr (Interactive) std::cout << "child(" << v << ", " << i << ") = " << result << std::endl;
+            if constexpr (VeryInteractive) std::cout << "child(" << v << ", " << i << ") = " << result << std::endl;
         } else if (queryType.compare("subtree_size") == 0) {
             inputFile >> v;
             timer.restart();
             const int result = tree.subtreeSize(tree.getIndex(v));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
-            if constexpr (Interactive) std::cout << "subtreeSize(" << v << ") = " << result << std::endl;
+            if constexpr (VeryInteractive) std::cout << "subtreeSize(" << v << ") = " << result << std::endl;
         } else if (queryType.compare("parent") == 0) {
             inputFile >> v;
             timer.restart();
             const int result = tree.parent(tree.getIndex(v));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
-            if constexpr (Interactive) std::cout << "parent(" << v << ") = " << result << std::endl;
+            if constexpr (VeryInteractive) std::cout << "parent(" << v << ") = " << result << std::endl;
         }
     }
-
-    //std::cout << "Resulting tree:" << std::endl;
-    //tree.printTree();
-    //tree.printBitString();
 
     if constexpr (WriteToFile) tree.printDegreesToFile(outputFile);
 
@@ -186,9 +178,7 @@ inline static void handleBPQuery(char *argv[]) {
               << " space=" << tree.getSize()
               << " score=" << 0.45 * (time / 1000) + 0.55 * tree.getSize() << std::endl;
 
-
-    std::cout << "Length is " << tree.length << std::endl;
-    tree.profiler.print();
+    if constexpr (Interactive) tree.profiler.print();
 }
 
 int main(int argc, char *argv[]) {

@@ -9,10 +9,20 @@
 
 namespace BalancedParentheses {
     /**
-     * Inspirations taken from https://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit (06-29-2022)
+     * An implementation of a dynamic bit vector with rank (popcount)- and select-support.
+     * Bits are represented using a sequence of uint64_t integers, each containing 64 of the original bits.
+     * Global index i is at word i / 64, index i % 64.
+     * Within words, the most significant bit is bit 0 (left-to-right).
+     * Should only be used to represent bits within nodes of a binary tree-based dynamic bit vector.
+     *
+     * Some inspirations for bit access and manipulation were taken from
+     * https://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit (06-29-2022)
      */
     class InnerBitVectorByInt {
     public:
+        /**
+         * Creates an empty bit vector.
+         */
         InnerBitVectorByInt() :
                 words(1),
                 length(0) {
@@ -20,8 +30,9 @@ namespace BalancedParentheses {
         }
 
         /**
-         * Copies the blocks from old beginning at the middle to the new InnerBitVector, erases them from old.
-         * @param old
+         * Creates a new InnerBitVector by splitting old.
+         * Copies the bits from old beginning at the middle to the new bit vector, erases them from old.
+         * @param old the existing bit vector.
          */
          InnerBitVectorByInt(InnerBitVectorByInt* old) :
                 words(0),
@@ -37,11 +48,10 @@ namespace BalancedParentheses {
 
         /**
          * Inserts the given bit vector other at the start or end (via index) of this bit vector.
-         * @param index
-         * @param other
-         * @param otherSize
+         * @param index the index where other is inserted, either 0 or length
+         * @param other the bit vector to be inserted
          */
-        inline void insertBitVector(const int index, InnerBitVectorByInt* other, int otherSize) noexcept {
+        inline void insertBitVector(const int index, InnerBitVectorByInt* other) noexcept {
             AssertMsg(index == 0 || index == length, "Called insertBitVector with index not start or end.");
             const int oldLength = length;
             if (index == 0) {
@@ -51,7 +61,7 @@ namespace BalancedParentheses {
                 words.insert(words.begin(), other->words.begin(), other->words.begin() + otherWords);
                 length += otherWords * wordSize;//temporarily adjust length for the following operations
                 if (other->length % wordSize != 0) {
-                    //remove the gap between the two
+                    //remove the gap between the two regions
                     const int delta = wordSize - (other->length % wordSize);
                     shiftForwardFromIndex(otherWords * wordSize, delta);
                 }
@@ -64,15 +74,20 @@ namespace BalancedParentheses {
                 words.insert(words.end(), other->words.begin(), other->words.begin() + otherWords);
                 length += otherWords * wordSize;//temporarily adjust length for the following operations
                 if (oldLength % wordSize != 0) {
-                    //remove the gap between the two
+                    //remove the gap between the two regions
                     const int delta = wordSize - (oldLength % wordSize);
                     shiftForwardFromIndex(oldNumberOfWords * wordSize, delta);
                 }
             }
-            length = oldLength + otherSize;//actually set correct length
-            //TODO delete other
+            length = oldLength + other->length;//actually set correct length
+            //other will be deleted by the caller
         }
 
+        /**
+         * Inserts a bit into the bit vector
+         * @param index the target index
+         * @param bit the new bit.
+         */
         inline void insert(const int index, const bool bit) noexcept {
             if (index == 0 && length == 0) {
                 if (bit) {
@@ -122,8 +137,8 @@ namespace BalancedParentheses {
 
         /**
          * Deletes the bit at the given index.
-         * @param index
-         * @return
+         * @param index the index that shall be deleted
+         * @return the previous bit at that index
          */
         inline bool deleteIndex(const int index) noexcept {
             if (index >= length || length == 0)
@@ -152,30 +167,35 @@ namespace BalancedParentheses {
             }
 
             length--;
-            //update capacity//TODO reinsert
-            //if (length + 2 * w < wordSize * (int)words.capacity()) //more than two words are unused
-            //    shrink();
+            //update capacity
+            if (length + 2 * w < wordSize * (int)words.capacity()) //more than two words are unused
+                shrink();
 
             return bit;
         }
 
         /**
-         * Flips the bit and returns the previous bit.
-         * @param index
-         * @return
+         * Flips a bit.
+         * @param index the index that shall be flipped.
+         * @return the previous bit.
          */
         inline bool flipBit(const int index) noexcept {
             words[word(index)] ^= 1ULL << (wordSize - 1 - bitIndex(index));
             return !readBit(index);
         }
 
+        /**
+         * Reads the bit at index index
+         * @param index the index
+         * @return the bit at index index
+         */
         inline bool readBit(const int index) const noexcept {
             return (words[word(index)] >> (wordSize - 1 - bitIndex(index))) & 1ULL;
         }
 
         /**
-         * Executes select queries on bit vectors using popcount
-         * @param j
+         * Executes select queries on bit vectors using a block-wise linear scan and popcount on 64-bit blocks.
+         * @param j the number of the desired occurrence
          * @return the index of the j-th one in the bit vector
          */
         inline int selectOne(const int j) const noexcept {
@@ -197,8 +217,8 @@ namespace BalancedParentheses {
         }
 
         /**
-         * Executes select queries on bit vectors using popcount
-         * @param j
+         * Executes select queries on bit vectors using a block-wise linear scan and popcount on 64-bit blocks.
+         * @param j the number of the desired occurrence
          * @return the index of the j-th zero in the bit vector
          */
         inline int selectZero(const int j) const noexcept {
@@ -221,14 +241,18 @@ namespace BalancedParentheses {
             }
         }
 
+        /**
+         * Counts the number of ones in the bit vector using a block-wise scan.
+         * @return the number of ones in the bv.
+         */
         inline int popcount() const noexcept {
             return popcount(length);
         }
 
         /**
-         * Returns the number of 1s in the bit vector up to the exclusive upper limit
+         * Returns the number of 1s in the bit vector up to the exclusive upper limit, i.e., performs a rank query.
          * @param upperLimit (exclusive!)
-         * @return
+         * @return the number of ones.
          */
         inline int popcount(int upperLimit) const noexcept {
             int count = 0, index = 0;
@@ -243,15 +267,6 @@ namespace BalancedParentheses {
             }
             return count;
         }
-
-
-
-
-
-
-
-
-
 
         /**
          * Recomputes the excess information for this block.
@@ -275,7 +290,7 @@ namespace BalancedParentheses {
         }
 
         /**
-         * Performs a forward search within this block.
+         * Performs a forward search within this bit vector.
          *
          * @param i the start index within this bit vector
          * @param d the desired local excess
@@ -292,7 +307,7 @@ namespace BalancedParentheses {
         }
 
         /**
-         * Performs a backward search in the bit vector
+         * Performs a backward search in the bit vector.
          *
          * @param i the start index (searching to the left)
          * @param d the desired local excess
@@ -301,10 +316,9 @@ namespace BalancedParentheses {
         inline std::tuple<int, int> bwdBlock(int i, int d) const noexcept {
             int currentExcess = 0;
             for (int j = i; j >= 0; j--) {
-                (!readBit(j)) ? currentExcess++ : currentExcess--;//negated expression!
+                (!readBit(j)) ? currentExcess++ : currentExcess--;//negated condition!
                 if (currentExcess == d) return std::make_pair(d, j);
             }
-
             return std::make_pair(currentExcess, -1);
         }
 
@@ -367,28 +381,12 @@ namespace BalancedParentheses {
             return std::make_pair(excess, count);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private:
+    //private://TODO
+    public://for testing only
         /**
          * Sets the bit at the desired index to bit.
-         * @param index
-         * @param bit
+         * @param index the index
+         * @param bit the new bit value
          */
         inline void setBitTo(int index, bool bit) noexcept {
             AssertMsg(index < length, "Tried to change bit outside the valid range.");
@@ -397,8 +395,8 @@ namespace BalancedParentheses {
         }
 
         /**
-         * shifts all bits starting from (and including) index back by 1 step *within the word only*.
-         * @param index
+         * Shifts all bits starting from (and including) index back by 1 step *within the word only*.
+         * @param index the start index of the shift
          */
         inline void shiftBackFromIndex(int index) noexcept {
             const uint64_t bitmask = lowerBitmask(wordSize - bitIndex(index));//0..01..1
@@ -409,7 +407,7 @@ namespace BalancedParentheses {
 
         /**
          * Shifts all bits behind index left by 1 step, overwriting the bit at index, *within the word only*.
-         * @param index
+         * @param index the index to be deleted
          */
         inline void shiftLeftFromIndex(int index) noexcept {
             const uint64_t leftBitMask = upperBitmask(bitIndex(index));
@@ -421,10 +419,10 @@ namespace BalancedParentheses {
 
         /**
          * Shifts the bits starting from index forwards by delta bits, overwriting the delta bits
-         * occuring directly in front of index.
+         * occurring directly in front of index.
          *
-         * @param index *always a multiple of wordSize*!!!
-         * @param delta
+         * @param index the index, *always a multiple of wordSize*
+         * @param delta the number of positions to be shifted by
          */
         inline void shiftForwardFromIndex(int index, int delta) noexcept {
             AssertMsg(index < wordSize * words.size(), "Shifted from invalid index.");
@@ -448,55 +446,90 @@ namespace BalancedParentheses {
             AssertMsg(word(index) >= 1, "Invalid left shift");
             uint64_t leftPart = words[word(index) - 1] & upperBitmask(wordSize - delta);//keep the left part of the word
             words[word(index) - 1] = leftPart | (carry >> (wordSize - delta));//add the remaining carry at the end
-
             length -= delta;
         }
 
+        /**
+         * Reserves more space
+         */
         inline void enlarge() noexcept {
             words.reserve(words.capacity() + 1);
         }
 
+        /**
+         * Frees some space.
+         */
         inline void shrink() noexcept {
             words.reserve(words.capacity() - 1);
         }
 
-        //make sure there are no unused words at the end
+        /**
+         * Removes any unused words at the end.
+         */
         inline void shrinkToFit() noexcept {
             int numberOfWords = length / wordSize;
             if (length % wordSize != 0) numberOfWords++;
             words.resize(numberOfWords);
         }
 
+        /**
+         * Computes the word that contains the bit with the given index
+         * @param index the index
+         * @return the index of the relevant word within words
+         */
         inline int word(int index) const noexcept {
             AssertMsg(index <= length, "Invalid index for inner bit vector.");
             return index / wordSize;
         }
 
+        /**
+         * Computes the index within its word of the bit with the given global index
+         * @param index the desired global index
+         * @return the index within the word only
+         */
         inline int bitIndex(int index) const noexcept {
             AssertMsg(index <= length, "Invalid index for inner bit vector.");
             return index % wordSize;
         }
 
+        /**
+         * Creates a bitmask starting with numberOfOnes ones, followed by zeros.
+         * @param numberOfOnes the number of ones
+         * @return 1..10..0 with exactly numberOfOnes ones at the start.
+         */
         inline uint64_t upperBitmask(uint64_t numberOfOnes) const noexcept {
-            return ~(lowerBitmask(wordSize - numberOfOnes));//1..10..0 with exactly numberOfOnes ones at the start.
+            return ~(lowerBitmask(wordSize - numberOfOnes));
 
         }
 
+        /**
+         * Creates a bitmask ending with numberOfOnes ones.
+         * @param numberOfOnes the number of ones
+         * @return 0..01..1 with exactly numberOfOnes ones at the end.
+         */
         inline uint64_t lowerBitmask(uint64_t numberOfOnes) const noexcept {
             if (numberOfOnes == 64) return (uint64_t)-1;
-            return (1ULL << numberOfOnes) - 1;//0..01..1 with exactly numberOfOnes ones at the end.
+            return (1ULL << numberOfOnes) - 1;
         }
 
     public:
+        /**
+         * Frees the memory used for this bv.
+         */
         inline void free() noexcept {
             std::vector<uint64_t>().swap(words);
             delete this;
         }
 
+        /**
+         * Calculates the number of bits needed for this bv.
+         * @return the number of bits.
+         */
         inline size_t getSize() const noexcept {
             return CHAR_BIT * (sizeof(length) + sizeof(words)) + words.size() * wordSize;
         }
 
+        //some helper functions
         inline void printBitString(int offset = 0) const noexcept {
             std::cout << std::string(offset, ' ');
             for (int i = 0; i < length; i++) {
@@ -518,7 +551,7 @@ namespace BalancedParentheses {
         }
 
     public:
-        std::vector<uint64_t> words;//all bits behind the first length bits must be 0! size must be maintained correctly.
+        std::vector<uint64_t> words;//all bits behind the first length bits must be 0!
         int length;
     };
 }
