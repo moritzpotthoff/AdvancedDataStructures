@@ -43,14 +43,13 @@ namespace BitVector {
          */
         inline void insertBitVector(const int index, InnerBitVectorByInt* other, int otherSize) noexcept {
             AssertMsg(index == 0 || index == length, "Called insertBitVector with index not start or end.");
-            std::vector<bool> expected = getBitString();
             const int oldLength = length;
             if (index == 0) {
                 //insert other at start
                 int otherWords = other->length / wordSize;
                 if (other->length % wordSize != 0) otherWords++;
                 words.insert(words.begin(), other->words.begin(), other->words.begin() + otherWords);
-                length += otherWords * wordSize;
+                length += otherWords * wordSize;//temporarily adjust length for the following operations
                 if (other->length % wordSize != 0) {
                     //remove the gap between the two
                     const int delta = wordSize - (other->length % wordSize);
@@ -63,22 +62,14 @@ namespace BitVector {
                 int otherWords = other->length / wordSize;
                 if (other->length % wordSize != 0) otherWords++;
                 words.insert(words.end(), other->words.begin(), other->words.begin() + otherWords);
-                length += otherWords * wordSize;
+                length += otherWords * wordSize;//temporarily adjust length for the following operations
                 if (oldLength % wordSize != 0) {
                     //remove the gap between the two
                     const int delta = wordSize - (oldLength % wordSize);
                     shiftForwardFromIndex(oldNumberOfWords * wordSize, delta);
                 }
             }
-
-            length = oldLength + otherSize;
-            std::vector<bool> otherBits = other->getBitString();
-            expected.insert(expected.begin() + index, otherBits.begin(), otherBits.end());
-            std::vector<bool> actual = getBitString();
-            expected.resize(std::min(expected.size(), actual.size()));
-            actual.resize(std::min(expected.size(), actual.size()));
-            AssertMsg(expected == actual, "Did not insert set of bits properly.");
-
+            length = oldLength + otherSize;//actually set correct length
             //TODO delete other
         }
 
@@ -92,7 +83,6 @@ namespace BitVector {
          */
         inline int insertBits(int blockIndex, int blockSize, std::vector<bool>& newBits) noexcept {
             AssertMsg(length == 0, "Tried to initialize-insert bits into non-empty leaf.");
-            //TODO test
             const int bitStart = blockIndex * blockSize;
             int blockLength = blockSize;
             if ((int)newBits.size() - (bitStart + blockLength) < blockSize) {
@@ -162,11 +152,8 @@ namespace BitVector {
          * @return
          */
         inline bool deleteIndex(const int index) noexcept {
-            if (index >= length || length == 0) {
-                std::cout << "Delete without deletion" << std::endl;
+            if (index >= length || length == 0)
                 return false;
-            }
-            std::vector<bool> expected = getBitString();//TODO remove
             const bool bit = readBit(index);
             if (word(index) == word(length - 1)) {
                 //simply delete from the last word
@@ -191,13 +178,9 @@ namespace BitVector {
             }
 
             length--;
-            //update capacity
+            //update capacity//TODO reinsert
             //if (length + 2 * w < wordSize * (int)words.capacity()) //more than two words are unused
             //    shrink();
-
-            expected.erase(expected.begin() + index);
-            std::vector<bool> actual = getBitString();
-            AssertMsg(expected == actual, "Did not delete correctly.");
 
             return bit;
         }
@@ -332,10 +315,6 @@ namespace BitVector {
          */
         inline void shiftForwardFromIndex(int index, int delta) noexcept {
             AssertMsg(index < wordSize * words.size(), "Shifted from invalid index.");
-
-            std::vector<bool> previous = getBitString();
-            std::vector<bool> expected = getBitString();
-
             int currentWord = word(length - 1);
             uint64_t bitmaskUpper = upperBitmask(delta);
             //get carry from last word
@@ -358,11 +337,6 @@ namespace BitVector {
             words[word(index) - 1] = leftPart | (carry >> (wordSize - delta));//add the remaining carry at the end
 
             length -= delta;
-
-            AssertMsg(expected == previous, "this should not happen");
-            expected.erase(expected.begin() + index - delta, expected.begin() + index);
-            std::vector<bool> actual = getBitString();
-            AssertMsg(expected == actual, "Did not shift bits forward properly.");
         }
 
         inline void enlarge() noexcept {

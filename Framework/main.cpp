@@ -52,7 +52,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
         bits.emplace_back(bit);
     }
     timer.restart();
-    BitVector::DynamicBitVector<BitVector::BasicProfiler> bv(bits);
+    BitVector::DynamicBitVector<BitVector::BasicProfiler, BitVector::InnerBitVectorByInt> bv(bits);
     constructionTime += timer.getMicroseconds();
     if constexpr (Interactive) std::cout << "Found bit vector of length " << initialLength << "." << std::endl;
 
