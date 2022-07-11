@@ -186,9 +186,10 @@ namespace BitVector {
 
         /**
          * Inserts bit bit at index index
-         * @param index
-         * @param bit
-         * @param length -- see navarro book
+         *
+         * @param index the index at which the bit shall be inserted
+         * @param bit the new bit
+         * @param length the length of this subtree
          * @return the (new) parent node of the subtree that was changed in this recursive call of the function, to be used as child reference in the caller
          */
         inline Node* insertBit(int index, bool bit, int length) noexcept {
@@ -227,7 +228,8 @@ namespace BitVector {
 
         /**
          * Delete the bit at the given index from the bit vector
-         * @param index
+         *
+         * @param index the index to be deleted
          * @param length the overall length of the subtree rooted at this node
          * @param ones the number of ones in the subtree rooted at this node
          * @return the new root of this subtree
@@ -432,8 +434,6 @@ namespace BitVector {
                 }
             }
             //actually insert the bits
-            //TODO make this nicer
-            //TODO why is this still small enough?
             current->bitVector->insertBitVector(index, bv);
         }
 
@@ -492,7 +492,7 @@ namespace BitVector {
         }
 
         /**
-         *
+         * Validates this subtree.
          * @return (total num in subtree, total ones in subtree, height)
          */
         inline std::tuple<int, int, int> validate(bool allowUnderflows = false) {

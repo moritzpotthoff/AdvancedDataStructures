@@ -50,9 +50,9 @@ namespace BalancedParentheses {
         /**
          * Inserts bit bit at index index
          *
-         * @param index
-         * @param bit
-         * @param length -- see navarro book
+         * @param index the index at which the bit shall be inserted
+         * @param bit the new bit
+         * @param length the length of this subtree
          * @return the (new) parent node of the subtree that was changed in this recursive call of the function, to be used as child reference in the caller
          */
         inline Node* insertBit(int index, bool bit, int length) noexcept {
@@ -98,7 +98,7 @@ namespace BalancedParentheses {
         /**
          * Delete the bit at the given index from the bit vector
          *
-         * @param index
+         * @param index the index to be deleted
          * @param length the overall length of the subtree rooted at this node
          * @param ones the number of ones in the subtree rooted at this node
          * @return the new root of this subtree
@@ -332,9 +332,9 @@ namespace BalancedParentheses {
 
         /**
          * Performs a recursive backward search.
-         * @param i
-         * @param d
-         * @param length
+         * @param i the start index
+         * @param d the desired excess
+         * @param length the length of this subtree
          * @return (foundExcess, position) -- if foundExcess == d, then position is the index
          *                                  otherwise, foundExcess is the total excess from i to the left and position is -1
          */
@@ -680,6 +680,10 @@ namespace BalancedParentheses {
             }
         }
 
+        /**
+         * Calculates the number of bits needed for this bv.
+         * @return the number of bits.
+         */
         inline size_t getSize() const noexcept {
             const size_t baseSize = CHAR_BIT * (sizeof(leftChild)
                                     + sizeof(rightChild)
