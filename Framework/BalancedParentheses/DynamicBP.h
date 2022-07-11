@@ -25,15 +25,16 @@ namespace BalancedParentheses {
      *          NoProfiler can be used to avoid overheads,
      *          BasicProfiler for basic profiling.
      */
-    template<typename PROFILER>
+    template<typename PROFILER, typename INNER_BV = InnerBitVector>
     class DynamicBP {
+        using InnerBV = INNER_BV;
     public:
         /**
          * Creates a bp-tree consisting only of a root node
          */
         DynamicBP() :
             length(0) {
-            root = new Node();
+            root = new Node<InnerBV>();
             //initially, the tree only has a root node, represented by (), or the bit sequence 10
             insertBit(0, true);
             insertBit(1, false);
@@ -340,7 +341,7 @@ namespace BalancedParentheses {
         }
 
         //the root of the binary search tree for the bit vector
-        Node* root;
+        Node<InnerBV>* root;
         int length;
 
         //profiler, used only for tuning

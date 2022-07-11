@@ -39,7 +39,6 @@ namespace BalancedParentheses {
         inline void insertBitVector(const int index, InnerBitVector* other, int otherSize) noexcept {
             bits.insert(bits.begin() + index, other->bits.begin(), other->bits.end());
             length += otherSize;
-            //TODO check if this needs index - 1.
         }
 
         inline bool deleteIndex(const size_t index) noexcept {
@@ -237,7 +236,6 @@ namespace BalancedParentheses {
         }
 
     private:
-
         inline void enlarge() noexcept {
             bits.reserve(bits.capacity() + w);
         }
@@ -253,6 +251,10 @@ namespace BalancedParentheses {
                 std::cout << " " << bits[i];
             }
             std::cout << "; length = " << length << std::endl;
+        }
+
+        inline void writeBitsToVector(std::vector<bool>* out) const noexcept {
+            std::copy(bits.begin(), bits.end(), std::back_inserter(*out));
         }
 
         inline size_t getSize() const noexcept {

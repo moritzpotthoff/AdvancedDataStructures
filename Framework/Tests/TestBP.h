@@ -7,7 +7,7 @@
 #include "../BalancedParentheses/DynamicBP.h"
 
 TEST_CASE("Small BP Test Instance", "[bp][small]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
 
     SECTION("Initially empty tree") {
         std::vector<bool> expected = {1, 0};
@@ -99,7 +99,7 @@ TEST_CASE("Small BP Test Instance", "[bp][small]") {
 }
 
 TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
 
     SECTION("Initially empty tree") {
         std::vector<bool> expected = {1, 0};
@@ -158,7 +158,7 @@ TEST_CASE("Large BP Test Instance", "[bp][large][flat]") {
 }
 
 TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
 
     //create complete binary tree
     const int numberOfLevels = 16;
@@ -212,7 +212,7 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
 }
 
 TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
-    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
 
     const int numberOfLevels = 100000;
     std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;

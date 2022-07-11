@@ -6,19 +6,22 @@
 
 #include "Definitions.h"
 #include "InnerBitVector.h"
+#include "InnerBitVectorByInt.h"
 #include "../Helpers/Asserts.h"
 
 namespace BalancedParentheses {
     /**
      * Node of the AVL-Tree that is used to represent the balanced parentheses tree.
      */
+    template<typename INNER_BV>
     class Node {
+        using InnerBV = INNER_BV;
     public:
         /**
          * Creates a leaf node that contains the given bit vector
          * @param newBitVector the bit vector of the new node
          */
-        Node(InnerBitVector* newBitVector) :
+        Node(InnerBV* newBitVector) :
             leftChild(NULL),
             rightChild(NULL),
             bitVector(newBitVector),
@@ -41,7 +44,7 @@ namespace BalancedParentheses {
             totalExcess(0),
             minExcess(0),
             minTimes(0)  {
-            bitVector = new InnerBitVector();//TODO avoid this
+            bitVector = new InnerBV();//TODO avoid this
         }
 
         /**
@@ -70,7 +73,7 @@ namespace BalancedParentheses {
                 recomputeExcessesLeaf();
                 if (length + 1 == 2 * w * w) {
                     //leaf overflow, split leaf into two halves.
-                    InnerBitVector* rightHalf = new InnerBitVector(bitVector);
+                    InnerBV* rightHalf = new InnerBV(bitVector);
                     //left half of the bits
                     leftChild = new Node(this->bitVector);
                     //right half of the bits. this node becomes the new inner node.
@@ -319,7 +322,7 @@ namespace BalancedParentheses {
          */
         inline std::tuple<int, int> bwdSearchRecursive(const int i, int d, const int length) const noexcept {
             //TODO does this help?
-            if (d == 0 && bitVector->bits[i] == false) {
+            if (d == 0 && bitVector->readBit(i) == false) {
                 return std::make_pair(d, i);
             }
             if (i == length - 1 && d < -totalExcess + minExcess) {
@@ -564,7 +567,7 @@ namespace BalancedParentheses {
          * @param bvOnes number of 1 bits in the new bits
          * @return the new root for the subtree
          */
-        inline void insertBitVector(int index, int length, InnerBitVector* bv, int bvSize, int bvOnes) noexcept {
+        inline void insertBitVector(int index, int length, InnerBV* bv, int bvSize, int bvOnes) noexcept {
             if (!isLeaf()) {
                 if (index < num) {
                     //go left to insert
@@ -648,7 +651,7 @@ namespace BalancedParentheses {
         //for testing
         inline void getBitString(std::vector<bool>* result) const noexcept {
             if (isLeaf()) {
-                std::copy(bitVector->bits.begin(), bitVector->bits.end(), std::back_inserter(*result));
+                bitVector->writeBitsToVector(result);
             } else {
                 if (leftChild != NULL) {
                     leftChild->getBitString(result);
@@ -678,7 +681,7 @@ namespace BalancedParentheses {
         //TODO use union/variant
         Node* leftChild;
         Node* rightChild;
-        InnerBitVector* bitVector;
+        InnerBV* bitVector;
         size_t nodeHeight;
 
         //bit vector data

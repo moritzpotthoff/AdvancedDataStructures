@@ -19,6 +19,7 @@
 #include "BalancedParentheses/DynamicBP.h"
 #include "BalancedParentheses/Node.h"
 #include "BalancedParentheses/InnerBitVector.h"
+#include "BalancedParentheses/InnerBitVectorByInt.h"
 #include "BalancedParentheses/Definitions.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
@@ -132,7 +133,7 @@ inline static void handleBPQuery(char *argv[]) {
     std::string outputFileName(argv[3]);
     std::ofstream outputFile(outputFileName);
 
-    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
     Helpers::Timer timer;
     size_t time = 0;
 
