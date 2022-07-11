@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.21">
-<info created="D:20090429144355" modified="D:20220206231023" title="Textindexierung Programmierprojekt" author="Moritz Potthoff"/>
+<info created="D:20090429144355" modified="D:20220711132617" title="Programmierprojekt Fortgeschrittene Datenstrukturen" author="Moritz Potthoff"/>
 <preamble>\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -20,8 +20,8 @@
 % settings %%%%%%%%%%%%%%%
 \newcommand{\itemcolor}{KITgreen}
 \newcommand{\name}{Moritz Potthoff}
-\newcommand{\prestitle}{Textindexierung Programmierprojekt}
-\newcommand{\presdate}{07.02.2022}
+\newcommand{\prestitle}{ADS Programmierprojekt}
+\newcommand{\presdate}{25.07.2022}
 \newcommand{\venue}{Abschlusspräsentation}
 \german
 % \dorothea % activate this only for lecture slides
@@ -403,7 +403,7 @@ h
 </path>
 <group>
 <text matrix="0.0410872 0 0 0.0410872 886 446" pos="240 144" stroke="black" type="label" width="0" height="0" depth="0" halign="right" valign="top">\kitlogo</text>
-<text matrix="1 0 0 1 -84 -200.942" pos="106 172" stroke="black" type="minipage" width="497" height="16.5002" depth="5.037" valign="top" size="veryTiny">\prestitle\newline\name</text>
+<text matrix="1 0 0 1 -84 -200.942" pos="106 172" stroke="black" type="minipage" width="497" height="16.5853" depth="5.106" valign="top" size="veryTiny">\prestitle\newline\name</text>
 <group matrix="0.9 0 0 0.9 340 -7.8">
 <group matrix="0.5 0 0 0.5 265.5 -52.5">
 </group>
@@ -3633,7 +3633,7 @@ h
 <text layer="pagenumbers_format" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="31.6204" height="7.5578" depth="2.277" valign="top" size="veryTiny">{\bf [page]}</text>
 <text layer="BACKGROUND" matrix="1 0 0 1 -98 -209" pos="98 168" stroke="black" type="minipage" width="412" height="10.7111" depth="0" valign="center" size="veryTiny">Textindexierung $\cdot$ Abschlusspräsentation</text>
 <text matrix="1 0 0 1 288 -24" transformations="translations" pos="608 -16" stroke="KITblack" type="label" width="0" height="0" depth="0" halign="right" valign="center" size="small"></text>
-<text layer="title" matrix="1 0 0 1 -213 -66" pos="213 427" stroke="black" type="minipage" width="994.644" height="21.9582" depth="11.022" valign="baseline" size="LARGE">\bf Textindexierung Programmierprojekt</text>
+<text layer="title" matrix="1 0 0 1 -213 -66" pos="213 427" stroke="black" type="minipage" width="994.644" height="46.0416" depth="35.156" valign="baseline" size="LARGE">\bf Programmierprojekt \\ Fortgeschrittene Datenstrukturen</text>
 <text layer="BACKGROUND" matrix="0.0675421 0 0 0.0675421 -16.2101 448" pos="240 0" stroke="black" type="label" width="0" height="0" depth="0" valign="top"></text>
 <text layer="title" matrix="1 0 0 1 -213 -137" pos="213 427" stroke="black" type="label" width="294.191" height="13.1208" depth="3.784" valign="bottom" size="small">\venue $\,\,\cdot\,$ \presdate</text>
 <text matrix="1 0 0 1 -213 -156" pos="213 427" stroke="black" type="label" width="116.362" height="13.2704" depth="0.286" valign="baseline" size="small">\name</text>
@@ -3774,160 +3774,43 @@ h
 <use matrix="1.15654 0 0 1.15654 5.49662 -112.018" name="mark/fdisk(sfx)" pos="240 320" size="12" stroke="KITseablue" fill="white"/>
 <use matrix="1.15654 0 0 1.15654 5.49662 -112.018" name="mark/fdisk(sfx)" pos="336 368" size="12" stroke="KITseablue" fill="white"/>
 <use matrix="1.15654 0 0 1.15654 5.49662 -112.018" name="mark/fdisk(sfx)" pos="400 352" size="12" stroke="KITseablue" fill="white"/>
-<path layer="multimodal_ultra" matrix="1 0 0 1 -256 -96" stroke="KITpalegreen" dash="dashed (2 pt)" pen="8">
-580 196 m
-600 188
-616 184
-676 204
-692 212
-764 240
-784 244
-856 168
-872 176
-892 192 c
-</path>
-<path matrix="1 0 0 1 -256 -96" stroke="KITblack70" pen="3">
-772 240 m
-800 304 l
-864 176 l
-888 96 l
-</path>
-<path matrix="1 0 0 1 -256 -96" stroke="KITblack70" pen="3">
-608 188 m
-640 304 l
-684 208 l
-</path>
-<path matrix="1 0 0 1 -256 -96" stroke="KITblack70" pen="3">
-720 384 m
-640 304 l
-</path>
-<path matrix="1 0 0 1 -256 -80" stroke="KITblack70" pen="3">
-712 72 m
-684 192 l
-</path>
-<path matrix="1 0 0 1 -256 -80" stroke="KITblack70" pen="3">
-800 136 m
-772 224 l
-</path>
-<path matrix="1 0 0 1 -256 -80" stroke="KITblack70" pen="3">
-800 288 m
-720 368 l
-</path>
-<use matrix="1 0 0 1 -256 -80" name="mark/fdisk(sfx)" pos="720 368" size="normal" stroke="black"/>
-<use matrix="1 0 0 1 -256 -80" name="mark/fdisk(sfx)" pos="640 288" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -256 -80" name="mark/fdisk(sfx)" pos="800 288" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -220 -80" name="mark/fdisk(sfx)" pos="736 224" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -208 -40" name="mark/fdisk(sfx)" pos="752 96" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -256 -80" name="mark/fdisk(sfx)" pos="864 160" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -256 -80" name="mark/fdisk(sfx)" pos="888 80" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -216 -80" name="mark/fdisk(sfx)" pos="644 192" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -232 -100" name="mark/fdisk(sfx)" pos="584 192" size="normal" stroke="black" fill="white"/>
-<use matrix="1 0 0 1 -204 -88" name="mark/fdisk(sfx)" pos="660 80" size="normal" stroke="black" fill="white"/>
-<text matrix="1 0 0 1 -220 -132" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="7.1344" height="6.9636" depth="0.196" valign="baseline" size="tiny">a</text>
-<text matrix="1 0 0 1 -312 -248" pos="632 384" stroke="KITblack70" type="label" width="35.5432" height="9.9652" depth="1.456" valign="baseline" size="tiny">abba\$</text>
-<text matrix="1 0 0 1 -224 -220" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="21.2744" height="9.2876" depth="0.196" valign="baseline" size="tiny">bba</text>
-<text matrix="1 0 0 1 -228 -352" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="35.5432" height="9.9652" depth="1.456" valign="baseline" size="tiny">abba\$</text>
-<text matrix="1 0 0 1 -124 -132" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="7.1344" height="9.2876" depth="0.196" valign="baseline" size="tiny">b</text>
-<text matrix="1 0 0 1 -116 -208" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="7.1344" height="6.9636" depth="0.196" valign="baseline" size="tiny">a</text>
-<text matrix="1 0 0 1 -52 -240" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="14.2688" height="9.2876" depth="0.196" valign="baseline" size="tiny">ba</text>
-<text matrix="1 0 0 1 -96 -280" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="35.5432" height="9.9652" depth="1.456" valign="baseline" size="tiny">abba\$</text>
-<text matrix="1 0 0 1 -4 -348" transformations="translations" pos="632 384" stroke="KITblack70" type="label" width="35.5432" height="9.9652" depth="1.456" valign="baseline" size="tiny">abba\$</text>
-<text matrix="1 0 0 1 -256 -100" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">4</text>
-<text matrix="1 0 0 1 -256 -116" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">2</text>
-<text matrix="1 0 0 1 -328 -4" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">1</text>
-<text matrix="1 0 0 1 -328 -20" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">4</text>
-<text matrix="1 0 0 1 -220 88" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7974" depth="0.286" valign="baseline" size="small">0</text>
-<text matrix="1 0 0 1 -220 72" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7974" depth="0.286" valign="baseline" size="small">9</text>
-<text matrix="1 0 0 1 -140 0" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">1</text>
-<text matrix="1 0 0 1 -140 -16" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">4</text>
-<text matrix="1 0 0 1 -196 -68" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">2</text>
-<text matrix="1 0 0 1 -196 -84" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">2</text>
-<text matrix="1 0 0 1 -168 -156" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.4498" depth="0" valign="baseline" size="small">7</text>
-<text matrix="1 0 0 1 -168 -172" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">1</text>
-<text matrix="1 0 0 1 -228 -220" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7974" depth="0.286" valign="baseline" size="small">9</text>
-<text matrix="1 0 0 1 -228 -236" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">1</text>
-<text matrix="1 0 0 1 -328 -124" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7974" depth="0.286" valign="baseline" size="small">6</text>
-<text matrix="1 0 0 1 -328 -140" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">1</text>
-<text matrix="1 0 0 1 -76 -132" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7974" depth="0.286" valign="baseline" size="small">3</text>
-<text matrix="1 0 0 1 -76 -148" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">2</text>
-<text matrix="1 0 0 1 -80 -212" transformations="translations" pos="692 216" stroke="KITgreen" type="label" width="10.0892" height="12.7974" depth="0.286" valign="baseline" size="small">8</text>
-<text matrix="1 0 0 1 -80 -228" transformations="translations" pos="692 216" stroke="KITlilac" type="label" width="10.0892" height="12.7842" depth="0" valign="baseline" size="small">1</text>
-<use matrix="1 0 0 1 -232 -100" name="mark/fdisk(sfx)" pos="584 192" size="normal" stroke="KITblack" fill="KITpalegreen"/>
-<use matrix="1 0 0 1 -156 -80" name="mark/fdisk(sfx)" pos="584 192" size="normal" stroke="KITblack" fill="KITpalegreen"/>
-<use matrix="1 0 0 1 -68 -48" name="mark/fdisk(sfx)" pos="584 192" size="normal" stroke="KITblack" fill="KITpalegreen"/>
-<use matrix="1 0 0 1 24 -112" name="mark/fdisk(sfx)" pos="584 192" size="normal" stroke="KITblack" fill="KITpalegreen"/>
-<path matrix="1 0 0 1 -384 -288" fill="KITred" opacity="50%" stroke-opacity="opaque">
-532 444
-536 444
-568 444
-572 444
-572 420
-568 420
-536 420
-532 420 u
-</path>
-<text matrix="1 0 0 1 -514 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="9.8406" depth="0.286" halign="center" valign="baseline" size="small">a</text>
-<text matrix="1 0 0 1 -494 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="13.1252" depth="0.286" halign="center" valign="baseline" size="small">b</text>
-<text matrix="1 0 0 1 -474 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="13.1252" depth="0.286" halign="center" valign="baseline" size="small">b</text>
-<text matrix="1 0 0 1 -414 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="13.1252" depth="0.286" halign="center" valign="baseline" size="small">b</text>
-<text matrix="1 0 0 1 -394 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="13.1252" depth="0.286" halign="center" valign="baseline" size="small">b</text>
-<text matrix="1 0 0 1 -454 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="9.8406" depth="0.286" halign="center" valign="baseline" size="small">a</text>
-<text matrix="1 0 0 1 -434 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="9.8406" depth="0.286" halign="center" valign="baseline" size="small">a</text>
-<text matrix="1 0 0 1 -374 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="9.8406" depth="0.286" halign="center" valign="baseline" size="small">a</text>
-<text matrix="1 0 0 1 -354 -248" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="14.0844" depth="2.068" halign="center" valign="baseline" size="small">\$</text>
-<text matrix="1 0 0 1 -514 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.7974" depth="0.286" halign="center" valign="baseline" size="small">0</text>
-<text matrix="1 0 0 1 -494 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.7842" depth="0" halign="center" valign="baseline" size="small">1</text>
-<text matrix="1 0 0 1 -474 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.7842" depth="0" halign="center" valign="baseline" size="small">2</text>
-<text matrix="1 0 0 1 -454 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.7974" depth="0.286" halign="center" valign="baseline" size="small">3</text>
-<text matrix="1 0 0 1 -434 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.7842" depth="0" halign="center" valign="baseline" size="small">4</text>
-<text matrix="1 0 0 1 -414 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.463" depth="0.286" halign="center" valign="baseline" size="small">5</text>
-<text matrix="1 0 0 1 -394 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.7974" depth="0.286" halign="center" valign="baseline" size="small">6</text>
-<text matrix="1 0 0 1 -374 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.4498" depth="0" halign="center" valign="baseline" size="small">7</text>
-<text matrix="1 0 0 1 -354 -272" transformations="translations" pos="632 384" stroke="KITblack" type="label" width="10.0892" height="12.7974" depth="0.286" halign="center" valign="baseline" size="small">8</text>
-<path matrix="1 0 0 1 -346 -220" stroke="KITblack" pen="1.5">
-452 376 m
-452 328 l
-636 328 l
-636 376 l
-h
-</path>
-<path matrix="1 0 0 1 -346 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -326 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -306 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -286 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -266 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -246 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -226 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -206 -220" stroke="KITblack" pen="1.5">
-474 376 m
-474 328 l
-</path>
-<path matrix="1 0 0 1 -346 -220" stroke="KITblack" pen="1.5">
-636 352 m
-452 352 l
-</path>
 <text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 0}</text>
+</page>
+<page title="Vorgehen: Dynamischer Bitvektor">
+<layer name="alpha"/>
+<layer name="pagenumbers_page" edit="no"/>
+<view layers="alpha pagenumbers_page" active="alpha"/>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 1}</text>
+</page>
+<page title="Integer-basierter Bitvektor">
+<layer name="alpha"/>
+<layer name="pagenumbers_page" edit="no"/>
+<view layers="alpha pagenumbers_page" active="alpha"/>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 2}</text>
+</page>
+<page title="Vorgehen: BP">
+<layer name="alpha"/>
+<layer name="pagenumbers_page" edit="no"/>
+<view layers="alpha pagenumbers_page" active="alpha"/>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 3}</text>
+</page>
+<page title="Performance BV">
+<layer name="alpha"/>
+<layer name="pagenumbers_page" edit="no"/>
+<view layers="alpha pagenumbers_page" active="alpha"/>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 4}</text>
+</page>
+<page title="Performance BP">
+<layer name="alpha"/>
+<layer name="pagenumbers_page" edit="no"/>
+<view layers="alpha pagenumbers_page" active="alpha"/>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.3692" depth="0.184" valign="top" size="veryTiny">{\bf 5}</text>
+</page>
+<page title="ALT">
+<layer name="alpha"/>
+<layer name="pagenumbers_page" edit="no"/>
+<view layers="alpha pagenumbers_page" active="alpha"/>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 6}</text>
 </page>
 <page title="Vorberechnung: Suffix Tree">
 <layer name="alpha"/>
@@ -3963,7 +3846,7 @@ h
     
   \end{axis}
 \end{tikzpicture}</text>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 1}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.3577" depth="0" valign="top" size="veryTiny">{\bf 7}</text>
 </page>
 <page title="TopK-Queries -- Algorithmus">
 <layer name="alpha"/>
@@ -4257,7 +4140,7 @@ h
 636 352 m
 452 352 l
 </path>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 2}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 8}</text>
 </page>
 <page title="TopK Queries Performance">
 <layer name="alpha"/>
@@ -4286,7 +4169,7 @@ h
 \end{tikzpicture}</text>
 <text transformations="translations" pos="640 384" stroke="black" type="minipage" width="256" height="111.149" depth="99.1515" valign="top" style="itemize">\item Anfragezeit linear in Inputlänge
 \item Je repetetiver der Text, desto schneller die Anfrage: Weniger innere Knoten werden exploriert</text>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 3}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 9}</text>
 </page>
 <page title="TopK Query Performance nach Patternlänge">
 <layer name="alpha"/>
@@ -4339,7 +4222,7 @@ h
 \item ... bis Plateau erreicht wird.
 \item Mit höherer Länge müssen mehr innere Knoten eingesammelt werden,
 \item Aber irgendwann lässt der Effekt nach, man hat schon fast alle</text>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 4}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="11.7208" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 10}</text>
 </page>
 <page title="Repeat Queries">
 <layer name="alpha"/>
@@ -4543,7 +4426,7 @@ h
 </path>
 <text layer="alpha" transformations="translations" pos="0 384" stroke="black" type="minipage" width="480" height="44.0265" depth="31.8745" valign="top">\textbf{Idee:} Suche inneren Knoten mit String-Tiefe $\ell$, der zwei Suffixe unter sich hat, die genau \\Differenz $\ell$ haben
 </text>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.3692" depth="0.184" valign="top" size="veryTiny">{\bf 5}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="11.7208" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 11}</text>
 </page>
 <page title="Suffixe einsammeln als DP">
 <layer name="alpha"/>
@@ -4635,7 +4518,7 @@ h
 496 108 l
 h
 </path>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 6}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="11.7208" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 12}</text>
 </page>
 <page title="Repeat Query Performance">
 <layer name="alpha"/>
@@ -4664,7 +4547,7 @@ h
 \end{tikzpicture}</text>
 <text transformations="translations" pos="640 384" stroke="black" type="minipage" width="256" height="79.8112" depth="67.7425" valign="top" style="itemize">\item Query-Performance wieder linear in Eingabelänge
 \item Wieder: repetitivere Texte einfacher</text>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.3577" depth="0" valign="top" size="veryTiny">{\bf 7}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="11.7208" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 13}</text>
 </page>
 <page title="Erkenntnisse">
 <layer name="alpha"/>
@@ -4677,6 +4560,6 @@ h
 \item Tuning nicht so leicht, wenn nicht klar ist, wie die Eingaben verteilt sind
 \item Was anderso gut funktioniert, muss nicht auch hier funktionieren: Vorberechnung</text>
 <text layer="beta" matrix="-0.493264 0 0 2.25222 670.496 -425.049" transformations="translations" pos="448 256" stroke="black" type="label" width="204.984" height="40.3515" depth="12.446" halign="center" valign="center">\Huge Fragen?</text>
-<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 8}</text>
+<text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="11.7208" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 14}</text>
 </page>
 </ipe>
