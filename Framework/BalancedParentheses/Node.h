@@ -83,10 +83,10 @@ namespace BalancedParentheses {
                     rightChild->recomputeExcesses();
                     recomputeExcessesInner();
                     //adjust parameters
-                    num = w * w;
-                    ones = (w * w + leftChild->totalExcess) / 2;
+                    num = leftChild->bitVector->getLength();
+                    ones = (num + leftChild->totalExcess) / 2;
                     nodeHeight++;
-                    AssertMsg(leftChild->bitVector->bits.size() == w * w, "Left child has wrong size after split.");
+                    AssertMsg(ones == leftChild->bitVector->popcount(), "Ones set wrong during split");
                 }
             }
             //while backtracking the path upwards, adjust the heights of all nodes as well

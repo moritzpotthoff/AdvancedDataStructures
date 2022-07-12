@@ -268,6 +268,10 @@ namespace BalancedParentheses {
             return count;
         }
 
+        inline int getLength() const noexcept {
+            return length;
+        }
+
         /**
          * Recomputes the excess information for this block.
          *
