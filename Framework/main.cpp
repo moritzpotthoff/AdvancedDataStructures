@@ -22,7 +22,7 @@
 #include "BalancedParentheses/InnerBitVectorByInt.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
-static const bool Interactive = false;
+static const bool Interactive = true;
 static const bool VeryInteractive = false;
 static const bool WriteToFile = true;
 
@@ -88,6 +88,10 @@ inline static void handleBitVectorQuery(char *argv[]) {
             inputFile >> bit;
             inputFile >> index;
             timer.restart();
+            if (index > bv.rank(bit, bv.length - 1)) {
+                if constexpr (WriteToFile) outputFile << "invalidSelect\n";
+                continue;
+            }
             const int result = bv.select(bit, index);
             selectTime += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
@@ -95,12 +99,10 @@ inline static void handleBitVectorQuery(char *argv[]) {
         }
     }
 
-    //Print the bit vector to the output file
-    if constexpr (Interactive) {
+    if constexpr (VeryInteractive) {
         std::cout << "BV result:" << std::endl;
         for (int i = 0; i < bv.length; i++) {
             const int result = bv.access(i);
-            if constexpr (WriteToFile) outputFile << result << "\n";
             std::cout << " BV[" << i << "] = " << result << std::endl;
         }
     }
@@ -150,21 +152,21 @@ inline static void handleBPQuery(char *argv[]) {
         } else if (queryType.compare("child") == 0) {
             inputFile >> v >> i;
             timer.restart();
-            const int result = tree.child(tree.getIndex(v), i);
+            const int result = tree.getNumber(tree.child(tree.getIndex(v), i));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "child(" << v << ", " << i << ") = " << result << std::endl;
         } else if (queryType.compare("subtree_size") == 0) {
             inputFile >> v;
             timer.restart();
-            const int result = tree.subtreeSize(tree.getIndex(v));
+            const int result = tree.getNumber(tree.subtreeSize(tree.getIndex(v)));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "subtreeSize(" << v << ") = " << result << std::endl;
         } else if (queryType.compare("parent") == 0) {
             inputFile >> v;
             timer.restart();
-            const int result = tree.parent(tree.getIndex(v));
+            const int result = tree.getNumber(tree.parent(tree.getIndex(v)));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "parent(" << v << ") = " << result << std::endl;

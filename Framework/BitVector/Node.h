@@ -495,7 +495,7 @@ namespace BitVector {
          * Validates this subtree.
          * @return (total num in subtree, total ones in subtree, height)
          */
-        inline std::tuple<int, int, int> validate(bool allowUnderflows = false) {
+        inline std::tuple<int, int, int> validate(bool allowUnderflows = false) const {
             if (isLeaf()) {
                 //AssertMsg(bitVector->length == bitVector->bits.size(), "BitVector length is false");
                 if (!allowUnderflows) {

@@ -133,12 +133,21 @@ namespace BalancedParentheses {
         }
 
         /**
-         * Returns the index of the opening parenthesis for the node with the given number in an in order numbering of all nodes.
+         * Returns the index of the opening parenthesis for the node with the given number in a preorder numbering of all nodes.
          * @param preorderNumber
          * @return
          */
         inline int getIndex(int preorderNumber) const noexcept {
             return root->selectOne(preorderNumber);
+        }
+
+        /**
+         * Returns the number of the node in a preorder numbering for a given index.
+         * @param index the index
+         * @return the number of the node
+         */
+        inline int getNumber(int index) const noexcept {
+            return root->rankOne(index);
         }
 
     private:
@@ -317,7 +326,7 @@ namespace BalancedParentheses {
 
         /**
          * Prints the degree of each node in preorder dfs order to the output file.
-         * @param out
+         * @param out the output file.
          */
         inline void printDegreesToFile(std::ofstream& out) noexcept {
             std::stack<int> stack;
