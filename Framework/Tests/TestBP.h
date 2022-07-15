@@ -177,6 +177,9 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
         REQUIRE(tree.degree(i) == 2);
         REQUIRE(tree.subtreeSize(i) == pow(2, numberOfLevels + 1 - i) - 1);
     }
+    for (int i = 1; i < numberOfLevels; i++) {
+        REQUIRE(tree.parent(i) == i - 1);
+    }
     REQUIRE(tree.degree(numberOfLevels) == 0);
 
     SECTION("Delete layer 1 (below root)") {
@@ -214,26 +217,57 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
 TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
 
-    const int numberOfLevels = 100000;
+    const int numberOfLevels = 1000000;
     std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;
     for (int level = 0; level < numberOfLevels; level++) {
         tree.insertChild(level, 1, 0);
     }
 
+    /*
     for (int i = 0; i < numberOfLevels; i++) {
         REQUIRE(tree.degree(i) == 1);
         REQUIRE(tree.subtreeSize(i) == numberOfLevels + 1 - i);
+        REQUIRE(tree.parent(i + 1) == i);
     }
     REQUIRE(tree.degree(numberOfLevels) == 0);
 
-    for (int level = 0; level < numberOfLevels; level++) {
-        tree.deleteNode(1);//delete the child of root.
-    }
 
-    REQUIRE(tree.degree(0) == 0);
-    REQUIRE(tree.subtreeSize(0) == 1);
-    std::vector<bool> expected = {1, 0};
-    REQUIRE(tree.getBitString() == expected);
+    SECTION("Empty the tree again") {
+        for (int level = 0; level < numberOfLevels; level++) {
+            tree.deleteNode(1);//delete the child of root.
+        }
+
+        REQUIRE(tree.degree(0) == 0);
+        REQUIRE(tree.subtreeSize(0) == 1);
+        std::vector<bool> expected = {1, 0};
+        REQUIRE(tree.getBitString() == expected);
+    }
+     */
+
+    SECTION("Add a lot of leaves") {
+        const int numberOfLeaves = 1500000;
+        std::cout << "Adding  " << numberOfLeaves << " leaves." << std::endl;
+        const int parentIndex = numberOfLevels;
+        for (int child = 0; child < numberOfLeaves; child++) {
+            tree.insertChild(parentIndex, 1, 0);//add a leaf
+        }
+
+        //insert some more children to the first leaves so that these need to be skipped.
+        const int numberOfLowerChildren = 1700000;
+        std::cout << "Adding " << numberOfLowerChildren << " lower leaves." << std::endl;
+        for (int child = 0; child < numberOfLowerChildren; child++) {
+            tree.insertChild(parentIndex + 1, 1, 0);//add a leaf
+        }
+
+        std::cout << "Running all asserts." << std::endl;
+        REQUIRE(tree.degree(parentIndex) == numberOfLeaves);
+        REQUIRE(tree.subtreeSize(parentIndex) == numberOfLeaves + 1 + numberOfLowerChildren);
+        for (int child = 0; child < numberOfLeaves; child++) {
+            const int childIndex = child == 0 ? parentIndex + 2 * child + 1 : parentIndex + 2 * numberOfLowerChildren + 2 * child + 1;
+            REQUIRE(tree.child(parentIndex, child + 1) == childIndex);
+            REQUIRE(tree.parent(childIndex) == parentIndex);
+        }
+    }
 
     tree.profiler.print();
 }

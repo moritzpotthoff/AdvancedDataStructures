@@ -88,10 +88,6 @@ inline static void handleBitVectorQuery(char *argv[]) {
             inputFile >> bit;
             inputFile >> index;
             timer.restart();
-            if (index > bv.rank(bit, bv.length - 1)) {
-                if constexpr (WriteToFile) outputFile << "invalidSelect\n";
-                continue;
-            }
             const int result = bv.select(bit, index);
             selectTime += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
@@ -117,6 +113,8 @@ inline static void handleBitVectorQuery(char *argv[]) {
                 << " rankTime=" << rankTime / 1000
                 << " selectTime=" << selectTime / 1000
                 << " space=" << bv.getSize()
+                << " length=" << bv.length
+                << " overhead=" << (double)bv.getSize() / (double)bv.length
                 << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
 
     if constexpr (Interactive) bv.profiler.print();
@@ -159,7 +157,7 @@ inline static void handleBPQuery(char *argv[]) {
         } else if (queryType.compare("subtree_size") == 0) {
             inputFile >> v;
             timer.restart();
-            const int result = tree.getNumber(tree.subtreeSize(tree.getIndex(v)));
+            const int result = tree.subtreeSize(tree.getIndex(v));
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "subtreeSize(" << v << ") = " << result << std::endl;

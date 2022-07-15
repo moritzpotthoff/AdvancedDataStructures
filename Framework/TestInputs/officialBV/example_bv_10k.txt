@@ -10020,8 +10020,8 @@ insert 9345 0
 insert 7746 1
 insert 9766 0
 insert 9138 1
-rank 0 7392
-select 1 1314
+rank 1 7392
+select 1 2715
 insert 9109 1
 insert 9109 0
 insert 9519 0
@@ -10045,18 +10045,18 @@ delete 3637
 delete 6998
 delete 816
 insert 8221 0
-select 1 3396
+select 1 4795
 insert 8934 0
 insert 4712 1
 delete 6296
-select 1 5035
+select 1 3462
 insert 467 1
 insert 1004 1
 delete 3248
 delete 8115
 insert 5823 0
 delete 178
-rank 0 2458
+rank 1 2458
 insert 9533 1
 insert 6480 1
 insert 2803 1
@@ -10070,11 +10070,11 @@ delete 784
 insert 9188 1
 insert 6399 0
 delete 5335
-rank 1 6612
+rank 0 6612
 delete 4676
 insert 28 1
 delete 642
-rank 1 2548
+rank 0 2548
 delete 9583
 insert 7658 0
 insert 7017 1
@@ -10086,7 +10086,7 @@ insert 7551 1
 insert 3986 1
 delete 9162
 insert 1884 1
-select 1 4924
+select 1 2884
 delete 3862
 delete 6633
 insert 944 0
@@ -10104,7 +10104,7 @@ insert 4732 0
 delete 3461
 insert 1752 1
 insert 9636 1
-rank 1 2853
+rank 0 2853
 insert 576 1
 delete 2434
 insert 4854 1
@@ -10112,14 +10112,14 @@ insert 7793 1
 insert 7750 1
 insert 5355 0
 insert 7973 0
-rank 1 2726
+rank 0 2726
 delete 4739
 insert 3696 1
 delete 1674
 insert 6400 0
 delete 3523
 delete 7001
-rank 0 1679
+rank 1 1679
 insert 6693 0
 insert 8813 0
 insert 221 0
@@ -10130,7 +10130,7 @@ insert 8869 1
 delete 9074
 insert 4708 1
 delete 5235
-rank 1 2966
+rank 0 2966
 insert 83 0
 insert 8009 0
 insert 2622 1
@@ -10164,20 +10164,20 @@ insert 37 0
 insert 7917 0
 delete 6287
 delete 2762
-rank 0 1861
+rank 1 1861
 insert 4017 1
 insert 9904 0
-rank 0 3155
+rank 1 3155
 insert 3086 1
 delete 7820
-rank 0 9265
+rank 1 9265
 delete 7510
 insert 5302 1
 insert 5943 1
 insert 1394 1
 insert 4549 0
 delete 535
-select 1 1124
+select 1 4813
 delete 8056
 insert 3455 1
 delete 6370
@@ -10185,13 +10185,13 @@ delete 8424
 insert 3849 0
 insert 5786 0
 insert 7492 0
-rank 0 627
+rank 1 627
 insert 6963 0
-rank 0 1199
+rank 1 1199
 delete 6321
 delete 1660
 delete 8399
-select 0 2919
+select 0 605
 delete 1160
 insert 2628 0
 delete 4174
@@ -10201,7 +10201,7 @@ insert 8234 1
 insert 1297 0
 insert 361 1
 insert 2209 1
-select 0 2693
+select 0 5033
 insert 3428 0
 insert 3883 0
 delete 4702
@@ -10209,7 +10209,7 @@ insert 5584 1
 insert 9840 0
 delete 7229
 insert 4013 0
-select 0 2073
+select 0 4383
 insert 7965 1
 insert 245 0
 delete 7511
@@ -10223,7 +10223,7 @@ insert 4599 0
 insert 105 1
 insert 4752 1
 insert 7985 0
-select 1 87
+select 1 1793
 insert 5100 0
 insert 2070 1
 insert 8630 1
@@ -10239,7 +10239,7 @@ insert 8509 1
 insert 750 1
 insert 4509 0
 delete 9549
-rank 1 9104
+rank 0 9104
 delete 5098
 insert 356 1
 insert 5198 1
@@ -10248,17 +10248,17 @@ delete 8982
 insert 5865 0
 insert 7496 1
 insert 8090 0
-rank 1 3383
-select 1 1972
+rank 0 3383
+select 1 1228
 delete 6257
 insert 9768 1
 delete 700
 delete 2207
 delete 4962
 insert 6405 0
-rank 1 1655
+rank 0 1655
 insert 5776 0
-rank 1 6859
+rank 0 6859
 insert 5639 0
 insert 8088 0
 delete 5455
@@ -10270,32 +10270,32 @@ insert 5899 1
 delete 2127
 delete 5173
 insert 8728 0
-rank 0 3374
+rank 1 3374
 delete 91
 delete 6085
 insert 2737 1
-rank 0 728
-select 1 957
+rank 1 728
+select 1 116
 insert 5261 0
 insert 6794 1
 insert 3502 0
-select 1 3453
+select 1 266
 delete 4898
 insert 1739 1
 insert 8737 0
 delete 5379
 insert 3806 0
 delete 4079
-rank 0 1069
+rank 1 1069
 delete 5781
 delete 3701
 insert 7159 1
-rank 1 5541
+rank 0 5541
 delete 7801
 insert 6113 0
 delete 2364
 insert 7026 0
-rank 1 1410
+rank 0 1410
 insert 959 0
 insert 2450 1
 insert 5645 0
@@ -10306,18 +10306,18 @@ insert 8897 0
 delete 6074
 insert 709 0
 insert 3353 1
-rank 1 5252
+rank 0 5252
 insert 5842 0
-rank 1 2471
+rank 0 2471
 delete 5221
 insert 2624 1
-select 1 4782
+select 1 2012
 delete 3391
 insert 1694 1
 insert 1044 1
-rank 1 5664
+rank 0 5664
 insert 8343 1
-select 0 4792
+select 0 964
 insert 9472 0
 insert 3125 0
 delete 6627
@@ -10327,10 +10327,10 @@ insert 5854 0
 delete 7276
 insert 4024 1
 insert 3618 1
-rank 1 8122
+rank 0 8122
 insert 8502 1
 insert 3809 1
-rank 0 4236
+rank 1 4236
 insert 6872 1
 delete 7796
 insert 541 1
@@ -10338,13 +10338,13 @@ insert 4309 1
 delete 6088
 insert 2330 0
 insert 17 1
-rank 0 6429
+rank 1 6429
 insert 995 0
 insert 7768 1
-select 0 4242
+select 0 2582
 insert 753 0
 delete 3478
-select 1 2882
+select 1 4678
 insert 8961 1
 delete 8477
 insert 9635 0
@@ -10363,22 +10363,22 @@ delete 3442
 delete 3123
 insert 9896 1
 insert 6981 0
-rank 1 9830
+rank 0 9830
 delete 6450
-rank 1 3340
+rank 0 3340
 insert 8792 1
 delete 9281
 insert 8336 1
 insert 8812 1
-rank 0 331
+rank 1 331
 insert 8112 1
 insert 3299 0
 insert 3165 1
 insert 9746 1
 delete 2250
-rank 1 6525
+rank 0 6525
 delete 8961
-rank 0 2647
+rank 1 2647
 delete 4720
 insert 9278 1
 delete 510
@@ -10395,7 +10395,7 @@ insert 3388 0
 insert 7180 0
 insert 5844 0
 insert 1039 0
-rank 0 7254
+rank 1 7254
 insert 5706 0
 delete 2089
 insert 2226 0
@@ -10413,13 +10413,13 @@ delete 3782
 insert 3279 0
 delete 4252
 insert 7006 0
-select 1 956
+select 1 2108
 insert 4963 0
 insert 10043 1
 delete 4654
-rank 1 5069
+rank 0 5069
 insert 2470 1
-rank 1 9021
+rank 0 9021
 insert 6597 0
 delete 9352
 insert 4072 0
@@ -10428,7 +10428,7 @@ insert 3963 0
 delete 946
 insert 1686 0
 delete 7533
-rank 1 1446
+rank 0 1446
 delete 4620
 insert 7249 0
 insert 7322 1
@@ -10442,29 +10442,29 @@ delete 159
 insert 8297 0
 insert 7383 1
 delete 2215
-select 1 4907
+select 1 314
 delete 1303
 delete 8715
 delete 3516
 insert 902 0
-rank 0 8547
+rank 1 8547
 insert 5356 1
-rank 0 762
+rank 1 762
 insert 10117 0
 insert 1246 1
 insert 6074 0
-rank 0 528
+rank 1 528
 insert 3689 1
 delete 4242
 insert 4874 0
-rank 0 631
+rank 1 631
 insert 7412 0
-rank 1 937
+rank 0 937
 delete 3539
 insert 8902 1
 insert 8257 1
 insert 8410 0
-rank 0 5910
+rank 1 5910
 insert 4408 1
 insert 5692 1
 insert 7308 1
@@ -10483,20 +10483,20 @@ insert 8441 0
 delete 8680
 delete 222
 insert 149 1
-rank 0 449
+rank 1 449
 insert 7177 1
 delete 2979
-rank 0 7723
+rank 1 7723
 delete 5450
 delete 7235
 delete 4603
 insert 2173 0
 insert 7985 0
-select 1 55
+select 1 3111
 insert 8703 0
 insert 7257 1
 insert 4858 1
-select 1 3931
+select 1 4643
 delete 3996
 insert 1227 1
 insert 3690 0
@@ -10507,23 +10507,23 @@ delete 504
 insert 8487 0
 insert 5247 0
 insert 7721 1
-rank 0 9133
+rank 1 9133
 delete 1836
 insert 2786 1
 delete 9696
 delete 9621
-rank 1 2346
+rank 0 2346
 delete 6611
 delete 284
 insert 4934 1
 insert 8107 0
-select 1 439
+select 1 4856
 delete 1574
 insert 4389 0
 delete 10070
 delete 9220
 delete 5857
-select 1 2943
+select 1 2405
 delete 3317
 insert 6752 0
 insert 7413 1
@@ -10535,7 +10535,7 @@ insert 10080 0
 insert 1846 0
 insert 4475 0
 insert 5499 1
-rank 1 8454
+rank 0 8454
 delete 5726
 insert 1520 1
 insert 1983 1
@@ -10550,13 +10550,13 @@ delete 5523
 delete 2195
 insert 9048 0
 delete 3216
-rank 0 5813
+rank 1 5813
 insert 10059 0
 insert 1647 0
 insert 9491 0
 insert 1773 1
 insert 2974 1
-rank 1 9569
+rank 0 9569
 insert 4063 1
 insert 817 1
 insert 388 0
@@ -10573,9 +10573,9 @@ delete 2517
 insert 6309 0
 insert 6212 0
 insert 9304 1
-rank 1 4911
+rank 0 4911
 insert 8536 1
-rank 0 8350
+rank 1 8350
 insert 2277 1
 insert 7687 0
 insert 3548 1
@@ -10586,9 +10586,9 @@ insert 4453 1
 insert 7968 1
 delete 2818
 insert 7698 0
-rank 0 7215
+rank 1 7215
 insert 9189 0
-rank 0 482
+rank 1 482
 insert 4603 1
 insert 4093 1
 delete 4862
@@ -10600,11 +10600,11 @@ insert 8388 0
 delete 5890
 insert 6250 0
 insert 2354 0
-select 0 988
+select 0 676
 insert 10169 1
 delete 8717
 insert 1080 1
-select 1 2474
+select 1 4025
 insert 4761 1
 insert 3481 1
 insert 6463 0
@@ -10625,18 +10625,18 @@ insert 6360 1
 insert 3498 1
 insert 7298 0
 insert 6613 0
-rank 1 2655
+rank 0 2655
 delete 125
 insert 3317 1
-rank 0 2024
+rank 1 2024
 insert 5911 1
-rank 1 5267
+rank 0 5267
 insert 7329 0
 insert 1094 1
 insert 1814 1
 insert 4377 1
 delete 9518
-rank 1 7586
+rank 0 7586
 insert 3169 1
 delete 8733
 insert 4494 1
@@ -10647,7 +10647,7 @@ insert 633 1
 insert 8763 1
 insert 3789 1
 insert 7054 1
-rank 0 1688
+rank 1 1688
 delete 8237
 insert 965 0
 insert 7626 1
@@ -10661,7 +10661,7 @@ insert 7406 0
 delete 8477
 insert 9282 1
 delete 5365
-rank 0 7667
+rank 1 7667
 insert 8782 0
 insert 10070 0
 insert 1796 0
@@ -10670,7 +10670,7 @@ delete 7506
 insert 4533 0
 insert 533 1
 delete 5244
-rank 0 4609
+rank 1 4609
 delete 9661
 delete 8673
 delete 5912
@@ -10678,12 +10678,12 @@ delete 2958
 insert 9630 1
 delete 2826
 delete 3132
-rank 0 7926
+rank 1 7926
 delete 5221
 delete 9418
 insert 10044 1
 insert 7699 1
-rank 0 6123
+rank 1 6123
 insert 2223 1
 delete 7541
 delete 3092
@@ -10703,18 +10703,18 @@ delete 1820
 insert 4522 1
 insert 3113 0
 insert 5131 0
-select 1 528
+select 1 556
 insert 3718 1
-rank 1 8400
+rank 0 8400
 insert 7488 1
 insert 4122 0
 insert 312 1
-rank 1 2971
+rank 0 2971
 insert 450 1
 insert 6371 1
 delete 1034
 insert 8120 0
-select 0 150
+select 0 5140
 delete 7701
 insert 2124 1
 insert 9689 1
@@ -10723,7 +10723,7 @@ insert 6215 1
 insert 7783 1
 insert 7774 0
 delete 7174
-rank 0 1272
+rank 1 1272
 insert 425 1
 delete 7748
 delete 7016
@@ -10732,16 +10732,16 @@ delete 8222
 insert 4507 0
 insert 8030 0
 insert 3666 0
-rank 1 3340
+rank 0 3340
 insert 634 0
 insert 4014 1
-rank 0 6414
+rank 1 6414
 insert 3165 1
-rank 1 6847
+rank 0 6847
 insert 8971 1
 delete 3859
 insert 9564 1
-select 1 2154
+select 1 84
 delete 5136
 delete 9944
 insert 3216 0
@@ -10749,9 +10749,9 @@ insert 6764 1
 insert 5239 1
 insert 2928 0
 insert 10003 0
-select 1 3262
+select 1 1624
 insert 6699 1
-rank 0 112
+rank 1 112
 insert 9042 0
 insert 8487 1
 insert 754 0
@@ -10765,23 +10765,23 @@ delete 10219
 insert 1778 0
 insert 7980 1
 delete 3574
-rank 1 1078
+rank 0 1078
 insert 7717 0
 insert 9282 1
-rank 0 3331
+rank 1 3331
 insert 7442 0
 insert 8512 0
-select 0 4859
+select 0 3599
 delete 9414
 insert 1950 1
 insert 3276 0
 insert 9693 0
 insert 1437 1
 delete 4885
-rank 1 6443
+rank 0 6443
 insert 9036 0
 insert 9030 0
-rank 0 10005
+rank 1 10005
 delete 175
 insert 4941 1
 insert 761 1
@@ -10790,7 +10790,7 @@ insert 3277 0
 insert 7176 1
 insert 8723 0
 insert 9761 1
-rank 1 4118
+rank 0 4118
 delete 3428
 delete 5958
 insert 6066 1
@@ -10805,19 +10805,19 @@ delete 2786
 delete 7588
 delete 159
 insert 8402 1
-select 1 3757
+select 1 1932
 delete 7917
 insert 4066 1
 delete 8499
 insert 3716 1
-select 0 498
+select 0 294
 insert 3325 1
 delete 771
 insert 2877 0
-select 0 3369
+select 0 3884
 insert 5739 0
 insert 6289 1
-select 1 2013
+select 1 1138
 insert 2497 0
 insert 3179 0
 insert 876 0
@@ -10831,24 +10831,24 @@ insert 9834 1
 insert 7494 1
 delete 1567
 delete 431
-select 1 1720
+select 1 299
 delete 609
 insert 7646 1
 insert 1626 0
 delete 5383
 delete 1803
-rank 0 7829
-select 0 51
+rank 1 7829
+select 0 4753
 insert 7597 1
-rank 1 1216
+rank 0 1216
 insert 4594 1
-rank 1 3497
+rank 0 3497
 insert 3005 0
 insert 1684 1
 delete 3508
 delete 2302
 insert 3500 1
-select 0 2307
+select 0 2011
 insert 6263 1
 delete 7237
 insert 7741 1
@@ -10858,21 +10858,21 @@ insert 4279 1
 insert 314 1
 insert 4585 0
 delete 1754
-rank 0 7844
+rank 1 7844
 insert 7492 1
 insert 2581 1
-select 0 266
+select 0 4977
 delete 6653
 insert 5729 0
-select 1 2891
+select 1 3625
 delete 8256
 insert 2139 1
 insert 7782 0
 insert 180 1
 insert 3333 1
-rank 1 1989
+rank 0 1989
 insert 6081 0
-select 1 1854
+select 1 3030
 insert 6629 0
 insert 3125 0
 insert 1176 0
@@ -10894,13 +10894,13 @@ insert 7055 1
 delete 5021
 insert 9846 0
 insert 3169 1
-rank 0 5630
-select 0 3119
+rank 1 5630
+select 0 607
 insert 1798 0
 insert 2171 1
 insert 9806 1
 insert 9490 0
-rank 1 5408
+rank 0 5408
 insert 1597 0
 insert 2150 1
 delete 5224
@@ -10911,11 +10911,11 @@ delete 1359
 delete 1424
 insert 6477 1
 delete 26
-rank 1 9998
-select 0 4335
+rank 0 9998
+select 0 3751
 delete 9814
 delete 8909
-rank 1 7694
+rank 0 7694
 delete 6262
 delete 705
 insert 3527 0
@@ -10940,14 +10940,14 @@ insert 1790 0
 insert 1007 1
 insert 4008 0
 delete 3896
-rank 1 3248
+rank 0 3248
 delete 1214
 insert 6348 1
 insert 5982 1
 insert 5046 0
-select 0 1862
+select 0 2835
 insert 6318 1
-select 0 1698
+select 0 703
 insert 6677 1
 insert 6068 0
 insert 3233 0
@@ -10955,25 +10955,25 @@ delete 7637
 delete 10205
 delete 4323
 delete 7832
-rank 1 8739
+rank 0 8739
 insert 1296 1
 delete 6233
 insert 139 0
 insert 1747 1
 insert 4075 0
 delete 2773
-rank 0 1415
+rank 1 1415
 delete 9857
 insert 4441 0
-rank 1 6836
+rank 0 6836
 delete 2001
-rank 1 10098
+rank 0 10098
 insert 162 1
 delete 4645
-rank 0 994
+rank 1 994
 insert 6892 1
-rank 1 6470
-select 0 2261
+rank 0 6470
+select 0 1969
 insert 3446 1
 delete 6893
 insert 2580 0
@@ -10988,13 +10988,13 @@ insert 2648 0
 insert 4572 1
 insert 2689 0
 insert 10186 0
-rank 1 9818
+rank 0 9818
 insert 4718 1
 insert 1110 1
 delete 6414
 insert 6791 0
-rank 1 5789
-select 1 2091
+rank 0 5789
+select 1 1647
 delete 2411
 delete 2993
 insert 666 0
@@ -11002,13 +11002,13 @@ delete 4953
 delete 6205
 insert 7114 1
 insert 10019 0
-rank 0 4391
+rank 1 4391
 delete 8417
 delete 4749
 insert 1935 1
 insert 5644 0
 delete 1331
-rank 0 9925
+rank 1 9925
 insert 9340 0
 insert 523 1
 insert 4489 0
@@ -11020,7 +11020,7 @@ insert 9600 0
 insert 4905 1
 delete 7258
 delete 7506
-select 1 3746
+select 1 1816
 insert 329 1
 insert 8766 1
 delete 6423
@@ -11034,22 +11034,22 @@ delete 6407
 insert 423 1
 delete 8253
 insert 9896 0
-rank 1 5812
+rank 0 5812
 insert 3859 0
 insert 2494 1
 insert 3249 0
 delete 4695
 insert 4244 1
 insert 2214 1
-rank 0 2455
+rank 1 2455
 insert 8846 1
 insert 6584 1
 insert 3602 0
 delete 8141
-rank 1 8299
+rank 0 8299
 insert 507 1
 delete 3536
-rank 1 5282
+rank 0 5282
 insert 5608 0
 insert 8644 1
 delete 5808
@@ -11060,7 +11060,7 @@ insert 2660 0
 delete 8234
 insert 656 1
 insert 8390 0
-rank 0 1799
+rank 1 1799
 insert 5263 1
 delete 6900
 delete 1067
@@ -11075,11 +11075,11 @@ insert 4157 1
 insert 3430 0
 insert 450 0
 delete 5087
-select 1 4588
+select 1 4432
 insert 7251 0
 insert 9217 1
 insert 7919 0
-rank 0 9920
+rank 1 9920
 delete 4730
 delete 6614
 insert 442 0
@@ -11089,7 +11089,7 @@ delete 9739
 insert 1815 1
 insert 10209 1
 insert 438 1
-rank 1 2030
+rank 0 2030
 delete 4934
 delete 6407
 insert 1882 0
@@ -11099,17 +11099,17 @@ insert 5041 0
 delete 7785
 insert 2573 1
 delete 8838
-select 0 1478
+select 0 1272
 delete 1694
-rank 1 803
+rank 0 803
 insert 9350 1
-rank 0 9770
+rank 1 9770
 delete 8379
 delete 9384
 insert 2803 0
 insert 9439 1
 insert 2533 0
-select 0 4472
+select 0 2417
 insert 7622 1
 insert 2848 1
 delete 6428
@@ -11119,11 +11119,11 @@ insert 1447 0
 delete 9538
 delete 1559
 insert 9989 0
-rank 0 3333
+rank 1 3333
 insert 3549 0
 insert 7182 0
 insert 7944 0
-rank 1 7514
+rank 0 7514
 insert 1712 0
 delete 3526
 delete 4255
@@ -11151,19 +11151,19 @@ delete 3253
 delete 2644
 insert 3944 0
 insert 6717 1
-rank 0 8716
+rank 1 8716
 delete 4154
 delete 4861
 insert 162 1
 delete 6635
 insert 3973 0
 insert 911 0
-rank 0 3974
+rank 1 3974
 delete 6356
 delete 4159
 insert 1590 1
 insert 2595 0
-rank 0 6985
+rank 1 6985
 insert 3639 0
 delete 8325
 insert 6487 0
@@ -11172,7 +11172,7 @@ delete 1512
 insert 1212 1
 delete 3859
 delete 3199
-rank 0 5989
+rank 1 5989
 insert 9887 1
 insert 2624 0
 insert 3287 1
@@ -11186,9 +11186,9 @@ delete 6892
 delete 9539
 delete 4987
 insert 5706 1
-rank 1 4627
+rank 0 4627
 delete 5104
-select 1 3337
+select 1 5044
 delete 1134
 delete 9867
 insert 5709 0
@@ -11196,20 +11196,20 @@ insert 5417 0
 insert 5746 0
 insert 9986 1
 insert 4264 0
-rank 1 7761
+rank 0 7761
 insert 6557 0
-select 0 163
+select 0 1681
 insert 6893 0
-rank 0 6667
+rank 1 6667
 insert 2549 1
 insert 1280 0
 insert 1797 1
 insert 3827 0
-select 1 718
+select 1 4954
 delete 7886
 insert 2654 0
 insert 9397 1
-rank 1 2544
+rank 0 2544
 insert 9317 1
 insert 7625 0
 delete 2067
@@ -11226,7 +11226,7 @@ insert 2684 1
 delete 960
 insert 7082 0
 insert 9175 0
-select 1 2867
+select 1 1196
 insert 9270 1
 insert 10109 1
 insert 864 1
@@ -11235,14 +11235,14 @@ insert 654 1
 delete 10022
 insert 3432 1
 insert 7200 1
-select 0 2077
+select 0 1901
 insert 3910 0
 delete 10186
-rank 0 6222
+rank 1 6222
 insert 3427 0
 insert 6430 1
 insert 7617 0
-rank 0 10111
+rank 1 10111
 insert 9787 0
 insert 8582 1
 delete 4836
@@ -11252,12 +11252,12 @@ insert 10175 0
 insert 6570 0
 delete 1789
 delete 4979
-rank 0 3683
+rank 1 3683
 insert 8862 0
 delete 4585
-rank 0 8530
+rank 1 8530
 delete 1781
-select 1 4867
+select 1 1175
 insert 2197 0
 insert 3227 1
 delete 5569
@@ -11286,24 +11286,24 @@ delete 3350
 delete 1319
 insert 3885 0
 delete 9794
-select 1 1
+select 1 169
 insert 736 1
 delete 8656
 insert 1678 1
 insert 1703 1
 insert 1061 0
 delete 9566
-rank 0 9443
+rank 1 9443
 insert 9319 0
 delete 623
 insert 4518 1
 insert 416 0
-rank 1 8995
+rank 0 8995
 insert 10047 1
 delete 9672
-rank 0 8390
+rank 1 8390
 delete 4990
-rank 1 10002
+rank 0 10002
 delete 3979
 delete 884
 delete 7059
@@ -11314,16 +11314,16 @@ insert 4746 0
 delete 1498
 insert 1593 0
 insert 9806 0
-select 1 4080
+select 1 4305
 insert 5823 1
 insert 9508 0
 insert 8743 0
-rank 0 8399
+rank 1 8399
 insert 1475 1
 insert 5141 0
-rank 1 913
+rank 0 913
 delete 1597
-rank 0 472
+rank 1 472
 delete 1159
 insert 3086 0
 insert 8119 0
@@ -11331,7 +11331,7 @@ delete 4889
 insert 4880 0
 insert 2246 1
 insert 2335 0
-select 1 4271
+select 1 4603
 insert 1038 1
 insert 3984 0
 insert 3601 1
@@ -11341,7 +11341,7 @@ delete 647
 insert 3020 0
 insert 1343 1
 insert 7239 0
-rank 1 215
+rank 0 215
 insert 1621 0
 delete 164
 insert 1718 0
@@ -11349,7 +11349,7 @@ delete 3408
 insert 6484 0
 insert 2225 1
 delete 2373
-rank 0 8997
+rank 1 8997
 insert 7628 1
 insert 163 1
 delete 6827
@@ -11371,7 +11371,7 @@ insert 4233 1
 insert 2107 1
 insert 7801 0
 insert 1423 1
-rank 0 6383
+rank 1 6383
 delete 9931
 insert 1633 1
 insert 8492 0
@@ -11391,12 +11391,12 @@ insert 841 1
 insert 4221 1
 insert 8434 0
 delete 10149
-rank 1 5097
+rank 0 5097
 insert 6990 1
-select 0 1320
+select 0 4855
 insert 10275 1
 delete 2769
-rank 0 5803
+rank 1 5803
 insert 1077 0
 insert 1615 0
 insert 8329 1
@@ -11406,7 +11406,7 @@ insert 1207 0
 insert 3414 0
 delete 3661
 insert 5000 0
-rank 1 3675
+rank 0 3675
 insert 6559 0
 insert 8144 1
 insert 2987 0
@@ -11414,7 +11414,7 @@ insert 4790 0
 insert 7919 0
 insert 7834 0
 insert 4740 1
-rank 1 1321
+rank 0 1321
 insert 6066 1
 delete 9008
 insert 6342 0
@@ -11425,7 +11425,7 @@ insert 516 0
 insert 8117 0
 insert 1917 1
 delete 5235
-rank 1 8258
+rank 0 8258
 insert 6199 1
 insert 3657 0
 delete 3969
@@ -11435,22 +11435,22 @@ insert 8851 0
 insert 5578 0
 insert 7665 0
 insert 5970 0
-select 1 4789
+select 1 3637
 insert 2370 0
-rank 1 10028
+rank 0 10028
 insert 4100 0
 insert 8936 0
 insert 1898 0
-rank 0 298
+rank 1 298
 delete 3021
 insert 6207 0
 insert 5589 1
 insert 9606 0
 insert 7661 1
 insert 503 1
-rank 0 321
+rank 1 321
 insert 939 0
-rank 1 7973
+rank 0 7973
 insert 7503 1
 insert 3734 1
 delete 7410
@@ -11468,14 +11468,14 @@ insert 4817 1
 insert 1639 0
 delete 5096
 delete 4908
-select 1 4810
+select 1 3877
 insert 2899 0
 insert 5853 0
 delete 2474
 insert 2866 1
 insert 5575 1
 insert 9323 1
-rank 0 6539
+rank 1 6539
 insert 8826 0
 insert 37 0
 insert 4817 1
@@ -11486,20 +11486,20 @@ insert 10171 0
 delete 4979
 insert 2828 0
 insert 8047 1
-rank 1 720
+rank 0 720
 delete 5247
-rank 0 5967
+rank 1 5967
 insert 8082 0
 insert 6023 0
 insert 1123 0
-rank 0 6967
+rank 1 6967
 delete 5018
 insert 6238 0
 insert 1697 1
 delete 9566
 insert 6917 0
 insert 2727 1
-rank 0 7759
+rank 1 7759
 insert 3024 1
 delete 6042
 delete 4810
@@ -11514,20 +11514,20 @@ insert 10448 0
 delete 4192
 insert 8923 1
 insert 2632 1
-select 0 4902
+select 0 1192
 insert 1717 1
-rank 1 6211
+rank 0 6211
 delete 5983
-select 1 2679
+select 1 1971
 insert 6927 1
-rank 1 7190
+rank 0 7190
 insert 1877 0
 insert 9476 1
 insert 597 1
 insert 1584 0
 insert 2336 1
 insert 6247 1
-rank 0 8590
+rank 1 8590
 insert 1698 0
 insert 3349 1
 insert 1452 0
@@ -11539,16 +11539,16 @@ insert 8392 0
 delete 9392
 insert 9398 1
 delete 2019
-rank 1 6126
+rank 0 6126
 delete 5412
 insert 8165 0
 insert 4248 0
 delete 6927
-rank 1 5185
+rank 0 5185
 insert 6437 1
 delete 4759
 delete 5686
-rank 0 692
+rank 1 692
 delete 5871
 insert 7565 1
 delete 3009
@@ -11588,7 +11588,7 @@ delete 1392
 insert 8214 1
 insert 9154 0
 insert 8618 0
-rank 1 3539
+rank 0 3539
 insert 113 1
 insert 8365 0
 delete 9423
@@ -11599,17 +11599,17 @@ delete 5685
 delete 2916
 delete 1717
 delete 792
-rank 1 3124
+rank 0 3124
 insert 951 0
 insert 4036 1
 insert 6269 1
-rank 1 1786
+rank 0 1786
 insert 1099 0
 insert 229 1
 delete 4980
 insert 446 1
-rank 0 5834
-select 0 3789
+rank 1 5834
+select 0 627
 insert 9421 1
 insert 9402 1
 insert 9803 0
@@ -11628,7 +11628,7 @@ insert 2066 1
 insert 9694 1
 delete 8147
 insert 752 1
-select 1 3067
+select 1 4858
 insert 2358 1
 delete 4420
 delete 1776
@@ -11656,15 +11656,15 @@ insert 8401 0
 delete 9569
 delete 2015
 insert 5300 0
-rank 0 55
+rank 1 55
 insert 4749 0
 delete 10322
 insert 4724 0
 delete 1543
 insert 4028 1
-rank 1 3028
+rank 0 3028
 delete 3980
-rank 1 10448
+rank 0 10448
 delete 8965
 insert 6462 0
 insert 8080 0
@@ -11679,9 +11679,9 @@ insert 5655 0
 insert 9532 1
 insert 1626 0
 insert 9307 0
-rank 1 10492
+rank 0 10492
 insert 1997 1
-rank 1 4700
+rank 0 4700
 delete 5241
 delete 4988
 insert 1830 0
@@ -11703,7 +11703,7 @@ insert 1731 1
 insert 3399 0
 insert 4334 1
 insert 3894 1
-select 0 4764
+select 0 3440
 insert 9341 1
 delete 10268
 insert 8667 1
@@ -11715,7 +11715,7 @@ insert 9613 1
 delete 8493
 insert 4954 1
 insert 6830 0
-rank 1 10057
+rank 0 10057
 insert 9745 1
 insert 2629 0
 delete 6269
@@ -11725,7 +11725,7 @@ delete 7226
 delete 4988
 insert 609 0
 insert 6063 1
-rank 0 4061
+rank 1 4061
 delete 5369
 insert 6582 0
 insert 3164 1
@@ -11741,12 +11741,12 @@ insert 1651 0
 delete 2629
 insert 6492 1
 insert 3644 0
-rank 0 3169
+rank 1 3169
 insert 4988 1
-select 0 3741
+select 0 3548
 delete 7144
 insert 9925 1
-select 1 2403
+select 1 195
 insert 2550 1
 delete 9298
 insert 373 1
@@ -11756,21 +11756,21 @@ insert 8079 1
 insert 9353 1
 insert 6897 1
 insert 2256 0
-rank 1 4469
+rank 0 4469
 insert 378 0
 insert 1785 0
-rank 1 3479
+rank 0 3479
 delete 5825
 insert 9378 1
-rank 0 10487
+rank 1 10487
 delete 3180
 delete 7355
-rank 1 2023
+rank 0 2023
 insert 8503 1
 insert 690 0
 insert 3128 0
 insert 6683 0
-rank 0 3625
+rank 1 3625
 delete 7045
 insert 858 0
 delete 1111
@@ -11778,44 +11778,44 @@ insert 7726 0
 insert 7646 0
 insert 566 0
 insert 9903 0
-rank 0 5346
+rank 1 5346
 insert 134 0
 delete 2314
 insert 9767 1
 delete 6824
 insert 4680 1
 insert 704 1
-rank 1 374
+rank 0 374
 delete 2733
 insert 2282 1
-rank 0 653
+rank 1 653
 delete 3891
 delete 9561
 insert 5785 0
 insert 2256 0
-select 1 3602
+select 1 4478
 insert 9237 0
 insert 8444 0
-rank 0 9908
+rank 1 9908
 insert 9060 0
 insert 9504 0
 insert 2030 0
-rank 0 3162
+rank 1 3162
 insert 6324 0
 delete 2994
 insert 9475 0
 delete 9071
-rank 0 6259
+rank 1 6259
 insert 7596 0
 delete 3663
 insert 8546 1
 insert 3167 0
-rank 0 3489
+rank 1 3489
 insert 3290 0
 insert 4716 0
 delete 7497
 insert 5011 1
-rank 0 1250
+rank 1 1250
 insert 434 1
 insert 4715 1
 insert 4206 1
@@ -11849,29 +11849,29 @@ insert 4478 0
 insert 1146 0
 insert 1373 0
 delete 5313
-rank 0 9090
+rank 1 9090
 delete 806
 delete 8936
 insert 7945 0
 insert 6388 0
-select 0 1501
+select 0 3236
 insert 5119 1
 insert 7040 0
-rank 0 9344
+rank 1 9344
 insert 4625 0
 insert 4547 0
 delete 7279
 insert 3382 1
 insert 9226 1
-rank 0 1224
+rank 1 1224
 insert 10320 1
 delete 3081
 insert 9549 1
-select 0 1506
+select 0 2674
 delete 1012
 delete 10076
 insert 6861 1
-rank 0 8086
+rank 1 8086
 insert 9214 1
 insert 4630 0
 insert 2952 1
@@ -11879,14 +11879,14 @@ insert 5746 1
 insert 9413 1
 insert 4306 1
 insert 4023 0
-rank 1 8672
+rank 0 8672
 insert 676 0
 delete 6014
 insert 6211 1
 delete 2122
 delete 120
 insert 4380 1
-rank 1 8666
+rank 0 8666
 delete 3674
 insert 10487 0
 insert 10212 1
@@ -11899,17 +11899,17 @@ delete 3941
 delete 7767
 delete 1500
 insert 1896 0
-select 1 2795
+select 1 1860
 insert 7273 0
 insert 8611 1
 delete 4791
-select 1 3573
+select 1 1077
 insert 9368 0
 insert 5862 0
 delete 5437
 insert 10414 1
 insert 454 0
-rank 1 10488
+rank 0 10488
 insert 1966 1
 insert 2084 1
 delete 3031
@@ -11921,14 +11921,14 @@ delete 4431
 insert 2913 1
 delete 623
 delete 8024
-rank 1 1474
-select 0 1096
+rank 0 1474
+select 0 1237
 insert 10391 1
 delete 10438
 delete 6746
 delete 2709
 insert 2903 1
-rank 0 7448
+rank 1 7448
 insert 10334 0
 insert 9273 1
 insert 5198 1
@@ -11958,25 +11958,25 @@ delete 9123
 insert 9226 1
 insert 2825 1
 insert 5078 0
-rank 0 2011
+rank 1 2011
 insert 8963 1
 delete 5188
 insert 752 1
 delete 5465
 insert 2167 1
-select 1 1103
+select 1 4305
 insert 7868 1
-select 0 3087
+select 0 2746
 insert 702 1
 insert 3615 1
 insert 9227 0
-select 1 2423
+select 1 1419
 insert 8318 1
 delete 3563
 delete 1838
 insert 1587 1
 insert 5431 1
-select 0 1206
+select 0 1951
 delete 3708
 insert 1488 0
 insert 8765 1
@@ -11990,11 +11990,11 @@ insert 6489 1
 delete 5058
 delete 5087
 insert 1186 0
-rank 0 7936
+rank 1 7936
 delete 5253
 delete 1130
 insert 6695 0
-select 1 2458
+select 1 2732
 insert 221 0
 delete 4761
 delete 373
@@ -12010,18 +12010,18 @@ delete 9914
 insert 3515 0
 delete 8148
 insert 9859 0
-rank 0 9249
+rank 1 9249
 insert 4188 0
 delete 2322
 insert 1317 0
-rank 1 3309
+rank 0 3309
 delete 5967
 insert 6800 1
 insert 900 1
-rank 1 10462
+rank 0 10462
 insert 8520 0
 insert 5143 0
-select 0 2488
+select 0 496
 insert 6098 0
 delete 5885
 insert 2761 0
@@ -12037,7 +12037,7 @@ insert 2755 0
 insert 7306 1
 delete 9946
 insert 199 1
-rank 0 1489
+rank 1 1489
 insert 8950 0
 insert 9605 1
 insert 9748 1
@@ -12052,7 +12052,7 @@ insert 6314 0
 insert 3772 1
 insert 4500 0
 delete 5577
-rank 1 7837
+rank 0 7837
 insert 6330 0
 delete 6104
 insert 3398 0
@@ -12067,7 +12067,7 @@ delete 9835
 insert 9353 0
 insert 6314 0
 delete 5574
-rank 1 1932
+rank 0 1932
 insert 1603 1
 insert 506 1
 insert 7220 0
@@ -12083,13 +12083,13 @@ insert 2924 1
 insert 1739 1
 delete 4972
 insert 4103 1
-select 0 4825
+select 0 3568
 insert 1735 0
 delete 10096
 delete 9490
 insert 7800 0
 delete 2929
-rank 1 10562
+rank 0 10562
 insert 10206 1
 delete 8186
 delete 2105
@@ -12111,12 +12111,12 @@ insert 6750 0
 insert 6630 1
 insert 7921 1
 delete 6903
-select 1 4314
+select 1 1446
 insert 6950 0
 insert 6821 0
 insert 7906 1
 insert 5705 0
-rank 0 373
+rank 1 373
 insert 7786 0
 insert 996 1
 insert 1433 1
@@ -12133,17 +12133,17 @@ delete 10446
 insert 8406 1
 insert 1598 1
 delete 9199
-rank 1 9438
+rank 0 9438
 delete 4110
 insert 4799 0
-rank 1 3638
+rank 0 3638
 delete 90
 delete 5955
 delete 8955
 delete 5437
 insert 8617 0
 insert 9877 0
-rank 0 4270
+rank 1 4270
 insert 3214 1
 insert 4462 1
 insert 9155 0
@@ -12155,7 +12155,7 @@ delete 8779
 insert 6046 1
 insert 2420 1
 delete 8146
-rank 1 3363
+rank 0 3363
 delete 201
 insert 8904 0
 insert 6809 0
@@ -12173,15 +12173,15 @@ insert 5770 0
 insert 10437 0
 insert 6305 0
 delete 9367
-rank 1 952
+rank 0 952
 delete 4117
 insert 949 0
 delete 2657
 insert 4358 1
 delete 7123
 insert 8574 0
-rank 0 936
-select 0 541
+rank 1 936
+select 0 3274
 insert 8727 0
 insert 8554 1
 delete 9003
@@ -12199,11 +12199,11 @@ insert 8345 1
 insert 9934 1
 insert 980 0
 insert 7011 1
-rank 1 4827
+rank 0 4827
 insert 6329 1
 insert 3696 1
 insert 9513 1
-rank 1 5051
+rank 0 5051
 delete 5289
 insert 2804 1
 delete 4001
@@ -12212,13 +12212,13 @@ insert 4859 0
 insert 6869 0
 delete 8702
 insert 521 1
-rank 1 1870
+rank 0 1870
 insert 7478 0
 insert 1794 0
 insert 10149 1
 insert 6595 1
 delete 10053
-select 1 3624
+select 1 2981
 insert 557 0
 insert 10280 1
 delete 7280
@@ -12236,13 +12236,13 @@ insert 6999 1
 insert 620 1
 insert 1413 1
 insert 8295 0
-select 1 2721
+select 1 2736
 insert 2023 0
 delete 1461
 insert 6557 1
 insert 6222 1
 delete 8653
-rank 1 8319
+rank 0 8319
 delete 9167
 insert 2064 0
 insert 8409 1
@@ -12254,19 +12254,19 @@ insert 6714 0
 insert 7867 1
 insert 8905 0
 delete 1713
-rank 1 8468
+rank 0 8468
 insert 6072 0
 insert 5331 1
 insert 8103 1
 insert 9973 1
 delete 8445
-rank 1 487
+rank 0 487
 insert 2195 1
 delete 6543
-rank 0 7968
+rank 1 7968
 delete 5830
 insert 1982 1
-select 1 2887
+select 1 577
 insert 2561 1
 insert 3118 0
 insert 1921 1
@@ -12282,12 +12282,12 @@ delete 9822
 insert 7449 1
 insert 523 1
 delete 6669
-select 0 386
+select 0 2071
 delete 7033
 insert 1377 1
 insert 7213 0
 insert 2545 1
-rank 1 8766
+rank 0 8766
 insert 8931 1
 insert 1293 1
 delete 1434
@@ -12297,7 +12297,7 @@ insert 421 1
 insert 9644 1
 delete 4240
 delete 5251
-rank 1 10481
+rank 0 10481
 insert 558 0
 insert 7761 0
 insert 2205 1
@@ -12312,12 +12312,12 @@ delete 1540
 delete 8446
 insert 6675 1
 delete 7402
-rank 1 5961
+rank 0 5961
 insert 2064 1
 insert 8109 0
 insert 8768 0
 insert 8401 0
-rank 0 4586
+rank 1 4586
 insert 8691 0
 insert 10206 0
 delete 7428
@@ -12328,14 +12328,14 @@ insert 6747 1
 insert 8535 0
 delete 254
 insert 7422 1
-select 1 4136
+select 1 4417
 insert 9607 0
 insert 3047 1
 insert 566 1
 insert 9286 1
 delete 8129
 insert 2926 1
-rank 1 2368
+rank 0 2368
 insert 8086 0
 delete 8270
 insert 1443 1
@@ -12344,9 +12344,9 @@ insert 2100 0
 delete 2696
 delete 586
 delete 5688
-select 1 1493
+select 1 486
 insert 6255 0
-select 1 870
+select 1 3385
 insert 2379 0
 delete 1419
 insert 3306 0
@@ -12354,7 +12354,7 @@ insert 423 0
 delete 6670
 insert 8662 1
 insert 86 1
-rank 0 5908
+rank 1 5908
 delete 7881
 insert 8804 1
 insert 9328 1
@@ -12368,10 +12368,10 @@ insert 2247 0
 delete 2790
 insert 6878 0
 delete 6391
-rank 0 5307
+rank 1 5307
 delete 2959
 insert 499 1
-select 1 343
+select 1 4567
 delete 10051
 insert 6234 0
 insert 5170 1
@@ -12387,7 +12387,7 @@ insert 4246 0
 delete 8612
 insert 2916 1
 delete 715
-rank 1 6800
+rank 0 6800
 insert 3520 0
 delete 1833
 delete 10108
@@ -12405,14 +12405,14 @@ insert 6193 0
 insert 4242 1
 delete 3791
 delete 9644
-rank 0 6562
+rank 1 6562
 delete 3480
 delete 4158
 delete 8145
 insert 2096 0
 delete 5473
 delete 4923
-rank 1 560
+rank 0 560
 insert 3553 0
 insert 5064 1
 insert 1942 1
@@ -12424,10 +12424,10 @@ insert 8937 1
 insert 4081 0
 insert 1968 1
 insert 4705 1
-select 1 2273
+select 1 791
 delete 5290
 insert 1788 0
-rank 1 9859
+rank 0 9859
 delete 8977
 insert 9937 1
 delete 5627
@@ -12445,9 +12445,9 @@ insert 90 0
 insert 2531 0
 delete 4701
 insert 2965 0
-select 1 3879
+select 1 3797
 delete 4089
-rank 0 4405
+rank 1 4405
 insert 10246 1
 insert 838 1
 delete 1476
@@ -12469,7 +12469,7 @@ delete 1142
 insert 3691 1
 insert 4124 0
 insert 2388 0
-select 0 3716
+select 0 5155
 insert 5803 1
 insert 5072 1
 insert 811 0
@@ -12489,7 +12489,7 @@ delete 6475
 insert 8449 0
 insert 581 1
 insert 9945 1
-select 0 10
+select 0 3073
 delete 7793
 delete 1836
 insert 6749 0
@@ -12517,11 +12517,11 @@ insert 4123 1
 insert 9744 1
 delete 7526
 insert 7478 1
-select 1 5156
+select 1 302
 delete 3832
-rank 1 7801
+rank 0 7801
 insert 5378 0
-select 0 3723
+select 0 395
 delete 2716
 delete 3941
 delete 8168
@@ -12533,7 +12533,7 @@ insert 4788 1
 insert 1730 0
 insert 10677 0
 insert 8258 0
-rank 0 6361
+rank 1 6361
 delete 919
 delete 4550
 delete 2849
@@ -12547,15 +12547,15 @@ insert 1817 0
 insert 6909 1
 delete 5812
 insert 4910 1
-rank 1 10040
+rank 0 10040
 delete 1831
-rank 0 8181
+rank 1 8181
 insert 10247 0
-rank 1 4728
+rank 0 4728
 insert 7595 0
 insert 1382 1
 insert 9532 0
-rank 0 6718
+rank 1 6718
 delete 889
 insert 5897 0
 delete 6625
@@ -12564,7 +12564,7 @@ insert 9584 0
 delete 10179
 delete 8135
 insert 10411 0
-select 1 4936
+select 1 4797
 insert 10103 1
 delete 5371
 insert 5149 1
@@ -12583,12 +12583,12 @@ insert 8068 0
 delete 1609
 delete 10152
 insert 6974 0
-rank 0 1658
+rank 1 1658
 insert 3889 0
 insert 6189 1
 delete 9786
 insert 8890 0
-rank 1 8654
+rank 0 8654
 insert 4084 0
 insert 6591 1
 delete 8802
@@ -12606,10 +12606,10 @@ insert 1719 1
 insert 7299 1
 insert 10416 0
 insert 5845 1
-rank 0 2764
+rank 1 2764
 insert 8332 0
 delete 2247
-rank 1 7832
+rank 0 7832
 insert 10209 0
 insert 904 1
 insert 8511 0
@@ -12623,7 +12623,7 @@ delete 3225
 insert 9616 1
 insert 8176 1
 delete 702
-rank 1 9125
+rank 0 9125
 delete 6688
 delete 8257
 insert 10314 1
@@ -12641,13 +12641,13 @@ insert 10340 0
 delete 4069
 insert 199 0
 insert 5463 1
-rank 1 1727
+rank 0 1727
 insert 8368 1
 insert 8207 1
 insert 3683 0
 insert 5536 1
 insert 4 1
-select 0 222
+select 0 3887
 delete 6381
 delete 2131
 delete 4381
@@ -12660,12 +12660,12 @@ insert 7646 1
 insert 10454 0
 insert 8329 1
 delete 247
-rank 0 4498
+rank 1 4498
 insert 8992 0
 delete 9240
 delete 6474
 delete 5608
-rank 0 7031
+rank 1 7031
 delete 10367
 insert 10610 1
 insert 3702 0
@@ -12673,9 +12673,9 @@ delete 5207
 insert 2470 0
 delete 2185
 delete 2232
-select 1 865
+select 1 797
 delete 440
-select 1 703
+select 1 2506
 insert 316 0
 delete 8213
 insert 7392 0
@@ -12685,15 +12685,15 @@ insert 10615 1
 insert 2086 0
 delete 4484
 insert 1982 1
-rank 0 2482
+rank 1 2482
 insert 4366 0
 insert 10734 1
-rank 1 268
+rank 0 268
 delete 9254
 insert 9037 0
 insert 4478 1
 insert 9903 1
-rank 0 9773
+rank 1 9773
 insert 6732 0
 delete 8871
 insert 3300 1
@@ -12708,7 +12708,7 @@ delete 8751
 delete 5450
 insert 2606 1
 insert 4794 1
-rank 0 6602
+rank 1 6602
 delete 806
 insert 8916 1
 insert 3278 1
@@ -12723,7 +12723,7 @@ insert 3086 1
 insert 10591 0
 delete 5875
 insert 7337 0
-select 1 4507
+select 1 2347
 insert 8550 1
 delete 3802
 delete 8500
@@ -12731,7 +12731,7 @@ delete 8130
 insert 1382 0
 insert 3749 0
 delete 3364
-select 0 1688
+select 0 1690
 insert 4364 1
 delete 6775
 insert 8338 1
@@ -12739,7 +12739,7 @@ delete 5526
 insert 6780 1
 delete 5910
 insert 3926 0
-rank 1 4937
+rank 0 4937
 insert 6236 0
 delete 5778
 delete 10141
@@ -12749,7 +12749,7 @@ delete 5272
 insert 10392 1
 insert 10150 1
 delete 5184
-select 0 812
+select 0 2082
 insert 5187 1
 insert 1403 0
 insert 1210 0
@@ -12764,13 +12764,13 @@ insert 5257 0
 insert 9545 0
 insert 10465 1
 delete 2234
-rank 0 5367
+rank 1 5367
 insert 8377 1
 insert 5103 1
 insert 4481 1
 insert 1340 1
 delete 286
-select 1 2707
+select 1 209
 insert 6229 1
 insert 2578 1
 delete 6738
@@ -12786,20 +12786,20 @@ delete 4860
 insert 7058 1
 insert 7340 0
 insert 10729 0
-select 1 5196
+select 1 1605
 insert 9192 1
-select 1 4741
+select 1 1993
 delete 489
 insert 6583 1
-select 1 1259
+select 1 1445
 delete 10066
 insert 4324 0
 insert 7404 1
-select 0 142
+select 0 2587
 insert 7682 0
 delete 3472
 insert 8665 0
-rank 1 8644
+rank 0 8644
 insert 1073 1
 insert 4166 1
 delete 10149
@@ -12812,52 +12812,52 @@ delete 2938
 insert 9554 1
 delete 4757
 insert 9123 1
-select 1 3833
+select 1 1193
 insert 6006 0
 delete 2958
-select 0 2971
+select 0 1710
 insert 1268 1
 insert 8478 0
 insert 10070 1
-select 0 2364
+select 0 3778
 insert 5019 1
 insert 5485 0
 delete 3683
 insert 9762 1
 insert 2083 1
-rank 1 6590
+rank 0 6590
 insert 7468 1
 insert 1720 0
-rank 1 2780
+rank 0 2780
 insert 2367 0
 insert 8282 0
-rank 0 8967
+rank 1 8967
 insert 291 0
 insert 3565 0
 insert 7587 0
 insert 1510 1
 insert 306 0
 delete 5306
-rank 1 5346
+rank 0 5346
 delete 9692
-rank 0 3942
+rank 1 3942
 insert 4804 1
-select 0 3140
+select 0 4985
 insert 5620 1
 insert 6494 1
 insert 6965 1
 insert 6144 0
 insert 1863 0
 delete 2145
-rank 0 2663
+rank 1 2663
 delete 2202
 delete 1015
 delete 6702
 insert 3910 0
-select 1 5293
+select 1 1383
 delete 6607
 delete 7128
-select 0 1980
+select 0 2357
 insert 9719 0
 delete 1884
 insert 1085 1
@@ -12865,18 +12865,18 @@ insert 6834 1
 insert 7384 1
 delete 7789
 insert 5748 1
-select 1 1131
+select 1 1359
 insert 5254 0
 insert 915 1
-rank 0 4034
+rank 1 4034
 insert 3419 1
 insert 1661 1
 insert 2564 0
 delete 9569
 delete 2535
-rank 0 5132
+rank 1 5132
 insert 2994 0
-rank 0 2836
+rank 1 2836
 insert 1507 1
 delete 8872
 insert 9963 0
@@ -12885,16 +12885,16 @@ insert 6824 1
 delete 2063
 insert 9411 0
 insert 2670 0
-rank 1 5105
+rank 0 5105
 insert 10291 1
 insert 6421 0
-rank 0 7481
+rank 1 7481
 insert 163 1
 insert 6693 0
 delete 4492
 insert 5753 1
 insert 9166 0
-rank 0 5691
+rank 1 5691
 insert 1145 0
 delete 7575
 insert 5235 1
@@ -12909,7 +12909,7 @@ delete 1142
 insert 8102 0
 delete 8559
 insert 4403 1
-rank 0 3385
+rank 1 3385
 delete 4404
 delete 8810
 delete 8805
@@ -12921,14 +12921,14 @@ insert 9244 1
 insert 4127 0
 insert 7480 1
 insert 8835 0
-rank 0 1635
+rank 1 1635
 insert 4856 1
 insert 9274 1
 insert 8712 0
-rank 0 498
+rank 1 498
 insert 10014 1
 insert 8017 1
-rank 1 5876
+rank 0 5876
 insert 8076 0
 insert 1665 1
 insert 9672 1
@@ -12940,11 +12940,11 @@ insert 4089 0
 delete 6842
 insert 6999 1
 insert 2607 1
-rank 1 10180
+rank 0 10180
 delete 7707
 insert 8144 1
 insert 8336 0
-rank 1 10087
+rank 0 10087
 insert 10419 0
 insert 3630 1
 insert 2359 1
@@ -12956,7 +12956,7 @@ delete 9013
 insert 81 1
 delete 600
 insert 8340 1
-rank 1 494
+rank 0 494
 delete 9125
 delete 2258
 delete 8914
@@ -12974,7 +12974,7 @@ insert 10027 0
 delete 3681
 insert 8821 0
 insert 2540 1
-rank 1 4751
+rank 0 4751
 delete 5943
 delete 3754
 insert 3084 0
@@ -12983,13 +12983,13 @@ delete 9584
 insert 9893 1
 insert 9405 0
 insert 8223 0
-select 0 750
+select 0 2250
 delete 9066
 insert 2495 0
 insert 2541 0
 insert 5587 1
 insert 2788 0
-rank 0 4902
+rank 1 4902
 insert 2423 1
 insert 7185 1
 insert 6718 1
@@ -13004,10 +13004,10 @@ insert 2382 1
 delete 1157
 delete 320
 insert 1669 0
-rank 0 6089
+rank 1 6089
 insert 4451 1
 insert 2537 1
-rank 0 3403
+rank 1 3403
 insert 10157 0
 delete 186
 insert 698 1
@@ -13037,7 +13037,7 @@ insert 2467 1
 insert 932 0
 insert 3364 1
 insert 5801 0
-select 0 5047
+select 0 444
 delete 69
 insert 6928 0
 insert 5954 1
@@ -13046,7 +13046,7 @@ insert 10069 0
 delete 8362
 insert 6750 0
 delete 6791
-rank 0 3236
+rank 1 3236
 delete 6128
 delete 10456
 delete 8752
@@ -13054,28 +13054,28 @@ insert 9337 1
 insert 8652 0
 delete 6762
 insert 10391 1
-rank 1 3367
+rank 0 3367
 insert 5454 0
 insert 1546 1
 delete 5020
 delete 3895
-select 0 1361
+select 0 461
 insert 3075 1
 insert 4995 1
 insert 4723 0
-rank 1 7276
+rank 0 7276
 insert 7173 1
-rank 0 3943
+rank 1 3943
 insert 10492 0
-select 0 1338
+select 0 5223
 insert 1489 1
 delete 3092
 insert 3384 0
-rank 0 7504
+rank 1 7504
 insert 4560 1
 insert 1788 1
 insert 4178 0
-rank 1 4230
+rank 0 4230
 insert 7628 0
 insert 127 1
 delete 8887
@@ -13084,7 +13084,7 @@ insert 251 0
 insert 6044 1
 delete 4223
 delete 3358
-rank 0 98
+rank 1 98
 insert 8336 1
 insert 2768 1
 insert 4574 1
@@ -13098,11 +13098,11 @@ insert 5907 1
 insert 3587 0
 delete 7097
 delete 4044
-select 1 3631
+select 1 5053
 insert 2023 0
 insert 7618 0
 insert 3408 1
-rank 0 9769
+rank 1 9769
 insert 5630 0
 delete 7345
 delete 4625
@@ -13112,7 +13112,7 @@ delete 2006
 insert 8716 1
 insert 5955 0
 insert 1029 0
-rank 1 2695
+rank 0 2695
 insert 7332 0
 insert 115 0
 insert 1631 1
@@ -13128,7 +13128,7 @@ insert 2500 1
 insert 2433 1
 insert 6645 1
 insert 6516 1
-rank 1 7374
+rank 0 7374
 insert 3712 0
 delete 4644
 delete 7867
@@ -13145,31 +13145,31 @@ delete 2639
 insert 1795 1
 insert 5406 0
 insert 9172 0
-rank 0 1078
+rank 1 1078
 insert 5978 0
-rank 0 757
+rank 1 757
 insert 8755 0
-rank 1 3654
+rank 0 3654
 delete 4870
 delete 3177
-rank 1 7604
+rank 0 7604
 insert 336 0
 delete 5659
 insert 4752 0
-rank 1 5022
+rank 0 5022
 insert 4387 0
 insert 9987 0
 insert 8307 0
 delete 108
 delete 3070
 insert 3019 1
-rank 0 7852
+rank 1 7852
 insert 7860 0
 insert 3790 1
 insert 2216 1
 insert 157 0
 delete 6124
-rank 0 6158
+rank 1 6158
 delete 2814
 delete 4384
 insert 8336 0
@@ -13186,7 +13186,7 @@ delete 5294
 insert 5229 1
 insert 5433 1
 delete 5190
-rank 1 2830
+rank 0 2830
 insert 9397 0
 insert 3075 0
 insert 10133 0
@@ -13194,18 +13194,18 @@ delete 5564
 insert 5093 1
 insert 8837 0
 insert 405 1
-select 0 5161
+select 0 3783
 insert 2686 1
 delete 4693
 insert 4386 0
 insert 9381 0
 delete 1759
 delete 9548
-select 0 1151
+select 0 4275
 delete 752
 insert 5862 0
 delete 5768
-rank 0 3698
+rank 1 3698
 insert 2830 1
 delete 6600
 insert 2185 0
@@ -13233,26 +13233,26 @@ insert 1426 1
 insert 10490 1
 insert 1388 1
 delete 4532
-rank 0 10648
+rank 1 10648
 insert 7178 0
-select 0 3595
+select 0 1363
 delete 7983
 insert 6406 0
 delete 8767
 insert 10258 1
-select 1 5032
+select 1 4165
 insert 7121 0
-rank 1 8762
+rank 0 8762
 insert 497 0
 delete 8897
 insert 7822 1
 delete 1404
 insert 6223 0
-select 0 2513
+select 0 2321
 insert 9676 1
 insert 4180 1
 delete 5088
-select 1 3790
+select 1 47
 insert 6032 0
 insert 1393 0
 delete 6475
@@ -13279,7 +13279,7 @@ insert 5991 0
 delete 5411
 insert 9426 0
 insert 10495 1
-rank 0 1356
+rank 1 1356
 insert 2399 0
 insert 2690 0
 insert 7118 1
@@ -13290,7 +13290,7 @@ delete 9311
 insert 7398 0
 insert 8982 0
 insert 1351 1
-rank 1 4828
+rank 0 4828
 delete 2192
 insert 2872 0
 delete 3853
@@ -13301,21 +13301,21 @@ insert 796 1
 insert 3074 0
 insert 4475 0
 insert 666 0
-select 1 2861
+select 1 3389
 delete 3948
 delete 8332
 delete 4638
-select 1 1033
+select 1 2443
 delete 9184
 insert 1515 0
 insert 9405 0
 delete 5524
-rank 1 9795
+rank 0 9795
 delete 10400
 delete 1242
 insert 1851 1
 delete 2982
-rank 1 4397
+rank 0 4397
 insert 3580 0
 delete 9604
 insert 5683 0
@@ -13324,7 +13324,7 @@ insert 8391 1
 insert 8580 0
 insert 2671 0
 insert 9666 1
-rank 1 9666
+rank 0 9666
 insert 2127 0
 delete 2413
 insert 9484 0
@@ -13347,12 +13347,12 @@ insert 7344 1
 insert 3436 1
 delete 3043
 delete 6038
-rank 0 6923
+rank 1 6923
 insert 1382 1
 insert 9952 0
 delete 8458
 insert 6971 1
-rank 1 1796
+rank 0 1796
 insert 2581 1
 insert 4979 0
 insert 10697 0
@@ -13366,10 +13366,10 @@ insert 2004 1
 delete 8991
 insert 695 1
 delete 2404
-rank 1 3935
-select 0 427
+rank 0 3935
+select 0 3347
 delete 8099
-select 0 3421
+select 0 397
 insert 9003 1
 insert 10245 1
 insert 7063 0
@@ -13378,7 +13378,7 @@ delete 3792
 delete 8642
 delete 8379
 delete 3492
-rank 1 7528
+rank 0 7528
 delete 6809
 insert 6226 0
 delete 8185
@@ -13390,7 +13390,7 @@ delete 2223
 insert 10625 1
 insert 340 0
 insert 443 0
-rank 0 8674
+rank 1 8674
 insert 7541 0
 insert 4684 0
 insert 2629 1
@@ -13399,7 +13399,7 @@ insert 8102 0
 delete 2363
 insert 7134 0
 delete 1629
-rank 0 8776
+rank 1 8776
 insert 977 1
 insert 6185 1
 insert 5410 1
@@ -13419,7 +13419,7 @@ insert 583 1
 delete 505
 delete 10758
 insert 3059 1
-rank 0 3533
+rank 1 3533
 insert 9334 1
 insert 5418 0
 delete 3239
@@ -13427,14 +13427,14 @@ delete 7967
 insert 6322 0
 delete 8881
 insert 20 1
-rank 0 8535
+rank 1 8535
 insert 6298 1
 insert 3855 0
 insert 6852 1
 delete 1925
 insert 3686 0
 delete 9809
-select 0 228
+select 0 2871
 insert 7916 1
 insert 4652 0
 insert 416 1
@@ -13449,19 +13449,19 @@ delete 2360
 insert 7252 1
 insert 6544 1
 delete 4879
-rank 0 7465
+rank 1 7465
 insert 2850 1
 delete 8971
-rank 1 3283
+rank 0 3283
 insert 2832 1
 insert 481 1
 insert 2394 0
-select 1 1840
+select 1 3844
 insert 5689 0
 insert 8436 0
-select 0 2567
+select 0 2393
 insert 2472 0
-select 0 1502
+select 0 4724
 insert 5414 1
 delete 581
 insert 693 0
@@ -13474,22 +13474,22 @@ insert 6339 1
 insert 9681 1
 insert 10236 0
 delete 6007
-select 1 5173
+select 1 4340
 insert 1040 0
 delete 7544
 insert 9049 0
-select 1 4532
+select 1 4667
 insert 5280 0
 insert 6454 0
 delete 9869
-rank 1 6528
+rank 0 6528
 insert 4297 0
 insert 3028 0
 insert 9896 1
 insert 1419 1
-select 1 2847
+select 1 1806
 insert 33 1
-rank 1 2654
+rank 0 2654
 delete 1492
 delete 6050
 insert 3094 0
@@ -13506,20 +13506,20 @@ insert 5315 0
 insert 7913 0
 insert 8361 0
 insert 3211 1
-rank 0 10438
+rank 1 10438
 insert 9667 1
 insert 9603 1
 insert 4089 0
 insert 558 1
 delete 8583
 delete 547
-rank 1 10887
+rank 0 10887
 insert 4876 0
 insert 10199 1
 insert 1845 0
-rank 1 2180
+rank 0 2180
 insert 972 0
-rank 1 3612
+rank 0 3612
 delete 824
 insert 2532 1
 delete 429
@@ -13527,7 +13527,7 @@ insert 5285 1
 insert 2122 0
 insert 235 0
 insert 2680 0
-select 1 1469
+select 1 2190
 delete 9492
 insert 10607 1
 insert 7187 0
@@ -13549,11 +13549,11 @@ delete 2404
 insert 2328 1
 delete 8690
 insert 7823 0
-rank 1 6641
+rank 0 6641
 insert 1389 0
 delete 8556
 delete 9894
-rank 0 1454
+rank 1 1454
 insert 9392 0
 insert 7066 0
 delete 5568
@@ -13566,7 +13566,7 @@ insert 2102 0
 delete 8262
 insert 10346 0
 delete 5266
-rank 0 4057
+rank 1 4057
 insert 7073 0
 insert 6355 0
 delete 173
@@ -13576,12 +13576,12 @@ insert 5032 1
 delete 4966
 insert 7113 1
 insert 2444 1
-select 1 4746
+select 1 3506
 delete 8798
 insert 2709 0
 delete 3482
 delete 3138
-rank 1 2934
+rank 0 2934
 delete 2103
 delete 4442
 insert 6779 1
@@ -13590,7 +13590,7 @@ insert 6841 0
 insert 10990 1
 insert 2783 1
 delete 2905
-select 1 3974
+select 1 2261
 insert 9262 1
 insert 10864 1
 insert 6062 0
@@ -13608,7 +13608,7 @@ insert 649 1
 delete 10201
 insert 10981 1
 delete 918
-rank 1 4112
+rank 0 4112
 insert 2759 0
 delete 1347
 insert 3960 0
@@ -13627,19 +13627,19 @@ insert 869 1
 insert 10356 0
 delete 1067
 insert 5485 0
-select 1 4420
+select 1 1511
 insert 10531 1
 insert 4656 1
 insert 6642 0
-rank 0 1373
+rank 1 1373
 insert 2357 1
 insert 10809 1
 insert 7515 0
-select 1 1620
+select 1 4982
 delete 5264
-rank 1 10858
+rank 0 10858
 delete 3072
-rank 1 551
+rank 0 551
 insert 8868 1
 insert 2742 1
 insert 2681 1
@@ -13654,23 +13654,23 @@ insert 4955 1
 insert 3076 1
 delete 8636
 delete 3189
-select 1 4912
+select 1 3839
 insert 3348 1
 insert 8660 0
 insert 9702 1
 insert 5941 0
-rank 1 2978
+rank 0 2978
 insert 4761 0
-rank 1 11010
+rank 0 11010
 insert 790 1
 insert 5134 0
 insert 1923 1
 insert 8707 1
-rank 1 2985
-select 0 2066
+rank 0 2985
+select 0 1568
 delete 2417
 insert 540 1
-rank 0 7190
+rank 1 7190
 delete 4256
 insert 8960 0
 insert 7685 0
@@ -13678,14 +13678,14 @@ insert 1630 1
 insert 4342 0
 insert 2404 1
 delete 7882
-rank 0 504
+rank 1 504
 insert 524 0
-rank 0 10545
+rank 1 10545
 insert 4634 0
 insert 9976 0
 insert 9368 1
 insert 5253 1
-rank 1 2000
+rank 0 2000
 insert 1609 1
 delete 7273
 insert 6185 0
@@ -13727,9 +13727,9 @@ delete 7993
 delete 1971
 delete 5405
 insert 4858 0
-rank 1 8210
+rank 0 8210
 delete 3550
-rank 0 2901
+rank 1 2901
 insert 6960 0
 insert 1825 1
 delete 664
@@ -13741,15 +13741,15 @@ delete 6449
 insert 6553 1
 insert 4316 0
 insert 7776 0
-select 0 3967
+select 0 5015
 insert 3349 0
 delete 362
 insert 4457 1
 insert 8856 0
-rank 1 7019
+rank 0 7019
 insert 10831 1
 insert 6683 1
-select 0 5093
+select 0 3506
 delete 8664
 insert 2821 0
 delete 2705
@@ -13761,8 +13761,8 @@ insert 2403 0
 insert 3406 0
 insert 3527 0
 insert 6167 1
-rank 1 4251
-select 1 4635
+rank 0 4251
+select 1 2658
 insert 7444 1
 insert 425 1
 insert 7313 0
@@ -13778,9 +13778,9 @@ insert 2450 1
 insert 10105 1
 delete 9137
 insert 7780 0
-rank 1 1718
+rank 0 1718
 insert 2986 0
-rank 1 471
+rank 0 471
 insert 4596 1
 insert 7630 0
 insert 5486 1
@@ -13806,20 +13806,20 @@ insert 304 1
 insert 2344 0
 insert 10622 0
 insert 9698 0
-select 1 3324
+select 1 4753
 delete 4916
 insert 5942 0
 insert 824 0
 delete 8867
-rank 0 10530
+rank 1 10530
 delete 3486
 insert 7352 1
-rank 1 4477
+rank 0 4477
 insert 10382 1
 insert 3049 1
 insert 2927 0
 delete 6199
-select 0 3022
+select 0 2170
 insert 7950 0
 delete 7197
 delete 908
@@ -13828,10 +13828,10 @@ insert 1874 0
 delete 8684
 delete 3244
 delete 1380
-rank 0 919
+rank 1 919
 insert 7902 0
 insert 97 1
-rank 0 1466
+rank 1 1466
 delete 6413
 delete 1852
 insert 3464 0
@@ -13846,11 +13846,11 @@ delete 8067
 delete 7195
 delete 7530
 insert 5595 1
-rank 0 5174
+rank 1 5174
 insert 5995 1
 delete 8148
 delete 9807
-rank 1 10855
+rank 0 10855
 insert 10524 0
 insert 9041 1
 insert 6633 1
@@ -13859,7 +13859,7 @@ insert 7056 0
 insert 3541 0
 insert 8641 1
 delete 6306
-rank 1 9479
+rank 0 9479
 delete 1905
 delete 10015
 delete 262
@@ -13881,34 +13881,34 @@ delete 113
 delete 3702
 insert 10707 0
 delete 6682
-rank 1 1193
+rank 0 1193
 insert 7200 1
 insert 10975 0
 insert 3969 0
 insert 5455 0
 delete 5568
-select 0 4966
+select 0 28
 insert 7104 0
-rank 1 3444
-select 0 275
+rank 0 3444
+select 0 3350
 insert 4562 1
 delete 9932
 delete 5208
 insert 6984 0
 delete 3302
 insert 1688 1
-select 0 1492
+select 0 5165
 insert 10817 0
 insert 8906 1
 delete 1497
 insert 8688 0
 delete 1336
 delete 10386
-select 0 3359
+select 0 1756
 delete 6214
 insert 8403 1
 delete 4139
-rank 1 2290
+rank 0 2290
 insert 1848 0
 insert 2114 0
 delete 10863
@@ -13927,9 +13927,9 @@ insert 3669 0
 delete 6219
 delete 10920
 insert 947 0
-select 0 2974
+select 0 114
 insert 8408 1
-rank 0 2686
+rank 1 2686
 insert 3545 1
 insert 7561 1
 delete 3401
@@ -13942,9 +13942,9 @@ delete 6675
 insert 10966 1
 insert 4921 1
 insert 4690 0
-select 1 1525
+select 1 3445
 delete 6500
-rank 0 10755
+rank 1 10755
 delete 11145
 delete 8368
 delete 6944
@@ -13957,16 +13957,16 @@ insert 4668 0
 insert 10638 0
 delete 3963
 insert 1211 0
-rank 0 10962
+rank 1 10962
 insert 10223 1
 delete 7210
-rank 0 432
+rank 1 432
 insert 10416 0
 insert 386 0
 insert 8971 0
-select 1 712
+select 1 377
 insert 6413 0
-rank 1 9958
+rank 0 9958
 insert 4344 1
 insert 5215 0
 delete 3218
@@ -13978,16 +13978,16 @@ insert 7593 0
 insert 8608 0
 insert 8115 1
 insert 2746 1
-rank 1 1392
+rank 0 1392
 delete 1921
 insert 5921 1
-rank 0 8526
+rank 1 8526
 insert 781 0
 delete 6560
 insert 879 0
-rank 0 2818
+rank 1 2818
 insert 7033 1
-rank 0 4914
+rank 1 4914
 insert 7347 0
 insert 7573 1
 insert 7006 1
@@ -14000,23 +14000,23 @@ insert 5933 1
 delete 1292
 delete 2535
 insert 3052 1
-select 1 4771
+select 1 1404
 insert 3431 1
 delete 9983
 insert 1384 1
 delete 3725
 insert 5619 0
 delete 685
-rank 0 6615
-select 0 4103
+rank 1 6615
+select 0 5482
 insert 1832 1
-rank 0 1859
+rank 1 1859
 delete 7104
 insert 590 0
 delete 6580
 insert 5516 1
 delete 10155
-select 1 5176
+select 1 4335
 insert 10387 0
 insert 3255 1
 insert 5725 1
@@ -14033,24 +14033,24 @@ delete 9190
 insert 3906 0
 delete 65
 insert 11152 0
-select 1 2852
+select 1 1270
 insert 7105 0
-select 0 762
+select 0 502
 insert 3759 0
 insert 7975 1
 delete 7698
-rank 0 2191
+rank 1 2191
 insert 1959 1
 insert 10337 1
 delete 6872
 insert 1337 1
 delete 5891
-select 1 2591
+select 1 1561
 insert 1236 1
 delete 6296
 insert 450 0
 delete 7588
-rank 1 793
+rank 0 793
 insert 4002 0
 insert 8550 0
 insert 10359 1
@@ -14059,24 +14059,24 @@ delete 3516
 insert 5504 1
 insert 9685 1
 insert 7230 0
-select 1 5581
+select 1 812
 insert 6780 0
 delete 10751
 delete 7635
-rank 1 1140
+rank 0 1140
 insert 2752 1
 insert 5090 1
 delete 6345
 insert 3563 0
-rank 0 235
+rank 1 235
 insert 1068 1
 delete 4211
 insert 9162 1
-rank 1 6631
+rank 0 6631
 insert 6440 1
 delete 1032
 insert 8243 0
-rank 1 605
+rank 0 605
 insert 3659 1
 delete 4719
 delete 10761
@@ -14091,7 +14091,7 @@ insert 4520 0
 insert 10811 0
 insert 8613 1
 delete 7151
-select 0 4691
+select 0 1967
 insert 574 1
 delete 2660
 insert 10552 0
@@ -14110,29 +14110,29 @@ insert 3019 1
 insert 9425 0
 insert 640 1
 insert 9606 0
-rank 1 7852
+rank 0 7852
 insert 2192 1
 insert 952 0
 insert 3997 1
 insert 7705 1
 insert 6880 0
-select 1 4033
+select 1 393
 insert 8849 0
 delete 9281
 delete 287
 insert 3635 0
 insert 2806 1
-rank 0 6795
+rank 1 6795
 delete 7806
-rank 0 1648
+rank 1 1648
 insert 8338 1
 insert 1596 1
-rank 0 10116
+rank 1 10116
 insert 10312 1
 insert 8415 0
 insert 11120 1
 insert 2662 0
-rank 1 1963
+rank 0 1963
 insert 11171 0
 delete 11157
 insert 3378 1
@@ -14147,20 +14147,20 @@ insert 3505 0
 insert 4723 1
 delete 7001
 insert 808 1
-rank 0 6501
+rank 1 6501
 delete 813
 delete 346
 delete 11062
 insert 2924 1
-rank 1 5795
-select 1 2896
+rank 0 5795
+select 1 1698
 delete 5937
 insert 1128 1
 insert 8150 0
 insert 5270 1
 insert 1423 1
 delete 5198
-rank 1 9232
+rank 0 9232
 delete 2142
 insert 8577 0
 insert 2044 1
@@ -14168,19 +14168,19 @@ insert 10451 1
 insert 10313 0
 delete 3938
 insert 6884 0
-select 0 1786
+select 0 971
 insert 257 0
 insert 6205 1
 delete 2562
 delete 1474
-select 0 2214
+select 0 2363
 insert 9421 0
 delete 8547
 insert 6050 0
 delete 1792
 insert 592 1
 insert 8984 0
-rank 0 9453
+rank 1 9453
 insert 86 0
 insert 6436 0
 delete 5781
@@ -14188,7 +14188,7 @@ insert 4895 0
 insert 3852 1
 insert 10386 1
 delete 2069
-rank 1 1352
+rank 0 1352
 insert 9739 0
 insert 2002 0
 insert 4571 0
@@ -14214,7 +14214,7 @@ insert 2177 0
 insert 9177 0
 delete 9286
 delete 3281
-rank 1 5754
+rank 0 5754
 insert 1935 1
 insert 11205 1
 insert 7253 0
@@ -14222,9 +14222,9 @@ insert 852 1
 insert 1512 1
 delete 4716
 insert 4552 0
-rank 0 10961
+rank 1 10961
 insert 10615 0
-rank 0 5701
+rank 1 5701
 insert 3340 1
 insert 11209 1
 insert 2474 1
@@ -14246,7 +14246,7 @@ insert 969 1
 delete 1460
 insert 7203 0
 insert 7971 1
-rank 1 7348
+rank 0 7348
 delete 1275
 insert 3472 1
 insert 9696 0
@@ -14257,7 +14257,7 @@ insert 9147 0
 insert 4359 1
 insert 3684 1
 insert 9794 1
-rank 0 8094
+rank 1 8094
 delete 5501
 insert 2779 0
 delete 1131
@@ -14265,7 +14265,7 @@ insert 5056 1
 insert 3736 1
 insert 351 0
 delete 3051
-rank 0 10028
+rank 1 10028
 insert 10219 1
 insert 5419 1
 delete 5560
@@ -14274,7 +14274,7 @@ delete 11065
 insert 1467 1
 insert 5424 1
 insert 10448 1
-select 0 1582
+select 0 5431
 insert 3531 0
 insert 566 1
 insert 662 0
@@ -14285,7 +14285,7 @@ insert 4510 0
 insert 3118 1
 delete 40
 insert 1298 1
-rank 0 838
+rank 1 838
 insert 10672 0
 insert 6012 0
 insert 10043 1
@@ -14296,7 +14296,7 @@ insert 2531 0
 insert 9539 0
 delete 9348
 delete 7864
-select 1 1049
+select 1 429
 insert 87 1
 insert 5298 0
 delete 6311
@@ -14309,10 +14309,10 @@ delete 9914
 delete 11240
 delete 7942
 insert 2376 0
-rank 0 2016
+rank 1 2016
 insert 3923 1
 delete 8438
-rank 0 3361
+rank 1 3361
 delete 2193
 insert 2660 1
 delete 10420
@@ -14324,7 +14324,7 @@ insert 2247 1
 insert 10478 0
 insert 7836 1
 insert 10896 1
-rank 1 5557
+rank 0 5557
 insert 5634 0
 insert 6191 1
 insert 7043 0
@@ -14335,12 +14335,12 @@ insert 2626 1
 insert 8885 1
 insert 3370 0
 insert 10530 1
-rank 0 7733
+rank 1 7733
 delete 1404
 insert 10690 1
 delete 1781
 delete 11256
-select 0 2225
+select 0 2495
 delete 9957
 delete 3353
 insert 1049 1
@@ -14348,7 +14348,7 @@ delete 1914
 insert 1378 0
 insert 4985 1
 insert 9477 0
-rank 1 1679
+rank 0 1679
 delete 8929
 insert 2189 1
 delete 5657
@@ -14362,7 +14362,7 @@ insert 1505 1
 insert 4408 0
 insert 4431 1
 delete 10990
-rank 1 2991
+rank 0 2991
 insert 8673 1
 insert 10673 1
 insert 3456 0
@@ -14377,15 +14377,15 @@ insert 9782 1
 insert 6269 0
 insert 822 1
 insert 3073 1
-select 0 2814
+select 0 26
 insert 7705 0
 insert 9837 0
 delete 7679
 delete 3186
 insert 7134 1
 delete 3215
-rank 1 2013
-select 1 4315
+rank 0 2013
+select 1 4654
 insert 3391 0
 insert 573 0
 insert 2071 1
@@ -14404,7 +14404,7 @@ insert 11046 1
 insert 2989 0
 insert 5176 1
 insert 3606 1
-select 1 4916
+select 1 53
 delete 6278
 delete 2835
 insert 8819 1
@@ -14430,7 +14430,7 @@ insert 8205 1
 insert 8856 0
 delete 5555
 insert 8755 1
-rank 0 465
+rank 1 465
 delete 3524
 insert 6349 1
 delete 9180
@@ -14448,17 +14448,17 @@ delete 196
 insert 4263 1
 delete 3265
 delete 10172
-rank 0 5867
+rank 1 5867
 insert 10471 1
 insert 4462 0
-rank 1 117
+rank 0 117
 insert 10279 0
-rank 1 1163
+rank 0 1163
 insert 9995 1
-select 1 4139
+select 1 5153
 insert 3380 0
 insert 4453 0
-select 1 4406
+select 1 248
 delete 10377
 insert 10628 0
 insert 9891 0
@@ -14471,7 +14471,7 @@ insert 9816 0
 delete 372
 insert 8876 1
 delete 7692
-rank 0 1966
+rank 1 1966
 insert 5542 0
 insert 7060 1
 insert 2398 1
@@ -14479,13 +14479,13 @@ insert 7904 0
 insert 9148 1
 insert 1014 0
 delete 3386
-rank 1 9642
+rank 0 9642
 insert 6338 1
 insert 10054 0
 insert 1913 1
-rank 1 9809
+rank 0 9809
 insert 4102 1
-rank 1 10229
+rank 0 10229
 insert 4098 0
 insert 6580 1
 insert 10649 1
@@ -14493,14 +14493,14 @@ delete 7104
 delete 2141
 delete 2287
 insert 1574 0
-rank 0 3952
+rank 1 3952
 insert 2678 1
-select 1 2264
+select 1 4922
 insert 5078 1
-rank 1 8743
+rank 0 8743
 insert 9578 1
 delete 1676
-rank 1 3880
+rank 0 3880
 delete 2343
 insert 8094 0
 insert 10641 0
@@ -14510,12 +14510,12 @@ insert 10105 1
 delete 5721
 delete 9323
 insert 5046 1
-rank 1 3950
+rank 0 3950
 insert 4256 1
 delete 4447
 insert 2032 1
 insert 6320 0
-rank 0 7745
+rank 1 7745
 delete 3955
 delete 9580
 insert 6178 0
@@ -14525,20 +14525,20 @@ insert 9290 0
 insert 10919 1
 delete 8203
 delete 9421
-select 1 2223
+select 1 1085
 delete 1239
 insert 800 1
 delete 9456
 insert 11117 1
 insert 1110 0
-rank 0 2697
+rank 1 2697
 insert 3591 1
 delete 9960
 insert 2189 1
 insert 1543 1
-select 1 4175
+select 1 5298
 insert 8459 0
-select 0 3932
+select 0 5178
 insert 9364 1
 delete 5215
 insert 8566 0
@@ -14552,23 +14552,23 @@ insert 1191 1
 insert 2616 0
 insert 3382 0
 insert 8714 1
-rank 0 7380
+rank 1 7380
 delete 5139
 insert 3145 0
 delete 6961
 insert 6471 1
-select 0 1701
+select 0 1824
 insert 1742 1
 insert 3078 1
 insert 2086 1
-select 0 310
+select 0 4306
 insert 474 0
 delete 4953
 delete 11310
-rank 0 94
+rank 1 94
 insert 8439 0
 insert 5870 0
-select 0 3827
+select 0 3669
 insert 1900 1
 delete 4886
 insert 11123 1
@@ -14578,7 +14578,7 @@ delete 2190
 insert 8060 1
 delete 6528
 insert 2888 1
-rank 1 7725
+rank 0 7725
 insert 6739 1
 delete 4310
 delete 6534
@@ -14588,22 +14588,22 @@ insert 4167 1
 insert 1228 1
 insert 907 1
 delete 6048
-rank 1 3390
+rank 0 3390
 delete 9537
 delete 11135
-select 0 3613
+select 0 3423
 delete 4469
 delete 4482
 insert 10625 1
 insert 357 1
 insert 2500 0
-rank 1 7671
+rank 0 7671
 insert 3800 1
 delete 4147
 delete 9003
 insert 5485 0
 insert 4150 1
-rank 1 1669
+rank 0 1669
 delete 8858
 insert 4275 0
 insert 4698 0
@@ -14611,16 +14611,16 @@ insert 4258 0
 insert 9466 0
 insert 8646 0
 delete 5361
-select 1 3953
+select 1 1525
 insert 3552 0
 insert 11276 1
-rank 0 7099
+rank 1 7099
 insert 9192 1
-select 1 2418
+select 1 1257
 insert 7804 0
 delete 3663
 insert 8298 1
-select 1 3114
+select 1 1639
 delete 5048
 insert 5762 0
 delete 4037
@@ -14632,42 +14632,42 @@ insert 420 0
 insert 10946 1
 insert 9138 0
 insert 3243 1
-select 0 109
+select 0 5175
 insert 6067 0
 delete 7155
-rank 0 5722
+rank 1 5722
 insert 9382 0
 delete 1458
-rank 0 3003
+rank 1 3003
 insert 7810 0
 insert 7684 0
 insert 9543 1
 insert 8883 1
 insert 8381 1
-rank 0 6594
+rank 1 6594
 insert 10662 0
 insert 2909 1
 delete 8241
 insert 6567 1
 delete 7757
 insert 10373 1
-rank 0 7625
+rank 1 7625
 insert 3829 0
 insert 2921 0
-select 0 5239
+select 0 5278
 insert 9576 1
 delete 8820
 insert 572 0
 delete 784
 delete 10617
-select 1 5481
+select 1 2775
 insert 50 1
 delete 7326
 insert 3775 1
 delete 8487
-rank 1 9965
+rank 0 9965
 insert 1350 1
-select 1 1275
+select 1 1542
 insert 6339 1
 insert 5218 1
 insert 6757 0
@@ -14676,10 +14676,10 @@ delete 2798
 insert 3411 0
 delete 2897
 insert 9187 0
-rank 1 9292
+rank 0 9292
 delete 1203
 delete 11216
-select 1 3574
+select 1 136
 insert 928 0
 insert 722 1
 insert 6384 0
@@ -14702,40 +14702,40 @@ insert 3494 1
 delete 3822
 delete 8790
 insert 292 1
-select 0 2238
+select 0 826
 insert 7353 1
 insert 6215 0
-rank 0 2794
+rank 1 2794
 insert 10856 1
 delete 2206
 insert 10466 1
 delete 7594
 insert 6940 1
-rank 0 1430
+rank 1 1430
 insert 9576 1
 delete 6342
 delete 6852
-rank 1 3085
+rank 0 3085
 delete 5766
 delete 7974
 insert 7860 0
 insert 5604 1
 insert 1070 0
 insert 5179 0
-rank 1 3315
+rank 0 3315
 delete 8575
 delete 5988
 insert 6098 0
 insert 7994 0
-select 0 3821
+select 0 1355
 insert 3181 1
 insert 9575 1
 insert 3131 1
 delete 8394
-rank 1 1566
+rank 0 1566
 insert 8226 0
 delete 10051
-rank 0 3598
+rank 1 3598
 insert 94 1
 insert 232 0
 delete 9211
@@ -14746,7 +14746,7 @@ delete 8844
 insert 3064 0
 insert 687 0
 insert 2987 1
-select 1 625
+select 1 4181
 insert 8852 0
 insert 1724 0
 delete 4028
@@ -14757,7 +14757,7 @@ insert 2703 1
 insert 5844 0
 insert 7400 0
 insert 6342 1
-rank 1 4136
+rank 0 4136
 insert 4051 0
 delete 7019
 insert 2644 0
@@ -14766,15 +14766,15 @@ delete 3320
 insert 5445 0
 insert 1332 0
 insert 5479 1
-rank 1 7592
+rank 0 7592
 insert 7470 0
 delete 7493
 delete 7203
-rank 1 9546
+rank 0 9546
 insert 1821 1
 insert 9955 1
 insert 3765 1
-select 1 5277
+select 1 1621
 insert 1077 1
 insert 4208 1
 insert 7848 0
@@ -14786,21 +14786,21 @@ insert 5747 1
 delete 128
 insert 895 0
 delete 3092
-rank 0 2103
+rank 1 2103
 insert 10178 1
 insert 7431 1
 insert 5710 1
 delete 3918
 insert 5935 1
 delete 2147
-rank 0 5969
+rank 1 5969
 delete 245
 insert 7531 0
-select 0 5339
+select 0 5696
 delete 3914
-rank 1 548
+rank 0 548
 insert 324 1
-rank 0 10499
+rank 1 10499
 insert 3748 0
 delete 7074
 insert 4711 0
@@ -14812,24 +14812,24 @@ insert 11054 0
 delete 4691
 insert 7855 1
 insert 3298 1
-select 1 619
+select 1 4434
 insert 2173 1
 insert 3089 1
 insert 5668 0
 delete 2947
 delete 404
-rank 0 3381
+rank 1 3381
 insert 5285 1
-select 1 2026
+select 1 3310
 delete 7996
 insert 2640 0
 insert 3762 1
-rank 0 3598
+rank 1 3598
 insert 4007 1
 insert 1536 0
 delete 948
 insert 9172 1
-rank 1 1203
+rank 0 1203
 delete 5237
 insert 8237 0
 insert 7 0
@@ -14845,10 +14845,10 @@ delete 6898
 insert 5388 0
 insert 6589 0
 insert 7876 0
-rank 1 6044
+rank 0 6044
 delete 10747
 delete 3050
-rank 0 6468
+rank 1 6468
 delete 412
 insert 121 1
 insert 6602 0
@@ -14866,15 +14866,15 @@ insert 5362 1
 delete 8216
 insert 1882 0
 insert 1164 0
-rank 1 4209
+rank 0 4209
 insert 5928 0
 insert 10151 1
 insert 9501 0
 delete 653
 insert 231 1
-rank 0 7224
+rank 1 7224
 insert 668 0
-rank 0 508
+rank 1 508
 insert 1783 0
 delete 9178
 insert 3935 1
@@ -14883,7 +14883,7 @@ insert 480 1
 delete 7047
 delete 4765
 insert 3860 1
-rank 1 9501
+rank 0 9501
 delete 10089
 delete 4214
 insert 8908 0
@@ -14894,25 +14894,25 @@ delete 7414
 insert 1819 0
 delete 9777
 insert 1606 0
-rank 0 3133
+rank 1 3133
 insert 7619 0
 delete 888
 insert 542 0
 insert 4436 0
 insert 10928 1
 delete 11174
-rank 1 3968
+rank 0 3968
 delete 6091
 delete 4385
 insert 9322 0
 insert 6411 0
 delete 8586
 insert 7311 1
-rank 1 2825
+rank 0 2825
 insert 11129 0
 delete 4073
 insert 1500 1
-rank 0 7841
+rank 1 7841
 delete 2919
 insert 7311 1
 insert 11039 0
@@ -14923,13 +14923,13 @@ insert 1105 1
 delete 10976
 delete 9135
 insert 1219 1
-rank 0 5697
+rank 1 5697
 insert 8288 0
 insert 3364 1
 insert 5565 0
 delete 1117
 delete 11282
-rank 1 4276
+rank 0 4276
 insert 6864 0
 delete 2816
 delete 717
@@ -14946,15 +14946,15 @@ delete 8440
 insert 2008 0
 insert 1555 0
 insert 10429 1
-rank 1 5666
+rank 0 5666
 insert 5576 1
-rank 1 10994
+rank 0 10994
 insert 3793 0
 delete 10201
 insert 1352 0
 insert 3397 1
 insert 5330 1
-select 0 2604
+select 0 3455
 insert 7304 1
 insert 525 1
 delete 2853
@@ -14966,7 +14966,7 @@ insert 7295 0
 insert 9293 1
 delete 6822
 insert 9288 0
-rank 1 7006
+rank 0 7006
 delete 10468
 insert 4679 1
 insert 5679 0
@@ -14985,71 +14985,71 @@ insert 6798 1
 insert 3934 1
 insert 5466 0
 delete 2697
-select 0 4212
+select 0 2434
 delete 11399
 delete 1622
 insert 9973 1
 delete 4431
 insert 5506 0
 insert 564 1
-rank 0 9431
+rank 1 9431
 delete 4518
 delete 9807
-rank 0 3113
+rank 1 3113
 insert 10940 0
 delete 8718
-rank 1 1642
+rank 0 1642
 insert 8648 0
 insert 6536 0
 delete 8367
-rank 1 9154
+rank 0 9154
 insert 1370 0
 insert 9088 0
 insert 1117 0
 delete 8772
 delete 377
 insert 8886 0
-select 0 3720
+select 0 5608
 insert 9777 0
 insert 11020 0
 insert 10495 0
 insert 10701 1
 delete 10323
 insert 4068 1
-select 1 919
+select 1 1367
 delete 877
 insert 2126 0
 insert 7173 0
 insert 10231 0
-select 1 935
+select 1 4820
 insert 4371 1
 insert 10208 1
 insert 10803 0
 insert 4972 0
 delete 7318
 insert 4958 1
-rank 0 1681
+rank 1 1681
 insert 5327 1
 insert 9905 0
 insert 4372 0
 delete 2293
 insert 8814 0
-select 1 1639
+select 1 1421
 insert 7819 0
 insert 1315 0
-rank 1 8834
-select 0 3159
+rank 0 8834
+select 0 3168
 delete 4166
 delete 2304
 insert 2326 0
 insert 40 1
 insert 8097 1
 insert 5563 0
-select 0 957
+select 0 121
 insert 1172 1
 delete 9222
 delete 7736
-rank 0 9013
+rank 1 9013
 insert 3847 0
 insert 3566 0
 insert 8023 0
@@ -15062,9 +15062,9 @@ insert 9988 1
 insert 11333 1
 insert 6888 1
 insert 8115 0
-rank 1 10596
+rank 0 10596
 delete 294
-rank 1 6453
+rank 0 6453
 insert 11316 1
 insert 3193 0
 insert 8838 0
@@ -15083,7 +15083,7 @@ insert 8831 1
 delete 5396
 delete 1339
 insert 2635 1
-select 1 4809
+select 1 4671
 insert 7457 1
 insert 3960 1
 insert 6340 1
@@ -15091,7 +15091,7 @@ insert 7905 0
 insert 2310 0
 insert 8356 0
 delete 3836
-rank 0 9017
+rank 1 9017
 insert 5586 0
 delete 5385
 insert 6054 1
@@ -15101,13 +15101,13 @@ delete 5832
 insert 1089 1
 insert 9056 1
 delete 4285
-select 0 5132
+select 0 4460
 delete 3933
 delete 10328
 delete 420
 insert 6295 1
 insert 8891 1
-rank 0 5932
+rank 1 5932
 insert 5733 0
 insert 5330 0
 delete 11445
@@ -15117,7 +15117,7 @@ insert 10772 0
 delete 1874
 delete 10262
 insert 10474 1
-rank 1 8659
+rank 0 8659
 insert 2608 0
 insert 10854 1
 insert 1541 1
@@ -15126,26 +15126,26 @@ delete 6317
 delete 9989
 delete 2271
 insert 4909 1
-rank 1 8046
+rank 0 8046
 insert 282 0
 delete 4794
 insert 10308 1
 insert 6872 1
-select 1 1313
+select 1 1175
 insert 2680 0
 insert 5406 1
 insert 10626 1
 insert 10669 0
-rank 1 8104
+rank 0 8104
 insert 477 1
-rank 0 9465
+rank 1 9465
 delete 4009
 delete 6579
 insert 10595 1
 insert 5083 1
 insert 3559 0
 delete 9563
-rank 1 3278
+rank 0 3278
 delete 8649
 insert 2393 1
 insert 7202 0
@@ -15162,7 +15162,7 @@ insert 5467 1
 delete 10347
 insert 1475 1
 insert 1153 0
-select 1 2061
+select 1 3660
 insert 7719 0
 insert 806 0
 delete 7647
@@ -15176,11 +15176,11 @@ insert 6084 0
 insert 10157 0
 delete 4800
 delete 4097
-rank 1 4177
+rank 0 4177
 delete 9832
 insert 11179 1
 insert 11407 0
-rank 0 9523
+rank 1 9523
 delete 5016
 insert 10144 1
 insert 7851 0
@@ -15192,9 +15192,9 @@ insert 11400 0
 insert 10884 0
 insert 2658 0
 insert 2419 0
-select 0 5202
+select 0 5061
 delete 11025
-select 1 500
+select 1 1142
 delete 9996
 insert 2099 1
 insert 8290 0
@@ -15214,13 +15214,13 @@ delete 4051
 insert 9232 1
 insert 5545 0
 delete 8791
-rank 1 8542
+rank 0 8542
 delete 8342
 insert 7845 1
 delete 807
 insert 4739 0
 insert 7261 1
-rank 0 4191
+rank 1 4191
 insert 4109 1
 insert 3969 0
 insert 10959 0
@@ -15228,10 +15228,10 @@ insert 2478 0
 delete 2711
 insert 9413 1
 insert 4829 1
-rank 0 6814
+rank 1 6814
 insert 1644 1
 delete 10219
-rank 0 4903
+rank 1 4903
 insert 4417 1
 insert 6935 0
 delete 4282
@@ -15246,13 +15246,13 @@ insert 10857 1
 insert 6609 0
 insert 8860 0
 delete 2822
-rank 0 3710
+rank 1 3710
 insert 10048 0
 insert 10447 0
 insert 9308 1
-select 1 3778
+select 1 2017
 insert 2620 0
-select 1 1919
+select 1 4567
 insert 10524 0
 delete 577
 insert 3156 0
@@ -15260,24 +15260,24 @@ insert 11038 1
 delete 6019
 delete 7333
 delete 10140
-rank 1 948
+rank 0 948
 insert 308 1
 insert 2668 0
 delete 11142
 insert 8433 0
 insert 807 1
-rank 0 8845
-select 0 2223
+rank 1 8845
+select 0 2611
 insert 4412 0
 delete 3012
 delete 536
-rank 1 6598
+rank 0 6598
 insert 9072 0
 insert 5223 0
-select 1 1168
+select 1 2561
 insert 7235 0
-rank 1 11162
-select 0 3660
+rank 0 11162
+select 0 5670
 delete 1003
 insert 3270 0
 insert 671 1
@@ -15301,33 +15301,33 @@ insert 7309 1
 delete 10521
 delete 1862
 delete 8692
-select 1 299
+select 1 656
 delete 1131
 insert 4503 1
-rank 0 5945
+rank 1 5945
 insert 6813 1
 insert 4045 0
 insert 9861 1
 delete 9658
 delete 6869
-select 0 3217
+select 0 1771
 delete 5647
 insert 5963 0
 insert 554 1
-rank 1 1574
+rank 0 1574
 insert 6810 1
 delete 8633
 insert 3813 0
 insert 9242 0
-rank 0 1312
+rank 1 1312
 delete 6857
 delete 2806
 insert 10006 1
-select 0 309
+select 0 1839
 insert 625 1
-rank 0 11352
+rank 1 11352
 insert 2571 0
-select 0 4373
+select 0 4787
 insert 11281 0
 delete 8440
 insert 8363 0
@@ -15337,13 +15337,13 @@ insert 1613 0
 insert 7613 1
 insert 6261 0
 insert 8015 1
-rank 0 10803
+rank 1 10803
 insert 4876 1
 insert 5517 0
 insert 7929 0
 insert 3103 0
 delete 5843
-rank 1 3611
+rank 0 3611
 delete 3799
 insert 8396 1
 delete 418
@@ -15354,16 +15354,16 @@ insert 9455 1
 insert 7447 1
 insert 6144 1
 insert 9312 0
-rank 0 3447
+rank 1 3447
 delete 834
 insert 7618 1
 insert 7684 1
 delete 5582
 insert 4946 1
-rank 0 2238
+rank 1 2238
 insert 1650 1
 insert 1346 1
-select 1 1849
+select 1 3401
 insert 10284 0
 insert 5459 1
 insert 5358 0
@@ -15373,7 +15373,7 @@ insert 7216 1
 insert 6956 1
 insert 3848 0
 insert 8916 0
-rank 0 7635
+rank 1 7635
 delete 7360
 insert 5091 0
 delete 860
@@ -15385,21 +15385,21 @@ insert 6763 1
 delete 9611
 insert 3869 1
 delete 9283
-rank 1 6749
+rank 0 6749
 insert 3173 0
 insert 3888 1
 insert 5207 0
 insert 8824 0
 insert 11059 0
 delete 1998
-rank 1 10416
+rank 0 10416
 insert 2141 0
 insert 2809 1
 delete 5709
-rank 0 3477
+rank 1 3477
 insert 5554 0
 insert 6537 0
-rank 0 2608
+rank 1 2608
 delete 2751
 insert 8078 1
 insert 9332 0
@@ -15410,34 +15410,34 @@ delete 5924
 insert 8821 0
 delete 8064
 insert 6972 0
-rank 1 2968
+rank 0 2968
 insert 6606 0
 delete 10143
 delete 2076
 insert 8759 1
 insert 734 0
-rank 1 4195
+rank 0 4195
 insert 1411 0
 insert 6756 0
 insert 5194 1
-rank 0 7051
+rank 1 7051
 delete 4328
 insert 10046 0
 delete 3174
 delete 6451
-rank 1 6342
+rank 0 6342
 delete 986
 delete 10452
 insert 160 1
 insert 2198 0
 insert 5857 0
 insert 10019 0
-rank 0 529
+rank 1 529
 delete 3446
 insert 384 1
 insert 2870 0
-rank 1 7216
-select 0 1103
+rank 0 7216
+select 0 5359
 insert 1881 1
 delete 9026
 insert 3890 1
@@ -15447,7 +15447,7 @@ insert 847 1
 insert 360 0
 insert 11053 1
 insert 9148 1
-rank 1 9146
+rank 0 9146
 delete 10027
 insert 4507 0
 insert 8924 1
@@ -15464,11 +15464,11 @@ delete 5358
 insert 4919 0
 insert 7975 1
 insert 8523 0
-rank 1 6218
+rank 0 6218
 insert 9353 0
 insert 3588 1
 insert 11433 1
-select 1 701
+select 1 4856
 insert 518 0
 insert 4391 1
 insert 6425 1
@@ -15480,10 +15480,10 @@ delete 1750
 delete 990
 insert 352 0
 delete 9501
-rank 1 6190
+rank 0 6190
 delete 7480
 insert 7908 1
-rank 0 8805
+rank 1 8805
 insert 3405 1
 insert 7041 1
 insert 10880 1
@@ -15493,12 +15493,12 @@ insert 945 1
 insert 5621 1
 insert 6501 1
 delete 10462
-rank 1 10722
+rank 0 10722
 delete 5942
 insert 250 1
 insert 8736 1
 delete 6265
-rank 1 10102
+rank 0 10102
 insert 11342 0
 delete 6667
 delete 6662
@@ -15507,25 +15507,25 @@ delete 1194
 insert 190 0
 delete 8836
 insert 533 1
-rank 0 11080
+rank 1 11080
 insert 5673 1
-rank 1 9415
+rank 0 9415
 insert 8717 0
 delete 7106
-rank 0 6362
+rank 1 6362
 insert 9183 1
 insert 5892 0
 delete 4873
 insert 1646 1
 delete 5839
 insert 5434 0
-rank 0 1160
+rank 1 1160
 delete 8285
 insert 7639 1
 insert 6137 0
 insert 2361 1
 delete 2169
-rank 0 8524
+rank 1 8524
 delete 1940
 insert 5935 1
 insert 9816 0
@@ -15533,12 +15533,12 @@ delete 1288
 insert 9490 1
 delete 8048
 delete 3616
-select 0 4127
+select 0 5351
 insert 3336 0
 insert 9509 1
 insert 46 0
 insert 9513 0
-rank 0 11273
+rank 1 11273
 insert 1818 0
 insert 1096 0
 delete 8580
@@ -15552,10 +15552,10 @@ insert 10658 0
 insert 9868 0
 delete 4147
 delete 11353
-select 0 5321
+select 0 4894
 insert 10167 1
 insert 5606 1
-select 1 1881
+select 1 125
 insert 8967 0
 insert 10473 1
 delete 630
@@ -15576,10 +15576,10 @@ insert 7552 0
 insert 11301 0
 insert 5048 0
 insert 8611 1
-select 0 396
+select 0 4501
 insert 4974 1
 delete 3547
-select 1 5116
+select 1 3937
 insert 5366 1
 insert 1490 0
 insert 2548 0
@@ -15592,11 +15592,11 @@ delete 4583
 insert 701 1
 delete 2360
 insert 6634 1
-select 0 159
+select 0 5326
 insert 5413 1
 insert 3639 1
 insert 9785 1
-rank 0 868
+rank 1 868
 delete 5342
 insert 5419 0
 insert 4329 0
@@ -15614,7 +15614,7 @@ insert 9399 0
 insert 2931 1
 insert 6480 1
 insert 5742 1
-rank 1 5398
+rank 0 5398
 delete 9539
 insert 110 1
 insert 2874 0
@@ -15627,18 +15627,18 @@ insert 4911 1
 delete 10812
 insert 5479 0
 delete 8331
-rank 1 4352
+rank 0 4352
 insert 2085 0
-select 0 1999
+select 0 1897
 insert 675 1
 delete 986
 insert 4650 1
-select 0 4659
+select 0 1499
 insert 752 0
 delete 2211
 insert 9591 1
 insert 6718 0
-rank 1 11033
+rank 0 11033
 delete 959
 insert 10974 1
 delete 5841
@@ -15653,10 +15653,10 @@ delete 5546
 insert 10525 1
 insert 8887 0
 delete 5729
-select 0 800
+select 0 345
 insert 7655 1
 insert 7119 1
-rank 0 5250
+rank 1 5250
 insert 8011 0
 delete 220
 insert 8890 1
@@ -15669,13 +15669,13 @@ insert 8501 0
 insert 8594 0
 insert 1979 0
 delete 11438
-select 0 4104
+select 0 4212
 insert 36 1
 insert 7920 0
 delete 5809
 insert 10549 1
 insert 7737 0
-select 0 4323
+select 0 5711
 insert 8456 1
 insert 6833 0
 delete 106
@@ -15693,13 +15693,13 @@ insert 10402 1
 insert 11387 1
 insert 5840 1
 insert 1925 0
-rank 0 1975
+rank 1 1975
 insert 2070 1
 delete 7667
 delete 8363
 delete 9550
 delete 753
-select 1 2243
+select 1 434
 insert 5599 0
 insert 8060 0
 insert 10054 0
@@ -15718,7 +15718,7 @@ delete 5650
 insert 2122 1
 delete 3818
 delete 4737
-rank 1 9999
+rank 0 9999
 delete 7402
 insert 4766 0
 insert 8225 1
@@ -15744,7 +15744,7 @@ insert 8809 1
 delete 2540
 insert 3349 1
 delete 2420
-rank 0 606
+rank 1 606
 insert 5376 1
 insert 11432 1
 delete 10024
@@ -15754,8 +15754,8 @@ insert 6087 0
 insert 11215 0
 insert 780 0
 insert 10677 0
-rank 0 9887
-select 1 2957
+rank 1 9887
+select 1 3409
 insert 838 0
 insert 1049 1
 delete 1932
@@ -15798,12 +15798,12 @@ insert 2332 0
 insert 9744 0
 insert 4022 1
 insert 9470 1
-select 0 5304
+select 0 820
 delete 2946
 insert 1191 0
 insert 1943 0
 delete 9411
-rank 0 4099
+rank 1 4099
 delete 6929
 delete 6583
 insert 5854 1
@@ -15815,7 +15815,7 @@ delete 10896
 delete 1548
 delete 7670
 insert 4207 1
-select 1 2964
+select 1 771
 insert 1309 0
 insert 11266 0
 insert 6268 0
@@ -15828,23 +15828,23 @@ insert 11498 1
 delete 4143
 insert 11071 1
 insert 1869 1
-select 1 659
+select 1 3677
 insert 10490 1
 insert 5689 0
-select 1 5519
+select 1 4154
 insert 6732 0
-rank 1 6205
+rank 0 6205
 insert 180 0
-rank 0 1315
+rank 1 1315
 delete 3589
 delete 3448
 insert 1343 1
 delete 692
-rank 1 8777
+rank 0 8777
 delete 8569
-rank 1 8389
+rank 0 8389
 insert 8376 0
-rank 0 10514
+rank 1 10514
 insert 10292 0
 insert 373 1
 insert 9566 0
@@ -15858,7 +15858,7 @@ insert 6729 0
 insert 8823 1
 delete 8912
 delete 3544
-rank 1 4562
+rank 0 4562
 delete 8751
 insert 8566 0
 delete 2080
@@ -15875,7 +15875,7 @@ insert 462 0
 insert 6471 0
 delete 5042
 delete 4054
-rank 1 1758
+rank 0 1758
 insert 10171 0
 delete 6380
 insert 2042 0
@@ -15897,14 +15897,14 @@ insert 10692 0
 delete 3815
 insert 11560 0
 insert 10671 0
-rank 1 762
+rank 0 762
 insert 11132 1
 delete 6393
-rank 0 9074
+rank 1 9074
 insert 10108 0
 delete 9591
 insert 10072 0
-rank 0 2406
+rank 1 2406
 delete 7985
 insert 2607 0
 insert 11386 1
@@ -15912,14 +15912,14 @@ insert 3166 1
 delete 2009
 delete 10598
 insert 3747 1
-rank 0 3468
+rank 1 3468
 delete 8652
 insert 11010 1
 insert 9396 1
 insert 7610 1
-select 0 1708
+select 0 5078
 delete 10199
-rank 0 110
+rank 1 110
 delete 2469
 insert 904 1
 delete 576
@@ -15933,17 +15933,17 @@ delete 4026
 delete 9270
 insert 5922 0
 insert 6226 1
-rank 1 2504
+rank 0 2504
 insert 10068 0
 insert 11709 0
 delete 1037
 insert 7434 0
 insert 7431 0
 insert 5909 0
-select 1 2515
+select 1 3322
 insert 3919 0
 delete 7393
-rank 0 7894
+rank 1 7894
 insert 3316 0
 delete 5808
 insert 9382 0
@@ -15962,16 +15962,16 @@ insert 158 0
 insert 5427 1
 delete 8737
 delete 3813
-select 1 696
+select 1 4068
 delete 6586
 insert 5488 1
-rank 1 9072
+rank 0 9072
 insert 9477 1
 insert 729 1
 insert 6210 1
-select 0 2973
+select 0 47
 insert 10360 1
-rank 0 210
+rank 1 210
 insert 5557 0
 insert 779 1
 insert 2236 0
@@ -15982,13 +15982,13 @@ insert 6795 0
 insert 7170 1
 insert 1435 0
 insert 4287 0
-select 0 4584
+select 0 4206
 delete 4721
 delete 7381
-select 0 4436
+select 0 842
 insert 3916 0
 insert 882 1
-rank 1 5163
+rank 0 5163
 insert 256 0
 delete 9628
 delete 6599
@@ -15998,7 +15998,7 @@ insert 10811 0
 insert 3159 1
 delete 4733
 insert 1714 0
-select 1 1879
+select 1 1312
 insert 6592 1
 insert 11002 1
 insert 10347 1
@@ -16008,14 +16008,14 @@ insert 10706 0
 insert 2773 0
 insert 4447 0
 delete 3284
-rank 0 2841
+rank 1 2841
 insert 8703 0
 delete 4646
 delete 10025
 insert 765 1
 insert 7214 0
 insert 9699 0
-rank 1 5361
+rank 0 5361
 delete 5837
 insert 7272 1
 delete 3631
@@ -16029,17 +16029,17 @@ delete 5880
 insert 7299 0
 insert 2589 0
 delete 5995
-rank 1 4464
+rank 0 4464
 insert 7696 1
 insert 7071 1
 delete 9962
-rank 1 10354
+rank 0 10354
 delete 5522
 insert 10397 0
 delete 9671
 delete 7192
 delete 141
-rank 1 7637
+rank 0 7637
 insert 4691 0
 insert 7618 0
 insert 2669 0
@@ -16056,7 +16056,7 @@ delete 3191
 insert 7748 1
 insert 6928 1
 delete 1347
-select 1 4123
+select 1 363
 delete 1099
 insert 10960 1
 insert 11166 1
@@ -16070,7 +16070,7 @@ delete 7777
 delete 9652
 insert 9710 1
 insert 3658 0
-rank 1 3337
+rank 0 3337
 insert 1692 0
 insert 6581 0
 delete 8417
@@ -16089,7 +16089,7 @@ insert 4225 0
 delete 4512
 insert 6298 0
 delete 1416
-rank 1 4103
+rank 0 4103
 insert 257 0
 insert 9660 1
 insert 4680 0
@@ -16099,7 +16099,7 @@ insert 8167 1
 delete 11356
 insert 701 0
 insert 7111 1
-rank 1 2279
+rank 0 2279
 delete 4915
 insert 2564 0
 insert 821 1
@@ -16110,15 +16110,15 @@ insert 5970 1
 delete 286
 insert 4564 1
 insert 8497 0
-rank 0 4279
+rank 1 4279
 delete 9370
 insert 11180 1
 delete 8292
 insert 7034 0
-select 1 353
+select 1 1373
 insert 2493 1
 delete 3460
-rank 1 3976
+rank 0 3976
 insert 4221 0
 insert 875 1
 insert 4591 1
@@ -16138,35 +16138,35 @@ insert 11325 1
 insert 908 1
 insert 3951 0
 insert 9718 1
-rank 0 8980
+rank 1 8980
 insert 2724 1
 insert 8354 1
 insert 9536 1
 insert 4010 1
-rank 1 9640
+rank 0 9640
 delete 2802
 insert 7970 0
 insert 4938 1
 insert 3223 0
-rank 1 8385
+rank 0 8385
 insert 6200 0
 insert 6782 1
 delete 8913
-rank 0 5844
+rank 1 5844
 delete 6496
 insert 3410 1
 delete 7987
 insert 11391 0
 insert 8800 1
-rank 0 8464
+rank 1 8464
 insert 9878 1
-select 1 1839
+select 1 5785
 insert 3731 0
 insert 7717 1
 insert 5993 1
 insert 8510 1
 insert 9107 0
-rank 0 8891
+rank 1 8891
 insert 9315 1
 delete 7771
 insert 5067 1
@@ -16184,19 +16184,19 @@ delete 4163
 insert 6475 1
 insert 5687 1
 delete 281
-rank 1 490
+rank 0 490
 insert 2476 1
 insert 1878 1
 delete 11384
 delete 923
-rank 0 2496
+rank 1 2496
 delete 781
 insert 4069 1
 insert 8060 0
 insert 9590 1
 insert 878 1
 insert 9458 1
-rank 1 10970
+rank 0 10970
 delete 7270
 insert 7782 1
 insert 4443 0
@@ -16205,13 +16205,13 @@ delete 4557
 insert 10491 1
 insert 8078 0
 delete 10534
-rank 0 4775
+rank 1 4775
 insert 4289 0
 insert 4319 0
 delete 10870
-select 0 5137
+select 0 4852
 insert 5823 0
-rank 0 11671
+rank 1 11671
 insert 281 0
 delete 9922
 delete 2618
@@ -16219,25 +16219,25 @@ insert 10711 0
 insert 1276 1
 insert 9596 1
 insert 452 0
-rank 0 6778
+rank 1 6778
 delete 5576
 insert 10616 0
 delete 4213
-rank 1 4060
+rank 0 4060
 delete 1650
 delete 6372
 insert 9597 0
 delete 11449
 insert 1454 0
-select 0 4282
+select 0 5076
 insert 9824 0
-rank 0 2086
+rank 1 2086
 insert 11272 0
 delete 3347
-rank 1 1820
+rank 0 1820
 insert 5444 0
 delete 8227
-select 1 1114
+select 1 3005
 delete 7581
 insert 1412 1
 delete 4198
@@ -16248,25 +16248,25 @@ delete 1547
 insert 9943 1
 insert 9467 1
 insert 4758 1
-rank 1 3385
+rank 0 3385
 insert 7492 0
-rank 0 7516
+rank 1 7516
 delete 4289
 delete 5073
 insert 4571 1
 insert 106 1
-select 1 1371
+select 1 2876
 insert 4070 1
-rank 0 6404
+rank 1 6404
 delete 10642
 insert 11390 0
 insert 3475 1
 insert 467 0
-select 1 1841
+select 1 4109
 insert 6563 1
 insert 7997 0
 delete 3429
-rank 0 10579
+rank 1 10579
 delete 1100
 insert 1223 0
 insert 8713 1
@@ -16286,7 +16286,7 @@ insert 1219 0
 delete 3435
 insert 6995 1
 insert 6885 1
-rank 1 6094
+rank 0 6094
 insert 6738 0
 insert 6542 0
 delete 5995
@@ -16305,7 +16305,7 @@ delete 4203
 insert 2829 0
 delete 6051
 insert 10695 1
-rank 1 7699
+rank 0 7699
 insert 7856 1
 insert 5739 0
 insert 1960 0
@@ -16319,15 +16319,15 @@ delete 1125
 insert 1431 1
 insert 2765 1
 insert 6597 1
-rank 0 11239
-select 0 3524
+rank 1 11239
+select 0 5215
 delete 7476
 insert 8616 1
 insert 3608 0
 insert 1782 1
 delete 7861
 delete 9874
-select 0 75
+select 0 2397
 insert 10796 0
 insert 8731 0
 insert 8803 0
@@ -16345,11 +16345,11 @@ insert 148 0
 insert 11369 0
 insert 5222 1
 insert 10696 1
-rank 0 8874
+rank 1 8874
 insert 10136 1
 insert 331 1
 insert 7507 0
-rank 0 10477
+rank 1 10477
 delete 9631
 insert 329 0
 insert 5665 1
@@ -16360,11 +16360,11 @@ delete 7301
 delete 3878
 insert 7381 1
 delete 6376
-rank 0 3999
+rank 1 3999
 delete 11346
 insert 9233 0
 delete 2248
-rank 1 6049
+rank 0 6049
 insert 9839 1
 insert 2439 1
 insert 10885 0
@@ -16375,38 +16375,38 @@ insert 5809 0
 insert 5451 1
 insert 2043 0
 insert 10366 1
-rank 0 571
+rank 1 571
 insert 2032 1
 insert 3018 1
 insert 5111 1
 delete 9552
-select 1 1716
+select 1 5536
 delete 864
 insert 6781 1
 delete 10851
 insert 3602 1
 insert 1591 0
 insert 723 0
-select 1 2892
+select 1 1131
 delete 1167
 delete 10665
 insert 9328 1
 delete 11034
-select 0 418
+select 0 5490
 insert 10290 0
 insert 2334 1
 insert 626 0
 delete 7982
 insert 11561 1
 insert 7230 0
-select 0 3895
+select 0 5501
 insert 6954 0
 delete 8320
 insert 1460 1
 delete 2666
-rank 1 9845
+rank 0 9845
 delete 11040
-select 1 4229
+select 1 2454
 delete 11532
 delete 7674
 insert 3307 0
@@ -16430,13 +16430,13 @@ insert 7190 0
 delete 8714
 delete 4872
 delete 6630
-select 0 681
+select 0 4085
 insert 4243 0
 delete 9202
 delete 9651
 delete 1522
 insert 9484 0
-select 0 3474
+select 0 2873
 delete 1016
 insert 11174 0
 insert 1987 1
@@ -16449,12 +16449,12 @@ insert 7556 0
 insert 4307 1
 insert 2332 1
 insert 9914 0
-select 1 2255
+select 1 3159
 insert 3621 0
-rank 1 5140
+rank 0 5140
 insert 8022 1
 insert 1180 0
-rank 1 1228
+rank 0 1228
 delete 2179
 insert 3329 0
 insert 10754 1
@@ -16463,14 +16463,14 @@ insert 9071 1
 insert 10034 0
 delete 9911
 insert 4652 0
-rank 0 7427
+rank 1 7427
 insert 8233 1
 insert 4190 1
 insert 9787 1
 insert 6624 0
 delete 1494
 delete 11269
-rank 0 9162
+rank 1 9162
 insert 3884 1
 insert 8569 1
 insert 4459 1
@@ -16485,27 +16485,27 @@ insert 8291 0
 insert 5542 1
 delete 10277
 insert 7334 0
-select 1 5329
+select 1 3694
 insert 6928 0
 insert 3151 0
 insert 6756 1
-rank 1 10286
+rank 0 10286
 delete 9063
 insert 11230 1
-select 0 1810
+select 0 2027
 insert 1939 1
 insert 8945 0
-rank 0 9662
+rank 1 9662
 delete 2669
 insert 10630 1
 delete 4692
 insert 8780 1
 insert 644 0
-rank 1 2629
+rank 0 2629
 insert 651 0
 insert 1140 0
 insert 11260 0
-rank 0 1773
+rank 1 1773
 insert 5450 0
 insert 3811 0
 insert 32 0
@@ -16514,10 +16514,10 @@ insert 6373 1
 insert 7467 1
 insert 48 0
 insert 5171 1
-rank 0 8717
+rank 1 8717
 insert 4198 1
 insert 1951 0
-select 0 2438
+select 0 4203
 delete 1012
 insert 6553 1
 insert 10736 1
@@ -16537,7 +16537,7 @@ delete 6097
 delete 1648
 insert 1930 0
 insert 4737 1
-rank 0 2525
+rank 1 2525
 insert 6922 1
 insert 11284 1
 insert 9450 1
@@ -16547,39 +16547,39 @@ delete 6456
 insert 3486 1
 insert 6687 0
 insert 6944 1
-select 0 80
+select 0 1445
 insert 11157 0
 insert 6663 0
 insert 9012 0
 insert 3102 1
 insert 8457 0
-rank 0 1928
+rank 1 1928
 insert 792 1
 insert 10391 1
 insert 4411 1
-rank 1 2591
+rank 0 2591
 insert 6441 1
 delete 10074
-rank 0 3381
-select 0 4932
+rank 1 3381
+select 0 76
 insert 7695 0
 delete 14
-rank 0 11025
+rank 1 11025
 delete 1215
 insert 1621 0
 insert 5554 1
-rank 1 1676
+rank 0 1676
 insert 8709 1
 delete 1094
 insert 3258 1
-select 1 86
+select 1 2316
 delete 8140
 insert 10118 0
-rank 0 1184
+rank 1 1184
 insert 935 1
 delete 4604
 delete 10062
-rank 0 8053
+rank 1 8053
 delete 10981
 delete 8806
 insert 7181 0
@@ -16616,23 +16616,23 @@ delete 1395
 insert 8722 1
 delete 2392
 insert 244 0
-rank 1 7608
+rank 0 7608
 insert 5461 0
-select 1 5020
+select 1 3907
 insert 10447 0
-rank 1 2775
+rank 0 2775
 insert 5957 0
 insert 3186 0
-rank 0 274
+rank 1 274
 insert 1566 1
 insert 8882 0
 insert 7173 1
 delete 8704
 insert 5675 1
 delete 6089
-rank 0 10013
+rank 1 10013
 insert 1421 0
-select 0 1809
+select 0 469
 insert 1684 0
 delete 3402
 insert 4607 0
@@ -16641,7 +16641,7 @@ insert 2974 1
 insert 4981 1
 insert 8979 1
 insert 6753 1
-rank 0 10179
+rank 1 10179
 delete 6942
 delete 2782
 delete 3711
@@ -16651,7 +16651,7 @@ insert 605 0
 insert 5631 0
 delete 3264
 insert 11206 0
-select 1 5571
+select 1 5263
 insert 4296 1
 delete 10585
 insert 9838 1
@@ -16672,7 +16672,7 @@ insert 8674 1
 insert 1674 1
 insert 3939 0
 insert 5641 1
-rank 0 7637
+rank 1 7637
 delete 429
 delete 2785
 insert 8207 1
@@ -16684,11 +16684,11 @@ delete 6736
 insert 11823 1
 insert 11452 0
 delete 8248
-rank 0 7279
+rank 1 7279
 delete 4645
 delete 4721
 delete 5676
-rank 1 74
+rank 0 74
 insert 9819 1
 insert 7308 1
 insert 11603 0
@@ -16702,7 +16702,7 @@ insert 3380 0
 insert 2580 1
 insert 10559 0
 delete 351
-rank 0 8198
+rank 1 8198
 delete 943
 insert 10325 1
 delete 3255
@@ -16710,7 +16710,7 @@ insert 10204 0
 insert 11115 0
 insert 5270 0
 delete 11044
-select 0 675
+select 0 2140
 delete 4826
 insert 7530 1
 insert 4832 0
@@ -16720,14 +16720,14 @@ insert 10334 1
 delete 3821
 delete 3301
 delete 6663
-rank 0 1085
+rank 1 1085
 insert 6962 0
 insert 8040 1
 delete 2887
 insert 8777 1
-rank 0 9224
+rank 1 9224
 insert 750 0
-rank 0 7947
+rank 1 7947
 insert 8869 1
 delete 11046
 insert 4143 0
@@ -16738,13 +16738,13 @@ insert 4747 0
 insert 7827 0
 insert 6648 1
 delete 2147
-rank 0 9656
+rank 1 9656
 insert 1114 0
 insert 4039 0
 insert 5342 1
 insert 4539 0
 insert 4337 0
-select 0 5401
+select 0 1540
 insert 5706 0
 insert 6674 0
 delete 1430
@@ -16752,20 +16752,20 @@ insert 8159 1
 insert 10763 1
 insert 11825 1
 insert 288 0
-rank 0 9340
+rank 1 9340
 insert 9747 0
 insert 11542 0
-rank 1 6076
-select 1 2497
+rank 0 6076
+select 1 3766
 delete 2824
 delete 10265
-rank 1 4447
+rank 0 4447
 insert 7203 1
 delete 11839
 insert 3169 1
-select 1 3135
+select 1 2136
 insert 7938 0
-select 0 2810
+select 0 1048
 insert 5502 0
 insert 10898 0
 insert 2897 1
@@ -16773,7 +16773,7 @@ insert 5993 1
 insert 10451 1
 insert 9830 1
 delete 2516
-rank 1 9512
+rank 0 9512
 delete 7176
 insert 1965 1
 insert 1830 1
@@ -16784,7 +16784,7 @@ insert 11597 1
 insert 3216 0
 delete 10429
 insert 4993 0
-select 1 3375
+select 1 986
 insert 7214 0
 delete 5095
 delete 11841
@@ -16794,26 +16794,26 @@ delete 3407
 insert 831 1
 insert 10568 0
 delete 11263
-select 1 4136
+select 1 274
 delete 8308
 insert 10712 1
 insert 3549 1
-rank 0 7257
+rank 1 7257
 delete 696
 delete 1331
-rank 0 8828
+rank 1 8828
 insert 7545 0
 delete 9640
 insert 6531 0
 delete 2599
-rank 0 7422
+rank 1 7422
 insert 1773 0
 insert 8884 0
 delete 5083
-rank 0 3783
+rank 1 3783
 insert 1062 1
 insert 10566 0
-rank 1 5168
+rank 0 5168
 insert 6720 0
 delete 7073
 insert 8146 0
@@ -16822,7 +16822,7 @@ delete 10868
 insert 7534 1
 insert 467 1
 insert 9848 1
-select 1 3051
+select 1 4563
 insert 9163 1
 insert 366 1
 insert 2882 1
@@ -16854,7 +16854,7 @@ delete 10216
 insert 3495 0
 insert 3923 0
 insert 967 0
-rank 1 1255
+rank 0 1255
 insert 11432 1
 insert 6295 1
 delete 9787
@@ -16867,21 +16867,21 @@ insert 7948 1
 insert 8405 0
 insert 5006 0
 insert 885 0
-rank 1 10296
+rank 0 10296
 insert 8935 0
 delete 6735
-rank 1 10091
+rank 0 10091
 insert 10879 0
 delete 6367
 insert 435 0
 insert 4065 0
-rank 0 3165
+rank 1 3165
 insert 9184 1
 insert 4129 1
 insert 3337 1
 insert 8152 0
 insert 2187 1
-rank 0 11733
+rank 1 11733
 delete 7491
 insert 8892 1
 delete 5080
@@ -16891,24 +16891,24 @@ insert 3394 0
 delete 374
 delete 6683
 insert 6767 0
-rank 0 11111
+rank 1 11111
 delete 3718
 insert 1383 1
 insert 2308 1
 insert 3559 1
 insert 11450 0
 delete 562
-rank 1 848
+rank 0 848
 insert 1114 0
 insert 3278 0
 insert 742 1
 delete 5636
 delete 1320
-select 1 5976
+select 1 2648
 delete 4438
 delete 11913
 delete 11552
-rank 1 4560
+rank 0 4560
 delete 8709
 insert 8470 1
 delete 9551
@@ -16917,11 +16917,11 @@ delete 11620
 delete 4655
 insert 3564 0
 insert 3869 0
-select 1 5733
+select 1 2738
 delete 2772
 insert 6245 0
 insert 9066 1
-select 0 3032
+select 0 2516
 insert 7334 1
 insert 10084 0
 insert 806 1
@@ -16932,7 +16932,7 @@ insert 8998 1
 insert 930 0
 insert 6229 0
 delete 8555
-rank 0 7821
+rank 1 7821
 insert 4780 1
 delete 6726
 insert 6242 1
@@ -16958,21 +16958,21 @@ delete 5634
 insert 11388 1
 delete 5641
 insert 5108 0
-rank 0 9947
+rank 1 9947
 insert 9661 0
 insert 14 0
 delete 8369
 insert 6331 0
 insert 8336 1
 insert 3234 1
-rank 1 559
+rank 0 559
 insert 10970 0
 insert 6610 1
 insert 4504 1
 delete 9556
 insert 2133 1
 insert 10646 0
-rank 1 2897
+rank 0 2897
 insert 7840 0
 insert 8508 0
 delete 11277
@@ -16981,10 +16981,10 @@ insert 9336 1
 insert 11550 0
 insert 833 1
 delete 447
-select 0 1082
+select 0 3354
 insert 4904 1
 insert 6703 1
-rank 1 1053
+rank 0 1053
 insert 8811 1
 insert 10827 1
 insert 7442 0
@@ -16999,11 +16999,11 @@ delete 9612
 insert 2211 1
 insert 106 0
 insert 2939 0
-select 1 1361
+select 1 3620
 insert 3018 0
 insert 3524 0
 delete 12023
-rank 0 452
+rank 1 452
 insert 10332 0
 insert 1100 0
 insert 7949 1
@@ -17014,7 +17014,7 @@ insert 1917 0
 insert 8845 1
 insert 9325 1
 insert 7228 0
-rank 1 4878
+rank 0 4878
 delete 11876
 insert 10083 0
 delete 6895
@@ -17022,7 +17022,7 @@ delete 1923
 insert 11877 0
 delete 9680
 delete 7687
-select 0 4
+select 0 1895
 insert 4878 0
 insert 885 1
 insert 11416 1
@@ -17038,16 +17038,16 @@ insert 10855 0
 insert 2589 1
 insert 10876 0
 delete 11017
-rank 1 5787
+rank 0 5787
 delete 7223
 insert 7743 0
 insert 3624 0
-rank 1 4279
+rank 0 4279
 delete 7913
 delete 6879
 insert 4605 0
 insert 34 0
-rank 1 5160
+rank 0 5160
 delete 9152
 delete 6297
 insert 902 0
@@ -17068,12 +17068,12 @@ insert 5858 1
 delete 8692
 insert 9839 1
 insert 6571 0
-rank 0 1486
+rank 1 1486
 delete 3418
 insert 5686 0
-rank 0 11251
+rank 1 11251
 delete 6899
-rank 0 1539
+rank 1 1539
 insert 2516 1
 insert 9807 0
 insert 9157 1
@@ -17086,10 +17086,10 @@ insert 7187 1
 delete 8802
 delete 3897
 insert 2655 0
-select 1 690
+select 1 2622
 insert 8126 1
 insert 3621 0
-rank 1 7432
+rank 0 7432
 insert 2402 1
 insert 3982 1
 delete 8189
@@ -17107,7 +17107,7 @@ insert 7150 0
 insert 9174 0
 delete 11444
 insert 8656 1
-rank 0 2383
+rank 1 2383
 delete 3918
 insert 6067 1
 insert 5123 1
@@ -17126,11 +17126,11 @@ insert 2609 0
 insert 9627 0
 insert 4413 0
 insert 4098 0
-select 1 1351
+select 1 1208
 delete 5789
 insert 8963 1
 delete 6397
-rank 0 11555
+rank 1 11555
 insert 3238 1
 delete 7158
 insert 9102 0
@@ -17139,13 +17139,13 @@ insert 9793 1
 insert 2312 0
 insert 3677 1
 insert 4122 0
-rank 0 6185
+rank 1 6185
 insert 2050 0
 delete 4255
 insert 715 1
 insert 11353 1
-rank 0 3493
-select 0 2806
+rank 1 3493
+select 0 2221
 insert 11130 1
 delete 7244
 delete 8621
@@ -17159,7 +17159,7 @@ insert 7049 1
 insert 7079 0
 insert 7985 0
 insert 5803 1
-rank 1 11128
+rank 0 11128
 insert 6314 1
 insert 444 0
 delete 3039
@@ -17169,18 +17169,18 @@ delete 4226
 insert 4272 0
 delete 9510
 insert 9378 0
-rank 1 10570
-select 1 1043
+rank 0 10570
+select 1 1371
 insert 5655 1
 delete 7205
-rank 1 8568
+rank 0 8568
 delete 10762
 insert 6092 1
 insert 1066 1
 insert 9514 0
 insert 11319 0
 delete 11037
-rank 1 7127
+rank 0 7127
 insert 10227 0
 delete 6505
 insert 1413 0
@@ -17188,16 +17188,16 @@ insert 8004 0
 insert 4398 0
 insert 5646 1
 insert 10290 1
-select 0 1299
+select 0 3174
 insert 10773 1
-rank 0 1953
+rank 1 1953
 delete 9082
 insert 8979 1
 insert 4704 0
 insert 7707 0
 delete 7240
 insert 7019 0
-rank 0 751
+rank 1 751
 delete 2510
 insert 7799 0
 insert 2114 1
@@ -17209,7 +17209,7 @@ delete 4253
 insert 2057 0
 delete 9975
 delete 6466
-rank 0 6721
+rank 1 6721
 insert 276 1
 insert 10525 0
 insert 1743 0
@@ -17220,7 +17220,7 @@ insert 8781 0
 delete 2404
 insert 4825 0
 delete 3942
-rank 1 8625
+rank 0 8625
 insert 5971 1
 insert 9626 0
 delete 8214
@@ -17231,9 +17231,9 @@ insert 8250 0
 insert 2956 1
 insert 10316 0
 delete 8742
-select 1 406
+select 1 5788
 insert 3579 0
-rank 0 10508
+rank 1 10508
 delete 1123
 insert 6794 0
 insert 10700 0
@@ -17246,7 +17246,7 @@ delete 7408
 delete 7563
 delete 3597
 delete 11244
-rank 0 8660
+rank 1 8660
 insert 4238 1
 insert 8809 1
 delete 1288
@@ -17267,24 +17267,24 @@ insert 5640 1
 insert 3346 1
 delete 48
 insert 556 0
-select 0 3336
+select 0 5682
 insert 8437 1
 insert 10099 0
 insert 2462 0
 insert 887 1
 insert 5258 0
 insert 4516 0
-rank 0 4724
+rank 1 4724
 delete 10705
 insert 6432 1
-rank 1 10043
+rank 0 10043
 delete 3830
 delete 5586
 insert 10062 1
-rank 1 9154
+rank 0 9154
 insert 1385 1
 insert 5475 1
-select 1 2337
+select 1 2119
 insert 3274 0
 insert 3382 1
 delete 7263
@@ -17297,10 +17297,10 @@ insert 9621 0
 delete 5164
 delete 6315
 delete 3243
-rank 0 1108
+rank 1 1108
 insert 8533 1
 insert 10486 1
-select 0 4704
+select 0 4494
 insert 11349 0
 delete 4173
 insert 10670 1
@@ -17308,7 +17308,7 @@ insert 82 0
 insert 3129 0
 insert 2056 0
 insert 6745 0
-rank 1 1311
+rank 0 1311
 insert 2541 1
 insert 11998 1
 delete 378
@@ -17327,15 +17327,15 @@ insert 7761 1
 insert 5123 0
 insert 6372 1
 insert 5224 0
-select 0 4786
+select 0 4998
 insert 9752 1
 insert 2528 1
 delete 4151
 insert 12089 0
 delete 9625
-rank 0 9808
+rank 1 9808
 insert 8552 0
-rank 0 3667
+rank 1 3667
 insert 6286 0
 insert 4648 0
 delete 3450
@@ -17348,13 +17348,13 @@ insert 7038 0
 delete 10052
 insert 8139 1
 insert 7719 1
-rank 1 8470
+rank 0 8470
 delete 7079
 insert 11925 0
 delete 4081
-rank 1 9933
+rank 0 9933
 insert 2310 1
-rank 1 4903
+rank 0 4903
 delete 1672
 insert 11718 0
 insert 9248 1
@@ -17362,18 +17362,18 @@ delete 11526
 insert 1878 0
 delete 3495
 insert 3543 0
-select 0 2286
+select 0 4910
 delete 3141
 delete 5433
 delete 5433
 insert 1348 0
 insert 10390 0
-select 1 3482
+select 1 4076
 insert 6317 0
 insert 3503 0
 insert 3713 1
-rank 0 4871
-select 1 869
+rank 1 4871
+select 1 259
 delete 6401
 delete 3482
 insert 6216 1
@@ -17394,7 +17394,7 @@ insert 7890 1
 insert 11138 0
 delete 4880
 delete 2950
-select 1 1923
+select 1 4169
 insert 2579 1
 insert 5041 0
 delete 6534
@@ -17407,7 +17407,7 @@ insert 11778 1
 insert 10629 0
 insert 11234 0
 insert 279 0
-select 1 590
+select 1 5096
 insert 7815 0
 delete 11474
 insert 10272 1
@@ -17415,11 +17415,11 @@ insert 9386 1
 insert 4853 1
 insert 326 1
 insert 3494 1
-select 0 1733
+select 0 3131
 delete 461
 insert 6995 1
 insert 10375 1
-select 1 1432
+select 1 563
 delete 4601
 insert 10266 1
 delete 3043
@@ -17439,13 +17439,13 @@ insert 641 0
 insert 10280 0
 delete 3721
 insert 11668 0
-select 0 4962
+select 0 4745
 insert 2378 0
 insert 8618 0
 insert 12051 1
 insert 4757 1
 insert 2381 0
-select 0 4073
+select 0 4799
 insert 9982 1
 delete 2261
 delete 11302
@@ -17454,28 +17454,28 @@ insert 4823 1
 insert 415 0
 delete 9541
 insert 7741 0
-select 1 1025
+select 1 4444
 delete 6909
 insert 9185 0
 insert 6473 0
 insert 10478 0
 delete 3212
-rank 0 7149
+rank 1 7149
 insert 9876 0
-rank 1 11475
+rank 0 11475
 insert 2193 1
 insert 8479 0
 insert 10930 1
 insert 2241 0
-rank 0 123
+rank 1 123
 insert 8593 1
 insert 8371 0
-select 1 4967
+select 1 443
 insert 1375 1
 insert 9046 0
 delete 7377
-rank 0 6430
-select 1 838
+rank 1 6430
+select 1 732
 insert 8390 0
 delete 7249
 insert 7114 1
@@ -17484,13 +17484,13 @@ delete 6524
 insert 495 1
 insert 6033 0
 insert 1611 0
-rank 1 208
+rank 0 208
 delete 6804
 delete 3499
 insert 10598 0
 insert 1194 0
 insert 704 1
-rank 0 10546
+rank 1 10546
 insert 8264 0
 insert 6426 0
 delete 10458
@@ -17524,19 +17524,19 @@ insert 4001 1
 delete 5582
 insert 2228 0
 delete 3925
-rank 1 3277
+rank 0 3277
 insert 2189 1
 delete 1502
-rank 1 11229
+rank 0 11229
 delete 7740
 insert 6590 1
 insert 11647 1
-rank 1 3530
+rank 0 3530
 delete 1476
 insert 7666 0
 insert 11906 0
 delete 11769
-select 1 5826
+select 1 3369
 delete 1631
 insert 2590 1
 insert 6608 1
@@ -17546,14 +17546,14 @@ delete 8847
 insert 2163 0
 delete 4977
 delete 7162
-rank 0 10655
+rank 1 10655
 insert 7378 0
 insert 10112 0
 delete 8970
 delete 3669
 insert 11957 0
 insert 6320 0
-select 1 3667
+select 1 159
 delete 8513
 delete 7991
 insert 10582 1
@@ -17578,7 +17578,7 @@ insert 1801 0
 insert 3093 0
 insert 3369 1
 insert 6120 1
-select 0 4385
+select 0 1748
 insert 7958 0
 insert 1648 1
 insert 11963 1
@@ -17586,25 +17586,25 @@ delete 4024
 insert 1331 1
 insert 3534 1
 insert 11350 1
-select 0 150
+select 0 5813
 insert 4808 0
-rank 0 12171
+rank 1 12171
 delete 12205
 insert 10835 1
-select 1 730
+select 1 5323
 delete 2244
-rank 1 11722
+rank 0 11722
 insert 9817 1
 delete 8297
 insert 1857 1
 delete 10403
-rank 1 8692
+rank 0 8692
 insert 716 1
 insert 3075 1
 insert 9647 0
 insert 7603 0
 delete 6727
-rank 0 6080
+rank 1 6080
 delete 3456
 insert 10558 1
 insert 1792 1
@@ -17614,32 +17614,32 @@ insert 11667 1
 delete 5014
 insert 8650 0
 insert 6726 0
-select 0 5282
+select 0 5229
 insert 3240 1
 delete 10831
-rank 1 10257
+rank 0 10257
 insert 7170 1
 insert 8481 0
-select 0 3480
+select 0 898
 insert 11333 1
 delete 7584
 insert 4898 1
 delete 10255
 delete 7833
 delete 6841
-rank 1 3651
+rank 0 3651
 insert 10789 0
 delete 4591
 insert 7143 0
-select 0 5972
+select 0 3738
 insert 11975 0
 delete 4314
 delete 10599
 insert 11192 0
 insert 9078 1
-rank 1 5444
+rank 0 5444
 delete 7823
-rank 1 2719
+rank 0 2719
 insert 6985 0
 delete 4418
 delete 9106
@@ -17662,17 +17662,17 @@ insert 1590 0
 delete 4294
 insert 8329 0
 insert 9681 0
-rank 0 2134
+rank 1 2134
 insert 2098 0
 insert 3647 0
 delete 9169
 delete 5986
-select 0 5033
+select 0 2394
 insert 11114 0
 insert 3704 1
 insert 6392 0
 insert 3900 1
-rank 1 6779
+rank 0 6779
 delete 7856
 insert 8018 1
 insert 10704 1
@@ -17687,37 +17687,37 @@ delete 2733
 insert 3559 1
 insert 1853 1
 insert 784 1
-rank 0 658
+rank 1 658
 insert 2922 1
 delete 11317
 delete 4955
 insert 2667 1
 insert 752 1
 delete 4160
-rank 0 3466
-select 1 2940
+rank 1 3466
+select 1 4218
 insert 5296 1
 insert 9070 0
 insert 5941 0
 insert 3016 1
 insert 7762 0
-select 0 2514
+select 0 1175
 insert 9736 1
-select 1 3156
+select 1 1407
 delete 8623
 insert 5909 0
 insert 9013 1
 insert 3554 1
-select 1 5612
+select 1 2656
 delete 1795
 insert 990 1
 insert 4210 1
 delete 611
 delete 8901
 delete 111
-rank 0 5571
+rank 1 5571
 delete 7833
-select 0 1322
+select 0 4973
 insert 3633 1
 insert 2399 0
 delete 6180
@@ -17725,7 +17725,7 @@ insert 11414 1
 insert 12014 1
 delete 5526
 delete 1715
-rank 0 1261
+rank 1 1261
 insert 7531 1
 insert 165 0
 insert 11137 1
@@ -17735,11 +17735,11 @@ insert 7707 0
 insert 9253 0
 insert 2591 1
 insert 6051 1
-select 0 4314
+select 0 4534
 insert 11692 0
 insert 7223 0
-rank 0 632
-select 1 3488
+rank 1 632
+select 1 457
 delete 10443
 delete 11653
 delete 587
@@ -17750,7 +17750,7 @@ insert 1332 1
 delete 11082
 insert 121 1
 insert 7418 0
-select 1 1860
+select 1 5220
 delete 4737
 insert 319 0
 insert 4882 0
@@ -17762,12 +17762,12 @@ delete 8399
 insert 6945 1
 insert 587 0
 delete 4308
-rank 0 11326
+rank 1 11326
 insert 4247 0
 insert 57 0
 insert 1120 1
 delete 399
-rank 0 12235
+rank 1 12235
 insert 11491 0
 insert 782 1
 insert 11357 1
@@ -17782,7 +17782,7 @@ insert 1397 0
 delete 1850
 delete 2611
 insert 12159 1
-rank 0 1349
+rank 1 1349
 insert 12172 1
 insert 4740 0
 insert 93 1
@@ -17792,12 +17792,12 @@ delete 2064
 insert 504 1
 insert 4188 1
 delete 3029
-rank 0 9368
+rank 1 9368
 delete 10069
 insert 3324 1
 delete 5238
-rank 0 9989
-select 0 1315
+rank 1 9989
+select 0 1415
 insert 3779 0
 insert 7316 1
 insert 6927 1
@@ -17837,7 +17837,7 @@ delete 8145
 delete 7260
 insert 8885 0
 delete 8214
-select 1 4214
+select 1 1487
 insert 1326 0
 delete 2637
 delete 12203
@@ -17854,7 +17854,7 @@ delete 7100
 delete 6848
 insert 7687 1
 delete 1551
-rank 1 8584
+rank 0 8584
 insert 3572 0
 insert 5389 0
 insert 6168 1
@@ -17864,7 +17864,7 @@ insert 3175 1
 delete 2101
 insert 4792 1
 delete 9392
-rank 0 11329
+rank 1 11329
 insert 10848 0
 insert 1060 0
 insert 8036 0
@@ -17874,13 +17874,13 @@ insert 4951 0
 insert 11790 1
 insert 3763 0
 insert 11832 0
-rank 1 89
+rank 0 89
 delete 1753
 delete 5736
 insert 9106 1
 insert 6177 1
 insert 3471 1
-rank 1 9964
+rank 0 9964
 delete 8523
 insert 9004 1
 insert 5078 1
@@ -17891,7 +17891,7 @@ delete 4478
 delete 2247
 insert 11875 0
 insert 7444 0
-select 1 5121
+select 1 16
 insert 11949 0
 insert 8093 0
 insert 8050 1
@@ -17899,7 +17899,7 @@ delete 11077
 insert 2509 0
 insert 11986 0
 insert 4757 1
-rank 0 10580
+rank 1 10580
 delete 3057
 insert 2707 1
 delete 184
@@ -17910,7 +17910,7 @@ insert 1558 1
 insert 11826 0
 insert 4743 1
 delete 3106
-rank 1 4591
+rank 0 4591
 insert 12096 0
 delete 5440
 insert 8853 0
@@ -17928,13 +17928,13 @@ delete 2311
 insert 2221 1
 insert 334 0
 insert 4740 1
-select 0 5183
+select 0 4217
 insert 9619 1
 insert 4059 0
-rank 0 1770
+rank 1 1770
 insert 11986 1
 insert 3489 1
-rank 1 10975
+rank 0 10975
 insert 4618 1
 delete 2661
 delete 5027
@@ -17960,48 +17960,48 @@ insert 10973 1
 insert 6855 1
 insert 1025 1
 insert 4553 1
-rank 1 9391
+rank 0 9391
 insert 1477 1
 insert 2603 0
 insert 9233 1
 insert 12112 1
-rank 0 7322
+rank 1 7322
 insert 4535 1
 insert 3063 0
 insert 4370 1
-select 0 1635
+select 0 3107
 insert 2479 0
 insert 674 0
 delete 3414
 insert 3554 0
-rank 1 9899
+rank 0 9899
 insert 9540 0
-rank 1 11832
+rank 0 11832
 insert 369 1
-rank 1 10489
+rank 0 10489
 delete 9610
 insert 7031 0
-rank 1 8458
+rank 0 8458
 delete 8949
 insert 1291 0
 delete 7666
 insert 8309 0
 insert 1661 0
-rank 0 7584
+rank 1 7584
 insert 10744 1
 insert 10266 0
 insert 2120 1
-select 1 1080
+select 1 5720
 delete 2896
 insert 389 0
 insert 991 0
-select 0 469
+select 0 3428
 delete 11351
 insert 7257 1
 insert 9002 1
 delete 9566
 insert 10024 1
-rank 0 841
+rank 1 841
 insert 6661 1
 delete 917
 insert 893 0
@@ -18011,12 +18011,12 @@ delete 250
 delete 1127
 delete 115
 insert 7680 1
-select 1 3759
+select 1 1964
 insert 5859 1
 insert 7634 1
 insert 11907 1
 insert 6903 0
-select 0 5088
+select 0 1671
 insert 10234 0
 insert 11768 0
 delete 10321
@@ -18037,19 +18037,19 @@ insert 5507 0
 delete 325
 insert 2897 1
 insert 7046 0
-rank 0 10251
+rank 1 10251
 delete 11217
 insert 366 0
 delete 10256
-select 0 3932
+select 0 5970
 insert 3389 0
 insert 8242 1
 insert 2511 0
 delete 2885
 insert 3596 0
-select 0 2585
+select 0 364
 insert 780 1
-rank 1 2510
+rank 0 2510
 insert 3811 0
 insert 7167 0
 insert 8870 0
@@ -18058,7 +18058,7 @@ delete 5632
 insert 3652 0
 insert 5385 0
 insert 10351 1
-rank 1 3938
+rank 0 3938
 insert 5841 1
 insert 1691 0
 insert 1606 1
@@ -18068,43 +18068,43 @@ delete 10910
 insert 125 0
 insert 11540 1
 insert 7927 1
-rank 0 1126
+rank 1 1126
 insert 2517 0
 insert 8751 1
 delete 8053
 delete 6467
-select 0 317
+select 0 2944
 insert 2859 1
 insert 5098 0
 delete 7667
 delete 6104
-rank 1 7555
+rank 0 7555
 delete 1072
 insert 11866 0
 delete 8597
 insert 9437 1
-rank 1 580
+rank 0 580
 insert 7541 1
-rank 1 11466
+rank 0 11466
 insert 7827 0
 insert 3353 0
 delete 1703
 insert 8796 1
-rank 0 5529
+rank 1 5529
 insert 1380 0
 insert 8028 1
 delete 710
 insert 8527 0
 insert 7507 1
 insert 5897 1
-select 1 1943
+select 1 437
 insert 6662 1
 insert 8083 0
 insert 4134 0
 insert 379 1
 delete 8238
 delete 2703
-rank 1 2224
+rank 0 2224
 delete 10821
 insert 11254 0
 insert 11485 0
@@ -18119,13 +18119,13 @@ delete 3436
 insert 11095 1
 insert 9859 0
 insert 11838 0
-select 0 2276
+select 0 4462
 insert 3981 0
 insert 4088 1
 delete 12178
 delete 3418
 insert 430 0
-rank 1 11692
+rank 0 11692
 delete 2764
 delete 6403
 insert 6905 0
@@ -18140,7 +18140,7 @@ insert 5389 1
 insert 10211 1
 insert 4985 1
 insert 9975 1
-rank 1 7192
+rank 0 7192
 insert 2983 1
 delete 6202
 delete 9171
@@ -18158,7 +18158,7 @@ insert 1939 0
 insert 2348 0
 delete 6664
 insert 7731 1
-rank 0 8571
+rank 1 8571
 delete 12076
 insert 3833 0
 insert 12179 1
@@ -18169,7 +18169,7 @@ insert 8664 1
 delete 5737
 insert 8637 1
 insert 9343 0
-rank 0 7232
+rank 1 7232
 delete 8470
 delete 6701
 insert 3665 1
@@ -18178,7 +18178,7 @@ delete 444
 insert 12287 1
 insert 10699 1
 delete 2694
-rank 1 38
+rank 0 38
 delete 606
 insert 9042 1
 insert 9617 1
@@ -18186,7 +18186,7 @@ insert 1765 1
 insert 1380 1
 insert 10914 1
 delete 3406
-rank 1 7243
+rank 0 7243
 delete 11711
 delete 4021
 delete 1935
@@ -18200,7 +18200,7 @@ insert 12068 0
 delete 7198
 insert 5210 1
 insert 268 1
-rank 0 11156
+rank 1 11156
 insert 6915 1
 insert 12208 0
 delete 1684
@@ -18212,7 +18212,7 @@ delete 4215
 insert 1492 0
 insert 688 1
 insert 1991 0
-rank 1 2569
+rank 0 2569
 delete 733
 insert 1447 1
 insert 8609 1
@@ -18222,9 +18222,9 @@ delete 11173
 insert 1650 0
 delete 3596
 insert 8590 1
-rank 1 9894
+rank 0 9894
 insert 1270 1
-rank 0 8539
+rank 1 8539
 insert 5196 1
 insert 9705 0
 insert 5637 1
@@ -18253,7 +18253,7 @@ insert 8411 1
 insert 2512 0
 insert 3887 0
 insert 2635 1
-rank 0 9166
+rank 1 9166
 delete 6028
 delete 1094
 insert 1005 1
@@ -18264,9 +18264,9 @@ insert 2975 1
 insert 11496 0
 insert 1710 0
 insert 209 0
-select 0 2847
+select 0 360
 delete 4916
-rank 0 7060
+rank 1 7060
 delete 6597
 delete 3211
 delete 7018
@@ -18278,12 +18278,12 @@ insert 6941 0
 delete 3028
 delete 12332
 delete 9805
-rank 0 8734
+rank 1 8734
 insert 4963 1
-rank 1 4776
+rank 0 4776
 insert 5201 0
 delete 8349
-rank 0 6161
+rank 1 6161
 delete 6723
 insert 2101 1
 insert 7265 1
@@ -18296,21 +18296,21 @@ delete 4076
 delete 1500
 insert 3111 0
 insert 11769 0
-rank 1 7502
+rank 0 7502
 delete 7931
 insert 2726 0
 insert 4446 0
-rank 0 5045
+rank 1 5045
 delete 1931
-select 0 4855
+select 0 4343
 insert 6661 0
 delete 12196
 insert 6551 0
-rank 1 2956
+rank 0 2956
 insert 5489 1
 insert 3221 0
 delete 10834
-select 1 5734
+select 1 4300
 delete 11263
 insert 7070 0
 delete 1688
@@ -18331,7 +18331,7 @@ insert 6810 0
 delete 8379
 insert 9400 0
 insert 845 0
-select 1 1035
+select 1 6159
 delete 3974
 delete 12153
 delete 9655
@@ -18339,19 +18339,19 @@ delete 11726
 insert 214 0
 delete 5084
 delete 6256
-rank 1 9815
+rank 0 9815
 delete 7819
 insert 9341 1
 insert 7325 0
 insert 3108 0
-select 1 551
+select 1 2270
 delete 1063
 insert 12446 1
 delete 6318
 insert 6488 0
 insert 8859 0
 delete 5953
-select 0 732
+select 0 418
 delete 8312
 insert 11979 1
 insert 1193 0
@@ -18362,9 +18362,9 @@ delete 9320
 insert 9180 1
 insert 1526 0
 delete 3507
-rank 0 2193
+rank 1 2193
 insert 4433 1
-select 1 5611
+select 1 2695
 delete 6902
 delete 10405
 insert 12115 1
@@ -18377,7 +18377,7 @@ insert 305 1
 insert 7847 1
 insert 2335 1
 delete 1194
-rank 0 6903
+rank 1 6903
 insert 2223 1
 insert 5403 1
 delete 672
@@ -18387,7 +18387,7 @@ insert 1429 1
 insert 5792 1
 delete 3597
 insert 5335 1
-rank 1 993
+rank 0 993
 delete 10172
 insert 5938 1
 delete 5822
@@ -18395,16 +18395,16 @@ insert 9273 1
 delete 11796
 delete 1620
 insert 7357 1
-rank 0 6032
+rank 1 6032
 insert 884 0
 insert 9085 1
 insert 3554 0
-select 1 4027
+select 1 3723
 insert 5231 0
-rank 0 6977
+rank 1 6977
 insert 6568 0
 insert 11407 0
-select 0 2828
+select 0 4128
 delete 5969
 insert 11904 1
 insert 3340 0
@@ -18421,9 +18421,9 @@ delete 4686
 delete 4893
 insert 10736 1
 insert 3102 1
-rank 0 300
+rank 1 300
 insert 2946 1
-select 0 5581
+select 0 443
 delete 2747
 delete 12236
 delete 9831
@@ -18445,12 +18445,12 @@ insert 6476 1
 insert 3408 1
 insert 7367 1
 insert 2620 0
-select 1 768
+select 1 2248
 delete 7623
 insert 9711 0
 insert 6553 0
 delete 11582
-rank 0 1919
+rank 1 1919
 delete 7252
 delete 9932
 insert 4798 1
@@ -18458,31 +18458,31 @@ insert 6613 0
 insert 2812 0
 delete 5166
 insert 8811 1
-rank 1 132
+rank 0 132
 insert 3255 1
 delete 4387
 insert 11234 0
-rank 0 12207
+rank 1 12207
 delete 1752
 insert 11492 1
 insert 2168 1
 insert 5121 0
 delete 7155
 insert 2487 0
-rank 1 8569
+rank 0 8569
 insert 7741 0
-select 1 1489
+select 1 3575
 delete 3640
 delete 837
-rank 1 3549
+rank 0 3549
 delete 3357
 insert 1173 1
 delete 4385
 delete 1198
 insert 11358 0
-rank 0 9776
+rank 1 9776
 insert 8955 1
-rank 1 34
+rank 0 34
 insert 102 1
 delete 3298
 insert 2955 0
@@ -18496,10 +18496,10 @@ insert 2148 1
 insert 11103 0
 insert 379 0
 delete 7972
-select 1 4706
+select 1 2863
 delete 5343
 insert 11709 1
-rank 0 7699
+rank 1 7699
 insert 6830 0
 delete 11012
 insert 8102 0
@@ -18511,17 +18511,17 @@ delete 11690
 insert 9309 1
 insert 10034 0
 insert 2591 0
-rank 0 10644
+rank 1 10644
 insert 10737 1
 delete 3289
 insert 3341 0
-select 0 3045
+select 0 4695
 insert 2927 0
 insert 2834 1
-rank 1 8831
+rank 0 8831
 insert 7172 0
 insert 5618 1
-rank 0 12111
+rank 1 12111
 insert 8643 1
 delete 2655
 insert 11728 1
@@ -18538,11 +18538,11 @@ delete 3088
 insert 4223 0
 insert 6222 1
 delete 8645
-select 0 5106
+select 0 4014
 insert 6050 0
 delete 8084
 delete 7910
-select 1 4560
+select 1 1079
 insert 8256 0
 insert 5293 1
 insert 3873 0
@@ -18561,23 +18561,23 @@ insert 6667 1
 delete 3965
 insert 1981 1
 insert 9204 0
-rank 1 4401
+rank 0 4401
 insert 6329 1
-rank 0 8204
+rank 1 8204
 insert 4851 0
 insert 5466 0
 delete 467
-rank 0 11019
+rank 1 11019
 insert 4506 0
 insert 88 0
 delete 8447
-rank 1 5212
+rank 0 5212
 insert 5088 1
 delete 12362
 delete 5549
 insert 7813 1
 delete 1231
-select 0 1952
+select 0 1898
 delete 8511
 delete 1553
 delete 1562
@@ -18591,13 +18591,13 @@ delete 8861
 delete 1675
 insert 3748 1
 insert 6011 0
-rank 0 7827
+rank 1 7827
 insert 11275 1
 insert 4844 0
 insert 4986 0
 insert 4157 1
 insert 2087 0
-select 1 2976
+select 1 1662
 insert 7766 1
 insert 9858 0
 delete 11803
@@ -18605,7 +18605,7 @@ insert 7417 1
 delete 3272
 delete 4413
 insert 295 1
-select 1 5165
+select 1 146
 insert 7883 1
 delete 6340
 insert 887 1
@@ -18615,19 +18615,19 @@ insert 8451 0
 delete 4128
 delete 1853
 delete 1847
-rank 0 2617
+rank 1 2617
 delete 7403
 insert 6561 0
 insert 12504 0
 insert 6709 0
-select 1 5433
+select 1 5602
 insert 9096 1
 delete 10064
 insert 6405 1
 insert 7355 0
 delete 776
 delete 5793
-rank 1 6568
+rank 0 6568
 insert 9678 1
 delete 7893
 insert 365 1
@@ -18641,16 +18641,16 @@ insert 11868 0
 insert 3543 0
 delete 2570
 insert 8319 0
-select 1 5616
+select 1 2891
 insert 3741 1
 delete 4777
 insert 9177 1
 insert 2450 0
 delete 9921
 insert 3917 0
-select 0 176
+select 0 1637
 insert 11198 1
-select 0 2664
+select 0 5903
 insert 8197 1
 insert 5629 1
 insert 669 0
@@ -18660,7 +18660,7 @@ insert 5490 0
 insert 9223 0
 insert 12157 0
 insert 6885 1
-rank 1 9527
+rank 0 9527
 delete 867
 delete 17
 insert 6528 1
@@ -18671,7 +18671,7 @@ delete 3208
 insert 8933 1
 delete 9831
 insert 3634 0
-rank 0 718
+rank 1 718
 insert 7362 1
 insert 10279 0
 insert 6798 1
@@ -18688,17 +18688,17 @@ insert 2904 0
 delete 12400
 insert 112 0
 insert 1150 0
-rank 1 9986
+rank 0 9986
 insert 4044 1
 delete 5101
 insert 5973 1
-rank 1 10014
+rank 0 10014
 delete 2985
 insert 4180 1
-rank 0 9197
+rank 1 9197
 insert 5636 1
 delete 7460
-rank 1 9191
+rank 0 9191
 insert 2708 0
 insert 7069 1
 insert 9175 1
@@ -18729,34 +18729,34 @@ insert 10858 1
 insert 4075 0
 delete 5273
 insert 5856 0
-select 0 5350
+select 0 4608
 insert 9766 0
 delete 12482
 delete 794
 insert 6964 0
-rank 0 8168
+rank 1 8168
 insert 8161 0
 delete 11650
 insert 2266 1
 insert 4292 1
-select 0 4400
+select 0 5770
 delete 11956
 insert 499 1
 insert 949 1
-rank 1 1005
+rank 0 1005
 delete 10990
 insert 6564 0
 delete 8192
 insert 1553 1
-rank 0 9854
+rank 1 9854
 insert 2215 0
 delete 10068
-rank 0 4370
+rank 1 4370
 insert 720 0
 insert 9622 0
 insert 3058 0
-rank 1 6221
-select 1 1670
+rank 0 6221
+select 1 2522
 insert 3881 0
 delete 1170
 insert 6493 1
@@ -18769,17 +18769,17 @@ delete 11630
 delete 5492
 insert 6728 1
 insert 4252 0
-select 0 2605
+select 0 4592
 insert 6635 0
 insert 401 1
 delete 1210
-rank 1 7
+rank 0 7
 insert 10652 1
 delete 11851
 insert 9214 1
-rank 1 11673
+rank 0 11673
 insert 11775 0
-select 0 4439
+select 0 5025
 delete 3615
 insert 10254 0
 insert 10224 0
@@ -18790,12 +18790,12 @@ delete 9306
 insert 12194 1
 insert 5660 1
 insert 7338 0
-rank 0 8859
+rank 1 8859
 delete 7246
-rank 1 4984
+rank 0 4984
 insert 6516 0
 insert 10762 1
-select 0 3685
+select 0 3063
 delete 1758
 delete 9092
 insert 203 0
@@ -18806,7 +18806,7 @@ delete 6618
 insert 12182 0
 delete 2335
 insert 11681 1
-select 1 817
+select 1 2799
 insert 4762 1
 delete 600
 insert 2847 0
@@ -18815,7 +18815,7 @@ insert 5643 0
 insert 408 1
 delete 6388
 insert 2338 0
-select 0 1673
+select 0 5816
 insert 1711 1
 delete 8487
 insert 7210 1
@@ -18833,25 +18833,25 @@ insert 11384 1
 insert 8062 0
 delete 7039
 delete 2500
-rank 1 5706
+rank 0 5706
 insert 9594 1
-rank 1 10570
-select 1 2924
+rank 0 10570
+select 1 4656
 insert 7573 1
-rank 0 10832
+rank 1 10832
 delete 2764
 insert 4132 1
 delete 9058
-rank 1 3309
+rank 0 3309
 delete 11994
 insert 8361 1
 insert 1130 0
 insert 801 1
 delete 7325
 delete 2554
-rank 0 43
+rank 1 43
 insert 1362 1
-rank 0 2316
+rank 1 2316
 delete 9255
 delete 2264
 delete 979
@@ -18861,27 +18861,27 @@ insert 2683 1
 insert 12277 0
 insert 2072 1
 delete 10024
-rank 0 1351
+rank 1 1351
 insert 3366 0
 insert 2588 0
-rank 1 8394
+rank 0 8394
 insert 4003 1
-rank 1 3855
+rank 0 3855
 delete 5594
-select 0 1057
+select 0 958
 insert 10990 1
 insert 10864 1
-rank 1 2951
+rank 0 2951
 insert 5003 1
-select 1 211
+select 1 3505
 delete 3434
 insert 213 1
 insert 6701 0
 insert 2121 1
-select 0 1767
+select 0 4067
 delete 310
 insert 6286 1
-rank 0 49
+rank 1 49
 delete 3898
 delete 7564
 delete 1363
@@ -18890,22 +18890,22 @@ insert 9171 0
 insert 10732 1
 insert 12433 1
 insert 11483 1
-rank 0 1254
+rank 1 1254
 delete 3505
-rank 1 4915
+rank 0 4915
 insert 12304 1
 insert 3676 0
 insert 3431 1
 insert 6964 0
 insert 3719 0
 delete 116
-rank 1 1632
+rank 0 1632
 insert 4968 1
 insert 7578 1
 insert 8068 1
 delete 8973
 insert 4646 0
-rank 0 446
+rank 1 446
 delete 7706
 delete 3264
 insert 10627 1
@@ -18914,17 +18914,17 @@ insert 6196 0
 delete 3054
 insert 6326 0
 delete 9240
-rank 1 4822
+rank 0 4822
 delete 2416
 delete 3437
 insert 8856 0
 delete 10002
-rank 0 10528
+rank 1 10528
 insert 8850 1
 insert 4961 0
 delete 11410
 insert 11521 0
-rank 1 3909
+rank 0 3909
 insert 6479 1
 insert 8566 1
 insert 4755 0
@@ -18932,13 +18932,13 @@ insert 12553 1
 insert 7028 1
 insert 2488 0
 insert 5630 1
-select 0 2679
+select 0 1494
 insert 1108 1
-select 0 1304
+select 0 3497
 insert 5753 1
 insert 9003 1
 delete 11179
-rank 1 10428
+rank 0 10428
 insert 4413 1
 insert 9651 1
 insert 2879 0
@@ -18946,7 +18946,7 @@ delete 9311
 insert 3920 1
 insert 9852 1
 insert 721 1
-rank 1 6284
+rank 0 6284
 insert 6767 1
 delete 382
 delete 1541
@@ -18963,12 +18963,12 @@ insert 5788 1
 insert 11307 0
 insert 12056 1
 delete 200
-rank 1 2056
-select 0 6173
+rank 0 2056
+select 0 4163
 insert 9349 1
 insert 2849 1
 insert 217 1
-rank 0 9580
+rank 1 9580
 insert 7635 0
 delete 11907
 insert 6436 1
@@ -18983,7 +18983,7 @@ insert 10756 0
 insert 5806 1
 delete 315
 insert 4958 1
-rank 0 8839
+rank 1 8839
 insert 6489 0
 insert 10451 0
 insert 5550 0
@@ -18994,7 +18994,7 @@ delete 410
 insert 12419 1
 insert 8046 1
 insert 5501 1
-select 0 2014
+select 0 4978
 insert 9442 1
 insert 6865 0
 delete 8886
@@ -19016,28 +19016,28 @@ insert 4058 1
 delete 11526
 insert 3147 1
 insert 1436 1
-rank 1 890
+rank 0 890
 insert 6191 0
 insert 3450 0
 insert 9129 0
 insert 7250 0
 insert 12231 1
 insert 2404 1
-rank 0 10745
+rank 1 10745
 delete 180
 insert 8860 1
-rank 0 6116
+rank 1 6116
 insert 7297 1
 delete 9347
 insert 6873 0
 insert 9533 0
 insert 7159 0
-rank 0 10602
+rank 1 10602
 insert 4882 0
 delete 3083
-rank 0 3840
+rank 1 3840
 insert 345 0
-rank 0 7908
+rank 1 7908
 insert 5334 0
 delete 3120
 delete 8310
@@ -19062,10 +19062,10 @@ delete 4894
 insert 8661 1
 delete 10928
 delete 4125
-rank 0 4749
+rank 1 4749
 insert 10741 0
 insert 2326 1
-rank 1 7084
+rank 0 7084
 insert 676 1
 insert 160 0
 insert 11200 0
@@ -19073,7 +19073,7 @@ insert 1723 1
 insert 3090 0
 insert 6251 0
 insert 7742 1
-rank 0 7948
+rank 1 7948
 insert 7334 1
 insert 1968 0
 insert 8557 1
@@ -19082,10 +19082,10 @@ delete 829
 insert 285 1
 insert 11192 0
 insert 11996 0
-rank 0 5662
+rank 1 5662
 delete 6942
 delete 3228
-rank 1 6108
+rank 0 6108
 insert 8634 0
 insert 7577 0
 delete 7000
@@ -19100,11 +19100,11 @@ insert 9207 1
 insert 5826 0
 insert 3765 1
 insert 12145 1
-rank 1 2052
+rank 0 2052
 insert 10732 1
 insert 8024 0
 insert 750 0
-select 1 5907
+select 1 3851
 insert 8578 0
 insert 10461 0
 insert 8136 0
@@ -19115,21 +19115,21 @@ insert 9543 1
 delete 8420
 insert 10628 0
 insert 2376 1
-rank 0 5707
+rank 1 5707
 insert 5692 1
 delete 2811
 insert 6622 0
 insert 1678 1
 insert 5670 0
 insert 263 1
-rank 1 7414
+rank 0 7414
 insert 9833 0
 delete 1067
 delete 10183
 insert 4505 1
 insert 10929 1
 insert 9107 1
-rank 1 99
+rank 0 99
 insert 9422 1
 insert 6632 1
 insert 1425 0
@@ -19137,7 +19137,7 @@ insert 5396 0
 delete 9567
 insert 8113 1
 insert 7371 1
-rank 1 83
+rank 0 83
 delete 7767
 insert 11868 0
 delete 9682
@@ -19146,16 +19146,16 @@ insert 2428 1
 insert 1312 1
 insert 12108 1
 insert 4759 0
-rank 1 6053
+rank 0 6053
 delete 11370
-select 1 3642
+select 1 968
 delete 5401
 insert 8008 1
 delete 546
 delete 9456
 insert 2158 1
 delete 2643
-select 1 4878
+select 1 2586
 insert 9507 0
 delete 12331
 delete 8867
@@ -19171,15 +19171,15 @@ delete 9988
 insert 7871 0
 delete 1253
 insert 11621 0
-rank 1 2551
+rank 0 2551
 insert 8291 1
-rank 0 6216
+rank 1 6216
 insert 460 0
 insert 2715 0
 insert 9196 0
-select 0 5172
+select 0 315
 insert 10416 0
-select 1 5156
+select 1 1492
 insert 2071 1
 insert 10491 0
 delete 5111
@@ -19196,7 +19196,7 @@ insert 1438 0
 insert 11955 0
 insert 359 0
 insert 8646 0
-select 1 143
+select 1 5279
 insert 1806 0
 delete 8988
 delete 6578
@@ -19210,48 +19210,48 @@ insert 2903 1
 delete 7547
 insert 7623 0
 delete 8158
-select 1 417
+select 1 1996
 delete 7925
 delete 694
 insert 3201 0
 insert 7711 0
 delete 11272
 delete 3449
-rank 1 10973
+rank 0 10973
 insert 7026 0
 insert 5820 0
 insert 4007 0
-rank 1 1404
+rank 0 1404
 insert 9719 0
-rank 1 7425
+rank 0 7425
 insert 12549 1
 insert 11316 0
 insert 11193 0
-rank 1 5215
+rank 0 5215
 delete 2896
-rank 0 1012
+rank 1 1012
 insert 12170 1
-rank 0 272
+rank 1 272
 insert 3501 0
 delete 4328
 insert 4264 0
 delete 2500
 delete 440
 delete 931
-rank 0 383
-select 1 3479
+rank 1 383
+select 1 3489
 insert 3293 0
 insert 3493 1
 insert 3788 1
 insert 2124 1
 insert 2649 0
-rank 1 2856
+rank 0 2856
 delete 12308
 delete 8299
 insert 9194 1
 insert 10720 0
 insert 1498 1
-select 1 1996
+select 1 5668
 delete 4507
 insert 7794 1
 insert 9179 0
@@ -19272,7 +19272,7 @@ insert 4509 0
 insert 11053 1
 insert 11071 0
 insert 2606 0
-rank 0 11918
+rank 1 11918
 delete 5883
 insert 11651 1
 delete 3479
@@ -19281,7 +19281,7 @@ insert 2538 0
 delete 7202
 delete 6604
 insert 5822 0
-select 1 5206
+select 1 4396
 delete 5791
 delete 10421
 insert 10677 1
@@ -19297,12 +19297,12 @@ insert 5851 1
 delete 10035
 insert 8175 0
 insert 8764 0
-rank 0 5484
+rank 1 5484
 insert 4143 1
 insert 11732 0
 insert 11947 0
 insert 7141 0
-rank 1 3692
+rank 0 3692
 delete 3124
 insert 12670 1
 insert 9806 0
@@ -19311,9 +19311,9 @@ delete 6827
 delete 2085
 insert 7393 1
 insert 4855 1
-rank 1 4386
+rank 0 4386
 insert 10488 1
-select 1 5653
+select 1 4254
 insert 549 0
 delete 5432
 insert 7386 0
@@ -19343,7 +19343,7 @@ insert 6107 1
 insert 9147 1
 insert 9231 0
 delete 5351
-rank 0 1084
+rank 1 1084
 insert 10710 0
 delete 3968
 delete 5174
@@ -19352,15 +19352,15 @@ insert 3877 0
 insert 11763 0
 insert 5565 0
 delete 7919
-rank 1 5271
-select 1 440
+rank 0 5271
+select 1 2870
 delete 11174
-rank 1 554
+rank 0 554
 insert 5158 1
 insert 5399 0
 delete 3724
 insert 2601 0
-select 0 2184
+select 0 4918
 insert 7590 1
 delete 12443
 insert 85 0
@@ -19369,14 +19369,14 @@ insert 8224 1
 insert 9375 0
 delete 1477
 insert 384 0
-select 0 3375
+select 0 6261
 delete 11590
 insert 4042 0
 delete 4501
 insert 3485 1
-rank 0 3949
+rank 1 3949
 insert 6794 0
-rank 0 85
+rank 1 85
 insert 10180 1
 delete 11981
 insert 4318 1
@@ -19387,14 +19387,14 @@ delete 12111
 delete 1091
 insert 2329 0
 insert 2706 0
-rank 0 6881
+rank 1 6881
 insert 109 1
 insert 10491 1
 insert 10255 1
 insert 8899 0
 insert 7769 1
 insert 6154 0
-select 1 5946
+select 1 4778
 insert 4117 0
 insert 3044 1
 insert 829 1
@@ -19413,35 +19413,35 @@ insert 5224 1
 insert 2832 1
 delete 2499
 delete 10442
-rank 1 3215
+rank 0 3215
 insert 10363 1
-rank 0 6981
+rank 1 6981
 insert 10634 1
 insert 10000 0
 delete 5961
 insert 10880 1
 delete 8274
-select 0 4297
+select 0 5347
 insert 5549 1
 insert 11061 0
 insert 4577 0
 delete 6838
 delete 1917
-rank 0 3636
-select 0 4160
+rank 1 3636
+select 0 4956
 insert 10332 0
-rank 1 3366
+rank 0 3366
 delete 1912
 delete 8821
 delete 3697
-rank 0 11392
+rank 1 11392
 insert 10555 0
 insert 9782 1
 insert 1958 0
 delete 9196
 delete 12265
 insert 7663 0
-select 0 1253
+select 0 6166
 delete 8162
 insert 6766 1
 insert 11317 0
@@ -19449,44 +19449,44 @@ insert 8914 1
 insert 344 1
 delete 7913
 insert 5835 1
-select 0 2098
+select 0 1562
 insert 2636 1
 insert 4929 0
-rank 0 10392
+rank 1 10392
 insert 11626 1
 delete 7024
 insert 4741 0
 delete 4707
 insert 8219 0
-rank 0 2381
+rank 1 2381
 insert 1223 0
 insert 11308 1
 insert 5400 1
 insert 9024 0
 delete 2898
 insert 2367 0
-rank 0 11992
-select 1 5481
+rank 1 11992
+select 1 3351
 delete 56
 delete 6134
 insert 7057 1
 insert 3093 1
-rank 1 9682
+rank 0 9682
 delete 1490
 delete 2799
 insert 11785 0
 insert 7971 1
 insert 9406 1
 insert 7564 0
-rank 1 1292
+rank 0 1292
 delete 5616
 insert 3694 0
 delete 2832
-select 1 5484
+select 1 5889
 insert 4768 1
 insert 9873 1
 delete 5710
-rank 1 11145
+rank 0 11145
 delete 6593
 insert 5970 1
 delete 12315
@@ -19495,7 +19495,7 @@ insert 11211 0
 insert 4732 1
 insert 665 1
 delete 5267
-rank 1 8754
+rank 0 8754
 delete 8077
 insert 1464 0
 insert 12662 0
@@ -19504,8 +19504,8 @@ insert 2071 1
 insert 6145 0
 insert 9185 0
 delete 6821
-rank 0 12352
-select 0 618
+rank 1 12352
+select 0 4889
 delete 1859
 insert 7378 0
 delete 11578
@@ -19513,15 +19513,15 @@ delete 8801
 delete 343
 insert 1717 1
 delete 8651
-select 0 3750
+select 0 1103
 insert 9974 0
 insert 3105 1
 insert 1116 0
 insert 9235 1
 insert 11685 1
-select 1 913
+select 1 3507
 insert 10162 1
-rank 1 7647
+rank 0 7647
 delete 10140
 insert 523 1
 insert 5866 1
@@ -19533,47 +19533,47 @@ delete 10426
 insert 10964 1
 insert 2617 1
 insert 1820 0
-rank 0 1166
+rank 1 1166
 insert 9234 1
 insert 8442 1
-select 1 3440
+select 1 1740
 insert 466 1
 delete 1542
 delete 11627
 insert 4400 0
-rank 0 1707
+rank 1 1707
 insert 6002 1
 insert 11685 1
 delete 11165
 delete 12688
 insert 3027 0
-rank 0 10069
+rank 1 10069
 insert 8016 0
-rank 1 7612
+rank 0 7612
 insert 12508 1
 insert 7522 1
 insert 12268 1
-rank 0 1990
+rank 1 1990
 delete 4019
 delete 3176
 delete 5130
-rank 0 9197
+rank 1 9197
 insert 7077 0
 insert 9000 1
 insert 12225 0
 insert 8036 0
 delete 11786
-rank 0 1757
+rank 1 1757
 delete 11710
 insert 4236 0
 insert 76 0
 insert 9713 0
 insert 1259 0
-rank 0 2076
+rank 1 2076
 delete 10266
 insert 8198 0
 delete 3808
-rank 1 4855
+rank 0 4855
 insert 2689 1
 insert 42 1
 insert 10749 1
@@ -19583,23 +19583,23 @@ insert 1036 1
 insert 11126 1
 delete 6799
 insert 9998 1
-rank 1 4880
+rank 0 4880
 insert 188 1
 insert 9711 1
 insert 2377 1
 delete 7241
-rank 1 9619
+rank 0 9619
 insert 9283 1
-select 0 1812
+select 0 6048
 delete 10651
 insert 2423 1
 insert 12157 1
 delete 5196
-rank 0 9883
+rank 1 9883
 insert 8647 0
 delete 5672
 insert 11010 1
-rank 0 2208
+rank 1 2208
 insert 11718 1
 delete 1461
 insert 9541 1
@@ -19608,7 +19608,7 @@ insert 6338 1
 delete 7580
 insert 3169 0
 insert 11279 0
-rank 1 27
+rank 0 27
 insert 5780 1
 delete 6628
 insert 2058 1
@@ -19625,7 +19625,7 @@ insert 11936 0
 delete 590
 delete 3613
 insert 26 0
-rank 0 6679
+rank 1 6679
 delete 2134
 insert 4686 0
 delete 126
@@ -19633,7 +19633,7 @@ delete 6704
 insert 9800 0
 insert 2708 0
 insert 10925 1
-select 1 2841
+select 1 1423
 insert 296 1
 insert 400 0
 delete 3895
@@ -19643,7 +19643,7 @@ delete 8510
 insert 325 1
 delete 8429
 insert 11863 1
-select 0 1617
+select 0 6129
 insert 3268 1
 delete 12687
 insert 886 0
@@ -19658,35 +19658,35 @@ delete 10118
 insert 11072 1
 delete 10808
 insert 7873 1
-rank 0 10066
+rank 1 10066
 insert 493 1
 insert 10578 1
 insert 162 1
 insert 5652 1
 insert 3422 1
-rank 1 8316
+rank 0 8316
 insert 5649 0
-rank 1 3058
+rank 0 3058
 insert 9950 1
 delete 2541
 insert 2298 1
 insert 4929 0
 insert 7133 0
 insert 8569 0
-rank 1 2796
+rank 0 2796
 insert 10784 0
-select 1 1461
+select 1 2460
 delete 8280
 delete 7802
 insert 9333 0
 insert 4081 1
-rank 1 7544
+rank 0 7544
 delete 10982
 insert 2550 1
-select 0 3086
+select 0 61
 delete 11969
 delete 4727
-rank 0 3981
+rank 1 3981
 insert 2138 0
 delete 148
 insert 2242 0
@@ -19702,7 +19702,7 @@ insert 2568 1
 insert 6742 0
 insert 10105 1
 delete 2315
-select 1 1368
+select 1 2542
 delete 7735
 insert 3156 1
 insert 126 1
@@ -19715,16 +19715,16 @@ insert 1609 1
 insert 955 1
 insert 6615 0
 delete 12325
-rank 0 2707
+rank 1 2707
 insert 4280 1
 insert 10965 1
 insert 5741 1
 delete 7307
-rank 0 559
+rank 1 559
 insert 4600 0
 delete 5331
 insert 12771 0
-rank 0 6684
+rank 1 6684
 insert 9529 0
 insert 1102 1
 insert 901 0
@@ -19742,10 +19742,10 @@ insert 4379 1
 delete 12411
 insert 11367 0
 insert 7697 0
-select 0 2289
+select 0 2264
 insert 4161 1
 insert 3775 1
-rank 0 3038
+rank 1 3038
 insert 367 0
 insert 1387 1
 delete 11203
@@ -19754,7 +19754,7 @@ insert 2064 1
 insert 10419 1
 delete 1618
 delete 4131
-rank 1 7063
+rank 0 7063
 insert 9828 1
 delete 11635
 insert 11302 1
@@ -19772,16 +19772,16 @@ insert 4565 1
 delete 8974
 insert 1886 0
 insert 2796 0
-select 1 5363
+select 1 4565
 insert 3295 0
-rank 0 6757
+rank 1 6757
 insert 6857 1
-select 0 2234
+select 0 3526
 insert 1304 0
 insert 7570 0
-rank 0 4285
+rank 1 4285
 insert 87 0
-select 1 4283
+select 1 1629
 insert 9620 0
 insert 10189 1
 delete 3277
@@ -19790,7 +19790,7 @@ insert 5661 0
 insert 7018 0
 insert 2274 1
 insert 9880 0
-rank 0 4105
+rank 1 4105
 delete 10611
 insert 8115 1
 delete 10024
@@ -19798,7 +19798,7 @@ insert 3594 0
 insert 9727 1
 delete 12429
 delete 335
-rank 0 5420
+rank 1 5420
 insert 9651 1
 insert 5489 1
 delete 3211
@@ -19810,7 +19810,7 @@ insert 7799 0
 insert 3424 1
 delete 1810
 insert 7308 1
-rank 1 5587
+rank 0 5587
 insert 6935 1
 insert 205 0
 insert 9316 1
@@ -19819,7 +19819,7 @@ delete 2050
 insert 11963 1
 delete 2144
 insert 8188 0
-rank 1 11608
+rank 0 11608
 insert 7846 0
 delete 2169
 insert 706 0
@@ -19832,7 +19832,7 @@ insert 3204 1
 insert 158 1
 insert 7563 1
 insert 7705 1
-rank 1 7567
+rank 0 7567
 insert 1100 1
 delete 4150
 delete 11149
@@ -19844,7 +19844,7 @@ insert 1659 1
 delete 2529
 insert 7091 1
 delete 2678
-select 1 5030
+select 1 1255
 delete 7009
 insert 147 1
 insert 7329 1
@@ -19866,22 +19866,22 @@ insert 7193 1
 delete 3407
 delete 11833
 delete 5878
-select 1 1237
+select 1 3967
 delete 4274
-rank 0 7891
+rank 1 7891
 insert 4790 1
 delete 6848
 insert 12678 0
 delete 12768
-rank 0 4959
+rank 1 4959
 insert 159 1
 insert 10604 1
 insert 9105 1
 delete 12754
 delete 3860
-rank 1 7016
+rank 0 7016
 delete 10707
-rank 0 11175
+rank 1 11175
 insert 8825 0
 insert 8743 0
 insert 5537 0
@@ -19889,7 +19889,7 @@ delete 11133
 delete 337
 delete 8545
 insert 1898 1
-rank 0 2068
+rank 1 2068
 insert 8548 1
 insert 11420 1
 delete 8971
@@ -19900,7 +19900,7 @@ insert 4965 1
 insert 8536 1
 delete 5724
 insert 4629 1
-rank 0 9643
+rank 1 9643
 delete 2515
 insert 1344 1
 insert 327 1
@@ -19915,11 +19915,11 @@ insert 5504 1
 delete 6504
 insert 2049 1
 insert 106 0
-rank 0 11689
+rank 1 11689
 insert 10668 1
 insert 109 0
 delete 10269
-select 0 4456
+select 0 5514
 insert 11504 1
 delete 5024
 insert 6893 1
@@ -19943,7 +19943,7 @@ insert 11771 0
 insert 6226 1
 insert 9746 0
 delete 5441
-rank 0 11320
+rank 1 11320
 insert 3634 0
 insert 8588 0
 delete 5671
@@ -19955,21 +19955,21 @@ insert 4185 1
 insert 12394 0
 delete 9333
 insert 7058 1
-rank 1 995
+rank 0 995
 insert 8790 1
 insert 11585 1
 delete 9477
 insert 4616 1
-rank 0 6094
+rank 1 6094
 insert 8292 0
-select 1 5820
+select 1 2621
 insert 12514 1
 insert 2422 1
 delete 6355
 delete 10714
-rank 1 7801
+rank 0 7801
 insert 784 1
-select 0 3063
+select 0 817
 insert 4226 0
 insert 12540 0
 insert 2540 0
@@ -19977,16 +19977,16 @@ insert 561 0
 insert 11797 1
 insert 1464 1
 insert 2102 1
-rank 0 5816
+rank 1 5816
 insert 4435 0
 insert 540 1
 delete 6020
 insert 7271 1
 insert 3177 1
-select 1 4973
+select 1 2593
 insert 2724 1
 insert 10835 1
-rank 1 6240
+rank 0 6240
 insert 4273 0
 delete 11905
 insert 1083 1
@@ -19996,7 +19996,7 @@ delete 2722
 delete 4665
 delete 12770
 insert 6745 1
-rank 0 6549
+rank 1 6549
 delete 8221
 insert 941 1
 delete 2669
@@ -20010,15 +20010,15 @@ insert 8863 1
 delete 7081
 insert 5558 0
 insert 787 1
-select 0 5837
+select 0 3440
 insert 10246 1
 insert 9619 1
-rank 0 12310
+rank 1 12310
 insert 3803 1
 insert 4639 1
 insert 1525 1
 insert 10316 0
-rank 0 1289
+rank 1 1289
 insert 7238 1
 insert 3245 0
 delete 4380
@@ -20031,13 +20031,13 @@ insert 198 1
 insert 4789 1
 delete 10617
 insert 10745 0
-rank 0 2220
+rank 1 2220
 insert 359 0
 delete 1900
 insert 1203 0
 insert 10965 0
 insert 6574 1
-rank 1 4356
+rank 0 4356
 insert 3090 0
 insert 6768 1
 insert 4008 1
@@ -20047,38 +20047,38 @@ delete 5930
 delete 4288
 delete 7390
 delete 4108
-select 1 931
+select 1 3084
 insert 9972 1
 insert 8545 0
 insert 6920 1
 insert 9257 0
-rank 0 4913
+rank 1 4913
 insert 1873 0
 insert 8336 1
 delete 8614
 insert 10182 0
 insert 6149 0
-select 0 6043
+select 0 5961
 insert 11580 1
 insert 3280 1
 delete 187
 insert 11888 0
 delete 8936
-rank 0 6732
+rank 1 6732
 insert 10844 1
 delete 10043
 delete 3535
 insert 4532 0
 delete 11336
-select 0 5209
+select 0 1921
 insert 12560 1
-select 1 5978
+select 1 3320
 insert 12344 1
 delete 9289
 delete 9226
 insert 5625 0
 insert 2484 1
-select 0 6284
+select 0 4134
 insert 12451 0
 insert 10096 1
 delete 2572
@@ -20087,7 +20087,7 @@ insert 11295 0
 insert 7171 0
 insert 7417 1
 delete 6693
-select 1 1505
+select 1 4564
 insert 3194 1
 delete 957
 delete 2874
@@ -20099,20 +20099,20 @@ insert 1024 1
 insert 1802 0
 insert 8736 1
 insert 7445 1
-select 1 2984
+select 1 3514
 delete 11026
 insert 10007 0
 delete 1908
 delete 2107
-rank 0 4780
+rank 1 4780
 delete 10114
 insert 10889 0
 delete 3082
 delete 1617
 delete 5966
-select 0 6101
+select 0 420
 insert 5601 1
-rank 0 2817
+rank 1 2817
 insert 5058 1
 delete 7616
 delete 12206
@@ -20159,7 +20159,7 @@ insert 11898 1
 insert 2361 0
 insert 6525 0
 insert 3877 1
-select 0 1059
+select 0 6399
 insert 5110 0
 delete 6113
 insert 12247 1
@@ -20171,9 +20171,9 @@ delete 2746
 insert 6275 1
 insert 431 1
 insert 4545 0
-rank 0 3384
+rank 1 3384
 insert 1144 0
-rank 0 2276
+rank 1 2276
 delete 3986
 delete 4904
 delete 1978
@@ -20181,9 +20181,9 @@ insert 10420 0
 delete 5290
 insert 601 0
 delete 3220
-rank 1 11872
+rank 0 11872
 delete 7114
-rank 0 7916
+rank 1 7916
 insert 12785 0
 delete 5531
 delete 9618
@@ -20191,37 +20191,37 @@ delete 5355
 delete 5581
 insert 9730 1
 delete 4003
-rank 0 8604
+rank 1 8604
 delete 9610
-rank 1 11861
+rank 0 11861
 insert 2128 1
 insert 10753 1
 insert 23 1
-rank 1 7103
+rank 0 7103
 insert 9078 1
 insert 9166 0
 insert 12926 1
 insert 6330 1
-rank 1 1669
+rank 0 1669
 insert 3465 1
 delete 10460
-rank 1 3488
+rank 0 3488
 insert 5662 0
 insert 4162 1
-rank 1 11139
+rank 0 11139
 insert 7707 0
 insert 1500 0
 insert 1435 0
 insert 8329 1
 insert 12045 1
 insert 1396 0
-rank 0 1477
+rank 1 1477
 insert 11690 0
 delete 1292
 delete 6464
 insert 9425 1
 insert 10090 1
-select 0 1094
+select 0 986
 insert 5348 0
 insert 3759 1
 insert 8139 0
@@ -20240,10 +20240,10 @@ insert 2142 1
 insert 10027 0
 insert 3011 0
 insert 4557 1
-rank 0 1859
-select 0 3815
+rank 1 1859
+select 0 2135
 delete 6703
-rank 0 1019
+rank 1 1019
 insert 6766 0
 insert 9381 1
 insert 10739 1
@@ -20251,12 +20251,12 @@ delete 2603
 insert 11976 1
 insert 12956 1
 insert 8571 0
-rank 0 6585
-select 1 1182
+rank 1 6585
+select 1 911
 insert 9593 0
 insert 5912 1
 insert 11223 1
-select 1 5418
+select 1 5171
 delete 6237
 insert 10225 0
 insert 12565 1
@@ -20264,7 +20264,7 @@ delete 3361
 insert 8376 0
 delete 10742
 insert 5898 1
-select 0 1902
+select 0 2916
 delete 73
 insert 9115 0
 insert 7625 0
@@ -20280,12 +20280,12 @@ insert 9276 1
 delete 7526
 insert 7981 0
 delete 1696
-rank 1 1743
+rank 0 1743
 insert 5618 0
 insert 305 1
 insert 8045 0
 insert 10840 0
-rank 0 7740
+rank 1 7740
 insert 10950 0
 delete 10125
 insert 4128 1
@@ -20306,10 +20306,10 @@ delete 1930
 insert 2642 0
 insert 7467 0
 insert 6510 1
-rank 1 3553
+rank 0 3553
 insert 12438 1
 insert 10982 0
-rank 1 1107
+rank 0 1107
 insert 625 0
 insert 1673 0
 delete 7903
@@ -20325,7 +20325,7 @@ insert 4553 1
 delete 890
 insert 4067 0
 insert 1028 1
-rank 0 217
+rank 1 217
 insert 11572 1
 insert 2209 0
 insert 4867 1
@@ -20342,16 +20342,16 @@ insert 11082 0
 delete 9866
 delete 1592
 insert 9477 1
-select 0 2611
+select 0 626
 insert 5499 0
 delete 4797
-rank 0 6781
+rank 1 6781
 insert 11806 0
 insert 12218 0
 delete 2234
 delete 786
 insert 5902 1
-select 1 3687
+select 1 4384
 insert 6502 1
 insert 4833 1
 delete 2492
@@ -20361,31 +20361,31 @@ insert 8026 0
 insert 5293 0
 delete 672
 insert 1987 0
-select 0 2308
+select 0 1815
 insert 4270 1
 insert 9264 0
 delete 1412
-select 1 4695
+select 1 1847
 delete 10959
-rank 0 4721
+rank 1 4721
 insert 6659 0
 insert 8951 0
 insert 4969 0
 insert 2011 0
-rank 0 1632
+rank 1 1632
 insert 6623 0
 insert 7420 0
 delete 161
 delete 2966
 insert 9227 1
-rank 0 1279
+rank 1 1279
 delete 286
 insert 10032 1
 insert 6548 0
-rank 0 3477
+rank 1 3477
 insert 8618 0
 delete 5975
-select 0 2626
+select 0 2681
 delete 4158
 insert 4629 0
 insert 8114 1
@@ -20393,11 +20393,11 @@ insert 9922 0
 delete 11302
 delete 8490
 insert 9868 0
-rank 0 5776
+rank 1 5776
 delete 9248
 insert 11571 1
 insert 10664 0
-rank 0 6810
+rank 1 6810
 delete 4674
 delete 10070
 insert 8523 1
@@ -20410,12 +20410,12 @@ delete 1162
 insert 5726 0
 delete 6795
 insert 4628 0
-select 0 431
+select 0 562
 insert 841 0
 delete 8912
 insert 8761 1
 insert 391 0
-select 0 1061
+select 0 887
 delete 11201
 insert 11980 0
 insert 9837 1
@@ -20437,11 +20437,11 @@ delete 5632
 insert 1275 1
 delete 7277
 insert 8329 0
-rank 0 2655
+rank 1 2655
 delete 11969
 insert 371 0
 insert 6793 0
-select 0 5851
+select 0 6227
 insert 11272 0
 insert 6240 1
 delete 3324
@@ -20456,12 +20456,12 @@ insert 8235 1
 delete 7884
 insert 7596 1
 delete 10390
-select 0 810
+select 0 1115
 delete 1397
 delete 1628
 insert 4649 1
 insert 10123 1
-select 1 4468
+select 1 2205
 insert 11645 1
 insert 7683 0
 insert 12700 0
@@ -20469,24 +20469,24 @@ insert 4253 1
 delete 5336
 delete 1355
 delete 2914
-rank 1 2679
+rank 0 2679
 delete 4604
 insert 7482 1
 insert 12177 1
 delete 6842
-rank 0 3661
+rank 1 3661
 insert 2591 0
 delete 1767
-rank 0 3793
+rank 1 3793
 delete 6384
 insert 930 1
 insert 11818 0
-rank 0 10726
+rank 1 10726
 insert 1587 1
-rank 0 1891
+rank 1 1891
 insert 11693 0
-rank 0 4850
-select 1 5734
+rank 1 4850
+select 1 2388
 insert 1215 0
 insert 11257 1
 delete 9620
@@ -20499,16 +20499,16 @@ insert 3720 0
 delete 12297
 delete 6976
 delete 4486
-rank 1 8859
-select 1 3355
+rank 0 8859
+select 1 6419
 insert 8728 1
 delete 2808
 insert 1579 1
 insert 11023 1
-rank 0 4791
+rank 1 4791
 delete 3622
 insert 11651 1
-rank 0 7237
+rank 1 7237
 delete 7704
 delete 778
 insert 12801 1
@@ -20523,19 +20523,19 @@ insert 3806 1
 insert 9269 1
 insert 12483 0
 insert 3367 0
-select 0 4058
+select 0 863
 delete 4414
 insert 12281 1
-rank 0 3884
+rank 1 3884
 insert 1732 0
 insert 3934 1
 delete 11957
-rank 1 719
+rank 0 719
 insert 2699 1
-select 0 2981
+select 0 6303
 insert 6432 1
 insert 6313 1
-rank 1 7267
+rank 0 7267
 insert 8928 0
 insert 6642 0
 delete 1247
@@ -20548,14 +20548,14 @@ insert 1391 1
 delete 572
 delete 2601
 insert 12594 1
-rank 1 10406
+rank 0 10406
 insert 12698 1
 insert 7048 1
-rank 1 10468
+rank 0 10468
 delete 1884
 insert 972 0
 delete 655
-rank 1 12713
+rank 0 12713
 delete 10435
 insert 2291 0
 delete 1048
@@ -20564,10 +20564,10 @@ delete 10554
 insert 834 0
 delete 9070
 delete 8734
-rank 1 2041
+rank 0 2041
 insert 3775 0
 insert 4549 1
-select 1 1033
+select 1 3577
 insert 6251 1
 insert 6717 0
 insert 5780 1
@@ -20577,11 +20577,11 @@ insert 4852 1
 insert 8073 1
 delete 4905
 insert 8715 1
-select 0 2817
+select 0 2543
 insert 3231 1
 insert 7919 0
 insert 10556 0
-rank 0 2936
+rank 1 2936
 delete 4964
 delete 8306
 insert 10699 0
@@ -20602,7 +20602,7 @@ delete 2033
 delete 11570
 insert 12750 0
 insert 8664 0
-rank 0 7259
+rank 1 7259
 insert 7201 1
 delete 4518
 insert 5299 0
@@ -20617,10 +20617,10 @@ delete 8578
 insert 3658 1
 insert 3512 0
 insert 8481 0
-rank 0 12530
+rank 1 12530
 delete 11375
 insert 6059 0
-select 1 4416
+select 1 4256
 insert 10490 0
 insert 11913 1
 delete 117
@@ -20635,7 +20635,7 @@ insert 9261 1
 insert 5319 0
 delete 6278
 delete 7760
-select 1 6342
+select 1 6072
 insert 5436 1
 insert 12673 1
 insert 10913 1
@@ -20643,13 +20643,13 @@ insert 8139 1
 delete 6781
 delete 2999
 insert 3508 0
-select 0 6260
+select 0 6116
 insert 7742 1
 delete 6034
 insert 5570 0
 insert 5017 0
 insert 1102 0
-select 1 4379
+select 1 4193
 insert 12899 1
 delete 9491
 insert 2482 0
@@ -20658,7 +20658,7 @@ delete 11328
 insert 9800 0
 insert 1981 1
 insert 12195 0
-select 1 2553
+select 1 1307
 delete 12461
 insert 1107 0
 insert 9002 1
@@ -20668,7 +20668,7 @@ insert 11229 1
 insert 6802 1
 delete 2205
 insert 1825 1
-select 0 4700
+select 0 1273
 insert 6439 1
 insert 8801 1
 insert 6414 0
@@ -20682,11 +20682,11 @@ insert 10846 1
 insert 9946 1
 insert 8552 1
 insert 10771 1
-rank 0 2034
+rank 1 2034
 insert 1596 0
 delete 10283
 delete 4802
-rank 0 2787
+rank 1 2787
 insert 10629 0
 delete 865
 delete 7030
@@ -20694,7 +20694,7 @@ delete 5173
 insert 11787 0
 insert 2521 1
 delete 8016
-rank 1 338
+rank 0 338
 insert 8502 1
 insert 10900 0
 insert 11907 1
@@ -20705,11 +20705,11 @@ insert 3105 1
 delete 7945
 insert 8784 0
 insert 2470 1
-rank 0 3302
+rank 1 3302
 insert 7325 1
 insert 7622 0
 insert 10434 0
-select 1 1610
+select 1 1448
 delete 7727
 insert 10909 1
 insert 9980 0
@@ -20717,13 +20717,13 @@ delete 12018
 insert 2661 0
 delete 12669
 insert 12786 1
-rank 1 3164
+rank 0 3164
 insert 9649 0
 insert 2329 0
 insert 12782 0
 delete 2551
 insert 2294 1
-rank 0 4293
+rank 1 4293
 insert 12898 0
 insert 9216 0
 insert 647 1
@@ -20754,25 +20754,25 @@ insert 11093 1
 delete 5765
 insert 5881 0
 delete 1966
-select 0 4532
+select 0 6251
 insert 8221 1
 insert 4060 0
 insert 5300 1
 insert 5086 0
-select 1 4573
+select 1 397
 insert 8503 1
 insert 1860 0
 insert 8392 0
 delete 5832
 insert 8878 1
 insert 7953 1
-rank 0 10713
+rank 1 10713
 delete 10577
 insert 720 1
 insert 7370 1
 insert 10800 0
 insert 7705 0
-rank 0 7787
+rank 1 7787
 insert 735 1
 insert 6580 1
 insert 6946 1
@@ -20785,7 +20785,7 @@ insert 10275 0
 insert 84 0
 insert 7775 1
 insert 11463 0
-rank 0 12516
+rank 1 12516
 insert 286 0
 delete 7839
 delete 3352
@@ -20804,28 +20804,28 @@ delete 8961
 delete 7646
 insert 6564 1
 insert 3243 1
-select 1 5474
+select 1 6310
 delete 8877
 insert 6366 1
 insert 1362 0
 insert 5611 0
-select 1 2779
+select 1 1038
 insert 5890 1
 insert 11881 0
 insert 4165 0
 insert 9148 0
 insert 7513 1
-select 0 2835
+select 0 3933
 insert 2046 0
 insert 11079 1
-select 1 1264
+select 1 6264
 delete 1903
 insert 8386 0
 insert 13117 0
 insert 10000 1
 insert 8207 1
 insert 9684 0
-rank 1 10804
+rank 0 10804
 insert 11399 1
 insert 7613 1
 insert 5204 0
@@ -20840,30 +20840,30 @@ insert 12793 1
 delete 11022
 delete 3596
 delete 5979
-select 1 2537
+select 1 6133
 insert 8916 0
 insert 1762 0
-rank 0 10322
+rank 1 10322
 delete 6194
 delete 7489
 insert 4201 1
-rank 1 6829
+rank 0 6829
 insert 2645 1
 insert 2891 1
 delete 6645
 insert 12318 1
-rank 0 5203
+rank 1 5203
 delete 7800
-rank 0 5120
+rank 1 5120
 insert 8247 0
 insert 11563 1
 insert 3848 0
 insert 5246 1
 delete 13142
-rank 0 4804
+rank 1 4804
 insert 6377 1
 insert 5448 1
-rank 0 8787
+rank 1 8787
 delete 7953
 delete 6783
 insert 7098 0
@@ -20883,17 +20883,17 @@ insert 7170 1
 insert 7282 1
 delete 1246
 delete 10296
-select 1 3761
+select 1 3206
 insert 3023 1
-rank 1 7270
+rank 0 7270
 delete 9043
 insert 9639 0
 delete 1113
 delete 5666
 insert 6892 1
-rank 0 12764
+rank 1 12764
 insert 5164 0
-select 0 1534
+select 0 2231
 delete 3502
 insert 5570 1
 delete 2880
@@ -20901,10 +20901,10 @@ insert 2786 1
 insert 13027 0
 insert 1759 0
 delete 11021
-rank 0 600
+rank 1 600
 delete 12489
 insert 8226 1
-rank 0 9558
+rank 1 9558
 insert 11800 0
 insert 2340 0
 insert 2272 1
@@ -20913,7 +20913,7 @@ delete 2848
 delete 10340
 delete 3803
 insert 8931 1
-rank 0 11185
+rank 1 11185
 delete 11652
 insert 9516 1
 delete 11898
@@ -20926,19 +20926,19 @@ insert 369 1
 delete 1064
 insert 12481 1
 insert 6155 0
-rank 0 2403
+rank 1 2403
 delete 12990
 insert 9533 1
-rank 0 3955
+rank 1 3955
 delete 11788
-rank 1 5523
+rank 0 5523
 delete 7077
 insert 12640 0
 delete 3166
 delete 947
 insert 6289 0
 insert 9218 1
-select 0 3426
+select 0 1659
 delete 8271
 delete 128
 delete 4638
@@ -20951,41 +20951,41 @@ delete 9918
 delete 4719
 delete 1583
 delete 6368
-rank 1 2427
+rank 0 2427
 insert 10206 0
 insert 5164 0
-rank 0 12671
+rank 1 12671
 delete 7780
 insert 501 0
 delete 13052
 delete 2082
-select 1 882
+select 1 2709
 delete 8029
 delete 12373
 insert 12369 0
 delete 714
 delete 6853
-rank 1 10501
+rank 0 10501
 insert 4328 0
 insert 7516 0
 insert 10278 0
 insert 8152 0
-rank 1 1529
+rank 0 1529
 insert 1686 1
 delete 6978
 insert 2412 0
 insert 1804 0
 delete 1671
-select 1 6498
+select 1 1035
 insert 4879 1
 insert 7154 1
 delete 7934
 delete 9909
-rank 1 8513
+rank 0 8513
 delete 10541
 delete 9503
 insert 10054 1
-rank 0 12687
+rank 1 12687
 insert 9574 1
 insert 7993 0
 delete 7932
@@ -21009,7 +21009,7 @@ insert 11558 1
 insert 1824 0
 delete 10215
 insert 8408 0
-rank 1 579
+rank 0 579
 insert 7154 0
 insert 3204 0
 delete 12530
@@ -21027,17 +21027,17 @@ delete 9994
 insert 10921 1
 delete 305
 insert 7401 0
-select 1 5068
+select 1 4460
 insert 4335 0
 insert 4026 0
 insert 7797 0
 delete 5638
 insert 6747 1
-rank 0 8034
+rank 1 8034
 delete 8564
 delete 2538
 delete 6094
-select 0 5764
+select 0 3970
 insert 7727 1
 insert 8110 0
 insert 7274 1
@@ -21055,27 +21055,27 @@ insert 7024 1
 delete 6231
 insert 10227 1
 insert 6804 1
-select 1 6559
+select 1 2540
 insert 1018 1
 delete 2998
 insert 5956 1
 insert 5570 1
 insert 4700 1
-rank 0 2738
+rank 1 2738
 delete 10593
 insert 9789 1
-rank 1 9903
+rank 0 9903
 delete 12966
 delete 13113
 delete 3609
 insert 939 1
-select 1 2339
+select 1 1571
 delete 7411
 insert 5859 1
 select 0 6436
 delete 10307
 delete 1837
-rank 0 12468
+rank 1 12468
 insert 2978 0
 insert 1156 1
 insert 5927 1
@@ -21083,7 +21083,7 @@ insert 13177 0
 insert 7119 0
 delete 9237
 insert 7225 0
-rank 1 10890
+rank 0 10890
 delete 3233
 insert 12321 1
 insert 672 0
@@ -21092,7 +21092,7 @@ delete 11708
 insert 9341 1
 insert 7110 0
 delete 9346
-rank 1 8165
+rank 0 8165
 delete 6217
 insert 5627 1
 insert 3904 1
@@ -21100,12 +21100,12 @@ insert 3242 1
 insert 12931 1
 insert 1444 1
 insert 9986 1
-rank 0 7036
+rank 1 7036
 delete 3493
 insert 91 0
 delete 12360
 insert 2728 1
-rank 0 11847
+rank 1 11847
 delete 10177
 delete 6106
 insert 90 1
@@ -21117,13 +21117,13 @@ insert 10921 1
 delete 1275
 insert 11174 1
 insert 13032 0
-rank 0 4004
+rank 1 4004
 delete 5909
 insert 2372 0
 insert 3654 0
 insert 7825 0
 insert 9008 0
-select 1 3300
+select 1 4726
 insert 4686 0
 delete 12515
 insert 13011 0
@@ -21134,12 +21134,12 @@ insert 2247 1
 insert 11724 0
 insert 11026 0
 delete 11044
-rank 0 4567
+rank 1 4567
 delete 8112
-rank 0 6033
+rank 1 6033
 insert 5590 0
 insert 11259 1
-rank 1 8950
+rank 0 8950
 insert 10335 1
 delete 11137
 insert 3760 0
@@ -21148,8 +21148,8 @@ insert 4641 1
 delete 4421
 delete 707
 insert 12776 0
-rank 1 12797
-select 1 4455
+rank 0 12797
+select 1 869
 insert 940 1
 delete 8648
 delete 8587
@@ -21178,7 +21178,7 @@ insert 11697 0
 insert 8626 1
 insert 2032 1
 insert 7468 1
-rank 1 1447
+rank 0 1447
 insert 265 1
 delete 12981
 insert 7227 1
@@ -21192,34 +21192,34 @@ insert 6401 0
 delete 4421
 delete 3458
 insert 6023 0
-rank 0 11909
+rank 1 11909
 insert 12888 1
-rank 0 7333
+rank 1 7333
 insert 1452 0
-rank 0 1472
+rank 1 1472
 delete 1138
 insert 2051 0
 delete 2924
 insert 6381 0
 insert 256 0
 delete 9770
-rank 1 7029
+rank 0 7029
 delete 1930
 insert 139 0
 insert 535 1
 delete 10247
 delete 3603
-select 1 5749
+select 1 5605
 delete 6931
 insert 5923 1
 insert 10821 1
 delete 11972
 insert 10070 0
-rank 0 2510
+rank 1 2510
 insert 9944 1
 delete 7601
 insert 13120 1
-rank 0 9913
+rank 1 9913
 insert 4159 1
 delete 614
 insert 8826 1
@@ -21235,7 +21235,7 @@ insert 10028 0
 delete 4939
 delete 7992
 insert 8858 0
-rank 1 8994
+rank 0 8994
 delete 12971
 insert 5918 0
 insert 5220 1
@@ -21247,7 +21247,7 @@ insert 6241 1
 insert 2658 0
 delete 12928
 insert 3573 1
-select 0 843
+select 0 5360
 insert 3964 1
 insert 7593 0
 insert 455 1
@@ -21263,7 +21263,7 @@ insert 6904 1
 insert 3491 0
 delete 7304
 insert 5619 1
-rank 0 593
+rank 1 593
 insert 12871 0
 insert 11123 1
 insert 9006 0
@@ -21271,17 +21271,17 @@ delete 6402
 delete 9403
 insert 5904 1
 delete 5113
-select 1 816
+select 1 3890
 insert 6115 1
 insert 9869 0
 delete 462
 insert 6858 1
-rank 1 13055
+rank 0 13055
 insert 4171 0
 insert 10283 0
-rank 1 5264
+rank 0 5264
 insert 10532 1
-rank 0 11781
+rank 1 11781
 delete 629
 insert 823 1
 insert 5805 1
@@ -21291,7 +21291,7 @@ insert 6443 0
 insert 2057 0
 insert 176 0
 insert 3248 0
-rank 1 4001
+rank 0 4001
 insert 8533 1
 delete 7316
 insert 1737 0
@@ -21315,16 +21315,16 @@ insert 8567 1
 insert 12025 1
 insert 3627 1
 insert 1634 0
-select 0 5022
+select 0 3090
 delete 3954
-rank 0 8426
+rank 1 8426
 insert 11074 0
 delete 7827
 delete 1888
 insert 3078 0
 insert 11999 0
 insert 1751 1
-rank 0 10366
+rank 1 10366
 insert 6392 1
 delete 9771
 insert 3879 0
@@ -21345,17 +21345,17 @@ delete 8254
 insert 13193 1
 insert 1408 0
 insert 3584 0
-rank 0 7072
+rank 1 7072
 delete 6468
 select 0 866
 insert 1683 0
-rank 0 10118
+rank 1 10118
 delete 12518
 delete 6709
 insert 907 0
 insert 4114 1
 delete 10402
-rank 1 1067
+rank 0 1067
 select 0 2848
 insert 8566 0
 delete 5180
@@ -21365,13 +21365,13 @@ delete 9909
 insert 9448 1
 insert 10383 1
 delete 10804
-rank 0 10952
+rank 1 10952
 delete 12101
 insert 1498 1
 delete 9312
 insert 2433 1
 insert 5601 1
-select 0 530
+select 0 4994
 delete 8148
 delete 11075
 delete 1256
@@ -21380,7 +21380,7 @@ insert 12401 0
 insert 4592 1
 insert 13030 0
 delete 12097
-select 0 3958
+select 0 429
 delete 4812
 delete 12342
 insert 13164 0
@@ -21409,7 +21409,7 @@ delete 12825
 insert 6094 1
 delete 12760
 insert 3303 1
-rank 1 6301
+rank 0 6301
 insert 2985 0
 delete 6657
 delete 7734
@@ -21422,15 +21422,15 @@ insert 6370 1
 insert 8893 1
 insert 5064 1
 insert 11262 0
-rank 1 908
+rank 0 908
 insert 9559 0
 delete 2054
-rank 1 3672
+rank 0 3672
 insert 11461 0
-rank 1 1955
+rank 0 1955
 delete 12128
 insert 12331 1
-rank 1 12751
+rank 0 12751
 delete 12208
 delete 3644
 insert 10708 1
@@ -21453,7 +21453,7 @@ insert 2437 0
 insert 2320 1
 insert 7267 0
 insert 2816 1
-rank 1 11096
+rank 0 11096
 insert 3684 1
 insert 4296 1
 insert 7763 0
@@ -21463,26 +21463,26 @@ insert 4240 0
 insert 4284 0
 insert 7921 0
 delete 3435
-rank 1 4237
+rank 0 4237
 delete 12903
 insert 12080 1
-select 0 2308
+select 0 597
 insert 11280 0
 delete 12596
 delete 8592
 delete 10296
-select 1 4836
+select 1 4638
 insert 6251 1
 delete 162
-rank 1 6813
+rank 0 6813
 insert 10988 1
-rank 0 12372
-select 1 1437
+rank 1 12372
+select 1 1692
 insert 12213 0
 insert 9638 0
 delete 4266
 delete 3389
-select 0 2537
+select 0 4628
 insert 3542 1
 insert 897 0
 insert 10971 0
@@ -21491,9 +21491,9 @@ delete 2349
 insert 9030 1
 delete 2434
 insert 5076 0
-select 1 3316
+select 1 786
 insert 7623 1
-rank 1 7334
+rank 0 7334
 insert 8384 0
 insert 11587 1
 insert 12916 1
