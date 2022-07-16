@@ -27,10 +27,10 @@
 #include "BalancedParentheses/InnerBitVectorByInt.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
-static const bool Interactive = false;
+static const bool Interactive = true;
 static const bool VeryInteractive = false;
-static const bool WriteToFile = false;
-static const bool EvaluationMode = true;
+static const bool WriteToFile = true;
+static const bool EvaluationMode = false;
 
 inline static void handleBitVectorQuery(char *argv[]) {
     if constexpr (Interactive) std::cout << "Requested bit vector query." << std::endl;
@@ -201,49 +201,9 @@ inline static void handleBPQuery(char *argv[]) {
             inputFile >> v;
             timer.restart();
             const int result = tree.getNumber(tree.parent(tree.getIndex(v)));
-
-            /*
-            std::cout << "Getting parent for number " << v << ", index " << tree.getIndex(v) << std::endl;
-            const int resultIndex = tree.parent(tree.getIndex(v));
-            const int result = tree.getNumber(resultIndex);
-            std::cout << "Returned result index " << resultIndex << " with number " << result << std::endl;
-            tree.printBitString();
-            */
-
             time += timer.getMicroseconds();
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "parent(" << v << ") = " << result << std::endl;
-        } else if (queryType.compare("checkQueries") == 0) {
-            //manually check child and parent queries.
-            std::cout << "Checking queries for tree with length " << tree.length << std::endl;
-            std::stack<int> stack;
-            stack.emplace(0);
-            int numberOfNodes = 1;
-            while (!stack.empty()) {
-                const int current = stack.top();
-                stack.pop();
-                for (int c = tree.children(current); c >= 1; c--) {
-                    //check queries for this combination
-                    int childIndex = tree.child(current, c);
-                    int parentIndex = tree.parent(childIndex);
-                    if (parentIndex != current) {
-                        std::cout << "ERROR: for current node " << current << " found " << c << "-th child " << childIndex << " with parent " << parentIndex << std::endl;
-                        AssertMsg(false, "Error.");
-                        return;
-                    }
-                    int parentNumber = tree.getNumber(parentIndex);
-                    int currentNumber = tree.getNumber(current);
-                    if (parentNumber != currentNumber) {
-                        std::cout << "ERROR: wrong number " << parentNumber << " for current number " << currentNumber << " for current node " << current << " found " << c << "-th child " << childIndex << " with parent " << parentIndex << std::endl;
-                        AssertMsg(false, "Error with numbers.");
-                        return;
-                    }
-                    //push to stack
-                    stack.emplace(childIndex);
-                    numberOfNodes++;
-                }
-            }
-            std::cout << "Successfully checked " << numberOfNodes << " nodes at length " << tree.length << std::endl;
         }
     }
 

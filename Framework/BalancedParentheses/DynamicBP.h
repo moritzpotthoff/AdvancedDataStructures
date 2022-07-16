@@ -147,7 +147,7 @@ namespace BalancedParentheses {
          * @return the number of the node
          */
         inline int getNumber(int index) const noexcept {
-            return root->rankOne(index);
+            return root->rankOne(index) + 1;//+1 to get 1-based indices with exclusive rank
         }
 
     private:
