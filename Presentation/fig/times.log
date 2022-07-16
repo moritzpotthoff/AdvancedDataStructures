@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.3.22)  6 FEB 2022 20:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.3.22)  16 JUL 2022 13:13
 entering extended mode
-**./topkQueryByLength.tex
-(topkQueryByLength.tex
+**./times.tex
+(times.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (C:\Program Files\MiKTeX 2.9\tex/latex/standalone\standalone.cls
@@ -471,8 +471,8 @@ x.def
 File: l3backend-pdftex.def 2021-03-02 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count284
 \l__pdf_internal_box=\box60
-) (topkQueryByLength.aux)
-\openout1 = `topkQueryByLength.aux'.
+) (times.aux)
+\openout1 = `times.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
@@ -519,31 +519,31 @@ your preamble.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 62.
+(Font)              <7> on input line 63.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 62.
+(Font)              <5> on input line 63.
+Missing character: There is no ; in font nullfont!
 [1
 
 {C:/Users/Moritz/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(topkQueryByLength.aux) ) 
+(times.aux) ) 
 Here is how much of TeX's memory you used:
- 22482 strings out of 479290
- 597161 string characters out of 2863486
- 1017200 words of memory out of 3000000
- 39625 multiletter control sequences out of 15000+600000
+ 22504 strings out of 479290
+ 597612 string characters out of 2863486
+ 1032188 words of memory out of 3000000
+ 39648 multiletter control sequences out of 15000+600000
  405190 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,18n,116p,735b,2189s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.e
-nc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on topkQueryByLength.pdf (1 page, 46393 bytes).
+ 113i,18n,116p,723b,2210s stack positions out of 5000i,500n,10000p,200000b,80000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on times.pdf (1 page, 30231 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
+ 22 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

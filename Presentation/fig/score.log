@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.3.22)  6 FEB 2022 20:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.3.22)  16 JUL 2022 12:14
 entering extended mode
-**./preprocesing.tex
-(preprocesing.tex
+**./score.tex
+(score.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (C:\Program Files\MiKTeX 2.9\tex/latex/standalone\standalone.cls
@@ -461,8 +461,8 @@ File: pgflibraryplotmarks.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
 (kitColors.tex)
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 4
-0.
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 3
+9.
  (C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
@@ -471,23 +471,23 @@ x.def
 File: l3backend-pdftex.def 2021-03-02 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count284
 \l__pdf_internal_box=\box60
-) (preprocesing.aux)
-\openout1 = `preprocesing.aux'.
+) (score.aux)
+\openout1 = `score.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
 
 (C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -510,38 +510,40 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (C:\Program Files\MiKTeX 2.9\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package pgfplots notification 'compat/show suggested version=true': document ha
-s been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.17} into 
+your preamble.
+ on input line 39.
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 63.
+(Font)              <7> on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 63.
+(Font)              <5> on input line 62.
 [1
 
 {C:/Users/Moritz/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(preprocesing.aux) ) 
+(score.aux) ) 
 Here is how much of TeX's memory you used:
- 22483 strings out of 479290
- 597178 string characters out of 2863486
- 1017195 words of memory out of 3000000
- 39626 multiletter control sequences out of 15000+600000
+ 22484 strings out of 479290
+ 597185 string characters out of 2863486
+ 1017188 words of memory out of 3000000
+ 39627 multiletter control sequences out of 15000+600000
  405190 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,18n,116p,730b,2197s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/h
-elvetic/uhvr8a.pfb>
-Output written on preprocesing.pdf (1 page, 50236 bytes).
+ 113i,18n,116p,723b,2191s stack positions out of 5000i,500n,10000p,200000b,80000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
+/helvetic/uhvr8a.pfb>
+Output written on score.pdf (1 page, 43661 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
+ 30 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

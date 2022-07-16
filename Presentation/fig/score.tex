@@ -31,37 +31,33 @@
   legend pos=north west,
   grid=major,
   cycle list name=kitcolors,
-  ymin=0,ymax=25000,
-  xmin=0,xmax=10000000,
-  %log ticks with fixed point,
-  xtick={1000, 1000000, 2500000, 5000000, 7500000, 10000000},
   every axis plot/.append style={ultra thick}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-% IMPORT-DATA query ../../EvaluationResults/query/topk/all.txt
+% IMPORT-DATA bvData ../../EvaluationData/bvEvaluation.txt
 
 \begin{tikzpicture}
   \begin{axis}[
-      width=150mm,height=100mm,
-    xlabel={Input length (\#char)},
-    ylabel={Query time ($\ell = 10$, ms)},
-    ymin=0,ymax=25000,
-    xmin=0,xmax=10000000,
+    xlabel={Size parameter $w$},
+    ylabel={Score},
+    ymin=0,ymax=1000000,
+    xmin=0,xmax=320,
     %log ticks with fixed point,
-    xtick={1000, 1000000, 2500000, 5000000, 7500000, 10000000},
+    xtick={32,64,92,128,192,256,320},
     ]
 
-    %% MULTIPLOT(inputType) SELECT inputLength AS x, queryTime AS y, MULTIPLOT
-    %% FROM query GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
-    \addplot coordinates { (1000,3) (1000000,1970) (2500000,3179) (5000000,4518) (7500000,5894) (10000000,5111) };
-    \addlegendentry{pcDNA};
-    \addplot coordinates { (1000,2) (1000000,2702) (2500000,8911) (5000000,12992) (7500000,18235) (10000000,24295) };
-    \addlegendentry{pcEnglish};
-    \addplot coordinates { (1000,2) (1000000,1617) (2500000,4529) (5000000,9106) (7500000,13868) (10000000,17064) };
-    \addlegendentry{pcSources};
+    %% MULTIPLOT(input) SELECT w AS x, score AS y, MULTIPLOT
+    %% FROM bvData GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+    \addplot coordinates { (64,85219.4) (320,74058.4) };
+    \addlegendentry{input=./TestInputs/officialBV/example\_bv\_100k.txt};
+    \addplot coordinates { (64,8123.5) (320,7642.0) };
+    \addlegendentry{input=./TestInputs/officialBV/example\_bv\_10k.txt};
+    \addplot coordinates { (64,854109.0) (320,740557.0) };
+    \addlegendentry{input=./TestInputs/officialBV/example\_bv\_1M.txt};
+
     
   \end{axis}
 \end{tikzpicture}

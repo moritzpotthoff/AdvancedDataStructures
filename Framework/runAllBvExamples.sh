@@ -1,0 +1,1 @@
+./build/Framework bv ./TestInputs/officialBV/example_bv_1M.txt  ./TestOutputs/myOfficialBV/example_bv_1M_eval.txt >> ../EvaluationData/bvEvaluation.txt
