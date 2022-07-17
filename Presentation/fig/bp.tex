@@ -51,18 +51,16 @@
         %% MULTIPLOT(resultType) SELECT w AS x, time AS y, MULTIPLOT
         %% FROM bpData 
         %% WHERE evalType LIKE 'queryTime' 
-        %% AND (resultType LIKE 'insert%' OR resultType LIKE 'subtree%' OR resultType LIKE 'delete%')
+        %% AND (resultType LIKE '%uint64%')
         %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
-        \addplot coordinates { (16,13.6153) (32,19.4283) (48,36.191) (64,52.895) (80,174.736) (96,124.243) (128,187.845) (160,333.818) (192,593.236) (224,730.626) (256,744.782) (288,1021.48) (320,1263.41) };
-        \addlegendentry{resultType=delete(vector<bool>)};
+        \addplot coordinates { (16,8.45) (32,31.225) (48,31.409) (64,48.476) (80,87.396) (96,121.926) (128,158.576) (160,278.758) (192,294.551) (224,772.3) (256,708.296) (288,834.679) (320,1082.96) };
+        \addlegendentry{resultType=child(vector<uint64\_t>)};
         \addplot coordinates { (16,7.926) (32,16.7797) (48,22.5677) (64,31.2977) (80,59.0473) (96,58.2913) (128,97.64) (160,152.351) (192,220.303) (224,452.925) (256,378.84) (288,456.372) (320,679.194) };
         \addlegendentry{resultType=delete(vector<uint64\_t>)};
-        \addplot coordinates { (16,26.4611) (32,37.9133) (48,53.7151) (64,71.783) (80,125.568) (96,162.407) (128,218.981) (160,336.261) (192,442.844) (224,564.312) (256,748.671) (288,867.546) (320,1045.13) };
-        \addlegendentry{resultType=insert(vector<bool>)};
         \addplot coordinates { (16,18.4902) (32,46.6404) (48,39.561) (64,63.0167) (80,72.4907) (96,91.7889) (128,149.046) (160,209.589) (192,281.657) (224,359.206) (256,493.306) (288,516.519) (320,555.228) };
         \addlegendentry{resultType=insert(vector<uint64\_t>)};
-        \addplot coordinates { (16,4.316) (32,4.481) (48,6.236) (64,7.872) (80,20.791) (96,15.811) (128,24.684) (160,36.63) (192,61.758) (224,82.433) (256,93.68) (288,105.459) (320,133.055) };
-        \addlegendentry{resultType=subtree(vector<bool>)};
+        \addplot coordinates { (16,3.027) (32,5.999) (48,7.117) (64,10.185) (80,16.781) (96,18.433) (128,27.667) (160,45.604) (192,53.728) (224,143.826) (256,123.809) (288,140.62) (320,191.72) };
+        \addlegendentry{resultType=parent(vector<uint64\_t>)};
         \addplot coordinates { (16,2.626) (32,5.369) (48,5.4) (64,15.072) (80,11.246) (96,11.423) (128,15.427) (160,26.095) (192,29.668) (224,73.857) (256,65.804) (288,79.983) (320,99.813) };
         \addlegendentry{resultType=subtree(vector<uint64\_t>)};
     \end{axis} 

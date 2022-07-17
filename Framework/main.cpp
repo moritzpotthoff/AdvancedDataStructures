@@ -28,10 +28,10 @@
 #include "BalancedParentheses/InnerBitVectorByInt.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
-static const bool Interactive = false;
+static const bool Interactive = true;
 static const bool VeryInteractive = false;
-static const bool WriteToFile = false;
-static const bool EvaluationMode = true;
+static const bool WriteToFile = true;
+static const bool EvaluationMode = false;
 
 static const std::string BVInnerBV = "vector<bool>";
 static const std::string BPInnerBV = "vector<bool>";

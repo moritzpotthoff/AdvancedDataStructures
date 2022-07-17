@@ -43,7 +43,7 @@
     \begin{axis}[
         xlabel={Size parameter $w$},
         ylabel={Time (microseconds)},
-        ymin=0,ymax=2,
+        ymin=0,ymax=15,
         xmin=0,xmax=320,
         xtick={32,64,96,128,160,192,224,256,288,320},
     ]
@@ -51,14 +51,14 @@
         %% MULTIPLOT(resultType) SELECT w AS x, time AS y, MULTIPLOT
         %% FROM bvData 
         %% WHERE evalType LIKE 'queryTime' 
-        %% AND (resultType LIKE 'rank%' OR resultType LIKE 'select%')
+        %% AND (resultType LIKE '%uint64%')
         %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
-        \addplot coordinates { (16,1.13083) (32,1.30824) (48,1.66558) (64,1.75196) (80,1.48711) (96,1.34367) (128,1.35488) (160,1.31912) (192,1.35091) (224,1.21246) (256,1.1461) (288,1.18073) (320,1.1498) };
-        \addlegendentry{resultType=rank(vector<bool>)};
+        \addplot coordinates { (16,1.04137) (32,1.16148) (48,1.29163) (64,1.7926) (80,1.71794) (96,4.26217) (128,6.42154) (160,4.51879) (192,6.66924) (224,6.43614) (256,9.75932) (288,14.7069) (320,14.1694) };
+        \addlegendentry{resultType=delete(vector<uint64\_t>)};
+        \addplot coordinates { (16,0.793777) (32,1.08002) (48,1.16224) (64,1.16405) (80,1.25958) (96,2.43772) (128,3.55026) (160,2.14177) (192,2.74277) (224,2.49014) (256,3.18191) (288,5.17691) (320,4.41541) };
+        \addlegendentry{resultType=insert(vector<uint64\_t>)};
         \addplot coordinates { (16,0.19014) (32,0.638463) (48,1.01461) (64,1.06118) (80,1.1189) (96,1.60047) (128,2.08715) (160,1.12525) (192,1.28689) (224,1.04266) (256,1.04649) (288,1.32895) (320,1.07473) };
         \addlegendentry{resultType=rank(vector<uint64\_t>)};
-        \addplot coordinates { (16,1.12006) (32,1.30344) (48,1.67292) (64,1.76384) (80,1.52484) (96,1.3535) (128,1.36033) (160,1.32869) (192,1.38118) (224,1.21915) (256,1.17241) (288,1.20486) (320,1.22717) };
-        \addlegendentry{resultType=select(vector<bool>)};
         \addplot coordinates { (16,0.214955) (32,0.667923) (48,1.02358) (64,1.06234) (80,1.01086) (96,1.62604) (128,2.13339) (160,1.13808) (192,1.28677) (224,1.04936) (256,1.04759) (288,1.36664) (320,1.05815) };
         \addlegendentry{resultType=select(vector<uint64\_t>)};
     \end{axis} 
