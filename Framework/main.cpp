@@ -14,6 +14,7 @@
 */
 
 #include "Definitions.h"
+
 #include "Helpers/Timer.h"
 #include "Helpers/Asserts.h"
 #include "Helpers/BitVectorProfiler.h"
@@ -27,10 +28,13 @@
 #include "BalancedParentheses/InnerBitVectorByInt.h"
 
 //Interactive flag. If true, generates a little more output than just the result line.
-static const bool Interactive = true;
+static const bool Interactive = false;
 static const bool VeryInteractive = false;
-static const bool WriteToFile = true;
-static const bool EvaluationMode = false;
+static const bool WriteToFile = false;
+static const bool EvaluationMode = true;
+
+static const std::string BVInnerBV = "vector<bool>";
+static const std::string BPInnerBV = "vector<bool>";
 
 inline static void handleBitVectorQuery(char *argv[]) {
     if constexpr (Interactive) std::cout << "Requested bit vector query." << std::endl;
@@ -58,7 +62,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
         bits.emplace_back(bit);
     }
     timer.restart();
-    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv(bits);
+    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVector> bv(bits);
     constructionTime += timer.getMicroseconds();
     if constexpr (Interactive) std::cout << "Found bit vector of length " << initialLength << "." << std::endl;
 
@@ -122,6 +126,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
 
     if constexpr (EvaluationMode) {
         std::cout   << "RESULT algo=bv name=moritz_potthoff"
+                    << " innerBVType=" << BVInnerBV
                     << " time=" << totalTime / 1000
                     << " constructionTimePer10kBits=" << constructionTime / (initialLength / 10000)
                     << " insertTime=" << ((inserts > 0) ? insertTime / inserts : -1)
@@ -135,21 +140,29 @@ inline static void handleBitVectorQuery(char *argv[]) {
                     << " length=" << bv.length
                     << " overhead=" << (double)bv.getSize() / (double)bv.length
                     << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
-        std::cout   << "RESULT evalType=totalTime resultType=total" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=totalTime resultType=total(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " time=" << totalTime << std::endl;
-        std::cout   << "RESULT evalType=totalTime resultType=construction" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=totalTime resultType=construction(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " time=" << constructionTime / (initialLength / 10000) << std::endl;
-        std::cout   << "RESULT evalType=queryTime resultType=insert" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=queryTime resultType=insert(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " time=" << ((inserts > 0) ? insertTime / inserts : -1) << std::endl;
-        std::cout   << "RESULT evalType=queryTime resultType=delete" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=queryTime resultType=delete(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " time=" << ((deletes > 0) ? deleteTime / deletes : -1) << std::endl;
-        std::cout   << "RESULT evalType=queryTime resultType=rank" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=queryTime resultType=rank(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " time=" << ((ranks > 0) ? rankTime / ranks : -1) << std::endl;
-        std::cout   << "RESULT evalType=queryTime resultType=select" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=queryTime resultType=select(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " time=" << ((selects > 0) ? selectTime / selects : -1) << std::endl;
-        std::cout   << "RESULT evalType=overhead resultType=overhead" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=overhead resultType=overhead(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " overhead=" << (double)bv.getSize() / (double)bv.length << std::endl;
-        std::cout   << "RESULT evalType=score resultType=score" << " w=" << w << " input=" << inputFileName
+        std::cout   << "RESULT evalType=score resultType=score(" << BVInnerBV << ")"
+                    << " w=" << w << " input=" << inputFileName
                     << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
     }
 
@@ -165,9 +178,10 @@ inline static void handleBPQuery(char *argv[]) {
     std::string outputFileName(argv[3]);
     std::ofstream outputFile(outputFileName);
 
-    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVector> tree;
     Helpers::Timer timer;
-    size_t time = 0;
+    double insertTime = 0, deleteTime = 0, childTime = 0, subtreeTime = 0, parentTime = 0;
+    size_t inserts = 0, deletes = 0, childs = 0, subtrees = 0, parents = 0;
 
     //Read and execute all the queries.
     std::string queryType;
@@ -177,42 +191,81 @@ inline static void handleBPQuery(char *argv[]) {
             inputFile >> v >> i >> k;
             timer.restart();
             tree.insertChild(tree.getIndex(v), i, k);
-            time += timer.getMicroseconds();
+            insertTime += timer.getMicroseconds();
+            inserts++;
         } else if (queryType.compare("deletenode") == 0) {
             inputFile >> v;
             timer.restart();
             tree.deleteNode(tree.getIndex(v));
-            time += timer.getMicroseconds();
+            deleteTime += timer.getMicroseconds();
+            deletes++;
         } else if (queryType.compare("child") == 0) {
             inputFile >> v >> i;
             timer.restart();
             const int result = tree.getNumber(tree.child(tree.getIndex(v), i));
-            time += timer.getMicroseconds();
+            childTime += timer.getMicroseconds();
+            childs++;
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "child(" << v << ", " << i << ") = " << result << std::endl;
         } else if (queryType.compare("subtree_size") == 0) {
             inputFile >> v;
             timer.restart();
             const int result = tree.subtreeSize(tree.getIndex(v));
-            time += timer.getMicroseconds();
+            subtreeTime += timer.getMicroseconds();
+            subtrees++;
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "subtreeSize(" << v << ") = " << result << std::endl;
         } else if (queryType.compare("parent") == 0) {
             inputFile >> v;
             timer.restart();
             const int result = tree.getNumber(tree.parent(tree.getIndex(v)));
-            time += timer.getMicroseconds();
+            parentTime += timer.getMicroseconds();
+            parents++;
             if constexpr (WriteToFile) outputFile << result << "\n";
             if constexpr (VeryInteractive) std::cout << "parent(" << v << ") = " << result << std::endl;
         }
     }
 
     if constexpr (WriteToFile) tree.printDegreesToFile(outputFile);
+    double time = insertTime + deleteTime + childTime + subtreeTime + parentTime;
 
     std::cout << "RESULT algo=bp name=moritz-potthoff"
               << " time=" << time / 1000
-              << " space=" << tree.getSize()
-              << " score=" << 0.45 * (time / 1000) + 0.55 * tree.getSize() << std::endl;
+              << " space=" << tree.getSize() << std::endl;
+
+    if constexpr (EvaluationMode) {
+        std::cout   << "RESULT algo=bp name=moritz_potthoff"
+                    << " innerBVType=" << BPInnerBV
+                    << " totalTimeMs=" << time / 1000
+                    << " input=" << inputFileName
+                    << " w=" << w
+                    << " space=" << tree.getSize()
+                    << " score=" << 0.45 * (time / 1000) + 0.55 * tree.getSize()
+                    << " nodes=" << tree.length / 2
+                    << " bitsPerNode=" << (double)tree.getSize() / ((double)tree.length / 2)
+                    << std::endl;
+        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=insert(" << BPInnerBV << ")"
+                    << " time=" << insertTime / inserts
+                    << std::endl;
+        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=delete(" << BPInnerBV << ")"
+                    << " time=" << deleteTime / deletes
+                    << std::endl;
+        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=subtree(" << BPInnerBV << ")"
+                    << " time=" << subtreeTime / subtrees
+                    << std::endl;
+        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=child(" << BPInnerBV << ")"
+                    << " time=" << childTime / childs
+                    << std::endl;
+        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=parent(" << BPInnerBV << ")"
+                    << " time=" << parentTime / parents
+                    << std::endl;
+        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=overhead resultType=overhead(" << BPInnerBV << ")"
+                    << " space=" << tree.getSize()
+                    << " score=" << 0.45 * (time / 1000) + 0.55 * tree.getSize()
+                    << " nodes=" << tree.length / 2
+                    << " bitsPerNode=" << (double)tree.getSize() / ((double)tree.length / 2)
+                    << std::endl;
+    }
 
     if constexpr (Interactive) tree.profiler.print();
 }

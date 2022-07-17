@@ -214,7 +214,7 @@ namespace BitVector {
                     rightChild = new Node(rightHalf);
                     this->bitVector = NULL;//do not delete! is still used in leftChild
                     //adjust parameters
-                    num = leftChild->bitVector->length;
+                    num = leftChild->bitVector->getLength();
                     ones = leftChild->bitVector->popcount();
                     nodeHeight++;
                     //AssertMsg(leftChild->bitVector->length == num, "Wrong length in left child");

@@ -465,6 +465,10 @@ namespace BitVector {
             return result;
         }
 
+        inline size_t getLength() const noexcept {
+            return length;
+        }
+
     public:
         std::vector<uint64_t> words;//all bits behind the first length bits must be 0!
         int length;

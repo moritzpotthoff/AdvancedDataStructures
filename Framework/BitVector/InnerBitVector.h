@@ -216,6 +216,10 @@ namespace BitVector {
             return CHAR_BIT * sizeof(bits) + bits.size();
         }
 
+        inline size_t getLength() const noexcept {
+            return bits.size();
+        }
+
     public:
         std::vector<bool> bits;
     };
