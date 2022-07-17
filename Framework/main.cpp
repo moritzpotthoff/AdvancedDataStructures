@@ -5,13 +5,13 @@
 #include <stack>
 
 //for testing
-
+/*
 #define CATCH_CONFIG_RUNNER
 #include "Tests/catch.hpp"
 #include "Tests/TestBP.h"
 #include "Tests/TestBV.h"
 #include "Tests/TestIntInner.h"
-
+*/
 
 #include "Definitions.h"
 
@@ -273,9 +273,11 @@ inline static void handleBPQuery(char *argv[]) {
 int main(int argc, char *argv[]) {
     if (argc != 4) {
         //testing
+        /*
         int result = Catch::Session().run(argc, argv);
         return result;
-        //return 0;
+        */
+        return 0;
     }
     std::string queryChoice(argv[1]);
 

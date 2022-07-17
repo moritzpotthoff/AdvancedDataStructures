@@ -268,6 +268,10 @@ namespace BalancedParentheses {
             return count;
         }
 
+        /**
+         * Returns the length of the bit vector
+         * @return the number of bits
+         */
         inline int getLength() const noexcept {
             return length;
         }
@@ -385,8 +389,7 @@ namespace BalancedParentheses {
             return std::make_pair(excess, count);
         }
 
-    //private://TODO
-    public://for testing only
+    private:
         /**
          * Sets the bit at the desired index to bit.
          * @param index the index

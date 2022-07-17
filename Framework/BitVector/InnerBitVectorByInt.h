@@ -104,7 +104,6 @@ namespace BitVector {
             words.resize(blockLength / wordSize + 1);
             length = blockLength;
             for (int i = 0; i < blockLength; i++) {
-                //TODO make this more efficient?
                 setBitTo(i, newBits[bitStart + i]);
             }
             return popcount();
@@ -465,6 +464,10 @@ namespace BitVector {
             return result;
         }
 
+        /**
+         * Returns the length of this bv
+         * @return the number of bits contained in the bv
+         */
         inline size_t getLength() const noexcept {
             return length;
         }

@@ -210,12 +210,16 @@ namespace BitVector {
 
         /**
          * Calculates the number of bits needed for this bv.
-         * @return the number of bits.
+         * @return the number of bits used for the bv.
          */
         inline size_t getSize() const noexcept {
             return CHAR_BIT * sizeof(bits) + bits.size();
         }
 
+        /**
+         * Returns the length of this bv
+         * @return the number of bits contained in the bv
+         */
         inline size_t getLength() const noexcept {
             return bits.size();
         }

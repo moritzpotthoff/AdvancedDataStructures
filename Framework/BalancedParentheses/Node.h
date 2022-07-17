@@ -518,13 +518,12 @@ namespace BalancedParentheses {
                 if (num == wBP * wBP / 2) {
                     //underflow, lefChild must be a leaf.
                     //try to steal a bit from the other child to avoid merging
-                    std::tie(rightChild, hasStolen, stolenBit) = rightChild->deleteRecursive(0, length - num, 0/*bvOnes - ones - (deletedBit ? 1 : 0)*/, false);
+                    std::tie(rightChild, hasStolen, stolenBit) = rightChild->deleteRecursive(0, length - num, 0, false);
                     if (!hasStolen) {
                         //merge the leaves
                         rightChild->insertBitVector(0, length - num, leftChild->bitVector, num - 1, ones);
                         leftChild->free();
                         leftChild = NULL;
-                        //delete rightChild;//TODO merge into this instead of child and also delete the child
                         return std::make_tuple(rightChild, true, deletedBit);
                     }
                     //insert the stolen bit at the correct index in the left child
@@ -545,7 +544,6 @@ namespace BalancedParentheses {
                     if (!hasStolen) {
                         //merge the leaves
                         leftChild->insertBitVector(num, num, rightChild->bitVector, wBP * wBP / 2 - 1, bvOnes - ones);
-                        //delete leftChild;//TODO merge into this instead of child and also delete the child
                         rightChild->free();
                         rightChild = NULL;
                         return std::make_tuple(leftChild, true, deletedBit);
@@ -700,7 +698,6 @@ namespace BalancedParentheses {
             return baseSize + leftChild->getSize() + rightChild->getSize();
         }
 
-        //TODO use union/variant
         Node* leftChild;
         Node* rightChild;
         InnerBV* bitVector;
