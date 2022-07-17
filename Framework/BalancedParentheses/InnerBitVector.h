@@ -19,7 +19,7 @@ namespace BalancedParentheses {
          */
         InnerBitVector() :
                 bits(0) {
-            bits.reserve(w);
+            bits.reserve(wBP);
         }
 
         /**
@@ -65,7 +65,7 @@ namespace BalancedParentheses {
             if (bits.size() == 0) return false;
             const bool bit = bits[index];
             bits.erase(bits.begin() + index);
-            if (bits.size() + 2 * w < bits.capacity()) //more than two words are unused
+            if (bits.size() + 2 * wBP < bits.capacity()) //more than two words are unused
                 shrink();
             return bit;
         }
@@ -268,14 +268,14 @@ namespace BalancedParentheses {
          * Reserves more space
          */
         inline void enlarge() noexcept {
-            bits.reserve(bits.capacity() + w);
+            bits.reserve(bits.capacity() + wBP);
         }
 
         /**
          * Frees some space.
          */
         inline void shrink() noexcept {
-            bits.reserve(bits.capacity() - w);
+            bits.reserve(bits.capacity() - wBP);
         }
 
     public:

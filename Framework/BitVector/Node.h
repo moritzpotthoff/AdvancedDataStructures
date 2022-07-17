@@ -205,7 +205,7 @@ namespace BitVector {
             } else {
                 //insert the bit into the inner bit vector of the leaf
                 bitVector->insert(index, bit);
-                if (length + 1 == 2 * w * w) {
+                if (length + 1 == 2 * wBV * wBV) {
                     //leaf overflow, split leaf into two halves.
                     InnerBV* rightHalf = new InnerBV(bitVector);
                     //left half of the bits
@@ -344,7 +344,7 @@ namespace BitVector {
                 std::tie(leftChild, hasDeleted, deletedBit) = leftChild->deleteRecursive(index, num, ones, underflow);
                 if (!hasDeleted) return std::make_tuple(this, false, false);//no deletion, no bit can be removed from this tree
                 if (deletedBit) ones--;
-                if (num == w * w / 2) {
+                if (num == wBV * wBV / 2) {
                     //underflow, lefChild must be a leaf.
                     //try to steal a bit from the other child to avoid merging
                     std::tie(rightChild, hasStolen, stolenBit) = rightChild->deleteRecursive(0, length - num, 0/*bvOnes - ones - (deletedBit ? 1 : 0)*/, false);
@@ -369,13 +369,13 @@ namespace BitVector {
                 std::tie(rightChild, hasDeleted, deletedBit) = rightChild->deleteRecursive(index - num, length - num, bvOnes - ones, underflow);
                 if (!hasDeleted) return std::make_tuple(this, false, false);
                 if (deletedBit) bvOnes--;
-                if (length - num == w * w / 2) {
+                if (length - num == wBV * wBV / 2) {
                     //underflow, rightChild must be a leaf
                     //try to steal bit from the other child
                     std::tie(leftChild, hasStolen, stolenBit) = leftChild->deleteRecursive(num - 1, num, 0 /*ones*/, false);
                     if (!hasStolen) {
                         //merge the leaves
-                        leftChild->insertBitVector(num, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
+                        leftChild->insertBitVector(num, num, rightChild->bitVector, wBV * wBV / 2 - 1, bvOnes - ones);
                         //delete leftChild;//TODO merge into this instead of child and also delete the child
                         rightChild->free();
                         rightChild = NULL;
@@ -384,7 +384,7 @@ namespace BitVector {
                         return std::make_tuple(newRoot, true, deletedBit);
                     }
                     //re-insert the stolen bit at the right position
-                    rightChild->insertBit(0, stolenBit, w * w / 2 - 1);
+                    rightChild->insertBit(0, stolenBit, wBV * wBV / 2 - 1);
                     //a bit was moved from left to right, adjust num and ones accordingly
                     num--;
                     if (stolenBit) ones--;
@@ -403,7 +403,7 @@ namespace BitVector {
          * @return tuple (hasDeleted, deletedBit)
          */
         inline std::pair<bool, bool> deleteLeaf(int index, int length, bool underflow) noexcept {
-            if (length == w * w / 2 && !underflow) return std::make_pair(false, false);//forbidden underflow would occur, do not carry out deletion
+            if (length == wBV * wBV / 2 && !underflow) return std::make_pair(false, false);//forbidden underflow would occur, do not carry out deletion
             const bool bit = bitVector->deleteIndex(index);
             return std::make_pair(true, bit);
         }
@@ -499,9 +499,9 @@ namespace BitVector {
             if (isLeaf()) {
                 //AssertMsg(bitVector->length == bitVector->bits.size(), "BitVector length is false");
                 if (!allowUnderflows) {
-                    AssertMsg(bitVector->length >= w * w / 2, "Bit Vector underflow");
+                    AssertMsg(bitVector->length >= wBV * wBV / 2, "Bit Vector underflow");
                 }
-                AssertMsg(bitVector->length <= 2 * w * w, "Bit Vector overflow");
+                AssertMsg(bitVector->length <= 2 * wBV * wBV, "Bit Vector overflow");
                 return std::make_tuple(bitVector->length, bitVector->popcount(), 0);
             }
             int leftNum, leftOnes, leftHeight;

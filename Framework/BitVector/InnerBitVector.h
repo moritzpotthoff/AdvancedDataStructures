@@ -18,7 +18,7 @@ namespace BitVector {
          */
         InnerBitVector() :
                 bits(0) {
-            bits.reserve(w);
+            bits.reserve(wBV);
         }
 
         /**
@@ -84,7 +84,7 @@ namespace BitVector {
             if (bits.size() == 0) return false;
             const bool bit = bits[index];
             bits.erase(bits.begin() + index);
-            if (bits.size() + 2 * w < bits.capacity()) //more than two words are unused
+            if (bits.size() + 2 * wBV < bits.capacity()) //more than two words are unused
                 shrink();
             return bit;
         }
@@ -170,14 +170,14 @@ namespace BitVector {
          * Reserves more space
          */
         inline void enlarge() noexcept {
-            bits.reserve(bits.capacity() + w);
+            bits.reserve(bits.capacity() + wBV);
         }
 
         /**
          * Frees some space.
          */
         inline void shrink() noexcept {
-            bits.reserve(bits.capacity() - w);
+            bits.reserve(bits.capacity() - wBV);
         }
 
     public:

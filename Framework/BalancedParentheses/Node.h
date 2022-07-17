@@ -71,7 +71,7 @@ namespace BalancedParentheses {
                 //insert the bit into the inner bit vector of the leaf
                 bitVector->insert(index, bit);
                 recomputeExcessesLeaf();
-                if (length + 1 == 2 * w * w) {
+                if (length + 1 == 2 * wBP * wBP) {
                     //leaf overflow, split leaf into two halves.
                     InnerBV* rightHalf = new InnerBV(bitVector);
                     //left half of the bits
@@ -515,7 +515,7 @@ namespace BalancedParentheses {
                 std::tie(leftChild, hasDeleted, deletedBit) = leftChild->deleteRecursive(index, num, ones, underflow);
                 if (!hasDeleted) return std::make_tuple(this, false, false);//no deletion, no bit can be removed from this tree
                 if (deletedBit) ones--;
-                if (num == w * w / 2) {
+                if (num == wBP * wBP / 2) {
                     //underflow, lefChild must be a leaf.
                     //try to steal a bit from the other child to avoid merging
                     std::tie(rightChild, hasStolen, stolenBit) = rightChild->deleteRecursive(0, length - num, 0/*bvOnes - ones - (deletedBit ? 1 : 0)*/, false);
@@ -538,20 +538,20 @@ namespace BalancedParentheses {
                 std::tie(rightChild, hasDeleted, deletedBit) = rightChild->deleteRecursive(index - num, length - num, bvOnes - ones, underflow);
                 if (!hasDeleted) return std::make_tuple(this, false, false);
                 if (deletedBit) bvOnes--;
-                if (length - num == w * w / 2) {
+                if (length - num == wBP * wBP / 2) {
                     //underflow, rightChild must be a leaf
                     //try to steal bit from the other child
                     std::tie(leftChild, hasStolen, stolenBit) = leftChild->deleteRecursive(num - 1, num, ones, false);
                     if (!hasStolen) {
                         //merge the leaves
-                        leftChild->insertBitVector(num, num, rightChild->bitVector, w * w / 2 - 1, bvOnes - ones);
+                        leftChild->insertBitVector(num, num, rightChild->bitVector, wBP * wBP / 2 - 1, bvOnes - ones);
                         //delete leftChild;//TODO merge into this instead of child and also delete the child
                         rightChild->free();
                         rightChild = NULL;
                         return std::make_tuple(leftChild, true, deletedBit);
                     }
                     //re-insert the stolen bit at the right position
-                    rightChild->insertBit(0, stolenBit, w * w / 2 - 1);
+                    rightChild->insertBit(0, stolenBit, wBP * wBP / 2 - 1);
                     //a bit was moved from left to right, adjust num and ones accordingly
                     num--;
                     if (stolenBit) ones--;
@@ -571,7 +571,7 @@ namespace BalancedParentheses {
          * @return tuple (hasDeleted, deletedBit)
          */
         inline std::pair<bool, bool> deleteLeaf(int index, int length, bool underflow) noexcept {
-            if (length == w * w / 2 && !underflow) return std::make_pair(false, false);//forbidden underflow would occur, do not carry out deletion
+            if (length == wBP * wBP / 2 && !underflow) return std::make_pair(false, false);//forbidden underflow would occur, do not carry out deletion
 
             return std::make_pair(true, bitVector->deleteIndex(index));
         }

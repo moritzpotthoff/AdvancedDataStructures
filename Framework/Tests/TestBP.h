@@ -217,7 +217,7 @@ TEST_CASE("Binary Tree Test", "[bp][large][binary]") {
 TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
     BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
 
-    const int numberOfLevels = 1000000;
+    const int numberOfLevels = 10000;
     std::cout << "Creating linear tree with " << numberOfLevels << " levels." << std::endl;
     for (int level = 0; level < numberOfLevels; level++) {
         tree.insertChild(level, 1, 0);
@@ -245,7 +245,7 @@ TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
      */
 
     SECTION("Add a lot of leaves") {
-        const int numberOfLeaves = 1500000;
+        const int numberOfLeaves = 15000;
         std::cout << "Adding  " << numberOfLeaves << " leaves." << std::endl;
         const int parentIndex = numberOfLevels;
         for (int child = 0; child < numberOfLeaves; child++) {
@@ -253,7 +253,7 @@ TEST_CASE("Linear Tree Test", "[bp][large][linear]") {
         }
 
         //insert some more children to the first leaves so that these need to be skipped.
-        const int numberOfLowerChildren = 1700000;
+        const int numberOfLowerChildren = 17000;
         std::cout << "Adding " << numberOfLowerChildren << " lower leaves." << std::endl;
         for (int child = 0; child < numberOfLowerChildren; child++) {
             tree.insertChild(parentIndex + 1, 1, 0);//add a leaf

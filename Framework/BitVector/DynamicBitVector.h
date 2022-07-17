@@ -47,8 +47,8 @@ namespace BitVector {
                 root = new Node<InnerBV>();
                 return;
             }
-            int blockLength = w * w;
-            int numberOfBlocks = length / blockLength;//the last block has between w^2 and 2 * w^2 - 1 bits to ensure correct sizes
+            int blockLength = wBV * wBV;
+            int numberOfBlocks = length / blockLength;//the last block has between wBV^2 and 2 * wBV^2 - 1 bits to ensure correct sizes
             //partition the bits into blocks, build full binary tree for all blocks,
             if (numberOfBlocks == 0) {
                 //the only leaf contains all the bits.

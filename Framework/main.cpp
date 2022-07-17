@@ -5,13 +5,13 @@
 #include <stack>
 
 //for testing
-/*
+
 #define CATCH_CONFIG_RUNNER
 #include "Tests/catch.hpp"
 #include "Tests/TestBP.h"
 #include "Tests/TestBV.h"
 #include "Tests/TestIntInner.h"
-*/
+
 
 #include "Definitions.h"
 
@@ -135,34 +135,34 @@ inline static void handleBitVectorQuery(char *argv[]) {
                     << " rankTime=" << ((ranks > 0) ? rankTime / ranks : -1)
                     << " selectTime=" << ((selects > 0) ? selectTime / selects : -1)
                     << " input=" << inputFileName
-                    << " w=" << w
+                    << " w=" << wBV
                     << " space=" << bv.getSize()
                     << " length=" << bv.length
                     << " overhead=" << (double)bv.getSize() / (double)bv.length
                     << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
         std::cout   << "RESULT evalType=totalTime resultType=total(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " time=" << totalTime << std::endl;
         std::cout   << "RESULT evalType=totalTime resultType=construction(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " time=" << constructionTime / (initialLength / 10000) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=insert(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " time=" << ((inserts > 0) ? insertTime / inserts : -1) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=delete(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " time=" << ((deletes > 0) ? deleteTime / deletes : -1) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=rank(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " time=" << ((ranks > 0) ? rankTime / ranks : -1) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=select(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " time=" << ((selects > 0) ? selectTime / selects : -1) << std::endl;
         std::cout   << "RESULT evalType=overhead resultType=overhead(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " overhead=" << (double)bv.getSize() / (double)bv.length << std::endl;
         std::cout   << "RESULT evalType=score resultType=score(" << BVInnerBV << ")"
-                    << " w=" << w << " input=" << inputFileName
+                    << " w=" << wBV << " input=" << inputFileName
                     << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
     }
 
@@ -178,7 +178,7 @@ inline static void handleBPQuery(char *argv[]) {
     std::string outputFileName(argv[3]);
     std::ofstream outputFile(outputFileName);
 
-    BalancedParentheses::DynamicBP<BalancedParentheses::BasicProfiler, BalancedParentheses::InnerBitVector> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler, BalancedParentheses::InnerBitVector> tree;
     Helpers::Timer timer;
     double insertTime = 0, deleteTime = 0, childTime = 0, subtreeTime = 0, parentTime = 0;
     size_t inserts = 0, deletes = 0, childs = 0, subtrees = 0, parents = 0;
@@ -238,28 +238,28 @@ inline static void handleBPQuery(char *argv[]) {
                     << " innerBVType=" << BPInnerBV
                     << " totalTimeMs=" << time / 1000
                     << " input=" << inputFileName
-                    << " w=" << w
+                    << " w=" << wBP
                     << " space=" << tree.getSize()
                     << " score=" << 0.45 * (time / 1000) + 0.55 * tree.getSize()
                     << " nodes=" << tree.length / 2
                     << " bitsPerNode=" << (double)tree.getSize() / ((double)tree.length / 2)
                     << std::endl;
-        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=insert(" << BPInnerBV << ")"
+        std::cout   << "RESULT input=" << inputFileName << " w=" << wBP << " evalType=queryTime resultType=insert(" << BPInnerBV << ")"
                     << " time=" << insertTime / inserts
                     << std::endl;
-        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=delete(" << BPInnerBV << ")"
+        std::cout   << "RESULT input=" << inputFileName << " w=" << wBP << " evalType=queryTime resultType=delete(" << BPInnerBV << ")"
                     << " time=" << deleteTime / deletes
                     << std::endl;
-        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=subtree(" << BPInnerBV << ")"
+        std::cout   << "RESULT input=" << inputFileName << " w=" << wBP << " evalType=queryTime resultType=subtree(" << BPInnerBV << ")"
                     << " time=" << subtreeTime / subtrees
                     << std::endl;
-        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=child(" << BPInnerBV << ")"
+        std::cout   << "RESULT input=" << inputFileName << " w=" << wBP << " evalType=queryTime resultType=child(" << BPInnerBV << ")"
                     << " time=" << childTime / childs
                     << std::endl;
-        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=queryTime resultType=parent(" << BPInnerBV << ")"
+        std::cout   << "RESULT input=" << inputFileName << " w=" << wBP << " evalType=queryTime resultType=parent(" << BPInnerBV << ")"
                     << " time=" << parentTime / parents
                     << std::endl;
-        std::cout   << "RESULT input=" << inputFileName << " w=" << w << " evalType=overhead resultType=overhead(" << BPInnerBV << ")"
+        std::cout   << "RESULT input=" << inputFileName << " w=" << wBP << " evalType=overhead resultType=overhead(" << BPInnerBV << ")"
                     << " space=" << tree.getSize()
                     << " score=" << 0.45 * (time / 1000) + 0.55 * tree.getSize()
                     << " nodes=" << tree.length / 2
@@ -273,9 +273,9 @@ inline static void handleBPQuery(char *argv[]) {
 int main(int argc, char *argv[]) {
     if (argc != 4) {
         //testing
-        //int result = Catch::Session().run(argc, argv);
-        //return result;
-        return 0;
+        int result = Catch::Session().run(argc, argv);
+        return result;
+        //return 0;
     }
     std::string queryChoice(argv[1]);
 

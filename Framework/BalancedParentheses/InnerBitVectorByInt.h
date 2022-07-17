@@ -168,7 +168,7 @@ namespace BalancedParentheses {
 
             length--;
             //update capacity
-            if (length + 2 * w < wordSize * (int)words.capacity()) //more than two words are unused
+            if (length + 2 * wBP < wordSize * (int)words.capacity()) //more than two words are unused
                 shrink();
 
             return bit;
