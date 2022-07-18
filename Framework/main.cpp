@@ -68,6 +68,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
 
     //Read and execute all the queries.
     std::string queryType;
+
     int index;
     bool bit;
     while (inputFile >> queryType) {
@@ -110,6 +111,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
             if constexpr (VeryInteractive) std::cout << "Select_" << bit << "[" << index << "]=" << result << std::endl;
         }
     }
+
 
     if constexpr (VeryInteractive) {
         std::cout << "BV result:" << std::endl;

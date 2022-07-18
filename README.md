@@ -13,6 +13,11 @@ Run the program using
 ./build/Framework [bv|bp] path_to_input_file path_to_output_file
 ```
 
+## About Running Times
+I use rather large leaves for memory efficiency. If the queries become too slow, the values of `w` (see below) can be reduced to `32` or `64` for faster queries with higher memory consumption.
+Even larger values for `w` typically yield better scores, but then, it's only a linear-time bit vector with a bit of AVL-tree decoration.
+I did not tune it aggressively in that direction as I was worried about time limits in the evaluation.
+
 ## Overview over the Project
 
 - The input is read, queries are started, and the output is generated in `main.cpp`.
