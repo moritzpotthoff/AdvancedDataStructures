@@ -43,7 +43,7 @@
     \begin{axis}[
         xlabel={Size parameter $w$},
         ylabel={Time (microseconds)},
-        ymin=0,ymax=15,
+        ymin=0,ymax=10,
         xmin=0,xmax=320,
         xtick={32,64,96,128,160,192,224,256,288,320},
     ]
@@ -67,7 +67,7 @@
         ylabel near ticks, yticklabel pos=right,
         legend style={at={(0.98,0.98)},anchor=north east},
         xlabel={Size parameter $w$},
-        ylabel={Overhead},
+        ylabel={Space per bit},
         ymin=1,ymax=4,
         xmin=0,xmax=320,
         grid=none,
@@ -76,33 +76,27 @@
     
         %% MULTIPLOT(resultType) SELECT w AS x, overhead AS y, MULTIPLOT
         %% FROM bvData 
-        %% WHERE evalType LIKE 'overhead' 
+        %% WHERE evalType LIKE 'overhead' AND (resultType LIKE '%uint64%')
         %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
-        \addplot coordinates { (16,3.81308) (32,1.70347) (48,1.31237) (64,1.17552) (80,1.11214) (96,1.07757) (128,1.04372) (160,1.02787) (192,1.01923) (224,1.01419) (256,1.01059) (288,1.00843) (320,1.00699) };
-        \addlegendentry{resultType=overhead(vector<bool>)};
         \addplot coordinates { (16,3.63604) (32,1.65739) (48,1.29167) (64,1.1639) (80,1.10455) (96,1.07238) (128,1.04076) (160,1.02616) (192,1.01791) (224,1.01322) (256,1.00989) (288,1.00785) (320,1.0065) };
         \addlegendentry{resultType=overhead(vector<uint64\_t>)};
     \end{axis}
-\begin{axis}[
-ylabel near ticks, yticklabel pos=right,
-legend style={at={(0.98,0.98)},anchor=north east},
-xlabel={Size parameter $w$},
-ylabel={Score},
-ymin=1,ymax=3000000,
-xmin=0,xmax=320,
-grid=none,
-xtick=0,
-]
+%\begin{axis}[
+%ylabel near ticks, yticklabel pos=right,
+%legend style={at={(0.98,0.98)},anchor=north east},
+%xlabel={Size parameter $w$},
+%ylabel={Score},
+%ymin=1,ymax=3000000,
+%xmin=0,xmax=320,
+%grid=none,
+%xtick=0,
+%]
 
 %% MULTIPLOT(innerBVType) SELECT w AS x, score AS y, MULTIPLOT
 %% FROM bvData 
-%% WHERE algo LIKE 'bv' AND w > 0
+%% WHERE algo LIKE 'bv' AND w > 0 AND w < 0
 %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
-\addplot coordinates { (16,2.79627e+06) (32,1.2516e+06) (48,968504.0) (64,872533.0) (80,830950.0) (96,811401.0) (128,798137.0) (160,806943.0) (192,826198.0) (224,843899.0) (256,865263.0) (288,903379.0) (320,948332.0) };
-\addlegendentry{innerBVType=vector<bool>};
-\addplot coordinates { (16,2.66591e+06) (32,1.21554e+06) (48,947510.0) (64,853922.0) (80,810433.0) (96,787620.0) (128,765134.0) (160,753657.0) (192,748116.0) (224,744558.0) (256,742818.0) (288,742682.0) (320,741370.0) };
-\addlegendentry{innerBVType=vector<uint64\_t>};
-\end{axis}
+%\end{axis}
 \end{tikzpicture}
 \end{document}
 

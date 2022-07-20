@@ -1,0 +1,99 @@
+% -*- mode: latex; mode: flyspell; ispell-local-dictionary: "en_US"; coding: utf-8; fill-column: 80 -*-
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\input{kitColors.tex}
+\usetikzlibrary{plotmarks}
+
+\pgfplotscreateplotcyclelist{kitcolors}{
+    KITgreen,every mark/.append style={fill=KITgreen!80!black},mark=*\\
+    KITblue,every mark/.append style={fill=KITblue!80!black},mark=square*\\
+    KITlilac,every mark/.append style={fill=KITlilac!80!black},mark=pentagon*\\
+    KITorange,every mark/.append style={fill=KITorange!80!black},mark=diamond*\\
+    KITbrown,every mark/.append style={fill=KITbrown!80!black},mark=triangle*\\
+}
+
+\pgfplotsset{
+  width=150mm,height=100mm,
+  major grid style={thin,dotted,color=black!50},
+  minor grid style={thin,dotted,color=black!50},
+  every axis/.append style={
+    line width=0.5pt,
+    tick style={
+      line cap=round,
+      thin,
+      major tick length=4pt,
+      minor tick length=2pt,
+    },
+  },
+  legend cell align=left,
+  legend pos=north west,
+  grid=major,
+  cycle list name=kitcolors,
+  every axis plot/.append style={ultra thick}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% IMPORT-DATA bvData ../../EvaluationData/bvEvaluation.txt
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Size parameter $w$},
+        ylabel={Time (microseconds)},
+        ymin=0,ymax=400,
+        xmin=0,xmax=320,
+        xtick={32,64,96,128,160,192,224,256,288,320},
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT w AS x, time AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE 'queryTime' 
+        %% AND (resultType LIKE 'insert%')
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (16,2.00351) (32,6.08227) (48,14.0633) (64,24.5867) (80,33.5666) (96,44.6448) (128,77.711) (160,118.941) (192,173.749) (224,223.318) (256,286.935) (288,365.65) (320,460.706) };
+        \addlegendentry{resultType=insert(vector<bool>)};
+        \addplot coordinates { (16,0.793777) (32,1.08002) (48,1.16224) (64,1.16405) (80,1.25958) (96,2.43772) (128,3.55026) (160,2.14177) (192,2.74277) (224,2.49014) (256,3.18191) (288,5.17691) (320,4.41541) };
+        \addlegendentry{resultType=insert(vector<uint64\_t>)};
+    \end{axis} 
+    \pgfplotsset{cycle list shift=4}
+    \begin{axis}[
+        ylabel near ticks, yticklabel pos=right,
+        legend style={at={(0.98,0.98)},anchor=north east},
+        xlabel={Size parameter $w$},
+        ylabel={Space per bit},
+        ymin=1,ymax=4,
+        xmin=0,xmax=320,
+        grid=none,
+        xtick=0,
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT w AS x, overhead AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE 'overhead' AND (resultType LIKE '%uint64%')
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (16,3.63604) (32,1.65739) (48,1.29167) (64,1.1639) (80,1.10455) (96,1.07238) (128,1.04076) (160,1.02616) (192,1.01791) (224,1.01322) (256,1.00989) (288,1.00785) (320,1.0065) };
+        \addlegendentry{resultType=overhead(vector<uint64\_t>)};
+    \end{axis}
+%\begin{axis}[
+%ylabel near ticks, yticklabel pos=right,
+%legend style={at={(0.98,0.98)},anchor=north east},
+%xlabel={Size parameter $w$},
+%ylabel={Score},
+%ymin=1,ymax=3000000,
+%xmin=0,xmax=320,
+%grid=none,
+%xtick=0,
+%]
+
+%% MULTIPLOT(innerBVType) SELECT w AS x, score AS y, MULTIPLOT
+%% FROM bvData 
+%% WHERE algo LIKE 'bv' AND w > 0 AND w < 0
+%% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+%\end{axis}
+\end{tikzpicture}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

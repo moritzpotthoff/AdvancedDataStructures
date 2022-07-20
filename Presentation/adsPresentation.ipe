@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.21">
-<info created="D:20090429144355" modified="D:20220711132617" title="Programmierprojekt Fortgeschrittene Datenstrukturen" author="Moritz Potthoff"/>
+<info created="D:20090429144355" modified="D:20220720151355" title="Programmierprojekt Fortgeschrittene Datenstrukturen" author="Moritz Potthoff"/>
 <preamble>\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -3631,7 +3631,7 @@ h
 </path>
 </group>
 <text layer="pagenumbers_format" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="31.6204" height="7.5578" depth="2.277" valign="top" size="veryTiny">{\bf [page]}</text>
-<text layer="BACKGROUND" matrix="1 0 0 1 -98 -209" pos="98 168" stroke="black" type="minipage" width="412" height="10.7111" depth="0" valign="center" size="veryTiny">Textindexierung $\cdot$ Abschlusspräsentation</text>
+<text layer="BACKGROUND" matrix="1 0 0 1 -98 -209" pos="98 168" stroke="black" type="minipage" width="412" height="10.7111" depth="0" valign="center" size="veryTiny">Fortgeschrittene Datenstrukturen $\cdot$ Abschlusspräsentation</text>
 <text matrix="1 0 0 1 288 -24" transformations="translations" pos="608 -16" stroke="KITblack" type="label" width="0" height="0" depth="0" halign="right" valign="center" size="small"></text>
 <text layer="title" matrix="1 0 0 1 -213 -66" pos="213 427" stroke="black" type="minipage" width="994.644" height="46.0416" depth="35.156" valign="baseline" size="LARGE">\bf Programmierprojekt \\ Fortgeschrittene Datenstrukturen</text>
 <text layer="BACKGROUND" matrix="0.0675421 0 0 0.0675421 -16.2101 448" pos="240 0" stroke="black" type="label" width="0" height="0" depth="0" valign="top"></text>
@@ -3776,31 +3776,267 @@ h
 <use matrix="1.15654 0 0 1.15654 5.49662 -112.018" name="mark/fdisk(sfx)" pos="400 352" size="12" stroke="KITseablue" fill="white"/>
 <text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 0}</text>
 </page>
-<page title="Vorgehen: Dynamischer Bitvektor">
+<page title="Platzeffizienter, schneller dynamischer Bitvektor">
 <layer name="alpha"/>
 <layer name="pagenumbers_page" edit="no"/>
+<layer name="animationIntInner"/>
 <view layers="alpha pagenumbers_page" active="alpha"/>
+<view layers="alpha pagenumbers_page animationIntInner" active="animationIntInner"/>
+<path layer="animationIntInner" fill="KITgreen50">
+8 46 m
+286 46 l
+286 64 l
+8 64 l
+h
+</path>
+<path fill="KITgreen50">
+14 104 m
+74 104 l
+74 120 l
+14 120 l
+h
+</path>
+<path layer="alpha" matrix="1 0 0 1 32 0" stroke="KITLogoBlack" pen="3">
+152 128 m
+176 192 l
+</path>
+<path stroke="KITLogoBlack" pen="3">
+208 192 m
+224 288 l
+272 192 l
+272 192 l
+</path>
+<path stroke="KITLogoBlack" pen="3">
+16 192 m
+64 288 l
+96 192 l
+</path>
+<path stroke="KITLogoBlack" pen="3">
+96 192 m
+56 128 l
+</path>
+<path matrix="1 0 0 1 -576 -16" stroke="KITLogoBlack" pen="3">
+720 384 m
+640 304 l
+</path>
+<path stroke="KITLogoBlack" pen="3">
+132 128 m
+96 192 l
+</path>
+<path stroke="KITLogoBlack" pen="3">
+264 128 m
+208 192 l
+</path>
+<path matrix="1 0 0 1 -576 0" stroke="KITLogoBlack" pen="3">
+800 288 m
+720 368 l
+</path>
+<use matrix="1 0 0 1 -576 0" name="mark/fdisk(sfx)" pos="720 368" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 -576 0" name="mark/fdisk(sfx)" pos="640 288" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -576 0" name="mark/fdisk(sfx)" pos="800 288" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -528 -32" name="mark/fdisk(sfx)" pos="736 224" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -592 32" name="mark/fdisk(sfx)" pos="864 160" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -548 0" name="mark/fdisk(sfx)" pos="644 192" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -624 -96" name="mark/fdisk(sfx)" pos="640 288" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -680 -96" name="mark/fdisk(sfx)" pos="736 224" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -604 -96" name="mark/fdisk(sfx)" pos="736 224" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -552 -96" name="mark/fdisk(sfx)" pos="736 224" size="normal" stroke="black" fill="white"/>
+<use matrix="1 0 0 1 -472 -96" name="mark/fdisk(sfx)" pos="736 224" size="normal" stroke="black" fill="white"/>
+<text matrix="1 0 0 1 4 0" transformations="translations" pos="304 384" stroke="black" type="minipage" width="566" height="184.502" depth="172.725" valign="top" style="itemize">\item Repräsentiere dynamischen Bitvektor als \textbf{AVL-Baum}
+\item Blätter speichern selbst dynamische Bitvektoren \\ mit je $w^2/2$ bis $2w^2$ bits
+\item Speichere Bits als Folge von \texttt{uint64\_t}
+\begin{itemize}
+\item Effizientere Anfragen durch popcount (verglichen mit \texttt{std::vector&lt;bool&gt;}, \texttt{boost::dynamic\_bitset}) 
+\item Dynamische Größe, erlaube große Blätter ohne große Platzoverheads für leere Blätter (verglichen mit \texttt{std::bitset})
+\end{itemize}
+
+\item Tuning: 18\,432 Bits für \texttt{bv}, 8\,192 Bits für \texttt{bp}</text>
+<text matrix="1 0 0 1 28 4" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="59.278" height="9.742" depth="0" halign="center" valign="center" size="footnote">\texttt{011...0}</text>
+<text matrix="1 0 0 1 56 -60" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="59.278" height="9.742" depth="0" halign="center" valign="center" size="footnote">\texttt{101...1}</text>
+<text matrix="1 0 0 1 132 -60" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="50.81" height="9.742" depth="0" halign="center" valign="center" size="footnote">\texttt{11...1}</text>
+<text matrix="1 0 0 1 208 -60" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="59.278" height="9.742" depth="0" halign="center" valign="center" size="footnote">\texttt{101...0}</text>
+<text matrix="1 0 0 1 284 -60" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="59.278" height="9.742" depth="0" halign="center" valign="center" size="footnote">\texttt{111...0}</text>
+<text matrix="1 0 0 1 280 4" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="59.278" height="9.742" depth="0" halign="center" valign="center" size="footnote">\texttt{001...1}</text>
+<path layer="animationIntInner" fill="KITgreen30">
+14 104 m
+74 104 l
+288 64 l
+146 64 l
+8 64 l
+h
+</path>
+<path fill="KITblue50">
+10 48 m
+78 48 l
+78 62 l
+10 62 l
+h
+</path>
+<path matrix="1 0 0 1 82 0" fill="KITblue50">
+10 48 m
+78 48 l
+78 62 l
+10 62 l
+h
+</path>
+<text matrix="1 0 0 1 58 -118" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="71.824" height="9.756" depth="2.14" halign="center" valign="center" size="footnote">\texttt{10101110},</text>
+<path fill="KITblue50">
+216 48 m
+284 48 l
+284 62 l
+216 62 l
+h
+</path>
+<text matrix="1 0 0 1 140 -118" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="71.824" height="9.756" depth="2.14" halign="center" valign="center" size="footnote">\texttt{00111010},</text>
+<text matrix="1 0 0 1 262 -118" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="67.746" height="9.742" depth="0" halign="center" valign="center" size="footnote">\texttt{11010111}</text>
+<text matrix="1 0 0 1 206 -122" transformations="translations" pos="-12 172" stroke="KITLogoBlack" type="label" width="23.61" height="1.57" depth="2.14" halign="center" valign="center" size="footnote">\dots,</text>
 <text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 1}</text>
 </page>
-<page title="Integer-basierter Bitvektor">
+<page title="BP: Evtl was zu rekursiven Funktionen und parent pointern oder pruning ohne maxExcess">
 <layer name="alpha"/>
 <layer name="pagenumbers_page" edit="no"/>
 <view layers="alpha pagenumbers_page" active="alpha"/>
 <text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 2}</text>
 </page>
-<page title="Vorgehen: BP">
+<page title="Bitvektor Performance nach Blattgröße">
 <layer name="alpha"/>
 <layer name="pagenumbers_page" edit="no"/>
-<view layers="alpha pagenumbers_page" active="alpha"/>
+<layer name="beta"/>
+<layer name="gamma"/>
+<layer name="delta"/>
+<view layers="alpha pagenumbers_page beta" active="beta"/>
+<view layers="alpha pagenumbers_page gamma" active="gamma"/>
+<view layers="alpha pagenumbers_page delta" active="delta"/>
+<text layer="beta" matrix="1 0 0 1 0 24" transformations="translations" pos="0 384" stroke="KITLogoBlack" type="minipage" width="896" height="218.738" depth="207.001" valign="top">\begin{tikzpicture}
+    \begin{axis}[
+       width=100mm,height=65mm,
+        xlabel={Size parameter $w$},
+        ylabel={Time (microseconds)},
+        ymin=0,ymax=10,
+        xmin=0,xmax=320,
+        xtick={32,64,96,128,160,192,224,256,288,320},
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT w AS x, time AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE &apos;queryTime&apos; 
+        %% AND (resultType LIKE &apos;%uint64%&apos;)
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (16,1.04137) (32,1.16148) (48,1.29163) (64,1.7926) (80,1.71794) (96,4.26217) (128,6.42154) (160,4.51879) (192,6.66924) (224,6.43614) (256,9.75932) (288,14.7069) (320,14.1694) };
+        \addlegendentry{delete};
+        \addplot coordinates { (16,0.793777) (32,1.08002) (48,1.16224) (64,1.16405) (80,1.25958) (96,2.43772) (128,3.55026) (160,2.14177) (192,2.74277) (224,2.49014) (256,3.18191) (288,5.17691) (320,4.41541) };
+        \addlegendentry{insert};
+        \addplot coordinates { (16,0.19014) (32,0.638463) (48,1.01461) (64,1.06118) (80,1.1189) (96,1.60047) (128,2.08715) (160,1.12525) (192,1.28689) (224,1.04266) (256,1.04649) (288,1.32895) (320,1.07473) };
+        \addlegendentry{rank};
+        \addplot coordinates { (16,0.214955) (32,0.667923) (48,1.02358) (64,1.06234) (80,1.01086) (96,1.62604) (128,2.13339) (160,1.13808) (192,1.28677) (224,1.04936) (256,1.04759) (288,1.36664) (320,1.05815) };
+        \addlegendentry{select};
+    \end{axis} 
+    \pgfplotsset{cycle list shift=4}
+    \begin{axis}[
+       width=100mm,height=65mm,
+        ylabel near ticks, yticklabel pos=right,
+        legend style={at={(0.98,0.98)},anchor=north east},
+        xlabel={Size parameter $w$},
+        ylabel={Space per bit},
+        ymin=1,ymax=4,
+        xmin=0,xmax=320,
+        grid=none,
+        xtick=0,
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT w AS x, overhead AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE &apos;overhead&apos; AND (resultType LIKE &apos;%uint64%&apos;)
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (16,3.63604) (32,1.65739) (48,1.29167) (64,1.1639) (80,1.10455) (96,1.07238) (128,1.04076) (160,1.02616) (192,1.01791) (224,1.01322) (256,1.00989) (288,1.00785) (320,1.0065) };
+        \addlegendentry{overhead};
+    \end{axis}
+%\begin{axis}[
+%ylabel near ticks, yticklabel pos=right,
+%legend style={at={(0.98,0.98)},anchor=north east},
+%xlabel={Size parameter $w$},
+%ylabel={Score},
+%ymin=1,ymax=3000000,
+%xmin=0,xmax=320,
+%grid=none,
+%xtick=0,
+%]
+
+%% MULTIPLOT(innerBVType) SELECT w AS x, score AS y, MULTIPLOT
+%% FROM bvData 
+%% WHERE algo LIKE &apos;bv&apos; AND w &gt; 0 AND w &lt; 0
+%% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+%\end{axis}
+\end{tikzpicture}</text>
+<text layer="gamma" transformations="translations" pos="0 408" stroke="KITLogoBlack" type="minipage" width="896" height="218.734" depth="207.001" valign="top">\begin{tikzpicture}
+    \begin{axis}[
+        width=100mm,height=65mm,
+        xlabel={Size parameter $w$},
+        ylabel={Time (microseconds)},
+        ymin=0,ymax=400,
+        xmin=0,xmax=320,
+        xtick={32,64,96,128,160,192,224,256,288,320},
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT w AS x, time AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE &apos;queryTime&apos; 
+        %% AND (resultType LIKE &apos;insert%&apos;)
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (16,2.00351) (32,6.08227) (48,14.0633) (64,24.5867) (80,33.5666) (96,44.6448) (128,77.711) (160,118.941) (192,173.749) (224,223.318) (256,286.935) (288,365.65) (320,460.706) };
+        \addlegendentry{insert(bool)};
+        \addplot coordinates { (16,0.793777) (32,1.08002) (48,1.16224) (64,1.16405) (80,1.25958) (96,2.43772) (128,3.55026) (160,2.14177) (192,2.74277) (224,2.49014) (256,3.18191) (288,5.17691) (320,4.41541) };
+        \addlegendentry{insert(uint64\_t)};
+    \end{axis} 
+    
+\end{tikzpicture}</text>
+<text layer="delta" transformations="translations" pos="0 408" stroke="KITLogoBlack" type="minipage" width="896" height="211.239" depth="199.528" valign="top">\begin{tikzpicture}
+    \begin{axis}[
+        width=100mm, height=65mm,
+        xlabel={Size parameter $w$},
+        legend style={at={(0.98,0.02)},anchor=south east},
+        ylabel={Time (microseconds)},
+        ymin=0,ymax=2.5,
+        xmin=0,xmax=320,
+        xtick={32,64,96,128,160,192,224,256,288,320},
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT w AS x, time AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE &apos;queryTime&apos; 
+        %% AND (resultType LIKE &apos;rank%&apos;)
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (16,1.13083) (32,1.30824) (48,1.66558) (64,1.75196) (80,1.48711) (96,1.34367) (128,1.35488) (160,1.31912) (192,1.35091) (224,1.21246) (256,1.1461) (288,1.18073) (320,1.1498) };
+        \addlegendentry{rank(bool)};
+        \addplot coordinates { (16,0.19014) (32,0.638463) (48,1.01461) (64,1.06118) (80,1.1189) (96,1.60047) (128,2.08715) (160,1.12525) (192,1.28689) (224,1.04266) (256,1.04649) (288,1.32895) (320,1.07473) };
+        \addlegendentry{rank(uint64\_t)};
+    \end{axis} 
+%\begin{axis}[
+%ylabel near ticks, yticklabel pos=right,
+%legend style={at={(0.98,0.98)},anchor=north east},
+%xlabel={Size parameter $w$},
+%ylabel={Score},
+%ymin=1,ymax=3000000,
+%xmin=0,xmax=320,
+%grid=none,
+%xtick=0,
+%]
+
+%% MULTIPLOT(innerBVType) SELECT w AS x, score AS y, MULTIPLOT
+%% FROM bvData 
+%% WHERE algo LIKE &apos;bv&apos; AND w &gt; 0 AND w &lt; 0
+%% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+%\end{axis}
+\end{tikzpicture}</text>
 <text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5578" depth="0.184" valign="top" size="veryTiny">{\bf 3}</text>
 </page>
-<page title="Performance BV">
+<page title="Performance BP">
 <layer name="alpha"/>
 <layer name="pagenumbers_page" edit="no"/>
 <view layers="alpha pagenumbers_page" active="alpha"/>
 <text layer="pagenumbers_page" matrix="1 0 0 1 13 6.058" transformations="translations" pos="-13 -35" stroke="black" type="label" width="5.8604" height="7.5463" depth="0" valign="top" size="veryTiny">{\bf 4}</text>
 </page>
-<page title="Performance BP">
+<page>
 <layer name="alpha"/>
 <layer name="pagenumbers_page" edit="no"/>
 <view layers="alpha pagenumbers_page" active="alpha"/>
@@ -4146,7 +4382,7 @@ h
 <layer name="alpha"/>
 <layer name="pagenumbers_page" edit="no"/>
 <view layers="alpha pagenumbers_page" active="alpha"/>
-<text layer="alpha" matrix="1 0 0 1 0 16" transformations="translations" pos="0 384" stroke="black" type="minipage" width="896" height="210.786" depth="199.038" valign="top">\begin{tikzpicture}
+<text layer="alpha" matrix="1 0 0 1 0 14" transformations="translations" pos="0 384" stroke="black" type="minipage" width="896" height="210.786" depth="199.038" valign="top">\begin{tikzpicture}
   \begin{axis}[
     xlabel={Input length (\#char)},
     ylabel={Query time ($\ell = 10$, ms)},

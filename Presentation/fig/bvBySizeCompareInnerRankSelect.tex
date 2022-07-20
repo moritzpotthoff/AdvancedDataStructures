@@ -1,0 +1,81 @@
+% -*- mode: latex; mode: flyspell; ispell-local-dictionary: "en_US"; coding: utf-8; fill-column: 80 -*-
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\input{kitColors.tex}
+\usetikzlibrary{plotmarks}
+
+\pgfplotscreateplotcyclelist{kitcolors}{
+    KITgreen,every mark/.append style={fill=KITgreen!80!black},mark=*\\
+    KITblue,every mark/.append style={fill=KITblue!80!black},mark=square*\\
+    KITlilac,every mark/.append style={fill=KITlilac!80!black},mark=pentagon*\\
+    KITorange,every mark/.append style={fill=KITorange!80!black},mark=diamond*\\
+    KITbrown,every mark/.append style={fill=KITbrown!80!black},mark=triangle*\\
+}
+
+\pgfplotsset{
+  width=150mm,height=100mm,
+  major grid style={thin,dotted,color=black!50},
+  minor grid style={thin,dotted,color=black!50},
+  every axis/.append style={
+    line width=0.5pt,
+    tick style={
+      line cap=round,
+      thin,
+      major tick length=4pt,
+      minor tick length=2pt,
+    },
+  },
+  legend cell align=left,
+  legend pos=north west,
+  grid=major,
+  cycle list name=kitcolors,
+  every axis plot/.append style={ultra thick}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% IMPORT-DATA bvData ../../EvaluationData/bvEvaluation.txt
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Size parameter $w$},
+        legend style={at={(0.98,0.02)},anchor=south east},
+        ylabel={Time (microseconds)},
+        ymin=0,ymax=2.5,
+        xmin=0,xmax=320,
+        xtick={32,64,96,128,160,192,224,256,288,320},
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT w AS x, time AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE 'queryTime' 
+        %% AND (resultType LIKE 'rank%')
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (16,1.13083) (32,1.30824) (48,1.66558) (64,1.75196) (80,1.48711) (96,1.34367) (128,1.35488) (160,1.31912) (192,1.35091) (224,1.21246) (256,1.1461) (288,1.18073) (320,1.1498) };
+        \addlegendentry{resultType=rank(vector<bool>)};
+        \addplot coordinates { (16,0.19014) (32,0.638463) (48,1.01461) (64,1.06118) (80,1.1189) (96,1.60047) (128,2.08715) (160,1.12525) (192,1.28689) (224,1.04266) (256,1.04649) (288,1.32895) (320,1.07473) };
+        \addlegendentry{resultType=rank(vector<uint64\_t>)};
+    \end{axis} 
+%\begin{axis}[
+%ylabel near ticks, yticklabel pos=right,
+%legend style={at={(0.98,0.98)},anchor=north east},
+%xlabel={Size parameter $w$},
+%ylabel={Score},
+%ymin=1,ymax=3000000,
+%xmin=0,xmax=320,
+%grid=none,
+%xtick=0,
+%]
+
+%% MULTIPLOT(innerBVType) SELECT w AS x, score AS y, MULTIPLOT
+%% FROM bvData 
+%% WHERE algo LIKE 'bv' AND w > 0 AND w < 0
+%% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+%\end{axis}
+\end{tikzpicture}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
