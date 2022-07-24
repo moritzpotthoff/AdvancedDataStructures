@@ -33,8 +33,8 @@ static const bool VeryInteractive = false;
 static const bool WriteToFile = true;
 static const bool EvaluationMode = false;
 
-static const std::string BVInnerBV = "vector<bool>";
-static const std::string BPInnerBV = "vector<bool>";
+static const std::string BVInnerBV = "vector<uint64_t>";
+static const std::string BPInnerBV = "vector<uint64_t>";
 
 inline static void handleBitVectorQuery(char *argv[]) {
     if constexpr (Interactive) std::cout << "Requested bit vector query." << std::endl;
@@ -62,7 +62,7 @@ inline static void handleBitVectorQuery(char *argv[]) {
         bits.emplace_back(bit);
     }
     timer.restart();
-    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVector> bv(bits);
+    BitVector::DynamicBitVector<BitVector::NoProfiler, BitVector::InnerBitVectorByInt> bv(bits);
     constructionTime += timer.getMicroseconds();
     if constexpr (Interactive) std::cout << "Found bit vector of length " << initialLength << "." << std::endl;
 
@@ -144,27 +144,35 @@ inline static void handleBitVectorQuery(char *argv[]) {
                     << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
         std::cout   << "RESULT evalType=totalTime resultType=total(" << BVInnerBV << ")"
                     << " w=" << wBV << " input=" << inputFileName
+                    << " length=" << bv.length
                     << " time=" << totalTime << std::endl;
         std::cout   << "RESULT evalType=totalTime resultType=construction(" << BVInnerBV << ")"
+                    << " length=" << bv.length
                     << " w=" << wBV << " input=" << inputFileName
                     << " time=" << constructionTime / (initialLength / 10000) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=insert(" << BVInnerBV << ")"
                     << " w=" << wBV << " input=" << inputFileName
+                    << " length=" << bv.length
                     << " time=" << ((inserts > 0) ? insertTime / inserts : -1) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=delete(" << BVInnerBV << ")"
                     << " w=" << wBV << " input=" << inputFileName
+                    << " length=" << bv.length
                     << " time=" << ((deletes > 0) ? deleteTime / deletes : -1) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=rank(" << BVInnerBV << ")"
                     << " w=" << wBV << " input=" << inputFileName
+                    << " length=" << bv.length
                     << " time=" << ((ranks > 0) ? rankTime / ranks : -1) << std::endl;
         std::cout   << "RESULT evalType=queryTime resultType=select(" << BVInnerBV << ")"
                     << " w=" << wBV << " input=" << inputFileName
+                    << " length=" << bv.length
                     << " time=" << ((selects > 0) ? selectTime / selects : -1) << std::endl;
         std::cout   << "RESULT evalType=overhead resultType=overhead(" << BVInnerBV << ")"
                     << " w=" << wBV << " input=" << inputFileName
+                    << " length=" << bv.length
                     << " overhead=" << (double)bv.getSize() / (double)bv.length << std::endl;
         std::cout   << "RESULT evalType=score resultType=score(" << BVInnerBV << ")"
                     << " w=" << wBV << " input=" << inputFileName
+                    << " length=" << bv.length
                     << " score=" << 0.45 * (totalTime / 1000) + 0.55 * bv.getSize() << std::endl;
     }
 
@@ -180,7 +188,7 @@ inline static void handleBPQuery(char *argv[]) {
     std::string outputFileName(argv[3]);
     std::ofstream outputFile(outputFileName);
 
-    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler, BalancedParentheses::InnerBitVector> tree;
+    BalancedParentheses::DynamicBP<BalancedParentheses::NoProfiler, BalancedParentheses::InnerBitVectorByInt> tree;
     Helpers::Timer timer;
     double insertTime = 0, deleteTime = 0, childTime = 0, subtreeTime = 0, parentTime = 0;
     size_t inserts = 0, deletes = 0, childs = 0, subtrees = 0, parents = 0;
