@@ -1,0 +1,70 @@
+% -*- mode: latex; mode: flyspell; ispell-local-dictionary: "en_US"; coding: utf-8; fill-column: 80 -*-
+\documentclass{standalone}
+\usepackage{tikz,pgfplots}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\input{kitColors.tex}
+\usetikzlibrary{plotmarks}
+
+\pgfplotscreateplotcyclelist{kitcolors}{
+    KITgreen,every mark/.append style={fill=KITgreen!80!black},mark=*\\
+    KITblue,every mark/.append style={fill=KITblue!80!black},mark=square*\\
+    KITlilac,every mark/.append style={fill=KITlilac!80!black},mark=pentagon*\\
+    KITorange,every mark/.append style={fill=KITorange!80!black},mark=diamond*\\
+    KITbrown,every mark/.append style={fill=KITbrown!80!black},mark=triangle*\\
+}
+
+\pgfplotsset{
+  width=150mm,height=100mm,
+  major grid style={thin,dotted,color=black!50},
+  minor grid style={thin,dotted,color=black!50},
+  every axis/.append style={
+    line width=0.5pt,
+    tick style={
+      line cap=round,
+      thin,
+      major tick length=4pt,
+      minor tick length=2pt,
+    },
+  },
+  legend cell align=left,
+  legend pos=north west,
+  grid=major,
+  cycle list name=kitcolors,
+  every axis plot/.append style={ultra thick}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% IMPORT-DATA bvData ../../EvaluationData/bvByInputSizeW320.txt
+
+\begin{tikzpicture}
+    \begin{axis}[
+       width=110mm,height=69mm,
+        xlabel={Input size},
+        ylabel={Time (microseconds)},
+        ymin=0,ymax=1.2,
+        xmin=0,xmax=33554432,
+        xmode=log,
+        log ticks with fixed point,
+        legend style={at={(0.98,0.02)},anchor=south east},
+        y label style={yshift=-2mm},
+        x label style={yshift=1mm},
+    ]
+    
+        %% MULTIPLOT(resultType) SELECT length - 1 AS x, time AS y, MULTIPLOT
+        %% FROM bvData 
+        %% WHERE evalType LIKE 'queryTime' 
+        %% AND (resultType LIKE 'insert%' OR resultType LIKE 'rank%')
+        %% GROUP BY MULTIPLOT,x ORDER BY MULTIPLOT,x
+        \addplot coordinates { (1024,1.02051) (2048,0.0258789) (4096,0.0234375) (8192,0.228271) (16384,0.488586) (32768,0.853302) (65536,1.04149) (131072,1.71915) (262144,2.48674) (524288,3.13607) (1048576,3.51922) (2097152,5.28335) (4194304,5.82977) (8388608,4.42156) (16777216,4.86802) (33554432,5.51121) };
+        \addlegendentry{resultType=insert(vector<uint64\_t>)};
+        \addplot coordinates { (1024,0.358) (2048,0.0604) (4096,0.0937) (8192,0.0631) (16384,0.0559) (32768,0.0185) (65536,0.0784) (131072,0.0448) (262144,0.1176) (524288,0.0272) (1048576,0.2352) (2097152,1.0473) (4194304,1.0044) (8388608,1.0044) (16777216,1.0025) (33554432,1.0462) };
+        \addlegendentry{resultType=rank(vector<uint64\_t>)};
+    \end{axis} 
+    
+\end{tikzpicture}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
