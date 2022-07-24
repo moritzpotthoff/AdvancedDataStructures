@@ -1,0 +1,16 @@
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^10.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^11.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^12.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^13.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^14.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^15.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^16.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^17.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^18.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^19.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^20.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^21.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^22.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^23.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^24.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
+./build/Framework bv ./TestInputs/evaluationBV/evaluationInput-2^25.txt ./TestOutputs/evaluationBV/evaluation.txt >> ../EvaluationData/bvByInputSizeW320.txt
